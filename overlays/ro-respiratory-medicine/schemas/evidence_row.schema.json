@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Romanian respiratory-medicine evidence row",
+  "type": "object",
+  "properties": {
+    "value_id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._-]*$"},
+    "area": {"type": "string", "minLength": 1, "pattern": "\\S"},
+    "statement": {"type": "string", "minLength": 1, "pattern": "\\S"},
+    "numeric": {"type": "boolean"},
+    "use": {"enum": ["fact_check", "reference", "advisory"]},
+    "evidence_tag": {"enum": ["primary-full-text", "primary-abstract", "secondary", "recalled", "unreachable"]},
+    "source": {
+      "type": "object",
+      "properties": {
+        "url": {"type": "string", "minLength": 1, "pattern": "\\S"},
+        "title": {"type": "string", "minLength": 1, "pattern": "\\S"},
+        "locator": {"type": "string", "minLength": 1, "pattern": "\\S"}
+      },
+      "required": ["url", "title", "locator"],
+      "additionalProperties": false
+    },
+    "verified_at": {"type": "string", "format": "date"},
+    "edition": {"type": ["string", "null"]},
+    "review_window_months": {"enum": [6, 12]},
+    "notes": {"type": "string"}
+  },
+  "required": ["value_id", "area", "statement", "numeric", "use", "evidence_tag", "source", "verified_at", "edition", "review_window_months"],
+  "additionalProperties": false
+}

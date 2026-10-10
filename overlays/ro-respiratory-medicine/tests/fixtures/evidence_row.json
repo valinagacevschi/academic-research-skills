@@ -1,0 +1,12 @@
+{
+  "value_id": "fixture.value",
+  "area": "airways",
+  "statement": "A fixture statement.",
+  "numeric": false,
+  "use": "reference",
+  "evidence_tag": "primary-full-text",
+  "source": {"url": "https://example.org/source", "title": "Fixture source", "locator": "Table 1"},
+  "verified_at": "2026-01-01",
+  "edition": null,
+  "review_window_months": 12
+}

@@ -1,0 +1,10 @@
+{
+  "overlay_id": "ro-respiratory-medicine",
+  "overlay_version": "0.1.0",
+  "upstream_commit": "e614b32",
+  "upstream_registry_versions": {
+    "human_subjects": "2026-08-09.1",
+    "review_criteria": "2026.08.24"
+  },
+  "profile_content_sha256": null
+}
