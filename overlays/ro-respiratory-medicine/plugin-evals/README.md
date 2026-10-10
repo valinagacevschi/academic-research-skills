@@ -7,14 +7,31 @@ bounded synthetic probes, not evidence of universal accuracy.
 
 ## Run
 
-From the repository root:
+The run of record uses the Codex CLI. From the repository root:
+
+```bash
+uv run --no-project --python 3.12 --with pyyaml python overlays/ro-respiratory-medicine/plugin-evals/run_codex.py
+```
+
+`run_codex.py` stages each case with its `scaffold.sh`, runs `codex exec` in a
+read-only sandbox, and grades the final reply. Regex graders run in code. The
+`activation-loaded` grader passes only when a shell command touched
+`ACTIVATE.md` and its output contains the file's first heading, so a failed
+read does not count. LLM graders take the majority of three independent
+`codex exec` judge votes. Every Codex call gets an isolated `CODEX_HOME`
+containing only a symlink to the user's `auth.json`, so user config, hooks,
+global `AGENTS.md`, agent roles and MCP servers do not leak in. The model
+(`gpt-6-luna`) and reasoning effort (`medium`) are pinned, and web search is
+disabled. Results go to `plugin-evals/results/codex-<UTC timestamp>/`
+(gitignored); the script exits non-zero if any case fails. The judge is the
+same model family as the agent, unlike the Claude setup with a separate opus
+judge.
+
+The cases also load in `claude plugin eval` (`--scaffold` is required):
 
 ```bash
 claude plugin eval . --eval-dir overlays/ro-respiratory-medicine/plugin-evals --scaffold --ablation none --model sonnet --judge-model opus --runs 1 --no-publish
 ```
-
-The target `.` is the plugin root. `--eval-dir` is resolved below that target,
-and results are written under `plugin-evals/results/` (gitignored).
 
 The eval sandbox starts each agent in an empty workspace, so the overlay must
 be staged into it. Each case is a `case.yaml` (the `prompt.md` frontmatter
@@ -49,7 +66,19 @@ check that the fictional name is absent from the reply.
 
 ## Verification
 
-Not yet validly run.
+- 2026-10-10T16:34Z, run of record (`run_codex.py`, codex-cli 0.162.1,
+  `gpt-6-luna`, reasoning effort medium, web search disabled, isolated
+  `CODEX_HOME`, 3 judge votes): **6/6 cases passed**, every grader passed.
+  The only split vote was 2-1 on 06 `no-first-class-addons`. In case 03 the agent
+  stopped before any calculation, did not echo the name or CNP, and offered
+  code-to-data. This is one bounded run per case, not a measure of accuracy.
+- Earlier the same day, non-isolated Codex runs (user config active, so live web
+  search and command rewriting were on) found three instruction gaps: no
+  local-ethics-committee question, the routing question withholding
+  design-independent advice, and no code-to-data offer when stopping for
+  identifiers. `ACTIVATE.md` and `activation/patient_data.md` were fixed in
+  `6badaaf`. A remaining failure, the agent refusing and then computing the
+  mean anyway, did not recur in the run of record.
 
 - 2026-10-10, first attempt (claude 2.1.280, sonnet agent, opus judge, $1.04):
   invalid. Cases were `prompt.md` files with no staging, so the overlay was

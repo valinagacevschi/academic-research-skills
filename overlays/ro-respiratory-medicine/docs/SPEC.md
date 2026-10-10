@@ -404,7 +404,7 @@ One slice per delegated task. Each is merged only when its acceptance check pass
 
 - All slices S1–S11 merged in the fork.
 - `check_overlay.py` and the deterministic suite green in CI.
-- The six plugin evals passed once, recorded with date and model.
+- The six plugin evals passed once with the Codex runner (`plugin-evals/run_codex.py`), recorded with date, Codex version and model.
 - `UPSTREAM_ASKS.md` written.
 - No diff against upstream outside `overlays/ro-respiratory-medicine/` and `.github/workflows/ro-overlay.yml`.
 
