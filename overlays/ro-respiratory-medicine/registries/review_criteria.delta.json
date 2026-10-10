@@ -1,0 +1,320 @@
+{
+  "schema_version": "review-criteria-delta/1.0",
+  "criteria": [
+    {
+      "criterion_id": "field.ers-ats.respiratory-measurement",
+      "version": "2019",
+      "authority_class": "field_society_standard",
+      "dimension": "scientific_validity",
+      "title": "ATS/ERS respiratory measurement standards",
+      "statement": "Use the relevant ATS/ERS technical standards for spirometry (2019), single-breath DLCO (2017), and interpretation of routine lung-function tests (2022); use the race-neutral GLI equations described in the ATS statement.",
+      "source": {
+        "title": "ATS/ERS Spirometry Standardization Update",
+        "publisher": "Europe PMC",
+        "uri": "https://europepmc.org/article/MED/31613151",
+        "effective_date": "2026-10-10",
+        "verified_at": "2026-10-10",
+        "freshness": "current"
+      },
+      "applicability": {
+        "disciplines": [
+          "Medicine"
+        ],
+        "subfields": [
+          "Respiratory medicine"
+        ],
+        "venues": [],
+        "tracks": [],
+        "contribution_types": [],
+        "overlays": []
+      },
+      "exclusions": {
+        "disciplines": [],
+        "subfields": [],
+        "venues": [],
+        "tracks": [],
+        "contribution_types": [],
+        "overlays": []
+      },
+      "blocking_policy": "advisory_only",
+      "conflict_group": null
+    },
+    {
+      "criterion_id": "overlay.record.routine-data",
+      "version": "2015",
+      "authority_class": "reporting_design_overlay",
+      "dimension": "scientific_validity",
+      "title": "RECORD for routinely collected health data",
+      "statement": "For observational studies using routinely collected health data, consider the RECORD reporting guideline, which extends STROBE.",
+      "source": {
+        "title": "The RECORD statement",
+        "publisher": "Europe PMC",
+        "uri": "https://europepmc.org/article/MED/26440803",
+        "effective_date": "2026-10-10",
+        "verified_at": "2026-10-10",
+        "freshness": "current"
+      },
+      "applicability": {
+        "disciplines": [
+          "Medicine"
+        ],
+        "subfields": [
+          "Respiratory medicine"
+        ],
+        "venues": [],
+        "tracks": [],
+        "contribution_types": [],
+        "overlays": [
+          "RECORD"
+        ]
+      },
+      "exclusions": {
+        "disciplines": [],
+        "subfields": [],
+        "venues": [],
+        "tracks": [],
+        "contribution_types": [],
+        "overlays": []
+      },
+      "blocking_policy": "advisory_only",
+      "conflict_group": null
+    },
+    {
+      "criterion_id": "overlay.strome-id.infection",
+      "version": "2014",
+      "authority_class": "reporting_design_overlay",
+      "dimension": "scientific_validity",
+      "title": "STROME-ID for infectious-disease molecular epidemiology",
+      "statement": "For infectious-disease molecular epidemiology, consider STROME-ID, an extension to STROBE with additional checklist items.",
+      "source": {
+        "title": "STROME-ID: an extension of the STROBE statement",
+        "publisher": "Europe PMC",
+        "uri": "https://europepmc.org/article/MED/24631223",
+        "effective_date": "2026-10-10",
+        "verified_at": "2026-10-10",
+        "freshness": "current"
+      },
+      "applicability": {
+        "disciplines": [
+          "Medicine"
+        ],
+        "subfields": [
+          "Respiratory medicine"
+        ],
+        "venues": [],
+        "tracks": [],
+        "contribution_types": [],
+        "overlays": [
+          "STROME-ID"
+        ]
+      },
+      "exclusions": {
+        "disciplines": [],
+        "subfields": [],
+        "venues": [],
+        "tracks": [],
+        "contribution_types": [],
+        "overlays": []
+      },
+      "blocking_policy": "advisory_only",
+      "conflict_group": null
+    },
+    {
+      "criterion_id": "ro.manuscript-statements.ethics",
+      "version": "2025",
+      "authority_class": "field_society_standard",
+      "dimension": "submission_readiness",
+      "title": "Ethics statement",
+      "statement": "The manuscript should identify the ethics committee and state the ethics review or opinion relevant to the study.",
+      "source": {
+        "title": "OUG 29/2022 (agency-hosted consolidated print)",
+        "publisher": "OUG 29/2022",
+        "uri": "https://www.anm.ro/_/STUDII%20CLINICE/OUG%2029-2022.pdf",
+        "effective_date": "2026-10-10",
+        "verified_at": "2026-10-10",
+        "freshness": "current"
+      },
+      "applicability": {
+        "disciplines": [
+          "Medicine"
+        ],
+        "subfields": [
+          "Respiratory medicine"
+        ],
+        "venues": [],
+        "tracks": [],
+        "contribution_types": [],
+        "overlays": []
+      },
+      "exclusions": {
+        "disciplines": [],
+        "subfields": [],
+        "venues": [],
+        "tracks": [],
+        "contribution_types": [],
+        "overlays": []
+      },
+      "blocking_policy": "advisory_only",
+      "conflict_group": null
+    },
+    {
+      "criterion_id": "ro.manuscript-statements.consent-anonymisation",
+      "version": "2025",
+      "authority_class": "field_society_standard",
+      "dimension": "submission_readiness",
+      "title": "Consent or anonymisation statement",
+      "statement": "The manuscript should state the consent approach for scientific research; where anonymisation and a committee decision are reported, describe them without presenting anonymisation as a statutory waiver.",
+      "source": {
+        "title": "Law 46/2003 consolidated print (Ministry of Health copy)",
+        "publisher": "Law 46/2003 consolidated print",
+        "uri": "https://ms.ro/media/documents/LEGE_Nr._46_2003_forma_la_data_de_20.11.2023.pdf",
+        "effective_date": "2026-10-10",
+        "verified_at": "2026-10-10",
+        "freshness": "current"
+      },
+      "applicability": {
+        "disciplines": [
+          "Medicine"
+        ],
+        "subfields": [
+          "Respiratory medicine"
+        ],
+        "venues": [],
+        "tracks": [],
+        "contribution_types": [],
+        "overlays": []
+      },
+      "exclusions": {
+        "disciplines": [],
+        "subfields": [],
+        "venues": [],
+        "tracks": [],
+        "contribution_types": [],
+        "overlays": []
+      },
+      "blocking_policy": "advisory_only",
+      "conflict_group": null
+    },
+    {
+      "criterion_id": "ro.manuscript-statements.inn-only",
+      "version": "2025",
+      "authority_class": "field_society_standard",
+      "dimension": "submission_readiness",
+      "title": "INN-only medicine names",
+      "statement": "For CMR members, medicines in scientific publications are referred to by their international nonproprietary names (INNs).",
+      "source": {
+        "title": "CMR Deontology Code 2025",
+        "publisher": "CMR Deontology Code 2025",
+        "uri": "https://www.cmr.ro/wp-content/uploads/2026/01/codul-de-deontologie-medicala-al-colegiului-medicilor-din-romania-din-30102025-1.pdf",
+        "effective_date": "2026-10-10",
+        "verified_at": "2026-10-10",
+        "freshness": "current"
+      },
+      "applicability": {
+        "disciplines": [
+          "Medicine"
+        ],
+        "subfields": [
+          "Respiratory medicine"
+        ],
+        "venues": [],
+        "tracks": [],
+        "contribution_types": [],
+        "overlays": []
+      },
+      "exclusions": {
+        "disciplines": [],
+        "subfields": [],
+        "venues": [],
+        "tracks": [],
+        "contribution_types": [],
+        "overlays": []
+      },
+      "blocking_policy": "advisory_only",
+      "conflict_group": null
+    },
+    {
+      "criterion_id": "ro.manuscript-statements.image-consent",
+      "version": "2025",
+      "authority_class": "field_society_standard",
+      "dimension": "submission_readiness",
+      "title": "Consent for identifiable images",
+      "statement": "The manuscript should document consent for identifiable patient images, consistent with the cited rule on photography or filming in a medical unit.",
+      "source": {
+        "title": "Law 46/2003 consolidated print (Ministry of Health copy)",
+        "publisher": "Law 46/2003 consolidated print",
+        "uri": "https://ms.ro/media/documents/LEGE_Nr._46_2003_forma_la_data_de_20.11.2023.pdf",
+        "effective_date": "2026-10-10",
+        "verified_at": "2026-10-10",
+        "freshness": "current"
+      },
+      "applicability": {
+        "disciplines": [
+          "Medicine"
+        ],
+        "subfields": [
+          "Respiratory medicine"
+        ],
+        "venues": [],
+        "tracks": [],
+        "contribution_types": [],
+        "overlays": []
+      },
+      "exclusions": {
+        "disciplines": [],
+        "subfields": [],
+        "venues": [],
+        "tracks": [],
+        "contribution_types": [],
+        "overlays": []
+      },
+      "blocking_policy": "advisory_only",
+      "conflict_group": null
+    },
+    {
+      "criterion_id": "ro.manuscript-statements.conflict-of-interest",
+      "version": "2025",
+      "authority_class": "field_society_standard",
+      "dimension": "submission_readiness",
+      "title": "Conflict-of-interest disclosure",
+      "statement": "The manuscript should include a conflict-of-interest disclosure.",
+      "source": {
+        "title": "CMR Deontology Code 2025",
+        "publisher": "CMR Deontology Code 2025",
+        "uri": "https://www.cmr.ro/wp-content/uploads/2026/01/codul-de-deontologie-medicala-al-colegiului-medicilor-din-romania-din-30102025-1.pdf",
+        "effective_date": "2026-10-10",
+        "verified_at": "2026-10-10",
+        "freshness": "current"
+      },
+      "applicability": {
+        "disciplines": [
+          "Medicine"
+        ],
+        "subfields": [
+          "Respiratory medicine"
+        ],
+        "venues": [],
+        "tracks": [],
+        "contribution_types": [],
+        "overlays": []
+      },
+      "exclusions": {
+        "disciplines": [],
+        "subfields": [],
+        "venues": [],
+        "tracks": [],
+        "contribution_types": [],
+        "overlays": []
+      },
+      "blocking_policy": "advisory_only",
+      "conflict_group": null
+    }
+  ],
+  "known_gaps": [
+    "field.ers-ats.respiratory-measurement: the combined criterion lists ATS/ERS standards backed by separate verified methodology rows; the primary source field points to the spirometry row, with additional source locators recorded in receipts.",
+    "ro.manuscript-statements.conflict-of-interest: the legal row states physicians must identify and eliminate conflicts affecting medical decisions; it does not itself specify journal disclosure format, so this criterion is limited to checking for disclosure and remains advisory.",
+    "ro.manuscript-statements.ethics: the verified row supports that CNBMDM performs ethical analysis and issues opinions; the exact committee-name, approval-number, and date format is a reviewer prompt and remains advisory.",
+    "No separate verified row was available for a national-law rule requiring a general manuscript consent/anonymisation statement, so the criterion is limited to the cited research-consent and confidentiality rules.",
+    "ro.manuscript-statements.eu-ct-number: omitted because ro.ctis-evaluation confirms that decisions are transmitted through CTIS but does not verify a manuscript requirement to state the EU CT number."
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "receipt_version": "review-criteria-source-receipt/1.0",
+  "receipt_kind": "mutable_web_semantic_snapshot",
+  "source_uri": "https://europepmc.org/article/MED/24631223",
+  "publisher": "STROME-ID: an extension of the STROBE statement",
+  "retrieved_at": "2026-10-10T14:43:10Z",
+  "capture": {
+    "method": "GET https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:24631223&format=json",
+    "http_status": 200,
+    "content_type": "application/json;charset=UTF-8",
+    "etag": null,
+    "last_modified": null,
+    "raw_body_size_bytes": 1063,
+    "raw_body_sha256": "47090405f37e0562ab0de27d9bda78dece8191da70ef6a189901812abd696b85"
+  },
+  "semantic_snapshot": {
+    "selection": "Backing data row locator and quoted source note",
+    "normalization": "UTF-8 text exactly as recorded in the verified overlay data row; no whitespace normalization",
+    "encoding": "UTF-8",
+    "size_bytes": 85,
+    "word_count": 13,
+    "sha256": "293d39eba311f8128ce674eb903e5bd51ecccf2a189d58a89daa5246ba9d960f"
+  },
+  "criterion_locators": [
+    {
+      "criterion_id": "overlay.strome-id.infection",
+      "fragment": "“20 items were added to the 22 item STROBE checklist.”",
+      "locator": "Europe PMC/PubMed abstract"
+    }
+  ],
+  "retention": {
+    "full_body_committed": false,
+    "reason": "Retain only the verified source-row locator and quote; do not redistribute the source body.",
+    "drift_rule": "Recheck source URI and locator against the current source before relying on a changed criterion."
+  }
+}

@@ -1,0 +1,196 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Romanian respiratory review-criteria delta",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "criteria",
+    "known_gaps"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "review-criteria-delta/1.0"
+    },
+    "criteria": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "criterion_id",
+          "version",
+          "authority_class",
+          "dimension",
+          "title",
+          "statement",
+          "source",
+          "applicability",
+          "exclusions",
+          "blocking_policy",
+          "conflict_group"
+        ],
+        "properties": {
+          "criterion_id": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9._-]*$"
+          },
+          "version": {
+            "type": "string",
+            "minLength": 1
+          },
+          "authority_class": {
+            "enum": [
+              "field_society_standard",
+              "reporting_design_overlay"
+            ]
+          },
+          "dimension": {
+            "enum": [
+              "scientific_validity",
+              "submission_readiness"
+            ]
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1
+          },
+          "statement": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "title",
+              "publisher",
+              "uri",
+              "effective_date",
+              "verified_at",
+              "freshness"
+            ],
+            "properties": {
+              "title": {
+                "type": "string",
+                "minLength": 1
+              },
+              "publisher": {
+                "type": "string",
+                "minLength": 1
+              },
+              "uri": {
+                "type": "string",
+                "minLength": 1
+              },
+              "effective_date": {
+                "type": "string",
+                "format": "date"
+              },
+              "verified_at": {
+                "type": "string",
+                "format": "date"
+              },
+              "freshness": {
+                "enum": [
+                  "current",
+                  "stale",
+                  "unverified"
+                ]
+              }
+            }
+          },
+          "applicability": {
+            "$ref": "#/$defs/axes"
+          },
+          "exclusions": {
+            "$ref": "#/$defs/axes"
+          },
+          "blocking_policy": {
+            "enum": [
+              "blocking_allowed",
+              "advisory_only"
+            ]
+          },
+          "conflict_group": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "known_gaps": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  },
+  "$defs": {
+    "axes": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "disciplines",
+        "subfields",
+        "venues",
+        "tracks",
+        "contribution_types",
+        "overlays"
+      ],
+      "properties": {
+        "disciplines": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "subfields": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "venues": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "tracks": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "contribution_types": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "overlays": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        }
+      }
+    }
+  }
+}

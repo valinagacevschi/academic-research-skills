@@ -1,0 +1,36 @@
+{
+  "receipt_version": "review-criteria-source-receipt/1.0",
+  "receipt_kind": "mutable_web_semantic_snapshot",
+  "source_uri": "https://europepmc.org/article/MED/26440803",
+  "publisher": "The RECORD statement",
+  "retrieved_at": "2026-10-10T14:43:10Z",
+  "capture": {
+    "method": "GET https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:26440803&format=json",
+    "http_status": 200,
+    "content_type": "application/json;charset=UTF-8",
+    "etag": null,
+    "last_modified": null,
+    "raw_body_size_bytes": 1104,
+    "raw_body_sha256": "961a4a5dd5310a9ae6fa78421c1db9a146c3022ee5652df3030dc578a979d572"
+  },
+  "semantic_snapshot": {
+    "selection": "Backing data row locator and quoted source note",
+    "normalization": "UTF-8 text exactly as recorded in the verified overlay data row; no whitespace normalization",
+    "encoding": "UTF-8",
+    "size_bytes": 179,
+    "word_count": 24,
+    "sha256": "703527381959660bb8747e54f74598dcb9945933e54a975b0ab9ac0d2b33b8da"
+  },
+  "criterion_locators": [
+    {
+      "criterion_id": "overlay.record.routine-data",
+      "fragment": "“created as an extension to the STROBE statement ... observational studies using routinely collected health data.”",
+      "locator": "Europe PMC record; title, publication date/year and abstract"
+    }
+  ],
+  "retention": {
+    "full_body_committed": false,
+    "reason": "Retain only the verified source-row locator and quote; do not redistribute the source body.",
+    "drift_rule": "Recheck source URI and locator against the current source before relying on a changed criterion."
+  }
+}
