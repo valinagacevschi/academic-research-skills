@@ -1020,6 +1020,210 @@
       "edition": null,
       "review_window_months": 6,
       "notes": "“CHEST requires that authors include the committee/organization name and approval number on the title page, and an anonymized description of the approval in full manuscript.”"
+    },
+    {
+      "value_id": "venue.rjme.indexing",
+      "area": "venue.rjme",
+      "statement": "NLM Catalog: RJME (Rom J Morphol Embryol) is currently indexed in MEDLINE (coverage v36n2, 1990-); currently indexed in PubMed (coverage v36n2, 1990-).",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://www.ncbi.nlm.nih.gov/nlmcatalog/9112454",
+        "title": "NLM Catalog record 9112454: Romanian journal of morphology and embryology = Revue roumaine de morphologie et embryologie.",
+        "locator": "IndexingSourceList (E-utilities efetch db=nlmcatalog id=9112454, 2026-10-10); ISSN 1220-0522"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“MEDLINE” IndexingStatus=“Currently-indexed”, Coverage “v36n2, 1990-”; “PubMed” IndexingStatus=“Currently-indexed”, Coverage “v36n2, 1990-”"
+    },
+    {
+      "value_id": "venue.medicina.indexing",
+      "area": "venue.medicina",
+      "statement": "NLM Catalog: Medicina (Medicina (Kaunas)) is currently indexed in MEDLINE (coverage v38n1, 2002-); currently indexed in PubMed (coverage v38n1, 2002-).",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://www.ncbi.nlm.nih.gov/nlmcatalog/9425208",
+        "title": "NLM Catalog record 9425208: Medicina.",
+        "locator": "IndexingSourceList (E-utilities efetch db=nlmcatalog id=9425208, 2026-10-10); ISSN 1010-660X"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“MEDLINE” IndexingStatus=“Currently-indexed”, Coverage “v38n1, 2002-”; “PubMed” IndexingStatus=“Currently-indexed”, Coverage “v38n1, 2002-”"
+    },
+    {
+      "value_id": "venue.maedica.indexing",
+      "area": "venue.maedica",
+      "statement": "NLM Catalog: Maedica (Maedica (Bucur)) is not listed for MEDLINE; currently indexed in PubMed (coverage v5, 2010-).",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://www.ncbi.nlm.nih.gov/nlmcatalog/101526930",
+        "title": "NLM Catalog record 101526930: Mædica.",
+        "locator": "IndexingSourceList (E-utilities efetch db=nlmcatalog id=101526930, 2026-10-10); ISSN 1841-9038"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“PubMed” IndexingStatus=“Currently-indexed”, Coverage “v5, 2010-”"
+    },
+    {
+      "value_id": "venue.ijtld.indexing",
+      "area": "venue.ijtld",
+      "statement": "NLM Catalog: IJTLD (Int J Tuberc Lung Dis) is currently indexed in MEDLINE (coverage v1n1,Feb. 1997-); currently indexed in PubMed (coverage v1n1,Feb. 1997-).",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://www.ncbi.nlm.nih.gov/nlmcatalog/9706389",
+        "title": "NLM Catalog record 9706389: The international journal of tuberculosis and lung disease : the official journal of the International Union against Tuberculosis and Lung Disease.",
+        "locator": "IndexingSourceList (E-utilities efetch db=nlmcatalog id=9706389, 2026-10-10); ISSN 1027-3719"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“MEDLINE” IndexingStatus=“Currently-indexed”, Coverage “v1n1,Feb. 1997-”; “PubMed” IndexingStatus=“Currently-indexed”, Coverage “v1n1,Feb. 1997-”"
+    },
+    {
+      "value_id": "venue.pneumologia.indexing",
+      "area": "venue.pneumologia",
+      "statement": "NLM Catalog: Pneumologia (Pneumologia) is deselected from MEDLINE (coverage v48n4,Oct.-Dec. 1999-v65n4, Oct.-Dec. 2016); deselected from PubMed (coverage v48n4,Oct.-Dec. 1999-v65n4, Oct.-Dec. 2016).",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://www.ncbi.nlm.nih.gov/nlmcatalog/100941067",
+        "title": "NLM Catalog record 100941067: Pneumologia : revista Societății Române de Pneumologie",
+        "locator": "IndexingSourceList (E-utilities efetch db=nlmcatalog id=100941067, 2026-10-10); ISSN 2067-2993"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“MEDLINE” IndexingStatus=“Deselected”, Coverage “v48n4,Oct.-Dec. 1999-v65n4, Oct.-Dec. 2016”; “PubMed” IndexingStatus=“Deselected”, Coverage “v48n4,Oct.-Dec. 1999-v65n4, Oct.-Dec. 2016”"
+    },
+    {
+      "value_id": "venue.ers_journals.indexing_erj",
+      "area": "venue.ers_journals",
+      "statement": "NLM Catalog: ERJ (Eur Respir J) is currently indexed in MEDLINE (coverage v1n1,Jan. 1988-); currently indexed in PubMed (coverage v1n1,Jan. 1988-).",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://www.ncbi.nlm.nih.gov/nlmcatalog/8803460",
+        "title": "NLM Catalog record 8803460: The European respiratory journal.",
+        "locator": "IndexingSourceList (E-utilities efetch db=nlmcatalog id=8803460, 2026-10-10); ISSN 0903-1936"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“MEDLINE” IndexingStatus=“Currently-indexed”, Coverage “v1n1,Jan. 1988-”; “PubMed” IndexingStatus=“Currently-indexed”, Coverage “v1n1,Jan. 1988-”"
+    },
+    {
+      "value_id": "venue.ajrccm.indexing",
+      "area": "venue.ajrccm",
+      "statement": "NLM Catalog: AJRCCM (Am J Respir Crit Care Med) is currently indexed in MEDLINE (coverage v149n1, Jan. 1994-); currently indexed in PubMed (coverage v149n1, Jan.1994-).",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://www.ncbi.nlm.nih.gov/nlmcatalog/9421642",
+        "title": "NLM Catalog record 9421642: American journal of respiratory and critical care medicine.",
+        "locator": "IndexingSourceList (E-utilities efetch db=nlmcatalog id=9421642, 2026-10-10); ISSN 1073-449X"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“MEDLINE” IndexingStatus=“Currently-indexed”, Coverage “v149n1, Jan. 1994-”; “PubMed” IndexingStatus=“Currently-indexed”, Coverage “v149n1, Jan.1994-”"
+    },
+    {
+      "value_id": "venue.chest.indexing",
+      "area": "venue.chest",
+      "statement": "NLM Catalog: CHEST (Chest) is currently indexed in MEDLINE (coverage v57n1, Jan. 1970-); currently indexed in PubMed (coverage v57n1, Jan. 1970-).",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://www.ncbi.nlm.nih.gov/nlmcatalog/231335",
+        "title": "NLM Catalog record 0231335: Chest.",
+        "locator": "IndexingSourceList (E-utilities efetch db=nlmcatalog id=0231335, 2026-10-10); ISSN 0012-3692"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“MEDLINE” IndexingStatus=“Currently-indexed”, Coverage “v57n1, Jan. 1970-”; “PubMed” IndexingStatus=“Currently-indexed”, Coverage “v57n1, Jan. 1970-”"
+    },
+    {
+      "value_id": "venue.thorax.indexing",
+      "area": "venue.thorax",
+      "statement": "NLM Catalog: Thorax (Thorax) is currently indexed in MEDLINE (coverage v20n6, Nov. 1965-); currently indexed in PubMed (coverage v1n1, Mar. 1946-).",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://www.ncbi.nlm.nih.gov/nlmcatalog/417353",
+        "title": "NLM Catalog record 0417353: Thorax.",
+        "locator": "IndexingSourceList (E-utilities efetch db=nlmcatalog id=0417353, 2026-10-10); ISSN 0040-6376"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“MEDLINE” IndexingStatus=“Currently-indexed”, Coverage “v20n6, Nov. 1965-”; “PubMed” IndexingStatus=“Currently-indexed”, Coverage “v1n1, Mar. 1946-”"
+    },
+    {
+      "value_id": "venue.respiratory_medicine.indexing",
+      "area": "venue.respiratory_medicine",
+      "statement": "NLM Catalog: Respiratory Medicine (Respir Med) is currently indexed in MEDLINE (coverage v83n1,Jan. 1989-); currently indexed in PubMed (coverage v83n1,Jan. 1989-).",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://www.ncbi.nlm.nih.gov/nlmcatalog/8908438",
+        "title": "NLM Catalog record 8908438: Respiratory medicine.",
+        "locator": "IndexingSourceList (E-utilities efetch db=nlmcatalog id=8908438, 2026-10-10); ISSN 0954-6111"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“MEDLINE” IndexingStatus=“Currently-indexed”, Coverage “v83n1,Jan. 1989-”; “PubMed” IndexingStatus=“Currently-indexed”, Coverage “v83n1,Jan. 1989-”"
+    },
+    {
+      "value_id": "venue.bmj_open_respiratory_research.indexing",
+      "area": "venue.bmj_open_respiratory_research",
+      "statement": "NLM Catalog: BMJ Open Respiratory Research (BMJ Open Respir Res) is currently indexed in MEDLINE (coverage v6n1, 2019-); currently indexed in PubMed (coverage v1n1, 2013-).",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://www.ncbi.nlm.nih.gov/nlmcatalog/101638061",
+        "title": "NLM Catalog record 101638061: BMJ open respiratory research.",
+        "locator": "IndexingSourceList (E-utilities efetch db=nlmcatalog id=101638061, 2026-10-10); ISSN 2052-4439"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“MEDLINE” IndexingStatus=“Currently-indexed”, Coverage “v6n1, 2019-”; “PubMed” IndexingStatus=“Currently-indexed”, Coverage “v1n1, 2013-”"
+    },
+    {
+      "value_id": "venue.ers_journals.indexing_erj_open_research",
+      "area": "venue.ers_journals",
+      "statement": "NLM Catalog: ERJ Open Research (ERJ Open Res) is not listed for MEDLINE; currently indexed in PubMed (coverage v1n1, 2015-).",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://www.ncbi.nlm.nih.gov/nlmcatalog/101671641",
+        "title": "NLM Catalog record 101671641: ERJ open research.",
+        "locator": "IndexingSourceList (E-utilities efetch db=nlmcatalog id=101671641, 2026-10-10); ISSN 2312-0541"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“PubMed” IndexingStatus=“Currently-indexed”, Coverage “v1n1, 2015-”"
     }
   ]
 }

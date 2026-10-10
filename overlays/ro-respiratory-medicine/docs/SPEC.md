@@ -279,7 +279,7 @@ No registry change.
 *From: Target-venue support and indexing checks; Venue landscape research.*
 
 **Venues covered:**
-- international journals: ERS journals (ERJ + ERJ Open Research, one entry), AJRCCM, CHEST, Thorax, Respiratory Medicine, IJTLD;
+- international journals: ERS journals (ERJ + ERJ Open Research, one entry), AJRCCM, CHEST, Thorax, Respiratory Medicine, BMJ Open Respiratory Research, IJTLD;
 - open access / Romanian: *Medicina*, *Pneumologia*, RJME, *Maedica*;
 - congresses: ERS Congress, and the SRP congress English half.
 
@@ -342,7 +342,7 @@ Every encoded value records URL, title, locator, tag, `verified_at`, and edition
   - GOLD FEV1 grade cut-offs, the CNAS protocol list, AQLQ MID, sweat-chloride thresholds, Fuchs criteria;
   - PPF decline thresholds, AASM hypopnoea rule, ESC PE risk classes, IPF 6MWD MCID, Epworth MCID, OSA driving order and IPF protocol texts, screening eligibility;
   - Romanian silicosis counts, ENSP edition, Eurobarometer 2024 RO figure, RSV policy, rehab reimbursement, CURB-65, Berlin bands, NIV pH threshold.
-- **Venue gaps:** *Pneumologia* author instructions; CHEST abstract limit, APC and GenAI policy; AJRCCM reference style, checklists and fees; Thorax figures and checklist mandate; Respiratory Medicine 2024 snapshot; WoS status of the international journals.
+- **Venue gaps:** *Pneumologia* author instructions (only the fee is encoded); CHEST and Thorax APC amounts; BMJ Open Respiratory Research author instructions (live page blocked; newest archive 2025-06-13 is outside the 6-month window); Scopus and Web of Science status. MEDLINE/PubMed status is encoded per journal from the NLM Catalog (2026-10-10).
 - **Legal texts on legislatie.just.ro:** OUG 29/2022 consolidated, Law 46/2003, Law 190/2018, OMS 3390/2022, OMS 330/2023, Law 199/2023 article number, the CMR Code 2025.
 - **Outcome per value:** primary → promote; secondary only → advisory; unreachable or contradicted → drop. Verification counts when an agent fetch records URL + date + quoted locator. A clinician can upgrade a value with a signed note.
 

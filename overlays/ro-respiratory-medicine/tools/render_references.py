@@ -22,6 +22,7 @@ VENUES = {
     "venue.ijtld": "International Journal of Tuberculosis and Lung Disease", "venue.pneumologia": "Pneumologia",
     "venue.ers_journals": "ERS journals", "venue.ajrccm": "AJRCCM", "venue.chest": "CHEST",
     "venue.thorax": "Thorax", "venue.respiratory_medicine": "Respiratory Medicine",
+    "venue.bmj_open_respiratory_research": "BMJ Open Respiratory Research",
 }
 MISSING_VENUES: list[str] = []
 
