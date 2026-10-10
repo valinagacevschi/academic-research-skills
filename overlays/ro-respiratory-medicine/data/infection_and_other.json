@@ -16,7 +16,7 @@
       "verified_at": "2026-10-10",
       "edition": "2026",
       "review_window_months": 12,
-      "notes": "\u201cThe final COS for CAP includes: treatment success/failure, all-cause mortality, serious adverse events, readmissions \u2026 duration of symptoms and time to clinical stability.\u201d"
+      "notes": "“The final COS for CAP includes: treatment success/failure, all-cause mortality, serious adverse events, readmissions … duration of symptoms and time to clinical stability.”"
     },
     {
       "value_id": "infection_and_other.nosocomial_pneumonia_cos_2026",
@@ -33,7 +33,7 @@
       "verified_at": "2026-10-10",
       "edition": "2026",
       "review_window_months": 12,
-      "notes": "\u201cnosocomial pneumonia COS includes: treatment success/failure, all-cause mortality, serious adverse events, readmission and need for ventilatory support.\u201d"
+      "notes": "“nosocomial pneumonia COS includes: treatment success/failure, all-cause mortality, serious adverse events, readmission and need for ventilatory support.”"
     },
     {
       "value_id": "infection_and_other.endosonography_2026",
@@ -50,7 +50,92 @@
       "verified_at": "2026-10-10",
       "edition": "2026",
       "review_window_months": 12,
-      "notes": "\u201cSystematic staging is suggested \u2026 as the minimal standard\u201d; \u201c21G/22G TBNA needles are considered the standard.\u201d"
+      "notes": "“Systematic staging is suggested … as the minimal standard”; “21G/22G TBNA needles are considered the standard.”"
+    },
+    {
+      "value_id": "infection_and_other.beat_tb_2026",
+      "area": "infection.tuberculosis",
+      "statement": "A 6-month bedaquiline, linezolid, delamanid and levofloxacin/clofazimine treatment strategy was noninferior to the 9-month standard of care for rifampicin-resistant TB; successful outcome at 76 weeks was 86.1% vs 86.0%.",
+      "numeric": true,
+      "use": "reference",
+      "evidence_tag": "primary-abstract",
+      "source": {
+        "url": "https://europepmc.org/article/MED/42341301",
+        "title": "A Pragmatic Trial of a 6-Month Strategy for Rifampicin-Resistant Tuberculosis",
+        "locator": "Abstract, Methods, Results, Conclusions"
+      },
+      "verified_at": "2026-10-10",
+      "edition": "2026",
+      "review_window_months": 12,
+      "notes": "“A successful outcome was observed ... (86.1%) ... (86.0%)”; “6-month trial strategy was noninferior.”"
+    },
+    {
+      "value_id": "infection_and_other.ro_tb_2024",
+      "area": "infection.tuberculosis",
+      "statement": "Romania 2024 TB profile: 8,825 cases; notification rate 46.3/100,000; 200 notified RR/MDR-TB cases; RR/MDR-TB treatment success 55.0% for the 2022 cohort.",
+      "numeric": true,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://www.ecdc.europa.eu/sites/default/files/documents/Country-profile-Romania-TB-2024.pdf",
+        "title": "Tuberculosis surveillance and monitoring in Europe 2026: Romania country profile",
+        "locator": "Romania profile, Tuberculosis cases 2024; Drug resistance surveillance; outcome cohort (2022)"
+      },
+      "verified_at": "2026-10-10",
+      "edition": "2026",
+      "review_window_months": 12,
+      "notes": "“Total number of cases 8 825”; “Notification rate ... 46.3”; “Notified RR/MDR-TB 200”; “Success ... 153 (55.0%).”"
+    },
+    {
+      "value_id": "infection_and_other.global_ards_definition_2024",
+      "area": "infection.ards",
+      "statement": "The 2024 global ARDS definition includes high-flow nasal oxygen at ≥30 L/min; hypoxemia as PaO2:FiO2 ≤300 mm Hg or SpO2:FiO2 ≤315 when SpO2 ≤97%; ultrasound may meet imaging criteria; PEEP/support devices are not required in resource-limited settings.",
+      "numeric": true,
+      "use": "fact_check",
+      "evidence_tag": "primary-abstract",
+      "source": {
+        "url": "https://europepmc.org/article/MED/37487152",
+        "title": "A New Global Definition of Acute Respiratory Distress Syndrome",
+        "locator": "Abstract, Results"
+      },
+      "verified_at": "2026-10-10",
+      "edition": "2024",
+      "review_window_months": 12,
+      "notes": "“minimum flow rate of ≥30 L/min”; “PaO2:FiO2 ≤300 mm Hg or ... SpO2:FiO2 ≤315 (if ... SpO2 is ≤97%).”"
+    },
+    {
+      "value_id": "infection_and_other.berlin_ards_severity_2012",
+      "area": "infection.ards",
+      "statement": "The Berlin ARDS severity bands by PaO2/FiO2 are mild >200 to ≤300 mm Hg, moderate >100 to ≤200 mm Hg, and severe ≤100 mm Hg.",
+      "numeric": true,
+      "use": "fact_check",
+      "evidence_tag": "primary-abstract",
+      "source": {
+        "url": "https://europepmc.org/article/MED/22797452",
+        "title": "Acute respiratory distress syndrome: the Berlin Definition",
+        "locator": "Abstract"
+      },
+      "verified_at": "2026-10-10",
+      "edition": "2012",
+      "review_window_months": 12,
+      "notes": "“mild (200 ... ≤300 mm Hg), moderate (100 ... ≤200 mm Hg), and severe (≤100 mm Hg).”"
+    },
+    {
+      "value_id": "infection_and_other.curb65_2003",
+      "area": "infection.pneumonia",
+      "statement": "CURB-65 assigns one point each for confusion, urea >7 mmol/L, respiratory rate ≥30/min, low blood pressure (systolic <90 or diastolic ≤60 mm Hg), and age ≥65 years.",
+      "numeric": true,
+      "use": "fact_check",
+      "evidence_tag": "primary-abstract",
+      "source": {
+        "url": "https://europepmc.org/article/MED/12728155",
+        "title": "Defining community acquired pneumonia severity on presentation to hospital: an international derivation and validation study",
+        "locator": "Abstract, Results"
+      },
+      "verified_at": "2026-10-10",
+      "edition": "2003",
+      "review_window_months": 12,
+      "notes": "“one point for each of Confusion, Urea >7 mmol/l, Respiratory rate ≥30/min, low ... Blood pressure ... age ≥65 years.”"
     }
   ]
 }

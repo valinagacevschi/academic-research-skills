@@ -102,6 +102,414 @@
       "edition": "29th SRP National Congress, 2026",
       "review_window_months": 6,
       "notes": "“corpul rezumatului nu trebuie să depășească 300 de cuvinte pentru fiecare limbă”"
+    },
+    {
+      "value_id": "venue.medicina.abstract_limit",
+      "area": "venue.medicina",
+      "statement": "The abstract is a single paragraph of about 300 words maximum.",
+      "numeric": true,
+      "use": "fact_check",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://www.mdpi.com/journal/medicina/instructions",
+        "title": "Instructions for Authors | Medicina | MDPI",
+        "locator": "Abstract"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“about 300 words maximum.” fetched via r.jina.ai reader proxy on 2026-10-10."
+    },
+    {
+      "value_id": "venue.medicina.abstract_structure",
+      "area": "venue.medicina",
+      "statement": "The structured-style abstract uses Background and Objectives, Materials and Methods, Results, and Conclusion headings.",
+      "numeric": false,
+      "use": "fact_check",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://www.mdpi.com/journal/medicina/instructions",
+        "title": "Instructions for Authors | Medicina | MDPI",
+        "locator": "Abstract"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“headings: Background and Objectives; Materials and Methods; Results; Conclusion.” fetched via r.jina.ai reader proxy on 2026-10-10."
+    },
+    {
+      "value_id": "venue.medicina.article_structure",
+      "area": "venue.medicina",
+      "statement": "Research manuscripts comprise Introduction, Materials and Methods, Results, Discussion, and Conclusions.",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://www.mdpi.com/journal/medicina/instructions",
+        "title": "Instructions for Authors | Medicina | MDPI",
+        "locator": "General Considerations, Research manuscripts"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“Introduction, Materials and Methods, Results, Discussion, Conclusions.” fetched via r.jina.ai reader proxy on 2026-10-10."
+    },
+    {
+      "value_id": "venue.medicina.reference_style",
+      "area": "venue.medicina",
+      "statement": "Free-format initial submissions may use any consistently formatted reference style.",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://www.mdpi.com/journal/medicina/instructions",
+        "title": "Instructions for Authors | Medicina | MDPI",
+        "locator": "Free Format Submission"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“references may be in any style,” if formatting is consistent. fetched via r.jina.ai reader proxy on 2026-10-10."
+    },
+    {
+      "value_id": "venue.medicina.checklists",
+      "area": "venue.medicina",
+      "statement": "Scoping reviews require PRISMA-ScR; randomized trials require CONSORT 2025 and a flow diagram; animal studies use ARRIVE.",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://www.mdpi.com/journal/medicina/instructions",
+        "title": "Instructions for Authors | Medicina | MDPI",
+        "locator": "Types of Publications; Randomized Clinical Trial Reporting Guidelines; Animal Research"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“PRISMA extension” for scoping reviews; “CONSORT 2025 checklist”; ARRIVE checklist. fetched via r.jina.ai reader proxy on 2026-10-10."
+    },
+    {
+      "value_id": "venue.medicina.ai_disclosure",
+      "area": "venue.medicina",
+      "statement": "Disclose applicable GenAI use in Materials and Methods; superficial language editing need not be declared.",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://www.mdpi.com/journal/medicina/instructions",
+        "title": "Instructions for Authors | Medicina | MDPI",
+        "locator": "Materials and Methods"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“disclose in this section” (Materials and Methods); superficial text editing need not be declared. fetched via r.jina.ai reader proxy on 2026-10-10."
+    },
+    {
+      "value_id": "venue.maedica.abstract_structure",
+      "area": "venue.maedica",
+      "statement": "Abstract describes Objectives, Materials and methods, Results, and Conclusions in that order.",
+      "numeric": false,
+      "use": "fact_check",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://www.maedica.ro/wp-content/uploads/misc/Instructions_for_authors.pdf",
+        "title": "Maedica Instructions for Authors (2026)",
+        "locator": "General Structure of the Articles, item (2), p. 535"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“Objectives, Materials and methods, Results and Conclusions” in the same order. fetched via r.jina.ai reader proxy on 2026-10-10."
+    },
+    {
+      "value_id": "venue.maedica.main_text_limit",
+      "area": "venue.maedica",
+      "statement": "A submitted manuscript must not exceed 15 pages, inclusive of front matter, main text, references and explanatory materials.",
+      "numeric": true,
+      "use": "fact_check",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://www.maedica.ro/wp-content/uploads/misc/Instructions_for_authors.pdf",
+        "title": "Maedica Instructions for Authors (2026)",
+        "locator": "Structure of the Journal, p. 536"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“must not exceed 15 pages,” including title through references and explanatory materials. fetched via r.jina.ai reader proxy on 2026-10-10."
+    },
+    {
+      "value_id": "venue.maedica.ai_policy",
+      "area": "venue.maedica",
+      "statement": "The journal states a maximum accepted AI-use percentage of 30%.",
+      "numeric": true,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://www.maedica.ro/wp-content/uploads/misc/Instructions_for_authors.pdf",
+        "title": "Maedica Instructions for Authors (2026)",
+        "locator": "Structure of the Journal, p. 536"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“maximum accepted percentage for artificial intelligence (AI) use is 30%.” fetched via r.jina.ai reader proxy on 2026-10-10."
+    },
+    {
+      "value_id": "venue.maedica.reference_style",
+      "area": "venue.maedica",
+      "statement": "References are cited consecutively with Arabic numerals and listed in citation order; article references list up to three authors, then et al. when there are more than four.",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://www.maedica.ro/wp-content/uploads/misc/Instructions_for_authors.pdf",
+        "title": "Maedica Instructions for Authors (2026)",
+        "locator": "General Structure of the Articles, item (4), p. 535; Referencing, p. 537"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“cited ... in consecutive order, using Arabic numbers”; “List all authors” (instructions specify up to 3 then et al. for >4). fetched via r.jina.ai reader proxy on 2026-10-10."
+    },
+    {
+      "value_id": "venue.ijtld.abstract_limit",
+      "area": "venue.ijtld",
+      "statement": "Original-article abstract maximum is 200 words.",
+      "numeric": true,
+      "use": "fact_check",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://theunion.org/sites/default/files/2025-06/Instructions-for-Authors%20IJTLD%202025%20Updated.pdf",
+        "title": "The International Journal of Tuberculosis and Lung Disease: Instructions for Authors (2025)",
+        "locator": "Format of Submitted Articles table; Abstract section"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“Original Article ... Abstract 200 words”; “An informative abstract of no more than 200 words.”"
+    },
+    {
+      "value_id": "venue.ijtld.abstract_structure",
+      "area": "venue.ijtld",
+      "statement": "Original-article abstracts should use Background, Methods, Results, and Conclusion headings.",
+      "numeric": false,
+      "use": "fact_check",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://theunion.org/sites/default/files/2025-06/Instructions-for-Authors%20IJTLD%202025%20Updated.pdf",
+        "title": "The International Journal of Tuberculosis and Lung Disease: Instructions for Authors (2025)",
+        "locator": "Abstract section"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“use the headings Background, Methods, Results and Conclusion.”"
+    },
+    {
+      "value_id": "venue.ijtld.main_text_limit",
+      "area": "venue.ijtld",
+      "statement": "Original articles should be no more than 2,500 words, excluding abstract, references, tables and figure captions; six typeset pages.",
+      "numeric": true,
+      "use": "fact_check",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://theunion.org/sites/default/files/2025-06/Instructions-for-Authors%20IJTLD%202025%20Updated.pdf",
+        "title": "The International Journal of Tuberculosis and Lung Disease: Instructions for Authors (2025)",
+        "locator": "Original Articles and Reviews"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“6 typeset pages, typically including a maximum of 2,500 words (excluding abstract, references, Tables and Figure captions).”"
+    },
+    {
+      "value_id": "venue.ijtld.reference_limit",
+      "area": "venue.ijtld",
+      "statement": "Original articles allow up to 35 references (50 for systematic reviews and meta-analyses).",
+      "numeric": true,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://theunion.org/sites/default/files/2025-06/Instructions-for-Authors%20IJTLD%202025%20Updated.pdf",
+        "title": "The International Journal of Tuberculosis and Lung Disease: Instructions for Authors (2025)",
+        "locator": "Format of Submitted Articles table"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“References 35 (50 for Systematic Reviews and meta-analyses).”"
+    },
+    {
+      "value_id": "venue.ijtld.checklists",
+      "area": "venue.ijtld",
+      "statement": "Clinical trials must follow CONSORT; epidemiological studies STROBE; systematic reviews PRISMA; observational meta-analyses MOOSE, with checklist submission for PRISMA/MOOSE.",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://theunion.org/sites/default/files/2025-06/Instructions-for-Authors%20IJTLD%202025%20Updated.pdf",
+        "title": "The International Journal of Tuberculosis and Lung Disease: Instructions for Authors (2025)",
+        "locator": "Original Articles and Reviews"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“Clinical trials ... CONSORT”; “Epidemiological studies ... STROBE”; “Reporting should follow PRISMA ... MOOSE ... completed PRISMA or MOOSE checklist.”"
+    },
+    {
+      "value_id": "venue.ijtld.publication_charges",
+      "area": "venue.ijtld",
+      "statement": "The instructions state no charges for articles within page limits; excess pages cost €375/page and supplementary data cost €325 per 10 pages (fees stated for 2025).",
+      "numeric": true,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://theunion.org/sites/default/files/2025-06/Instructions-for-Authors%20IJTLD%202025%20Updated.pdf",
+        "title": "The International Journal of Tuberculosis and Lung Disease: Instructions for Authors (2025)",
+        "locator": "Publication Charges"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“There are no charges ... excess page charges of €375 per page”; “A charge of 325€ ... per 10 pp of Supplementary Data.”"
+    },
+    {
+      "value_id": "venue.srp_congress.abstract_content",
+      "area": "venue.srp_congress",
+      "statement": "The abstract must state a distinct hypothesis and a methodology that distinguishes it from other submissions.",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://www.congres-srp.ro/rezumate/",
+        "title": "Congres SRP: Rezumate 2026",
+        "locator": "Caracteristici tehnice de redactare a rezumatelor"
+      },
+      "verified_at": "2026-10-10",
+      "edition": "2026",
+      "review_window_months": 6,
+      "notes": "“fiecare rezumat trebuie să aibă o ipoteză distinctă și o metodologie care să o diferențieze de alte lucrări înscrise.”"
+    },
+    {
+      "value_id": "venue.srp_congress.registration_requirement",
+      "area": "venue.srp_congress",
+      "statement": "Abstract evaluation requires at least one author to be registered for the congress and have paid the participation fee.",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://www.congres-srp.ro/rezumate/",
+        "title": "Congres SRP: Rezumate 2026",
+        "locator": "Evaluarea rezumatelor"
+      },
+      "verified_at": "2026-10-10",
+      "edition": "2026",
+      "review_window_months": 6,
+      "notes": "“taxa de participare achitată, a cel puțin unuia dintre autori.”"
+    },
+    {
+      "value_id": "venue.pneumologia.publication_fee",
+      "area": "venue.pneumologia",
+      "statement": "Pneumologia has no publication fee.",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://sciendo.com/journal/PNEUM?tab=for-authors",
+        "title": "Pneumologia | Sciendo, For Authors",
+        "locator": "For Authors page, journal description"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“There is no publication fee.”"
+    },
+    {
+      "value_id": "venue.ers_journals.abstract_limit",
+      "area": "venue.ers_journals",
+      "statement": "Original research abstracts are limited to 250 words.",
+      "numeric": true,
+      "use": "fact_check",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://publications.ersnet.org/authors/erj/instructions",
+        "title": "European Respiratory Journal instructions for authors",
+        "locator": "Types of article, article requirements table"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "Fetched via r.jina.ai reader proxy on 2026-10-10; “Original research articles ... Abstract: Yes, 250 words.”"
+    },
+    {
+      "value_id": "venue.ers_journals.main_text_limit",
+      "area": "venue.ers_journals",
+      "statement": "The ERJ article table lists a 3,000-word limit for original research articles, while the guide says strict word limits are not enforced at first submission.",
+      "numeric": true,
+      "use": "fact_check",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://publications.ersnet.org/authors/erj/instructions",
+        "title": "European Respiratory Journal instructions for authors",
+        "locator": "Types of article, article requirements table"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "Fetched via r.jina.ai reader proxy on 2026-10-10; “Original research articles | 3000”; first submissions: “we will not enforce strict formatting or word limit guidelines.”"
+    },
+    {
+      "value_id": "venue.ers_journals.reference_limit",
+      "area": "venue.ers_journals",
+      "statement": "Original research articles allow up to 40 references.",
+      "numeric": true,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://publications.ersnet.org/authors/erj/instructions",
+        "title": "European Respiratory Journal instructions for authors",
+        "locator": "Types of article, article requirements table"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "Fetched via r.jina.ai reader proxy on 2026-10-10; “Original research articles ... References: 40.”"
+    },
+    {
+      "value_id": "venue.ers_journals.checklists",
+      "area": "venue.ers_journals",
+      "statement": "The ERJ requires CONSORT for clinical trials, STROBE for epidemiological studies, PRISMA/MOOSE for systematic reviews/meta-analyses, and TRIPOD for prediction models, with checklists submitted as stated.",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://publications.ersnet.org/authors/erj/instructions",
+        "title": "European Respiratory Journal instructions for authors",
+        "locator": "What we expect from submissions: RCTs; Observational and cohort studies; Systematic reviews and meta-analyses; Prediction models"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "Fetched via r.jina.ai reader proxy on 2026-10-10; “completed CONSORT checklist”; “completed STROBE checklist”; “completed PRISMA or MOOSE checklist”; “copy of the relevant TRIPOD checklist.”"
+    },
+    {
+      "value_id": "venue.ers_journals.apc",
+      "area": "venue.ers_journals",
+      "statement": "Open-access fees are EUR 2,665 standard or EUR 3,640 for the mandated CC BY option.",
+      "numeric": true,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://publications.ersnet.org/authors/erj/instructions",
+        "title": "European Respiratory Journal instructions for authors",
+        "locator": "Open Access, Costs"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "Fetched via r.jina.ai reader proxy on 2026-10-10; “standard ... EUR 2665”; mandated CC BY ... “EUR 3640.”"
     }
   ]
 }
