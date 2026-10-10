@@ -1224,6 +1224,142 @@
       "edition": null,
       "review_window_months": 6,
       "notes": "“PubMed” IndexingStatus=“Currently-indexed”, Coverage “v1n1, 2015-”"
+    },
+    {
+      "value_id": "venue.bmj_open_respiratory_research.main_text_limit",
+      "area": "venue.bmj_open_respiratory_research",
+      "statement": "Original research allows up to 4,000 words, excluding the title page, abstract, tables, acknowledgements, contributions and references; structure is Abstract, Key Messages, Introduction, Methods, Results, Discussion, References.",
+      "numeric": true,
+      "use": "fact_check",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://bmjopenrespres.bmj.com/pages/authors",
+        "title": "Authors | BMJ Open Respiratory Research",
+        "locator": "Submission guidelines; Original research (saved copy 2026-10-10 from a logged-in browser; automated fetch is blocked)"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“Word count: up to 4,000”; “The word count excludes the title page, abstract, tables, acknowledgements, contributions and references.”; “Original research should follow the basic structure of Abstract, Key Messages, Introduction, Methods, Results, Discussion, References”"
+    },
+    {
+      "value_id": "venue.bmj_open_respiratory_research.abstract_limit",
+      "area": "venue.bmj_open_respiratory_research",
+      "statement": "Original research requires a structured abstract of up to 300; the page states no unit.",
+      "numeric": true,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://bmjopenrespres.bmj.com/pages/authors",
+        "title": "Authors | BMJ Open Respiratory Research",
+        "locator": "Submission guidelines; Original research (saved copy 2026-10-10 from a logged-in browser; automated fetch is blocked)"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“Structured abstract: up to 300”"
+    },
+    {
+      "value_id": "venue.bmj_open_respiratory_research.reference_limit",
+      "area": "venue.bmj_open_respiratory_research",
+      "statement": "Original research allows up to 100 references and up to 5 tables/illustrations.",
+      "numeric": true,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://bmjopenrespres.bmj.com/pages/authors",
+        "title": "Authors | BMJ Open Respiratory Research",
+        "locator": "Submission guidelines; Original research (saved copy 2026-10-10 from a logged-in browser; automated fetch is blocked)"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“References: up to 100”; “Tables/illustrations: up to 5”"
+    },
+    {
+      "value_id": "venue.bmj_open_respiratory_research.key_messages",
+      "area": "venue.bmj_open_respiratory_research",
+      "statement": "Original research must include a key-messages box after the abstract (What is already known on this topic; What this study adds; How this study might affect research, practice or policy) in no more than 3–5 sentences.",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://bmjopenrespres.bmj.com/pages/authors",
+        "title": "Authors | BMJ Open Respiratory Research",
+        "locator": "Submission guidelines; Original research (saved copy 2026-10-10 from a logged-in browser; automated fetch is blocked)"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“Please include the key messages of your article after your abstract using the following headings.”; “This section should be no more than 3-5 sentences”"
+    },
+    {
+      "value_id": "venue.bmj_open_respiratory_research.checklists",
+      "area": "venue.bmj_open_respiratory_research",
+      "statement": "Reporting guidelines (CONSORT incl. the abstracts extension, STROBE, STARD, PRISMA, SPIRIT, TRIPOD and others) should be followed where appropriate; completed checklists and flow diagrams are uploaded and published with the paper.",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://bmjopenrespres.bmj.com/pages/authors",
+        "title": "Authors | BMJ Open Respiratory Research",
+        "locator": "Reporting guidelines (saved copy 2026-10-10 from a logged-in browser; automated fetch is blocked)"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“Completed applicable checklists, structured abstracts and flow diagrams should be uploaded with your submission and will be published alongside the final version of your paper.”; “please use the appropriate extension to the CONSORT statement, including the extension for writing abstracts”"
+    },
+    {
+      "value_id": "venue.bmj_open_respiratory_research.ppi_statement",
+      "area": "venue.bmj_open_respiratory_research",
+      "statement": "Research articles must include a Patient and Public Involvement statement in the Methods section.",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://bmjopenrespres.bmj.com/pages/authors",
+        "title": "Authors | BMJ Open Respiratory Research",
+        "locator": "Submission guidelines; Reporting patient and public involvement in research (saved copy 2026-10-10 from a logged-in browser; automated fetch is blocked)"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“Patient and Public Involvement statement in the Methods section”"
+    },
+    {
+      "value_id": "venue.bmj_open_respiratory_research.apc",
+      "area": "venue.bmj_open_respiratory_research",
+      "statement": "Open access APC is 2,460 GBP (exclusive of VAT for UK and EU authors); study protocols 1,240 GBP; no submission, colour or page charges. Some society members and recent reviewers get 25–35% discounts.",
+      "numeric": true,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://bmjopenrespres.bmj.com/pages/authors",
+        "title": "Authors | BMJ Open Respiratory Research",
+        "locator": "Article processing charges (saved copy 2026-10-10 from a logged-in browser; automated fetch is blocked)"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“levies an Article Processing Charge (APC) of 2,460 GBP (exclusive of VAT for UK and EU authors).”; “The charge for publishing a study protocol is 1,240 GBP. There are no submission, colour or page charges.”"
+    },
+    {
+      "value_id": "venue.bmj_open_respiratory_research.data_availability",
+      "area": "venue.bmj_open_respiratory_research",
+      "statement": "The journal follows BMJ’s Tier 2 data policy: data sharing strongly encouraged, trial data available on reasonable request, and a data sharing plan with trial registration for trials enrolling from 1 January 2019.",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://bmjopenrespres.bmj.com/pages/authors",
+        "title": "Authors | BMJ Open Respiratory Research",
+        "locator": "Data sharing (saved copy 2026-10-10 from a logged-in browser; automated fetch is blocked)"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“adheres to BMJ’s Tier 2 data policy.”; “we require that a data sharing plan must be included with trial registration for clinical trials that begin enrolling participants on or after 1st January 2019.”"
     }
   ]
 }
