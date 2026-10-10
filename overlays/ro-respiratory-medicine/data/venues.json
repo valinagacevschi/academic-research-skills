@@ -629,6 +629,295 @@
       "edition": null,
       "review_window_months": 6,
       "notes": "“All research articles must contain a Data Availability Statement.”; “a data sharing plan must be included with trial registration for clinical trials that begin enrolling participants on or after 1st January 2019.”"
+    },
+    {
+      "value_id": "venue.ajrccm.abstract_limit",
+      "area": "venue.ajrccm",
+      "statement": "Original Research structured abstracts have a maximum of 250 words.",
+      "numeric": true,
+      "use": "fact_check",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://academic.oup.com/ajrccm/pages/author-guidelines",
+        "title": "Author guidelines | American Journal of Respiratory and Critical Care Medicine | Oxford Academic",
+        "locator": "Article types; Original Research (saved copy 2026-10-10 from a logged-in browser; automated fetch is blocked)"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“Structured abstract—maximum word count: 250”"
+    },
+    {
+      "value_id": "venue.ajrccm.abstract_structure",
+      "area": "venue.ajrccm",
+      "statement": "Preferred Original Research abstract headers are Rationale, Objectives, Methods, Measurements and Main Results, and Conclusions.",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://academic.oup.com/ajrccm/pages/author-guidelines",
+        "title": "Author guidelines | American Journal of Respiratory and Critical Care Medicine | Oxford Academic",
+        "locator": "Article types; Original Research (saved copy 2026-10-10 from a logged-in browser; automated fetch is blocked)"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“Preferred/suggested abstract headers: Rationale, Objectives, Methods, Measurements and Main Results, Conclusions”"
+    },
+    {
+      "value_id": "venue.ajrccm.main_text_limit",
+      "area": "venue.ajrccm",
+      "statement": "Original Research text has a maximum of 3,500 words with first-level headers Introduction, Methods, Results, Discussion (not combined) and Conclusion.",
+      "numeric": true,
+      "use": "fact_check",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://academic.oup.com/ajrccm/pages/author-guidelines",
+        "title": "Author guidelines | American Journal of Respiratory and Critical Care Medicine | Oxford Academic",
+        "locator": "Article types; Original Research (saved copy 2026-10-10 from a logged-in browser; automated fetch is blocked)"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“Text length—maximum word count: 3,500”; “Introduction, Methods, Results, Discussion (Results and Discussion may not be combined) and Conclusion.”"
+    },
+    {
+      "value_id": "venue.ajrccm.reference_limit",
+      "area": "venue.ajrccm",
+      "statement": "Original Research allows a maximum of 50 references; tables and figures have no limit.",
+      "numeric": true,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://academic.oup.com/ajrccm/pages/author-guidelines",
+        "title": "Author guidelines | American Journal of Respiratory and Critical Care Medicine | Oxford Academic",
+        "locator": "Article types; Original Research (saved copy 2026-10-10 from a logged-in browser; automated fetch is blocked)"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“References— maximum of 50”; “May include tables and figures—no limit”"
+    },
+    {
+      "value_id": "venue.ajrccm.at_a_glance",
+      "area": "venue.ajrccm",
+      "statement": "Original Research revisions need an At a Glance Commentary on the title page (Scientific Knowledge on the Subject; What This Study Adds to the Field) of no more than 200 words.",
+      "numeric": true,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://academic.oup.com/ajrccm/pages/author-guidelines",
+        "title": "Author guidelines | American Journal of Respiratory and Critical Care Medicine | Oxford Academic",
+        "locator": "Article types; Original Research (saved copy 2026-10-10 from a logged-in browser; automated fetch is blocked)"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“For Original Research revisions only: include an “At a Glance Commentary” on the title page”; “The entire \"At a Glance Commentary\" section should not exceed 200 words.”"
+    },
+    {
+      "value_id": "venue.ajrccm.reference_style",
+      "area": "venue.ajrccm",
+      "statement": "The journal follows AMA reference style with a numerical citation system, numbered in order of appearance.",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://academic.oup.com/ajrccm/pages/author-guidelines",
+        "title": "Author guidelines | American Journal of Respiratory and Critical Care Medicine | Oxford Academic",
+        "locator": "References (saved copy 2026-10-10 from a logged-in browser; automated fetch is blocked)"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“The Journal follows the AMA reference style with a numerical citation system.”; “The references should be numbered in order of appearance”"
+    },
+    {
+      "value_id": "venue.ajrccm.checklists",
+      "area": "venue.ajrccm",
+      "statement": "Clinical trials must follow CONSORT, including the 30-item checklist and flow diagram.",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://academic.oup.com/ajrccm/pages/author-guidelines",
+        "title": "Author guidelines | American Journal of Respiratory and Critical Care Medicine | Oxford Academic",
+        "locator": "Preparing your manuscript; clinical trials (saved copy 2026-10-10 from a logged-in browser; automated fetch is blocked)"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“Clinical trials must follow the CONSORT guidelines.”; “complies with the 30-item CONSORT checklist and flow diagram.”"
+    },
+    {
+      "value_id": "venue.ajrccm.publication_charges",
+      "area": "venue.ajrccm",
+      "statement": "A publication fee is charged on acceptance: $2,240 for ATS members and $2,800 for non-members, waived when an open access fee is paid.",
+      "numeric": true,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://academic.oup.com/ajrccm/pages/author-guidelines",
+        "title": "Author guidelines | American Journal of Respiratory and Critical Care Medicine | Oxford Academic",
+        "locator": "Charges; Article charges (saved copy 2026-10-10 from a logged-in browser; automated fetch is blocked)"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“$2240 per article for members and $2800 per article for non- members.”; “This charge is not levied if an open access license and fee is paid.”"
+    },
+    {
+      "value_id": "venue.ajrccm.ai_disclosure",
+      "area": "venue.ajrccm",
+      "statement": "AI use (e.g. generating content, writing code, processing data) must be disclosed in the cover letter and in the Methods or Acknowledgments.",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://academic.oup.com/ajrccm/pages/author-guidelines",
+        "title": "Author guidelines | American Journal of Respiratory and Critical Care Medicine | Oxford Academic",
+        "locator": "Authorship; AI (saved copy 2026-10-10 from a logged-in browser; automated fetch is blocked)"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“The use of AI (for example, to help generate content, write code, or process data) should be disclosed both in cover letters to editors and in the Methods or Acknowledgments section of manuscripts.”"
+    },
+    {
+      "value_id": "venue.respiratory_medicine.main_text_limit",
+      "area": "venue.respiratory_medicine",
+      "statement": "Original Research Articles have a word count of at most 3,500 words and up to 8 figures and tables combined.",
+      "numeric": true,
+      "use": "fact_check",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://www.sciencedirect.com/journal/respiratory-medicine/publish/guide-for-authors",
+        "title": "Guide for authors - Respiratory Medicine - ISSN 0954-6111 | ScienceDirect",
+        "locator": "Article types; 1. Original Research Articles (saved copy 2026-10-10 from a logged-in browser; automated fetch is blocked)"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“Word count: ≤ 3,500 words”; “Figures/Tables: up to 8 combined”"
+    },
+    {
+      "value_id": "venue.respiratory_medicine.reference_limit",
+      "area": "venue.respiratory_medicine",
+      "statement": "Original Research Articles allow up to 75 references, extendable to 100 with justification.",
+      "numeric": true,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://www.sciencedirect.com/journal/respiratory-medicine/publish/guide-for-authors",
+        "title": "Guide for authors - Respiratory Medicine - ISSN 0954-6111 | ScienceDirect",
+        "locator": "Article types; 1. Original Research Articles (saved copy 2026-10-10 from a logged-in browser; automated fetch is blocked)"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“References: up to 75 (extendable to 100 with justification)”"
+    },
+    {
+      "value_id": "venue.respiratory_medicine.abstract_limit",
+      "area": "venue.respiratory_medicine",
+      "statement": "The structured abstract must not exceed 250 words and should use appropriate headings.",
+      "numeric": true,
+      "use": "fact_check",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://www.sciencedirect.com/journal/respiratory-medicine/publish/guide-for-authors",
+        "title": "Guide for authors - Respiratory Medicine - ISSN 0954-6111 | ScienceDirect",
+        "locator": "Writing and formatting; Structured abstract (saved copy 2026-10-10 from a logged-in browser; automated fetch is blocked)"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“provide a concise and factual abstract which does not exceed 250 words.”; “Structure the abstract with appropriate headings.”"
+    },
+    {
+      "value_id": "venue.respiratory_medicine.highlights",
+      "area": "venue.respiratory_medicine",
+      "statement": "Article highlights are required at submission: 3 to 5 bullet points, each at most 85 characters including spaces, as a separate editable file.",
+      "numeric": true,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://www.sciencedirect.com/journal/respiratory-medicine/publish/guide-for-authors",
+        "title": "Guide for authors - Respiratory Medicine - ISSN 0954-6111 | ScienceDirect",
+        "locator": "Writing and formatting; Highlights (saved copy 2026-10-10 from a logged-in browser; automated fetch is blocked)"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“You are required to provide article highlights at submission.”; “Highlights should consist of 3 to 5 bullet points, each a maximum of 85 characters, including spaces.”"
+    },
+    {
+      "value_id": "venue.respiratory_medicine.reference_style",
+      "area": "venue.respiratory_medicine",
+      "statement": "References are numbered in square brackets in order of appearance, with journal names abbreviated per LTWA.",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://www.sciencedirect.com/journal/respiratory-medicine/publish/guide-for-authors",
+        "title": "Guide for authors - Respiratory Medicine - ISSN 0954-6111 | ScienceDirect",
+        "locator": "References; Reference style (saved copy 2026-10-10 from a logged-in browser; automated fetch is blocked)"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“Indicate references by adding a number within square brackets in the text.”; “Number references in the order they appear in your article.”"
+    },
+    {
+      "value_id": "venue.respiratory_medicine.ai_disclosure",
+      "area": "venue.respiratory_medicine",
+      "statement": "Authors must declare the use of generative AI tools in manuscript preparation upon submission.",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://www.sciencedirect.com/journal/respiratory-medicine/publish/guide-for-authors",
+        "title": "Guide for authors - Respiratory Medicine - ISSN 0954-6111 | ScienceDirect",
+        "locator": "Ethics and policies; Declaration of generative AI use (saved copy 2026-10-10 from a logged-in browser; automated fetch is blocked)"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“Authors must declare the use of generative AI tools in the manuscript preparation process upon submission of the paper.”"
+    },
+    {
+      "value_id": "venue.chest.checklists",
+      "area": "venue.chest",
+      "statement": "For original research, CHEST requires adherence to reporting guidelines by study type, e.g. CONSORT for RCTs, STROBE for observational studies, PRISMA for systematic reviews, CARE for case reports, AGREE for guidelines.",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://journal.chestnet.org/authinfo_gpp",
+        "title": "CHEST Guide for Authors: General Policies and Procedures",
+        "locator": "Reporting Guidelines and Checklists (saved copy 2026-10-10 from a logged-in browser; automated fetch is blocked)"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“For original research manuscripts, CHEST requires adherence to appropriate reporting guidelines and checklists dependent on the type of study being conducted.”"
+    },
+    {
+      "value_id": "venue.chest.ai_disclosure",
+      "area": "venue.chest",
+      "statement": "Generative AI in the writing process may only be used to improve readability and language, under human oversight, and must be disclosed in the manuscript.",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://journal.chestnet.org/authinfo_gpp",
+        "title": "CHEST Guide for Authors: General Policies and Procedures",
+        "locator": "Artificial Intelligence and AI-Assisted Technologies (saved copy 2026-10-10 from a logged-in browser; automated fetch is blocked)"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“authors should only use these technologies to improve readability and language.”; “Authors should disclose in their manuscript the use of AI and AI-assisted technologies in the writing process by following the instructions below.”"
     }
   ]
 }

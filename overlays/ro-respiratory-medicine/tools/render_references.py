@@ -23,7 +23,7 @@ VENUES = {
     "venue.ers_journals": "ERS journals", "venue.ajrccm": "AJRCCM", "venue.chest": "CHEST",
     "venue.thorax": "Thorax", "venue.respiratory_medicine": "Respiratory Medicine",
 }
-MISSING_VENUES = ["AJRCCM", "CHEST", "Respiratory Medicine"]
+MISSING_VENUES: list[str] = []
 
 
 def esc(value: object) -> str:
