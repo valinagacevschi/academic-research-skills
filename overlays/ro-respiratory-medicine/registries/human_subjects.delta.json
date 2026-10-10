@@ -1,0 +1,1430 @@
+{
+  "schema_version": "human-subjects-authority-delta/1.0",
+  "fact_definitions": [
+    {
+      "fact_id": "scope.ro_ctr_national",
+      "value_type": "boolean",
+      "allowed_values": null,
+      "description": "Romanian national medicinal-product CTR implementation applies. User-declared applicability fact; unknown when null."
+    },
+    {
+      "fact_id": "scope.ro_mdr_investigation",
+      "value_type": "boolean",
+      "allowed_values": null,
+      "description": "Romanian medical-device clinical investigation rules apply. User-declared applicability fact; unknown when null."
+    },
+    {
+      "fact_id": "scope.ro_patient_rights",
+      "value_type": "boolean",
+      "allowed_values": null,
+      "description": "Romanian patient-rights law applies to this research. User-declared applicability fact; unknown when null."
+    },
+    {
+      "fact_id": "scope.ro_law_190",
+      "value_type": "boolean",
+      "allowed_values": null,
+      "description": "Romanian Law 190/2018 applies. User-declared applicability fact; unknown when null."
+    },
+    {
+      "fact_id": "professional.ro_cmr_member",
+      "value_type": "boolean",
+      "allowed_values": null,
+      "description": "The author is subject to CMR professional rules. User-declared applicability fact; unknown when null."
+    },
+    {
+      "fact_id": "data.ro_cnp_processed",
+      "value_type": "boolean",
+      "allowed_values": null,
+      "description": "Processing includes a Romanian national identification number. User-declared applicability fact; unknown when null."
+    },
+    {
+      "fact_id": "activity.retrospective_records_only",
+      "value_type": "boolean",
+      "allowed_values": null,
+      "description": "The activity uses retrospective records only. User-declared applicability fact; unknown when null."
+    }
+  ],
+  "sources": [
+    {
+      "source_id": "ro.oug-29-2022",
+      "title": "OUG 29/2022",
+      "publisher": "Agency-hosted copy of OUG 29/2022",
+      "canonical_url": "https://www.anm.ro/_/STUDII%20CLINICE/OUG%2029-2022.pdf",
+      "snapshot_url": "https://www.anm.ro/_/STUDII%20CLINICE/OUG%2029-2022.pdf",
+      "provision_locator": "Art. 2(1)",
+      "allowed_provisions": [
+        "Art. 2(1)",
+        "Art. 2(2)",
+        "Art. 3(2)",
+        "Art. 4(1)–(2)"
+      ],
+      "effective_from": "2022-03-01",
+      "effective_until": null,
+      "source_amended_or_published_date": null,
+      "retrieved_at": "2026-10-10",
+      "verified_at": "2026-10-10",
+      "source_language": "ro",
+      "controlling_language": true,
+      "authenticity_status": "authoritative_unofficial",
+      "content_digest": null,
+      "digest_scope": "not_recorded",
+      "rights_status": "link_only",
+      "freshness": "current"
+    },
+    {
+      "source_id": "ro.law-46-2003",
+      "title": "Law 46/2003",
+      "publisher": "Ministry of Health copy of Law 46/2003",
+      "canonical_url": "https://ms.ro/media/documents/LEGE_Nr._46_2003_forma_la_data_de_20.11.2023.pdf",
+      "snapshot_url": "https://ms.ro/media/documents/LEGE_Nr._46_2003_forma_la_data_de_20.11.2023.pdf",
+      "provision_locator": "Art. 19",
+      "allowed_provisions": [
+        "Art. 19",
+        "Art. 18",
+        "Art. 20",
+        "Art. 21",
+        "Art. 22"
+      ],
+      "effective_from": "2003-03-28",
+      "effective_until": null,
+      "source_amended_or_published_date": null,
+      "retrieved_at": "2026-10-10",
+      "verified_at": "2026-10-10",
+      "source_language": "ro",
+      "controlling_language": true,
+      "authenticity_status": "authoritative_unofficial",
+      "content_digest": null,
+      "digest_scope": "not_recorded",
+      "rights_status": "link_only",
+      "freshness": "current"
+    },
+    {
+      "source_id": "ro.oms-330-2023",
+      "title": "OMS 330/2023",
+      "publisher": "ANMDMR copy of OMS 330/2023",
+      "canonical_url": "https://www.anm.ro/_/DM/LEGISLATIE/Ordin%20330-2023.pdf",
+      "snapshot_url": "https://www.anm.ro/_/DM/LEGISLATIE/Ordin%20330-2023.pdf",
+      "provision_locator": "Norms Art. 4(1)–(2)",
+      "allowed_provisions": [
+        "Norms Art. 4(1)–(2)",
+        "Norms Art. 16(1)–(2)"
+      ],
+      "effective_from": "2023-01-01",
+      "effective_until": null,
+      "source_amended_or_published_date": null,
+      "retrieved_at": "2026-10-10",
+      "verified_at": "2026-10-10",
+      "source_language": "ro",
+      "controlling_language": true,
+      "authenticity_status": "authoritative_unofficial",
+      "content_digest": null,
+      "digest_scope": "not_recorded",
+      "rights_status": "link_only",
+      "freshness": "current"
+    },
+    {
+      "source_id": "ro.oms-3390-2022",
+      "title": "OMS 3390/2022",
+      "publisher": "ANMDMR copy of OMS 3390/2022",
+      "canonical_url": "https://www.anm.ro/_/STUDII%20CLINICE/Ordin%203390-2022.pdf",
+      "snapshot_url": "https://www.anm.ro/_/STUDII%20CLINICE/Ordin%203390-2022.pdf",
+      "provision_locator": "Norms Art. 15(1)",
+      "allowed_provisions": [
+        "Norms Art. 15(1)",
+        "Norms Art. 16(2)"
+      ],
+      "effective_from": "2023-01-01",
+      "effective_until": null,
+      "source_amended_or_published_date": null,
+      "retrieved_at": "2026-10-10",
+      "verified_at": "2026-10-10",
+      "source_language": "ro",
+      "controlling_language": true,
+      "authenticity_status": "authoritative_unofficial",
+      "content_digest": null,
+      "digest_scope": "not_recorded",
+      "rights_status": "link_only",
+      "freshness": "current"
+    },
+    {
+      "source_id": "ro.cmr-code-2025",
+      "title": "CMR Deontology Code 2025",
+      "publisher": "CMR Deontology Code 2025",
+      "canonical_url": "https://www.cmr.ro/wp-content/uploads/2026/01/codul-de-deontologie-medicala-al-colegiului-medicilor-din-romania-din-30102025-1.pdf",
+      "snapshot_url": "https://www.cmr.ro/wp-content/uploads/2026/01/codul-de-deontologie-medicala-al-colegiului-medicilor-din-romania-din-30102025-1.pdf",
+      "provision_locator": "Art. 46(1)",
+      "allowed_provisions": [
+        "Art. 46(1)",
+        "Art. 51(b)–(e)",
+        "Art. 62(2)"
+      ],
+      "effective_from": "2023-01-01",
+      "effective_until": null,
+      "source_amended_or_published_date": null,
+      "retrieved_at": "2026-10-10",
+      "verified_at": "2026-10-10",
+      "source_language": "ro",
+      "controlling_language": true,
+      "authenticity_status": "authoritative_unofficial",
+      "content_digest": null,
+      "digest_scope": "not_recorded",
+      "rights_status": "link_only",
+      "freshness": "current"
+    },
+    {
+      "source_id": "ro.law-190-2018",
+      "title": "Law 190/2018",
+      "publisher": "Law 190/2018, official court portal copy",
+      "canonical_url": "https://portal.just.ro/101/Documents/LEGE__190_2018_date_cu_caracter_personal.pdf",
+      "snapshot_url": "https://portal.just.ro/101/Documents/LEGE__190_2018_date_cu_caracter_personal.pdf",
+      "provision_locator": "Art. 3(1)",
+      "allowed_provisions": [
+        "Art. 3(1)",
+        "Art. 4(1)–(2)",
+        "Art. 8(1)–(3)"
+      ],
+      "effective_from": "2018-05-25",
+      "effective_until": null,
+      "source_amended_or_published_date": null,
+      "retrieved_at": "2026-10-10",
+      "verified_at": "2026-10-10",
+      "source_language": "ro",
+      "controlling_language": true,
+      "authenticity_status": "authoritative_unofficial",
+      "content_digest": null,
+      "digest_scope": "not_recorded",
+      "rights_status": "link_only",
+      "freshness": "current"
+    }
+  ],
+  "profiles": [
+    {
+      "profile_id": "ro.ms.ctr-national-implementation",
+      "profile_version": "2026-10-10",
+      "profile_digest": "0000000000000000000000000000000000000000000000000000000000000000",
+      "axis": "review_ethics",
+      "authority_scope_ids": [
+        "ro.ctr"
+      ],
+      "title": "Romanian CTR national implementation",
+      "authority_level": "national",
+      "coverage_status": "bounded_subset",
+      "covered_provisions": [
+        "Art. 2(2)",
+        "Art. 3(2)",
+        "Art. 4(1)–(2)"
+      ],
+      "known_exclusions": [
+        "Provisions outside the listed verified anchors are not profiled."
+      ],
+      "known_gaps": [
+        "Excluded populations and CTR results publication details are omitted because the verified legal rows do not anchor them."
+      ],
+      "no_completeness_claim": true,
+      "source_ids": [
+        "ro.oug-29-2022",
+        "ro.oms-3390-2022"
+      ],
+      "applies_if": {
+        "op": "fact_equals",
+        "fact_id": "scope.ro_ctr_national",
+        "value": true
+      },
+      "requirements": [
+        {
+          "requirement_id": "ro.ctr.cnbmdm-opinion",
+          "axis": "review_ethics",
+          "title": "CNBMDM ethics opinion",
+          "summary": "CNBMDM performs ethical analysis and issues opinions for interventional medicinal-product trials.",
+          "obligation_kind": "require",
+          "obligated_actor": "cnbmdm",
+          "consumer_scopes": [
+            "pathway_trace",
+            "submission_packet"
+          ],
+          "applies_if": {
+            "op": "fact_equals",
+            "fact_id": "scope.ro_ctr_national",
+            "value": true
+          },
+          "structured_expectations": [
+            {
+              "field_id": "ro_ctr_cnbmdm-opinion.record",
+              "operator": "present",
+              "value": true
+            }
+          ],
+          "evidence_expected": [
+            {
+              "evidence_id": "ro.ctr.cnbmdm-opinion.evidence",
+              "held_by": "cnbmdm",
+              "artifact_type": "authority_record",
+              "description": "Record evidencing the applicable authority consideration."
+            }
+          ],
+          "waiver_or_exception_route": {
+            "state": "not_applicable",
+            "requirement_ids": [],
+            "decision_maker_role": null
+          },
+          "authoritative_decision_maker": {
+            "role_id": "cnbmdm",
+            "description": "The identified authority or accountable actor evaluates applicability and supporting evidence."
+          },
+          "interaction": {
+            "collision_key": "ro.ctr.cnbmdm-opinion",
+            "policy": "parallel_authorities"
+          },
+          "authority_anchor": {
+            "source_id": "ro.oug-29-2022",
+            "authority_url": "https://www.anm.ro/_/STUDII%20CLINICE/OUG%2029-2022.pdf",
+            "snapshot_url": "https://www.anm.ro/_/STUDII%20CLINICE/OUG%2029-2022.pdf",
+            "provision": "Art. 2(2)",
+            "effective_date": "2022-03-01",
+            "effective_until": null,
+            "source_amended_or_published_date": null,
+            "retrieved_at": "2026-10-10",
+            "verified_at": "2026-10-10",
+            "source_language": "ro",
+            "controlling_language": true,
+            "authenticity_status": "authoritative_unofficial",
+            "content_digest": null,
+            "digest_scope": "not_recorded",
+            "rights_status": "link_only"
+          }
+        },
+        {
+          "requirement_id": "ro.ctr.ctis-evaluation",
+          "axis": "review_ethics",
+          "title": "CTIS decision transmission",
+          "summary": "For the covered CTR process, ethical review and scientific review are allocated as described and decisions are transmitted through CTIS.",
+          "obligation_kind": "information",
+          "obligated_actor": "competent_authorities",
+          "consumer_scopes": [
+            "pathway_trace",
+            "submission_packet"
+          ],
+          "applies_if": {
+            "op": "fact_equals",
+            "fact_id": "scope.ro_ctr_national",
+            "value": true
+          },
+          "structured_expectations": [
+            {
+              "field_id": "ro_ctr_ctis-evaluation.record",
+              "operator": "present",
+              "value": true
+            }
+          ],
+          "evidence_expected": [
+            {
+              "evidence_id": "ro.ctr.ctis-evaluation.evidence",
+              "held_by": "competent_authorities",
+              "artifact_type": "authority_record",
+              "description": "Record evidencing the applicable authority consideration."
+            }
+          ],
+          "waiver_or_exception_route": {
+            "state": "not_applicable",
+            "requirement_ids": [],
+            "decision_maker_role": null
+          },
+          "authoritative_decision_maker": {
+            "role_id": "competent_authorities",
+            "description": "The identified authority or accountable actor evaluates applicability and supporting evidence."
+          },
+          "interaction": {
+            "collision_key": "ro.ctr.ctis-evaluation",
+            "policy": "parallel_authorities"
+          },
+          "authority_anchor": {
+            "source_id": "ro.oug-29-2022",
+            "authority_url": "https://www.anm.ro/_/STUDII%20CLINICE/OUG%2029-2022.pdf",
+            "snapshot_url": "https://www.anm.ro/_/STUDII%20CLINICE/OUG%2029-2022.pdf",
+            "provision": "Art. 3(2)",
+            "effective_date": "2022-03-01",
+            "effective_until": null,
+            "source_amended_or_published_date": null,
+            "retrieved_at": "2026-10-10",
+            "verified_at": "2026-10-10",
+            "source_language": "ro",
+            "controlling_language": true,
+            "authenticity_status": "authoritative_unofficial",
+            "content_digest": null,
+            "digest_scope": "not_recorded",
+            "rights_status": "link_only"
+          }
+        },
+        {
+          "requirement_id": "ro.ctr.dossier-language",
+          "axis": "review_ethics",
+          "title": "Application dossier language",
+          "summary": "The clinical-trial application dossier is submitted in Romanian, with the stated English option for documents not intended for subjects.",
+          "obligation_kind": "condition",
+          "obligated_actor": "sponsor",
+          "consumer_scopes": [
+            "pathway_trace",
+            "submission_packet"
+          ],
+          "applies_if": {
+            "op": "fact_equals",
+            "fact_id": "scope.ro_ctr_national",
+            "value": true
+          },
+          "structured_expectations": [
+            {
+              "field_id": "ro_ctr_dossier-language.record",
+              "operator": "present",
+              "value": true
+            }
+          ],
+          "evidence_expected": [
+            {
+              "evidence_id": "ro.ctr.dossier-language.evidence",
+              "held_by": "sponsor",
+              "artifact_type": "authority_record",
+              "description": "Record evidencing the applicable authority consideration."
+            }
+          ],
+          "waiver_or_exception_route": {
+            "state": "not_applicable",
+            "requirement_ids": [],
+            "decision_maker_role": null
+          },
+          "authoritative_decision_maker": {
+            "role_id": "sponsor",
+            "description": "The identified authority or accountable actor evaluates applicability and supporting evidence."
+          },
+          "interaction": {
+            "collision_key": "ro.ctr.dossier-language",
+            "policy": "parallel_authorities"
+          },
+          "authority_anchor": {
+            "source_id": "ro.oug-29-2022",
+            "authority_url": "https://www.anm.ro/_/STUDII%20CLINICE/OUG%2029-2022.pdf",
+            "snapshot_url": "https://www.anm.ro/_/STUDII%20CLINICE/OUG%2029-2022.pdf",
+            "provision": "Art. 4(1)–(2)",
+            "effective_date": "2022-03-01",
+            "effective_until": null,
+            "source_amended_or_published_date": null,
+            "retrieved_at": "2026-10-10",
+            "verified_at": "2026-10-10",
+            "source_language": "ro",
+            "controlling_language": true,
+            "authenticity_status": "authoritative_unofficial",
+            "content_digest": null,
+            "digest_scope": "not_recorded",
+            "rights_status": "link_only"
+          }
+        },
+        {
+          "requirement_id": "ro.ctr.clinical-consent-taker",
+          "axis": "review_ethics",
+          "title": "Clinical-trial consent taker",
+          "summary": "Informed consent is obtained by a physician who is a member of the investigator team.",
+          "obligation_kind": "require",
+          "obligated_actor": "investigator_team_physician",
+          "consumer_scopes": [
+            "pathway_trace",
+            "submission_packet"
+          ],
+          "applies_if": {
+            "op": "fact_equals",
+            "fact_id": "scope.ro_ctr_national",
+            "value": true
+          },
+          "structured_expectations": [
+            {
+              "field_id": "ro.ctr.clinical-consent-taker.record",
+              "operator": "present",
+              "value": true
+            }
+          ],
+          "evidence_expected": [
+            {
+              "evidence_id": "ro.ctr.clinical-consent-taker.evidence",
+              "held_by": "cnbmdm",
+              "artifact_type": "authority_record",
+              "description": "Record evidencing the applicable authority consideration."
+            }
+          ],
+          "waiver_or_exception_route": {
+            "state": "not_applicable",
+            "requirement_ids": [],
+            "decision_maker_role": null
+          },
+          "authoritative_decision_maker": {
+            "role_id": "cnbmdm",
+            "description": "The identified authority or accountable actor evaluates applicability and supporting evidence."
+          },
+          "interaction": {
+            "collision_key": "ro.ctr.clinical-consent-taker",
+            "policy": "parallel_authorities"
+          },
+          "authority_anchor": {
+            "source_id": "ro.oms-3390-2022",
+            "authority_url": "https://www.anm.ro/_/STUDII%20CLINICE/Ordin%203390-2022.pdf",
+            "snapshot_url": "https://www.anm.ro/_/STUDII%20CLINICE/Ordin%203390-2022.pdf",
+            "provision": "Norms Art. 15(1)",
+            "effective_date": "2023-01-01",
+            "effective_until": null,
+            "source_amended_or_published_date": null,
+            "retrieved_at": "2026-10-10",
+            "verified_at": "2026-10-10",
+            "source_language": "ro",
+            "controlling_language": true,
+            "authenticity_status": "authoritative_unofficial",
+            "content_digest": null,
+            "digest_scope": "not_recorded",
+            "rights_status": "link_only"
+          }
+        },
+        {
+          "requirement_id": "ro.ctr.pi-qualification",
+          "axis": "review_ethics",
+          "title": "Principal investigator qualification",
+          "summary": "The principal investigator meets the qualification requirements specified by the clinical-trial norms.",
+          "obligation_kind": "condition",
+          "obligated_actor": "principal_investigator",
+          "consumer_scopes": [
+            "pathway_trace",
+            "submission_packet"
+          ],
+          "applies_if": {
+            "op": "fact_equals",
+            "fact_id": "scope.ro_ctr_national",
+            "value": true
+          },
+          "structured_expectations": [
+            {
+              "field_id": "ro.ctr.pi-qualification.record",
+              "operator": "present",
+              "value": true
+            }
+          ],
+          "evidence_expected": [
+            {
+              "evidence_id": "ro.ctr.pi-qualification.evidence",
+              "held_by": "cnbmdm",
+              "artifact_type": "authority_record",
+              "description": "Record evidencing the applicable authority consideration."
+            }
+          ],
+          "waiver_or_exception_route": {
+            "state": "not_applicable",
+            "requirement_ids": [],
+            "decision_maker_role": null
+          },
+          "authoritative_decision_maker": {
+            "role_id": "cnbmdm",
+            "description": "The identified authority or accountable actor evaluates applicability and supporting evidence."
+          },
+          "interaction": {
+            "collision_key": "ro.ctr.pi-qualification",
+            "policy": "parallel_authorities"
+          },
+          "authority_anchor": {
+            "source_id": "ro.oms-3390-2022",
+            "authority_url": "https://www.anm.ro/_/STUDII%20CLINICE/Ordin%203390-2022.pdf",
+            "snapshot_url": "https://www.anm.ro/_/STUDII%20CLINICE/Ordin%203390-2022.pdf",
+            "provision": "Norms Art. 16(2)",
+            "effective_date": "2023-01-01",
+            "effective_until": null,
+            "source_amended_or_published_date": null,
+            "retrieved_at": "2026-10-10",
+            "verified_at": "2026-10-10",
+            "source_language": "ro",
+            "controlling_language": true,
+            "authenticity_status": "authoritative_unofficial",
+            "content_digest": null,
+            "digest_scope": "not_recorded",
+            "rights_status": "link_only"
+          }
+        }
+      ]
+    },
+    {
+      "profile_id": "ro.ms.mdr-clinical-investigation",
+      "profile_version": "2026-10-10",
+      "profile_digest": "0000000000000000000000000000000000000000000000000000000000000000",
+      "axis": "review_ethics",
+      "authority_scope_ids": [
+        "ro.mdr"
+      ],
+      "title": "Romanian MDR clinical investigation",
+      "authority_level": "national",
+      "coverage_status": "bounded_subset",
+      "covered_provisions": [
+        "Norms Art. 16(1)–(2)"
+      ],
+      "known_exclusions": [
+        "Provisions outside the listed verified anchors are not profiled."
+      ],
+      "known_gaps": [
+        "Institution-specific procedures and case-specific legal interpretation require separate review."
+      ],
+      "no_completeness_claim": true,
+      "source_ids": [
+        "ro.oms-330-2023"
+      ],
+      "applies_if": {
+        "op": "fact_equals",
+        "fact_id": "scope.ro_mdr_investigation",
+        "value": true
+      },
+      "requirements": [
+        {
+          "requirement_id": "ro.mdr.positive-opinion",
+          "axis": "review_ethics",
+          "title": "Positive ethics opinion",
+          "summary": "Medical-device clinical investigations require a positive CNBMDM ethics opinion, with ANMDMR validation or authorisation depending on device class.",
+          "obligation_kind": "condition",
+          "obligated_actor": "cnbmdm",
+          "consumer_scopes": [
+            "pathway_trace",
+            "submission_packet"
+          ],
+          "applies_if": {
+            "op": "fact_equals",
+            "fact_id": "scope.ro_mdr_investigation",
+            "value": true
+          },
+          "structured_expectations": [
+            {
+              "field_id": "ro_mdr_positive-opinion.record",
+              "operator": "present",
+              "value": true
+            }
+          ],
+          "evidence_expected": [
+            {
+              "evidence_id": "ro.mdr.positive-opinion.evidence",
+              "held_by": "cnbmdm",
+              "artifact_type": "authority_record",
+              "description": "Record evidencing the applicable authority consideration."
+            }
+          ],
+          "waiver_or_exception_route": {
+            "state": "not_applicable",
+            "requirement_ids": [],
+            "decision_maker_role": null
+          },
+          "authoritative_decision_maker": {
+            "role_id": "cnbmdm",
+            "description": "The identified authority or accountable actor evaluates applicability and supporting evidence."
+          },
+          "interaction": {
+            "collision_key": "ro.mdr.positive-opinion",
+            "policy": "parallel_authorities"
+          },
+          "authority_anchor": {
+            "source_id": "ro.oms-330-2023",
+            "authority_url": "https://www.anm.ro/_/DM/LEGISLATIE/Ordin%20330-2023.pdf",
+            "snapshot_url": "https://www.anm.ro/_/DM/LEGISLATIE/Ordin%20330-2023.pdf",
+            "provision": "Norms Art. 16(1)–(2)",
+            "effective_date": "2023-01-01",
+            "effective_until": null,
+            "source_amended_or_published_date": null,
+            "retrieved_at": "2026-10-10",
+            "verified_at": "2026-10-10",
+            "source_language": "ro",
+            "controlling_language": true,
+            "authenticity_status": "authoritative_unofficial",
+            "content_digest": null,
+            "digest_scope": "not_recorded",
+            "rights_status": "link_only"
+          }
+        }
+      ]
+    },
+    {
+      "profile_id": "ro.parliament.law-46-2003.patient-rights-research",
+      "profile_version": "2026-10-10",
+      "profile_digest": "0000000000000000000000000000000000000000000000000000000000000000",
+      "axis": "review_ethics",
+      "authority_scope_ids": [
+        "ro.patient_rights"
+      ],
+      "title": "Law 46/2003 patient-rights research subset",
+      "authority_level": "national",
+      "coverage_status": "bounded_subset",
+      "covered_provisions": [
+        "Art. 18",
+        "Art. 20",
+        "Art. 21",
+        "Art. 22"
+      ],
+      "known_exclusions": [
+        "Non-interventional PASS is treated as a known exclusion, not as a consent waiver."
+      ],
+      "known_gaps": [
+        "The statute provides no research exception to consent; anonymisation practice is not a legal waiver; Art. 22 disclosure risk for in-house pseudonymised data is unresolved."
+      ],
+      "no_completeness_claim": true,
+      "source_ids": [
+        "ro.law-46-2003"
+      ],
+      "applies_if": {
+        "op": "all",
+        "operands": [
+          {
+            "op": "fact_equals",
+            "fact_id": "activity.human_subjects",
+            "value": true
+          },
+          {
+            "op": "fact_equals",
+            "fact_id": "scope.ro_patient_rights",
+            "value": true
+          }
+        ]
+      },
+      "requirements": [
+        {
+          "requirement_id": "ro.patient-rights.research-consent",
+          "axis": "review_ethics",
+          "title": "Consent to scientific research",
+          "summary": "Patient consent is mandatory for participation in scientific research.",
+          "obligation_kind": "require",
+          "obligated_actor": "patient",
+          "consumer_scopes": [
+            "pathway_trace",
+            "submission_packet",
+            "participant_information"
+          ],
+          "applies_if": {
+            "op": "all",
+            "operands": [
+              {
+                "op": "fact_equals",
+                "fact_id": "activity.human_subjects",
+                "value": true
+              },
+              {
+                "op": "fact_equals",
+                "fact_id": "scope.ro_patient_rights",
+                "value": true
+              }
+            ]
+          },
+          "structured_expectations": [
+            {
+              "field_id": "ro.patient-rights.research-consent.record",
+              "operator": "present",
+              "value": true
+            }
+          ],
+          "evidence_expected": [
+            {
+              "evidence_id": "ro.patient-rights.research-consent.evidence",
+              "held_by": "controller",
+              "artifact_type": "authority_record",
+              "description": "Record evidencing the applicable authority consideration."
+            }
+          ],
+          "waiver_or_exception_route": {
+            "state": "external_authority_required",
+            "requirement_ids": [],
+            "decision_maker_role": "local_ethics_committee_and_controller_dpo"
+          },
+          "authoritative_decision_maker": {
+            "role_id": "controller",
+            "description": "The identified authority or accountable actor evaluates applicability and supporting evidence."
+          },
+          "interaction": {
+            "collision_key": "ro.patient-rights.research-consent",
+            "policy": "parallel_authorities"
+          },
+          "authority_anchor": {
+            "source_id": "ro.law-46-2003",
+            "authority_url": "https://ms.ro/media/documents/LEGE_Nr._46_2003_forma_la_data_de_20.11.2023.pdf",
+            "snapshot_url": "https://ms.ro/media/documents/LEGE_Nr._46_2003_forma_la_data_de_20.11.2023.pdf",
+            "provision": "Art. 19",
+            "effective_date": "2003-03-28",
+            "effective_until": null,
+            "source_amended_or_published_date": null,
+            "retrieved_at": "2026-10-10",
+            "verified_at": "2026-10-10",
+            "source_language": "ro",
+            "controlling_language": true,
+            "authenticity_status": "authoritative_unofficial",
+            "content_digest": null,
+            "digest_scope": "not_recorded",
+            "rights_status": "link_only"
+          }
+        },
+        {
+          "requirement_id": "ro.patient-rights.samples",
+          "axis": "review_ethics",
+          "title": "Art. 18 patient-rights obligation",
+          "summary": "Patient consent is mandatory to collect, store, or use biological products taken from the patient.",
+          "obligation_kind": "require",
+          "obligated_actor": "controller",
+          "consumer_scopes": [
+            "pathway_trace",
+            "submission_packet"
+          ],
+          "applies_if": {
+            "op": "all",
+            "operands": [
+              {
+                "op": "fact_equals",
+                "fact_id": "activity.human_subjects",
+                "value": true
+              },
+              {
+                "op": "fact_equals",
+                "fact_id": "scope.ro_patient_rights",
+                "value": true
+              }
+            ]
+          },
+          "structured_expectations": [
+            {
+              "field_id": "ro_patient-rights_samples.record",
+              "operator": "present",
+              "value": true
+            }
+          ],
+          "evidence_expected": [
+            {
+              "evidence_id": "ro.patient-rights.samples.evidence",
+              "held_by": "controller",
+              "artifact_type": "authority_record",
+              "description": "Record evidencing the applicable authority consideration."
+            }
+          ],
+          "waiver_or_exception_route": {
+            "state": "not_applicable",
+            "requirement_ids": [],
+            "decision_maker_role": null
+          },
+          "authoritative_decision_maker": {
+            "role_id": "controller",
+            "description": "The identified authority or accountable actor evaluates applicability and supporting evidence."
+          },
+          "interaction": {
+            "collision_key": "ro.patient-rights.samples",
+            "policy": "parallel_authorities"
+          },
+          "authority_anchor": {
+            "source_id": "ro.law-46-2003",
+            "authority_url": "https://ms.ro/media/documents/LEGE_Nr._46_2003_forma_la_data_de_20.11.2023.pdf",
+            "snapshot_url": "https://ms.ro/media/documents/LEGE_Nr._46_2003_forma_la_data_de_20.11.2023.pdf",
+            "provision": "Art. 18",
+            "effective_date": "2003-03-28",
+            "effective_until": null,
+            "source_amended_or_published_date": null,
+            "retrieved_at": "2026-10-10",
+            "verified_at": "2026-10-10",
+            "source_language": "ro",
+            "controlling_language": true,
+            "authenticity_status": "authoritative_unofficial",
+            "content_digest": null,
+            "digest_scope": "not_recorded",
+            "rights_status": "link_only"
+          }
+        },
+        {
+          "requirement_id": "ro.patient-rights.images",
+          "axis": "review_ethics",
+          "title": "Art. 20 patient-rights obligation",
+          "summary": "A patient may not be photographed or filmed in a medical unit without consent, subject to the stated diagnostic, treatment, and malpractice exception.",
+          "obligation_kind": "require",
+          "obligated_actor": "controller",
+          "consumer_scopes": [
+            "pathway_trace",
+            "submission_packet"
+          ],
+          "applies_if": {
+            "op": "all",
+            "operands": [
+              {
+                "op": "fact_equals",
+                "fact_id": "activity.human_subjects",
+                "value": true
+              },
+              {
+                "op": "fact_equals",
+                "fact_id": "scope.ro_patient_rights",
+                "value": true
+              }
+            ]
+          },
+          "structured_expectations": [
+            {
+              "field_id": "ro_patient-rights_images.record",
+              "operator": "present",
+              "value": true
+            }
+          ],
+          "evidence_expected": [
+            {
+              "evidence_id": "ro.patient-rights.images.evidence",
+              "held_by": "controller",
+              "artifact_type": "authority_record",
+              "description": "Record evidencing the applicable authority consideration."
+            }
+          ],
+          "waiver_or_exception_route": {
+            "state": "not_applicable",
+            "requirement_ids": [],
+            "decision_maker_role": null
+          },
+          "authoritative_decision_maker": {
+            "role_id": "controller",
+            "description": "The identified authority or accountable actor evaluates applicability and supporting evidence."
+          },
+          "interaction": {
+            "collision_key": "ro.patient-rights.images",
+            "policy": "parallel_authorities"
+          },
+          "authority_anchor": {
+            "source_id": "ro.law-46-2003",
+            "authority_url": "https://ms.ro/media/documents/LEGE_Nr._46_2003_forma_la_data_de_20.11.2023.pdf",
+            "snapshot_url": "https://ms.ro/media/documents/LEGE_Nr._46_2003_forma_la_data_de_20.11.2023.pdf",
+            "provision": "Art. 20",
+            "effective_date": "2003-03-28",
+            "effective_until": null,
+            "source_amended_or_published_date": null,
+            "retrieved_at": "2026-10-10",
+            "verified_at": "2026-10-10",
+            "source_language": "ro",
+            "controlling_language": true,
+            "authenticity_status": "authoritative_unofficial",
+            "content_digest": null,
+            "digest_scope": "not_recorded",
+            "rights_status": "link_only"
+          }
+        },
+        {
+          "requirement_id": "ro.patient-rights.confidentiality",
+          "axis": "review_ethics",
+          "title": "Art. 21 patient-rights obligation",
+          "summary": "Patient health information and personal data are confidential, including after death.",
+          "obligation_kind": "require",
+          "obligated_actor": "controller",
+          "consumer_scopes": [
+            "pathway_trace",
+            "submission_packet"
+          ],
+          "applies_if": {
+            "op": "all",
+            "operands": [
+              {
+                "op": "fact_equals",
+                "fact_id": "activity.human_subjects",
+                "value": true
+              },
+              {
+                "op": "fact_equals",
+                "fact_id": "scope.ro_patient_rights",
+                "value": true
+              }
+            ]
+          },
+          "structured_expectations": [
+            {
+              "field_id": "ro_patient-rights_confidentiality.record",
+              "operator": "present",
+              "value": true
+            }
+          ],
+          "evidence_expected": [
+            {
+              "evidence_id": "ro.patient-rights.confidentiality.evidence",
+              "held_by": "controller",
+              "artifact_type": "authority_record",
+              "description": "Record evidencing the applicable authority consideration."
+            }
+          ],
+          "waiver_or_exception_route": {
+            "state": "external_authority_required",
+            "requirement_ids": [],
+            "decision_maker_role": "local_ethics_committee_and_controller_dpo"
+          },
+          "authoritative_decision_maker": {
+            "role_id": "local_ethics_committee_and_controller_dpo",
+            "description": "The identified authority or accountable actor evaluates applicability and supporting evidence."
+          },
+          "interaction": {
+            "collision_key": "ro.patient-rights.confidentiality",
+            "policy": "parallel_authorities"
+          },
+          "authority_anchor": {
+            "source_id": "ro.law-46-2003",
+            "authority_url": "https://ms.ro/media/documents/LEGE_Nr._46_2003_forma_la_data_de_20.11.2023.pdf",
+            "snapshot_url": "https://ms.ro/media/documents/LEGE_Nr._46_2003_forma_la_data_de_20.11.2023.pdf",
+            "provision": "Art. 21",
+            "effective_date": "2003-03-28",
+            "effective_until": null,
+            "source_amended_or_published_date": null,
+            "retrieved_at": "2026-10-10",
+            "verified_at": "2026-10-10",
+            "source_language": "ro",
+            "controlling_language": true,
+            "authenticity_status": "authoritative_unofficial",
+            "content_digest": null,
+            "digest_scope": "not_recorded",
+            "rights_status": "link_only"
+          }
+        },
+        {
+          "requirement_id": "ro.patient-rights.disclosure",
+          "axis": "review_ethics",
+          "title": "Art. 22 patient-rights obligation",
+          "summary": "Confidential information may be supplied only with the patient’s explicit consent or where the law expressly requires it.",
+          "obligation_kind": "require",
+          "obligated_actor": "controller",
+          "consumer_scopes": [
+            "pathway_trace",
+            "submission_packet"
+          ],
+          "applies_if": {
+            "op": "all",
+            "operands": [
+              {
+                "op": "fact_equals",
+                "fact_id": "activity.human_subjects",
+                "value": true
+              },
+              {
+                "op": "fact_equals",
+                "fact_id": "scope.ro_patient_rights",
+                "value": true
+              }
+            ]
+          },
+          "structured_expectations": [
+            {
+              "field_id": "ro_patient-rights_disclosure.record",
+              "operator": "present",
+              "value": true
+            }
+          ],
+          "evidence_expected": [
+            {
+              "evidence_id": "ro.patient-rights.disclosure.evidence",
+              "held_by": "controller",
+              "artifact_type": "authority_record",
+              "description": "Record evidencing the applicable authority consideration."
+            }
+          ],
+          "waiver_or_exception_route": {
+            "state": "external_authority_required",
+            "requirement_ids": [],
+            "decision_maker_role": "local_ethics_committee_and_controller_dpo"
+          },
+          "authoritative_decision_maker": {
+            "role_id": "local_ethics_committee_and_controller_dpo",
+            "description": "The identified authority or accountable actor evaluates applicability and supporting evidence."
+          },
+          "interaction": {
+            "collision_key": "ro.patient-rights.disclosure",
+            "policy": "parallel_authorities"
+          },
+          "authority_anchor": {
+            "source_id": "ro.law-46-2003",
+            "authority_url": "https://ms.ro/media/documents/LEGE_Nr._46_2003_forma_la_data_de_20.11.2023.pdf",
+            "snapshot_url": "https://ms.ro/media/documents/LEGE_Nr._46_2003_forma_la_data_de_20.11.2023.pdf",
+            "provision": "Art. 22",
+            "effective_date": "2003-03-28",
+            "effective_until": null,
+            "source_amended_or_published_date": null,
+            "retrieved_at": "2026-10-10",
+            "verified_at": "2026-10-10",
+            "source_language": "ro",
+            "controlling_language": true,
+            "authenticity_status": "authoritative_unofficial",
+            "content_digest": null,
+            "digest_scope": "not_recorded",
+            "rights_status": "link_only"
+          }
+        }
+      ]
+    },
+    {
+      "profile_id": "ro.parliament.law-190-2018.research-bounded",
+      "profile_version": "2026-10-10",
+      "profile_digest": "0000000000000000000000000000000000000000000000000000000000000000",
+      "axis": "data_protection",
+      "authority_scope_ids": [
+        "ro.law_190"
+      ],
+      "title": "Law 190/2018 bounded research subset",
+      "authority_level": "national",
+      "coverage_status": "bounded_subset",
+      "covered_provisions": [
+        "Art. 4(1)–(2)",
+        "Art. 8(1)–(3)"
+      ],
+      "known_exclusions": [
+        "Provisions outside the listed verified anchors are not profiled."
+      ],
+      "known_gaps": [
+        "Article 9(2)(j) lawful basis is omitted: no verified legal_ro.json row supports it."
+      ],
+      "no_completeness_claim": true,
+      "source_ids": [
+        "ro.law-190-2018"
+      ],
+      "applies_if": {
+        "op": "fact_equals",
+        "fact_id": "scope.ro_law_190",
+        "value": true
+      },
+      "requirements": [
+        {
+          "requirement_id": "ro.l190.cnp-safeguards",
+          "axis": "data_protection",
+          "title": "National identification number safeguards",
+          "summary": "Processing a national identification number requires the safeguards listed in Law 190/2018 Article 4(2), including technical and organisational measures and a defined retention period.",
+          "obligation_kind": "safeguard",
+          "obligated_actor": "controller",
+          "consumer_scopes": [
+            "pathway_trace",
+            "submission_packet"
+          ],
+          "applies_if": {
+            "op": "fact_equals",
+            "fact_id": "scope.ro_law_190",
+            "value": true
+          },
+          "structured_expectations": [
+            {
+              "field_id": "ro_l190_cnp-safeguards.record",
+              "operator": "present",
+              "value": true
+            }
+          ],
+          "evidence_expected": [
+            {
+              "evidence_id": "ro.l190.cnp-safeguards.evidence",
+              "held_by": "controller",
+              "artifact_type": "authority_record",
+              "description": "Record evidencing the applicable authority consideration."
+            }
+          ],
+          "waiver_or_exception_route": {
+            "state": "not_applicable",
+            "requirement_ids": [],
+            "decision_maker_role": null
+          },
+          "authoritative_decision_maker": {
+            "role_id": "controller",
+            "description": "The identified authority or accountable actor evaluates applicability and supporting evidence."
+          },
+          "interaction": {
+            "collision_key": "ro.l190.cnp-safeguards",
+            "policy": "parallel_authorities"
+          },
+          "authority_anchor": {
+            "source_id": "ro.law-190-2018",
+            "authority_url": "https://portal.just.ro/101/Documents/LEGE__190_2018_date_cu_caracter_personal.pdf",
+            "snapshot_url": "https://portal.just.ro/101/Documents/LEGE__190_2018_date_cu_caracter_personal.pdf",
+            "provision": "Art. 4(1)–(2)",
+            "effective_date": "2018-05-25",
+            "effective_until": null,
+            "source_amended_or_published_date": null,
+            "retrieved_at": "2026-10-10",
+            "verified_at": "2026-10-10",
+            "source_language": "ro",
+            "controlling_language": true,
+            "authenticity_status": "authoritative_unofficial",
+            "content_digest": null,
+            "digest_scope": "not_recorded",
+            "rights_status": "link_only"
+          }
+        },
+        {
+          "requirement_id": "ro.l190.research-rights-restriction",
+          "axis": "data_protection",
+          "title": "Bounded research rights restriction",
+          "summary": "Specified data-subject rights may be restricted only where exercising them would make the research purpose impossible or seriously impair it and restriction is necessary.",
+          "obligation_kind": "condition",
+          "obligated_actor": "controller",
+          "consumer_scopes": [
+            "pathway_trace",
+            "submission_packet"
+          ],
+          "applies_if": {
+            "op": "fact_equals",
+            "fact_id": "scope.ro_law_190",
+            "value": true
+          },
+          "structured_expectations": [
+            {
+              "field_id": "ro_l190_research-rights-restriction.record",
+              "operator": "present",
+              "value": true
+            }
+          ],
+          "evidence_expected": [
+            {
+              "evidence_id": "ro.l190.research-rights-restriction.evidence",
+              "held_by": "controller",
+              "artifact_type": "authority_record",
+              "description": "Record evidencing the applicable authority consideration."
+            }
+          ],
+          "waiver_or_exception_route": {
+            "state": "external_authority_required",
+            "requirement_ids": [],
+            "decision_maker_role": "controller_or_competent_authority"
+          },
+          "authoritative_decision_maker": {
+            "role_id": "controller_or_competent_authority",
+            "description": "The identified authority or accountable actor evaluates applicability and supporting evidence."
+          },
+          "interaction": {
+            "collision_key": "ro.l190.research-rights-restriction",
+            "policy": "parallel_authorities"
+          },
+          "authority_anchor": {
+            "source_id": "ro.law-190-2018",
+            "authority_url": "https://portal.just.ro/101/Documents/LEGE__190_2018_date_cu_caracter_personal.pdf",
+            "snapshot_url": "https://portal.just.ro/101/Documents/LEGE__190_2018_date_cu_caracter_personal.pdf",
+            "provision": "Art. 8(1)–(3)",
+            "effective_date": "2018-05-25",
+            "effective_until": null,
+            "source_amended_or_published_date": null,
+            "retrieved_at": "2026-10-10",
+            "verified_at": "2026-10-10",
+            "source_language": "ro",
+            "controlling_language": true,
+            "authenticity_status": "authoritative_unofficial",
+            "content_digest": null,
+            "digest_scope": "not_recorded",
+            "rights_status": "link_only"
+          }
+        }
+      ]
+    },
+    {
+      "profile_id": "ro.cmr.deontology-code-2025",
+      "profile_version": "2026-10-10",
+      "profile_digest": "0000000000000000000000000000000000000000000000000000000000000000",
+      "axis": "review_ethics",
+      "authority_scope_ids": [
+        "ro.cmr"
+      ],
+      "title": "CMR Deontology Code 2025 bounded subset",
+      "authority_level": "national",
+      "coverage_status": "bounded_subset",
+      "covered_provisions": [
+        "Art. 46(1)",
+        "Art. 51(b)–(e)",
+        "Art. 62(2)"
+      ],
+      "known_exclusions": [
+        "Provisions outside the listed verified anchors are not profiled."
+      ],
+      "known_gaps": [
+        "This is a professional-body code, not a statute. Case-specific applicability requires confirmation."
+      ],
+      "no_completeness_claim": true,
+      "source_ids": [
+        "ro.cmr-code-2025"
+      ],
+      "applies_if": {
+        "op": "fact_equals",
+        "fact_id": "professional.ro_cmr_member",
+        "value": true
+      },
+      "requirements": [
+        {
+          "requirement_id": "ro.cmr.publication-drug-name",
+          "axis": "review_ethics",
+          "title": "Publication confidentiality and INN",
+          "summary": "CMR members must preserve patient confidentiality in scientific publications and refer to medicines only by INN.",
+          "obligation_kind": "require",
+          "obligated_actor": "cmr_member",
+          "consumer_scopes": [
+            "pathway_trace",
+            "submission_packet"
+          ],
+          "applies_if": {
+            "op": "fact_equals",
+            "fact_id": "professional.ro_cmr_member",
+            "value": true
+          },
+          "structured_expectations": [
+            {
+              "field_id": "ro_cmr_publication-drug-name.record",
+              "operator": "present",
+              "value": true
+            }
+          ],
+          "evidence_expected": [
+            {
+              "evidence_id": "ro.cmr.publication-drug-name.evidence",
+              "held_by": "cmr_member",
+              "artifact_type": "authority_record",
+              "description": "Record evidencing the applicable authority consideration."
+            }
+          ],
+          "waiver_or_exception_route": {
+            "state": "not_applicable",
+            "requirement_ids": [],
+            "decision_maker_role": null
+          },
+          "authoritative_decision_maker": {
+            "role_id": "cmr_member",
+            "description": "The identified authority or accountable actor evaluates applicability and supporting evidence."
+          },
+          "interaction": {
+            "collision_key": "ro.cmr.publication-drug-name",
+            "policy": "parallel_authorities"
+          },
+          "authority_anchor": {
+            "source_id": "ro.cmr-code-2025",
+            "authority_url": "https://www.cmr.ro/wp-content/uploads/2026/01/codul-de-deontologie-medicala-al-colegiului-medicilor-din-romania-din-30102025-1.pdf",
+            "snapshot_url": "https://www.cmr.ro/wp-content/uploads/2026/01/codul-de-deontologie-medicala-al-colegiului-medicilor-din-romania-din-30102025-1.pdf",
+            "provision": "Art. 46(1)",
+            "effective_date": "2023-01-01",
+            "effective_until": null,
+            "source_amended_or_published_date": null,
+            "retrieved_at": "2026-10-10",
+            "verified_at": "2026-10-10",
+            "source_language": "ro",
+            "controlling_language": true,
+            "authenticity_status": "authoritative_unofficial",
+            "content_digest": null,
+            "digest_scope": "not_recorded",
+            "rights_status": "link_only"
+          }
+        },
+        {
+          "requirement_id": "ro.cmr.research-consent",
+          "axis": "review_ethics",
+          "title": "Research ethics and consent",
+          "summary": "Research on a person able to consent requires ethics approval and express, specific, freely given written consent, with withdrawal information.",
+          "obligation_kind": "require",
+          "obligated_actor": "cmr_member",
+          "consumer_scopes": [
+            "pathway_trace",
+            "submission_packet"
+          ],
+          "applies_if": {
+            "op": "fact_equals",
+            "fact_id": "professional.ro_cmr_member",
+            "value": true
+          },
+          "structured_expectations": [
+            {
+              "field_id": "ro_cmr_research-consent.record",
+              "operator": "present",
+              "value": true
+            }
+          ],
+          "evidence_expected": [
+            {
+              "evidence_id": "ro.cmr.research-consent.evidence",
+              "held_by": "cmr_member",
+              "artifact_type": "authority_record",
+              "description": "Record evidencing the applicable authority consideration."
+            }
+          ],
+          "waiver_or_exception_route": {
+            "state": "external_authority_required",
+            "requirement_ids": [],
+            "decision_maker_role": "local_ethics_committee_and_controller_dpo"
+          },
+          "authoritative_decision_maker": {
+            "role_id": "local_ethics_committee_and_controller_dpo",
+            "description": "The identified authority or accountable actor evaluates applicability and supporting evidence."
+          },
+          "interaction": {
+            "collision_key": "ro.cmr.research-consent",
+            "policy": "parallel_authorities"
+          },
+          "authority_anchor": {
+            "source_id": "ro.cmr-code-2025",
+            "authority_url": "https://www.cmr.ro/wp-content/uploads/2026/01/codul-de-deontologie-medicala-al-colegiului-medicilor-din-romania-din-30102025-1.pdf",
+            "snapshot_url": "https://www.cmr.ro/wp-content/uploads/2026/01/codul-de-deontologie-medicala-al-colegiului-medicilor-din-romania-din-30102025-1.pdf",
+            "provision": "Art. 51(b)–(e)",
+            "effective_date": "2023-01-01",
+            "effective_until": null,
+            "source_amended_or_published_date": null,
+            "retrieved_at": "2026-10-10",
+            "verified_at": "2026-10-10",
+            "source_language": "ro",
+            "controlling_language": true,
+            "authenticity_status": "authoritative_unofficial",
+            "content_digest": null,
+            "digest_scope": "not_recorded",
+            "rights_status": "link_only"
+          }
+        },
+        {
+          "requirement_id": "ro.cmr.conflict-interest",
+          "axis": "review_ethics",
+          "title": "Conflict of interest",
+          "summary": "Physicians must identify and eliminate actual or potential conflicts of interest that could influence medical decisions.",
+          "obligation_kind": "require",
+          "obligated_actor": "cmr_member",
+          "consumer_scopes": [
+            "pathway_trace",
+            "submission_packet"
+          ],
+          "applies_if": {
+            "op": "fact_equals",
+            "fact_id": "professional.ro_cmr_member",
+            "value": true
+          },
+          "structured_expectations": [
+            {
+              "field_id": "ro_cmr_conflict-interest.record",
+              "operator": "present",
+              "value": true
+            }
+          ],
+          "evidence_expected": [
+            {
+              "evidence_id": "ro.cmr.conflict-interest.evidence",
+              "held_by": "cmr_member",
+              "artifact_type": "authority_record",
+              "description": "Record evidencing the applicable authority consideration."
+            }
+          ],
+          "waiver_or_exception_route": {
+            "state": "not_applicable",
+            "requirement_ids": [],
+            "decision_maker_role": null
+          },
+          "authoritative_decision_maker": {
+            "role_id": "cmr_member",
+            "description": "The identified authority or accountable actor evaluates applicability and supporting evidence."
+          },
+          "interaction": {
+            "collision_key": "ro.cmr.conflict-interest",
+            "policy": "parallel_authorities"
+          },
+          "authority_anchor": {
+            "source_id": "ro.cmr-code-2025",
+            "authority_url": "https://www.cmr.ro/wp-content/uploads/2026/01/codul-de-deontologie-medicala-al-colegiului-medicilor-din-romania-din-30102025-1.pdf",
+            "snapshot_url": "https://www.cmr.ro/wp-content/uploads/2026/01/codul-de-deontologie-medicala-al-colegiului-medicilor-din-romania-din-30102025-1.pdf",
+            "provision": "Art. 62(2)",
+            "effective_date": "2023-01-01",
+            "effective_until": null,
+            "source_amended_or_published_date": null,
+            "retrieved_at": "2026-10-10",
+            "verified_at": "2026-10-10",
+            "source_language": "ro",
+            "controlling_language": true,
+            "authenticity_status": "authoritative_unofficial",
+            "content_digest": null,
+            "digest_scope": "not_recorded",
+            "rights_status": "link_only"
+          }
+        }
+      ]
+    }
+  ],
+  "overlays": [],
+  "known_gaps": [
+    "ro.ctr-authority: role as competent authority is recorded as source evidence but is not modeled as a separate requirement.",
+    "ro.mdr-ethics-review: MDR ethics review allocation is recorded as source evidence but is outside this bounded overlay requirement set.",
+    "ro.l190-art3: Article 3 processing safeguards are not modeled as a separate requirement."
+  ]
+}
