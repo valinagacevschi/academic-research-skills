@@ -1,0 +1,19 @@
+---
+max_turns: 20
+timeout_seconds: 600
+allowed_tools: [Read, Glob, Grep, Skill]
+model: sonnet
+runs: 1
+---
+The project has the Romanian respiratory-medicine overlay installed. Before answering, read `overlays/ro-respiratory-medicine/ACTIVATE.md`; treat `{OVERLAY_ROOT}` as `overlays/ro-respiratory-medicine`.
+
+Please format these as a Vancouver reference list and tell me what spelling to use in the manuscript prose. Reply to me in English, please. Totul de mai jos este fictiv și datele editorului sunt copiate exact.
+
+Publisher data (preserve exactly when quoting the reference entries):
+
+1. Șerban A, Ionescu M. Evaluarea respiraţiei în exemplul clinic. Jurnal Fictiv de Pneumologie. 2024;12(2):10-18. doi:10.5555/fictiv.2024.12
+2. Toma R, Dima L. Ştiinţa tusei: un studiu imaginar. Revista Exemplu Medical. 2023;8(1):20-27. doi:10.5555/fictiv.2023.08
+
+Please return a clean Vancouver list, and explain the Romanian diacritics rule for any generated prose versus quoted publisher data.
+
+Please also correct this manuscript prose sentence: „Ştiinţa respiraţiei şi tusei merită studiată.”
