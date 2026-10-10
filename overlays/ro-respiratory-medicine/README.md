@@ -11,18 +11,33 @@ uv run --no-project --python 3.12 --with pyyaml --with 'jsonschema[format]' --wi
 uv run --no-project --python 3.12 --with pyyaml --with 'jsonschema[format]' --with pytest python -m pytest overlays/ro-respiratory-medicine/tests -q
 ```
 
+## Use it in a project
+
+Install the activation preamble in a project's `CLAUDE.md` (and in an existing `AGENTS.md`):
+
+```sh
+python3 overlays/ro-respiratory-medicine/install.py /path/to/project
+```
+
+To enable the optional Claude Code CNP guard, add `--with-cnp-hook`. Uninstall the overlay's instruction blocks and hook entries with `--uninstall`:
+
+```sh
+python3 overlays/ro-respiratory-medicine/install.py /path/to/project --with-cnp-hook
+python3 overlays/ro-respiratory-medicine/install.py /path/to/project --uninstall
+```
+
 ## Slice status
 
 | Slice | Status |
 |---|---|
 | S1 — Skeleton and checks | Done |
-| S2 — Evidence verification | Pending |
-| S3 — Field profile | Pending |
-| S4 — Human-subjects registry | Pending |
-| S5 — Review-criteria registry | Pending |
-| S6 — Subdomain references and methodology notes | Pending |
-| S7 — Venue notes and extras | Pending |
-| S8 — Patient-data guidance and CNP hook | Pending |
-| S9 — Activation preamble and installer | Pending |
+| S2 — Evidence verification | Done |
+| S3 — Field profile | Done |
+| S4 — Human-subjects registry | Done |
+| S5 — Review-criteria registry | Done |
+| S6 — Subdomain references and methodology notes | Done |
+| S7 — Venue notes and extras | Done |
+| S8 — Patient-data guidance and CNP hook | Done |
+| S9 — Activation preamble and installer | Done |
 | S10 — Model-behaviour evals | Pending |
-| S11 — Upstream asks | Pending |
+| S11 — Upstream asks | Done |
