@@ -1,0 +1,382 @@
+{
+  "boundary_footer": "Human-subjects boundary: This output does not authorize recruitment, consent, access to identifiable data, intervention, or data collection.",
+  "candidate_pathways": [
+    {
+      "alternative_pathway_triggers": [],
+      "candidate_id": "candidate.data.route",
+      "candidate_name_source": {
+        "effective_date": null,
+        "source_kind": "author_declared_question",
+        "source_locator": "Author data question",
+        "source_url": null
+      },
+      "candidate_pathway_name": "Data Protection Route",
+      "matched_predicates": [
+        {
+          "applicability": "true",
+          "authority_anchor": {
+            "authority_url": "https://eur-lex.europa.eu/eli/reg/2016/679/2016-05-04/eng",
+            "effective_date": "2018-05-25",
+            "provision": "GDPR Article 14",
+            "source_id": "eu.eur-lex.gdpr.2016-679"
+          },
+          "authority_anchor_pointer": "/profiles/2/requirements/3/authority_anchor",
+          "fact_bindings": [
+            {
+              "declared_state": "declared",
+              "declared_value": true,
+              "expression_path": "/operands/0",
+              "fact_id": "scope.eu_gdpr",
+              "operator": "fact_equals",
+              "predicate_result": "true"
+            },
+            {
+              "declared_state": "declared",
+              "declared_value": true,
+              "expression_path": "/operands/1",
+              "fact_id": "processing.personal_data",
+              "operator": "fact_equals",
+              "predicate_result": "true"
+            },
+            {
+              "declared_state": "declared",
+              "declared_value": false,
+              "expression_path": "/operands/2/operand",
+              "fact_id": "data.collected_from_subject",
+              "operator": "fact_equals",
+              "predicate_result": "false"
+            }
+          ],
+          "requirement_digest": "1090b5a11d87702b179e2ece3c504035428f67c4bc01c528a262be2d798a9efa",
+          "requirement_id": "eu.gdpr.article-14.indirect-collection-information",
+          "requirement_pointer": "/profiles/2/requirements/3",
+          "responsible_authority_role_id": "controller_or_competent_authority",
+          "unresolved_fact_ids": []
+        },
+        {
+          "applicability": "true",
+          "authority_anchor": {
+            "authority_url": "https://eur-lex.europa.eu/eli/reg/2016/679/2016-05-04/eng",
+            "effective_date": "2018-05-25",
+            "provision": "GDPR Article 6",
+            "source_id": "eu.eur-lex.gdpr.2016-679"
+          },
+          "authority_anchor_pointer": "/profiles/2/requirements/0/authority_anchor",
+          "fact_bindings": [
+            {
+              "declared_state": "declared",
+              "declared_value": true,
+              "expression_path": "/operands/0",
+              "fact_id": "scope.eu_gdpr",
+              "operator": "fact_equals",
+              "predicate_result": "true"
+            },
+            {
+              "declared_state": "declared",
+              "declared_value": true,
+              "expression_path": "/operands/1",
+              "fact_id": "processing.personal_data",
+              "operator": "fact_equals",
+              "predicate_result": "true"
+            }
+          ],
+          "requirement_digest": "5a38088d4162ec4d683325db1f93d90d72147efffb7d6e134f33b40cedca80fb",
+          "requirement_id": "eu.gdpr.article-6.lawful-basis",
+          "requirement_pointer": "/profiles/2/requirements/0",
+          "responsible_authority_role_id": "controller",
+          "unresolved_fact_ids": []
+        },
+        {
+          "applicability": "true",
+          "authority_anchor": {
+            "authority_url": "https://eur-lex.europa.eu/eli/reg/2016/679/2016-05-04/eng",
+            "effective_date": "2018-05-25",
+            "provision": "GDPR Article 89(1)",
+            "source_id": "eu.eur-lex.gdpr.2016-679"
+          },
+          "authority_anchor_pointer": "/profiles/2/requirements/4/authority_anchor",
+          "fact_bindings": [
+            {
+              "declared_state": "declared",
+              "declared_value": true,
+              "expression_path": "/operands/0",
+              "fact_id": "scope.eu_gdpr",
+              "operator": "fact_equals",
+              "predicate_result": "true"
+            },
+            {
+              "declared_state": "declared",
+              "declared_value": true,
+              "expression_path": "/operands/1",
+              "fact_id": "processing.personal_data",
+              "operator": "fact_equals",
+              "predicate_result": "true"
+            },
+            {
+              "declared_state": "declared",
+              "declared_value": true,
+              "expression_path": "/operands/2",
+              "fact_id": "purpose.scientific_research",
+              "operator": "fact_equals",
+              "predicate_result": "true"
+            }
+          ],
+          "requirement_digest": "c6cf2bd131a4e9424fcb13dc8334c1893f116bebe9c929832851d353d38be497",
+          "requirement_id": "eu.gdpr.article-89.1.research-safeguards",
+          "requirement_pointer": "/profiles/2/requirements/4",
+          "responsible_authority_role_id": "controller",
+          "unresolved_fact_ids": []
+        },
+        {
+          "applicability": "true",
+          "authority_anchor": {
+            "authority_url": "https://eur-lex.europa.eu/eli/reg/2016/679/2016-05-04/eng",
+            "effective_date": "2018-05-25",
+            "provision": "GDPR Article 89(2)",
+            "source_id": "eu.eur-lex.gdpr.2016-679"
+          },
+          "authority_anchor_pointer": "/profiles/2/requirements/5/authority_anchor",
+          "fact_bindings": [
+            {
+              "declared_state": "declared",
+              "declared_value": true,
+              "expression_path": "/operands/0",
+              "fact_id": "scope.eu_gdpr",
+              "operator": "fact_equals",
+              "predicate_result": "true"
+            },
+            {
+              "declared_state": "declared",
+              "declared_value": true,
+              "expression_path": "/operands/1",
+              "fact_id": "processing.personal_data",
+              "operator": "fact_equals",
+              "predicate_result": "true"
+            },
+            {
+              "declared_state": "declared",
+              "declared_value": true,
+              "expression_path": "/operands/2",
+              "fact_id": "purpose.scientific_research",
+              "operator": "fact_equals",
+              "predicate_result": "true"
+            },
+            {
+              "declared_state": "declared",
+              "declared_value": true,
+              "expression_path": "/operands/3",
+              "fact_id": "gdpr.member_state_research_law_identified",
+              "operator": "fact_equals",
+              "predicate_result": "true"
+            }
+          ],
+          "requirement_digest": "8aaf894a38ffd818ad8f0d521a91501e9412b153a6ddcfa6b03a8412ac6ac711",
+          "requirement_id": "eu.gdpr.article-89.2.member-state-derogation",
+          "requirement_pointer": "/profiles/2/requirements/5",
+          "responsible_authority_role_id": "competent_legislature_supervisory_authority_or_court",
+          "unresolved_fact_ids": []
+        },
+        {
+          "applicability": "true",
+          "authority_anchor": {
+            "authority_url": "https://eur-lex.europa.eu/eli/reg/2016/679/2016-05-04/eng",
+            "effective_date": "2018-05-25",
+            "provision": "GDPR Article 9",
+            "source_id": "eu.eur-lex.gdpr.2016-679"
+          },
+          "authority_anchor_pointer": "/profiles/2/requirements/1/authority_anchor",
+          "fact_bindings": [
+            {
+              "declared_state": "declared",
+              "declared_value": true,
+              "expression_path": "/operands/0",
+              "fact_id": "scope.eu_gdpr",
+              "operator": "fact_equals",
+              "predicate_result": "true"
+            },
+            {
+              "declared_state": "declared",
+              "declared_value": true,
+              "expression_path": "/operands/1",
+              "fact_id": "processing.personal_data",
+              "operator": "fact_equals",
+              "predicate_result": "true"
+            },
+            {
+              "declared_state": "declared",
+              "declared_value": true,
+              "expression_path": "/operands/2",
+              "fact_id": "data.special_category",
+              "operator": "fact_equals",
+              "predicate_result": "true"
+            }
+          ],
+          "requirement_digest": "b5facf1520acd1e5b40d7fcfca6437a921c2295e030a8379fe391cb10aef4e7c",
+          "requirement_id": "eu.gdpr.article-9.special-category-research",
+          "requirement_pointer": "/profiles/2/requirements/1",
+          "responsible_authority_role_id": "controller_or_competent_authority",
+          "unresolved_fact_ids": []
+        }
+      ],
+      "profile_ref": {
+        "axis": "data_protection",
+        "profile_digest": "53d4c3783d35d8f60c883b6254b8e43831f5d3fc87fa0e6e0304d24bc7cc5cbe",
+        "profile_id": "eu.gdpr.research-core-bounded",
+        "profile_version": "2018-05-25"
+      },
+      "result": "institutional determination required",
+      "unmatched_predicates": [
+        {
+          "applicability": "false",
+          "authority_anchor": {
+            "authority_url": "https://eur-lex.europa.eu/eli/reg/2016/679/2016-05-04/eng",
+            "effective_date": "2018-05-25",
+            "provision": "GDPR Article 13",
+            "source_id": "eu.eur-lex.gdpr.2016-679"
+          },
+          "authority_anchor_pointer": "/profiles/2/requirements/2/authority_anchor",
+          "fact_bindings": [
+            {
+              "declared_state": "declared",
+              "declared_value": true,
+              "expression_path": "/operands/0",
+              "fact_id": "scope.eu_gdpr",
+              "operator": "fact_equals",
+              "predicate_result": "true"
+            },
+            {
+              "declared_state": "declared",
+              "declared_value": true,
+              "expression_path": "/operands/1",
+              "fact_id": "processing.personal_data",
+              "operator": "fact_equals",
+              "predicate_result": "true"
+            },
+            {
+              "declared_state": "declared",
+              "declared_value": false,
+              "expression_path": "/operands/2",
+              "fact_id": "data.collected_from_subject",
+              "operator": "fact_equals",
+              "predicate_result": "false"
+            }
+          ],
+          "requirement_digest": "9174d0e022ab5a2bfdc0c2e2f121452007622309c9d783319b130a73d9e40792",
+          "requirement_id": "eu.gdpr.article-13.direct-collection-information",
+          "requirement_pointer": "/profiles/2/requirements/2",
+          "responsible_authority_role_id": "controller",
+          "unresolved_fact_ids": []
+        }
+      ],
+      "unresolved_predicates": []
+    },
+    {
+      "alternative_pathway_triggers": [],
+      "candidate_id": "candidate.tw.committee_route",
+      "candidate_name_source": {
+        "effective_date": null,
+        "source_kind": "author_declared_question",
+        "source_locator": "Author question TW",
+        "source_url": null
+      },
+      "candidate_pathway_name": "Committee Route",
+      "matched_predicates": [
+        {
+          "applicability": "true",
+          "authority_anchor": {
+            "authority_url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=L0020176",
+            "effective_date": "2011-12-28",
+            "provision": "人體研究法第 14 條",
+            "source_id": "ro.placeholder.ethics.article-14.zh-hant"
+          },
+          "authority_anchor_pointer": "/profiles/3/requirements/1/authority_anchor",
+          "fact_bindings": [
+            {
+              "declared_state": "declared",
+              "declared_value": true,
+              "expression_path": "/operands/0",
+              "fact_id": "activity.human_subjects",
+              "operator": "fact_equals",
+              "predicate_result": "true"
+            },
+            {
+              "declared_state": "declared",
+              "declared_value": true,
+              "expression_path": "/operands/1",
+              "fact_id": "scope.ro_research_ethics",
+              "operator": "fact_equals",
+              "predicate_result": "true"
+            }
+          ],
+          "requirement_digest": "7296e31e128d8a40499301350e4c112253ec767fe066863dee40c48c85ae0ab9",
+          "requirement_id": "ro.ethics.article-14.consent-information",
+          "requirement_pointer": "/profiles/3/requirements/1",
+          "responsible_authority_role_id": "review_committee",
+          "unresolved_fact_ids": []
+        },
+        {
+          "applicability": "true",
+          "authority_anchor": {
+            "authority_url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=L0020176",
+            "effective_date": "2011-12-28",
+            "provision": "人體研究法第 7 條",
+            "source_id": "ro.placeholder.ethics.article-7.zh-hant"
+          },
+          "authority_anchor_pointer": "/profiles/3/requirements/0/authority_anchor",
+          "fact_bindings": [
+            {
+              "declared_state": "declared",
+              "declared_value": true,
+              "expression_path": "/operands/0",
+              "fact_id": "activity.human_subjects",
+              "operator": "fact_equals",
+              "predicate_result": "true"
+            },
+            {
+              "declared_state": "declared",
+              "declared_value": true,
+              "expression_path": "/operands/1",
+              "fact_id": "scope.ro_research_ethics",
+              "operator": "fact_equals",
+              "predicate_result": "true"
+            }
+          ],
+          "requirement_digest": "d88ebc29c713cf64fc7e681f0b1ff4859ddb45723d2c3a1108743783fd4bf952",
+          "requirement_id": "ro.ethics.article-7.committee-composition",
+          "requirement_pointer": "/profiles/3/requirements/0",
+          "responsible_authority_role_id": "research_institution_or_review_committee",
+          "unresolved_fact_ids": []
+        }
+      ],
+      "profile_ref": {
+        "axis": "review_ethics",
+        "profile_digest": "0e2f0aded23e29858dd4a9738e5ee3e2071eb5d31027c5bc839285077dbe8b88",
+        "profile_id": "ro.placeholder.research-ethics",
+        "profile_version": "2026-10-10"
+      },
+      "result": "institutional determination required",
+      "unmatched_predicates": [],
+      "unresolved_predicates": []
+    }
+  ],
+  "context_pointer": {
+    "context_digest": "89694b65fa0288f9e96a0c4a2bff18dc5b6fa8b790f98ad87385abfa7a36c7f5",
+    "context_record_id": "probe.ro-gdpr-observational",
+    "schema_version": "irb-context-record/1.0"
+  },
+  "halt_reasons": [],
+  "ordering_semantics": "display_only_sequence_no_decision_meaning",
+  "registry_pointer": {
+    "as_of": "2026-08-09",
+    "registry_digest": "406bd1c6c8d6b657370c68eb2f3f6f736b131901161167e0c460a7b5feec32d8",
+    "registry_id": "human-subjects-authority-ro-respiratory-overlay",
+    "registry_version": "2026-08-09.1-ro.1"
+  },
+  "request_digest": "fe4a52fd548b290b47e020f9b338083807afcd0fc81bc353f4567a4aa890fa73",
+  "resolved_digest": "53a7f6dd5a9c1685f87306828c023fd34e81619cf6984ba80016995f648c9b6b",
+  "result": "institutional determination required",
+  "schema_version": "review-pathway-rule-trace/1.0",
+  "trace_digest": "6d9f2621d04291165a15b47f0506207e467d3646721a2ac06e05f732d10207f5",
+  "trace_request_id": "probe.ro-candidate-pathways",
+  "trace_state": "completed"
+}
