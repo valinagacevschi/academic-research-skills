@@ -918,6 +918,108 @@
       "edition": null,
       "review_window_months": 6,
       "notes": "“authors should only use these technologies to improve readability and language.”; “Authors should disclose in their manuscript the use of AI and AI-assisted technologies in the writing process by following the instructions below.”"
+    },
+    {
+      "value_id": "venue.chest.abstract_limit",
+      "area": "venue.chest",
+      "statement": "Original Research abstracts have a maximum of 300 words in structured format, including clinical trial information for RCTs.",
+      "numeric": true,
+      "use": "fact_check",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://journal.chestnet.org/authinfo_articletype",
+        "title": "CHEST Guide for Authors: Guidance for Specific Article Types",
+        "locator": "Original Research; Article Element table (saved copy 2026-10-10 from a logged-in browser; automated fetch is blocked)"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“300 words, structured format, include clinical trial information for randomized controlled trials”"
+    },
+    {
+      "value_id": "venue.chest.abstract_structure",
+      "area": "venue.chest",
+      "statement": "Original Research abstract sections are Background, Research Question, Study Design and Methods, Results, Interpretation, and Clinical Trial Registration Number (where applicable).",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://journal.chestnet.org/authinfo_articletype",
+        "title": "CHEST Guide for Authors: Guidance for Specific Article Types",
+        "locator": "Original Research; Format (saved copy 2026-10-10 from a logged-in browser; automated fetch is blocked)"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“The abstract should be divided into the following sections: Background, Research Question, Study Design and Methods, Results, Interpretation, and Clinical Trial Registration Number (where applicable).”"
+    },
+    {
+      "value_id": "venue.chest.main_text_limit",
+      "area": "venue.chest",
+      "statement": "Original Research text is limited to 3,200 words, excluding abstract, references, figure legends and tables, with sections Introduction (not labeled), Study Design and Methods, Results, Discussion, and Interpretation.",
+      "numeric": true,
+      "use": "fact_check",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://journal.chestnet.org/authinfo_articletype",
+        "title": "CHEST Guide for Authors: Guidance for Specific Article Types",
+        "locator": "Original Research; article-type table footnote b; Format (saved copy 2026-10-10 from a logged-in browser; automated fetch is blocked)"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“Text length 3,200 words”; “Text word counts exclude abstract, references, figure legends, and tables.”; “The body of the text should be divided into the following sections: Introduction (not labeled), Study Design and Methods, Results, Discussion, and Interpretation.”"
+    },
+    {
+      "value_id": "venue.chest.reference_limit",
+      "area": "venue.chest",
+      "statement": "Original Research allows up to 50 references.",
+      "numeric": true,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://journal.chestnet.org/authinfo_articletype",
+        "title": "CHEST Guide for Authors: Guidance for Specific Article Types",
+        "locator": "Original Research; Article Element table (saved copy 2026-10-10 from a logged-in browser; automated fetch is blocked)"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“Reference count 50 references”"
+    },
+    {
+      "value_id": "venue.chest.take_home_points",
+      "area": "venue.chest",
+      "statement": "Original Research needs a Take-Home Point pullout with one sentence each for Study Question, Results, and Interpretation.",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://journal.chestnet.org/authinfo_articletype",
+        "title": "CHEST Guide for Authors: Guidance for Specific Article Types",
+        "locator": "Original Research; Format (saved copy 2026-10-10 from a logged-in browser; automated fetch is blocked)"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“Finally, a Take-Home Point pullout will be published. Please provide a sentence for the Study Question, Results, and Interpretation.”"
+    },
+    {
+      "value_id": "venue.chest.ethics_statement",
+      "area": "venue.chest",
+      "statement": "Original Research must state IRB (or equivalent) approval or exemption anonymised in Methods, with the committee name and approval number on the title page.",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://journal.chestnet.org/authinfo_articletype",
+        "title": "CHEST Guide for Authors: Guidance for Specific Article Types",
+        "locator": "Original Research; Institutional Review Board (IRB) Approval (saved copy 2026-10-10 from a logged-in browser; automated fetch is blocked)"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“CHEST requires that authors include the committee/organization name and approval number on the title page, and an anonymized description of the approval in full manuscript.”"
     }
   ]
 }
