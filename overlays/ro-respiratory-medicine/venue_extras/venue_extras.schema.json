@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://academic-research-skills.example/overlays/ro-respiratory-medicine/venue_extras.schema.json",
+  "title": "Scholar-declared venue extras",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "venue_name",
+    "abstract_limit",
+    "title_char_limit",
+    "required_abstract_headings",
+    "heading_match",
+    "extras_required",
+    "checklists_required_with_submission",
+    "notes",
+    "declared_by"
+  ],
+  "properties": {
+    "venue_name": {"type": ["string", "null"]},
+    "abstract_limit": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["value", "unit", "counting_rule"],
+      "properties": {
+        "value": {"type": "integer", "minimum": 1},
+        "unit": {"enum": ["words", "characters"]},
+        "counting_rule": {"enum": ["plain", "ers_congress"]}
+      }
+    },
+    "title_char_limit": {"type": ["integer", "null"], "minimum": 1},
+    "required_abstract_headings": {"type": ["array", "null"], "items": {"type": "string", "minLength": 1}},
+    "heading_match": {"enum": ["exact", "case_insensitive", null]},
+    "extras_required": {
+      "type": ["array", "null"],
+      "items": {"enum": ["highlights", "key_messages", "plain_language_summary", "graphical_abstract"]}
+    },
+    "checklists_required_with_submission": {"type": ["array", "null"], "items": {"type": "string", "minLength": 1}},
+    "notes": {"type": ["string", "null"]},
+    "declared_by": {"const": "scholar"}
+  }
+}

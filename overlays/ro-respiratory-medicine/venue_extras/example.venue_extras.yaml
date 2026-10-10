@@ -1,0 +1,13 @@
+venue_name: "Example Respiratory Journal (fictional)"
+abstract_limit:
+  value: 250
+  unit: words
+  counting_rule: plain
+title_char_limit: null
+required_abstract_headings: null
+heading_match: null
+extras_required:
+  - highlights
+checklists_required_with_submission: null
+notes: null
+declared_by: scholar
