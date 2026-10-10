@@ -1,0 +1,18 @@
+schema_version: '1'
+name: 06-fallback-rct
+context:
+  scaffold_script: scaffold.sh
+execution:
+  prompt: |
+    The project has the Romanian respiratory-medicine overlay installed. Before answering, read `overlays/ro-respiratory-medicine/ACTIVATE.md`; treat `{OVERLAY_ROOT}` as `overlays/ro-respiratory-medicine`.
+
+    I'm outlining a randomized controlled trial of a new inhaled treatment for acute COPD exacerbations. The primary endpoint is treatment success at day 30; secondary outcomes include breathlessness, quality of life, and future exacerbations. What reporting guideline and respiratory-specific outcome or MCID considerations should I include in the outline?
+  max_turns: 20
+  timeout_seconds: 600
+  allowed_tools:
+  - Read
+  - Glob
+  - Grep
+  - Skill
+  model: sonnet
+runs: 1

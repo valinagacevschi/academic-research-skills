@@ -10,17 +10,24 @@ bounded synthetic probes, not evidence of universal accuracy.
 From the repository root:
 
 ```bash
-claude plugin eval . --eval-dir overlays/ro-respiratory-medicine/plugin-evals --ablation none --model sonnet --judge-model opus --runs 1 --no-publish
+claude plugin eval . --eval-dir overlays/ro-respiratory-medicine/plugin-evals --scaffold --ablation none --model sonnet --judge-model opus --runs 1 --no-publish
 ```
 
 The target `.` is the plugin root. `--eval-dir` is resolved below that target,
-and results are written under that eval directory. The CLI help listed cases
-as `case.yaml` or `prompt.md` plus `graders/*.md`; it did not document a
-per-case setup hook that writes `CLAUDE.md`. Cases therefore tell the agent
-that the overlay is installed and to read
-`overlays/ro-respiratory-medicine/ACTIVATE.md`, treating
-`{OVERLAY_ROOT}` as `overlays/ro-respiratory-medicine`. A `tool_used` grader
-checks that the activation preamble was read.
+and results are written under `plugin-evals/results/` (gitignored).
+
+The eval sandbox starts each agent in an empty workspace, so the overlay must
+be staged into it. Each case is a `case.yaml` (the `prompt.md` frontmatter
+format does not accept `scaffold_script`) whose `context.scaffold_script` is a
+`scaffold.sh` wrapper inside the case directory (the CLI refuses paths that
+leave the case directory). The wrapper calls `stage_overlay.sh`, which copies
+the overlay to `overlays/ro-respiratory-medicine/` in the workspace, excluding
+`plugin-evals/` and `tests/` so the agent cannot read graders or fixtures.
+`--scaffold` is required; without it every case runs against an empty
+workspace. The prompt tells the agent to read
+`overlays/ro-respiratory-medicine/ACTIVATE.md`, treating `{OVERLAY_ROOT}` as
+`overlays/ro-respiratory-medicine`. Grader files stay in `graders/*.md` and
+load alongside `case.yaml`.
 
 The CNP in case 03 is fictional and checksum-valid. It was constructed from a
 synthetic valid prefix (sex/century digit 1, date 1990-10-10, county 01,
@@ -42,4 +49,13 @@ check that the fictional name is absent from the reply.
 
 ## Verification
 
-Not yet run. The eval cases were not executed while authoring this suite.
+Not yet validly run.
+
+- 2026-10-10, first attempt (claude 2.1.280, sonnet agent, opus judge, $1.04):
+  invalid. Cases were `prompt.md` files with no staging, so the overlay was
+  absent from the sandbox and every agent reported that `ACTIVATE.md` did not
+  exist. The `activation-loaded` grader still passed in all six cases because
+  `tool_used` counts the Read call, not whether it succeeded. Scores from that
+  run (1/6 cases passed, overall 0.70) measure the core plugin without the
+  overlay and are not evidence about the overlay. The suite was then converted
+  to `case.yaml` with the staging scaffold above.
