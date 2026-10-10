@@ -510,6 +510,125 @@
       "edition": null,
       "review_window_months": 6,
       "notes": "Fetched via r.jina.ai reader proxy on 2026-10-10; “standard ... EUR 2665”; mandated CC BY ... “EUR 3640.”"
+    },
+    {
+      "value_id": "venue.thorax.main_text_limit",
+      "area": "venue.thorax",
+      "statement": "Original research articles allow up to 3,500 words (Introduction, Methods, Results, Discussion); the count excludes the title page, abstract, tables, acknowledgements, contributions and references.",
+      "numeric": true,
+      "use": "fact_check",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://web.archive.org/web/20260519161404/https://thorax.bmj.com/pages/authors",
+        "title": "Thorax: Authors / instructions for authors (Wayback Machine snapshot of thorax.bmj.com/pages/authors, archived 2026-05-19)",
+        "locator": "Submission guidelines; Original research (as archived 2026-05-19; live page behind bot verification)"
+      },
+      "verified_at": "2026-05-19",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“Word count: up to 3,500: Introduction, Methods, Results, Discussion”; “The word count excludes the title page, abstract, tables, acknowledgements, contributions and references.”"
+    },
+    {
+      "value_id": "venue.thorax.title_limit",
+      "area": "venue.thorax",
+      "statement": "Original research titles have a maximum of 20 words.",
+      "numeric": true,
+      "use": "fact_check",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://web.archive.org/web/20260519161404/https://thorax.bmj.com/pages/authors",
+        "title": "Thorax: Authors / instructions for authors (Wayback Machine snapshot of thorax.bmj.com/pages/authors, archived 2026-05-19)",
+        "locator": "Submission guidelines; Original research (as archived 2026-05-19; live page behind bot verification)"
+      },
+      "verified_at": "2026-05-19",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“Title: maximum of 20 words”"
+    },
+    {
+      "value_id": "venue.thorax.abstract_limit",
+      "area": "venue.thorax",
+      "statement": "Original research requires a structured abstract of up to 250; the page states no unit (the adjacent title limit is in words).",
+      "numeric": true,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://web.archive.org/web/20260519161404/https://thorax.bmj.com/pages/authors",
+        "title": "Thorax: Authors / instructions for authors (Wayback Machine snapshot of thorax.bmj.com/pages/authors, archived 2026-05-19)",
+        "locator": "Submission guidelines; Original research (as archived 2026-05-19; live page behind bot verification)"
+      },
+      "verified_at": "2026-05-19",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“Structured abstract: up to 250”"
+    },
+    {
+      "value_id": "venue.thorax.reference_limit",
+      "area": "venue.thorax",
+      "statement": "Original research allows up to 40 references; figures are not limited but must be justified.",
+      "numeric": true,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://web.archive.org/web/20260519161404/https://thorax.bmj.com/pages/authors",
+        "title": "Thorax: Authors / instructions for authors (Wayback Machine snapshot of thorax.bmj.com/pages/authors, archived 2026-05-19)",
+        "locator": "Submission guidelines; Original research (as archived 2026-05-19; live page behind bot verification)"
+      },
+      "verified_at": "2026-05-19",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“Figures: are not limited, but must be justified”; “References: up to 40”"
+    },
+    {
+      "value_id": "venue.thorax.key_messages",
+      "area": "venue.thorax",
+      "statement": "Original research must include a key-messages box after the abstract with three headings (What is already known on this topic; What this study adds; How this study might affect research, practice or policy), in no more than 3–5 sentences.",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://web.archive.org/web/20260519161404/https://thorax.bmj.com/pages/authors",
+        "title": "Thorax: Authors / instructions for authors (Wayback Machine snapshot of thorax.bmj.com/pages/authors, archived 2026-05-19)",
+        "locator": "Submission guidelines; Original research (as archived 2026-05-19; live page behind bot verification)"
+      },
+      "verified_at": "2026-05-19",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“Please include the key messages of your article after your abstract using the following headings ... no more than 3-5 sentences”"
+    },
+    {
+      "value_id": "venue.thorax.checklists",
+      "area": "venue.thorax",
+      "statement": "Randomised trials must be reported according to CONSORT, epidemiological studies must follow STROBE (STREGA for genetic association studies), and systematic reviews must follow PRISMA with a protocol public before the review began.",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://web.archive.org/web/20260519161404/https://thorax.bmj.com/pages/authors",
+        "title": "Thorax: Authors / instructions for authors (Wayback Machine snapshot of thorax.bmj.com/pages/authors, archived 2026-05-19)",
+        "locator": "Submission guidelines; Original research article types; Reporting guidelines (as archived 2026-05-19; live page behind bot verification)"
+      },
+      "verified_at": "2026-05-19",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“must be reported according to the CONSORT guidelines”; “Epidemiological studies must follow STROBE guidelines (or STREGA guidelines for genetic association studies)”; “Systematic reviews must be reported according to the PRISMA guidelines and the protocol for the review must have been publicly available before the review commenced”"
+    },
+    {
+      "value_id": "venue.thorax.data_availability",
+      "area": "venue.thorax",
+      "statement": "All research articles must contain a Data Availability Statement; trials enrolling from 1 January 2019 need a data sharing plan with trial registration.",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://web.archive.org/web/20260519161404/https://thorax.bmj.com/pages/authors",
+        "title": "Thorax: Authors / instructions for authors (Wayback Machine snapshot of thorax.bmj.com/pages/authors, archived 2026-05-19)",
+        "locator": "Data sharing (as archived 2026-05-19; live page behind bot verification)"
+      },
+      "verified_at": "2026-05-19",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“All research articles must contain a Data Availability Statement.”; “a data sharing plan must be included with trial registration for clinical trials that begin enrolling participants on or after 1st January 2019.”"
     }
   ]
 }

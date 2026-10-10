@@ -66,7 +66,7 @@ Encoded row counts are grouped by evidence tag and use. Failed counts include so
 | Pneumologia author-instruction fields | failed-fetch | Fee verified; six author-format fields were not exposed by the HTTP 200 Sciendo for-authors page. |
 | CHEST abstract limit, APC, GenAI placement | failed-fetch | Publisher author-information page remains behind bot verification. |
 | AJRCCM reference style, reporting checklists, fees | failed-fetch | OUP guide and alternate instructions remain behind bot verification. |
-| Thorax figure limits and checklist mandate | failed-fetch | BMJ author page remains behind bot verification. |
+| Thorax figure limits and checklist mandate | recovered (archive) | Live BMJ page is behind bot verification; values encoded from the Wayback Machine snapshot archived 2026-05-19 (`venue.thorax.*`, verified_at = snapshot date). |
 | Respiratory Medicine 2024 author-guide snapshot | failed-fetch | Direct and reader-proxy requests returned challenge content. |
 | WoS indexing status of international journals | dropped | Out of scope under the S2 venue brief; indexing was intentionally omitted. |
 | Law 190/2018 Arts. 3, 4, 8 | promoted | Court-hosted PDF used; official portal availability itself failed. See legal fragment. |
@@ -93,7 +93,8 @@ Other source-specific failed-fetch values from this run are enumerated in the ai
 
 - AJRCCM: https://academic.oup.com/ajrccm/pages/author-guidelines and alternate https://academic.oup.com/ajrccm/pages/general-instructions — reader proxy returned the challenge page; direct alternate returned HTTP 403.
 - CHEST: https://journal.chestnet.org/authinfo_prep and alternate https://journal.chestnet.org/infoforauthors — reader proxy returned challenge pages. The ScienceDirect guide redirected to the blocked journal author page.
-- Thorax: https://thorax.bmj.com/pages/authors — reader proxy returned the challenge page; direct request returned HTTP 403.
+- Thorax: https://thorax.bmj.com/pages/authors — reader proxy returned the challenge page; direct request returned HTTP 403. Recovered 2026-10-10 from https://web.archive.org/web/20260519161404/https://thorax.bmj.com/pages/authors (section text decoded from the page data; every quoted value matched).
+- Archive check 2026-10-10 for the other three: AJRCCM instructions last archived 2019-10-18, CHEST authinfo_prep 2021-08-29, Respiratory Medicine guide for authors 2024-01-10. All are outside the 6-month review window and were not encoded.
 - Respiratory Medicine: https://www.sciencedirect.com/journal/respiratory-medicine/publish/guide-for-authors and Elsevier alternate — reader-proxy requests returned challenge content.
 
 ERS author instructions were readable through the reader proxy on retry and the supported ERJ values were promoted; it is not classified as still bot-blocked. Pneumologia returned HTTP 200 but did not expose most author-instruction values.
