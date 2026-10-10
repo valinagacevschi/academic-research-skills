@@ -2,7 +2,7 @@
 
 Apply these tiers before handling patient material:
 
-- **Direct identifiers** (including a CNP): stop once; this is not a refusal. Never echo them or write them to workspace files. Ask the user to redact and re-paste, and note that the session transcript already holds anything previously pasted.
+- **Direct identifiers** (including a CNP): stop once, before any calculation or analysis of the pasted material; this is not a refusal. Never echo them or write them to workspace files. Ask the user to redact and re-paste, note that the session transcript already holds anything previously pasted, and in the same reply offer code-to-data as the alternative.
 - **Line-level data**: warn once per session. Continue only after the user confirms their controller or DPO allows sending it to the model provider.
 - **Aggregate data**: no action.
 
