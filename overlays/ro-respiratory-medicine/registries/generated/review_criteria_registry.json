@@ -1,0 +1,675 @@
+{
+  "as_of": "2026-10-10",
+  "authority_classes": {
+    "broad_field_fallback": [
+      "broad.claim-evidence-alignment",
+      "broad.method-evidence-alignment",
+      "broad.limitation-calibration",
+      "broad.submission-traceability"
+    ],
+    "field_society_standard": [
+      "field.sigsoft.empirical.general-essential",
+      "field.ers-ats.respiratory-measurement",
+      "ro.manuscript-statements.ethics",
+      "ro.manuscript-statements.consent-anonymisation",
+      "ro.manuscript-statements.inn-only",
+      "ro.manuscript-statements.image-consent",
+      "ro.manuscript-statements.conflict-of-interest"
+    ],
+    "official_venue_type": [
+      "official.msr2027.technical.full.scope",
+      "official.msr2027.technical.full.validity",
+      "official.msr2027.technical.full.open-science"
+    ],
+    "reporting_design_overlay": [
+      "overlay.sigsoft.repository-mining.essential",
+      "overlay.record.routine-data",
+      "overlay.strome-id.infection"
+    ]
+  },
+  "criteria": [
+    {
+      "applicability": {
+        "contribution_types": [],
+        "disciplines": [],
+        "overlays": [],
+        "subfields": [],
+        "tracks": [],
+        "venues": []
+      },
+      "authority_class": "broad_field_fallback",
+      "blocking_policy": "blocking_allowed",
+      "conflict_group": null,
+      "criterion_id": "broad.claim-evidence-alignment",
+      "dimension": "scientific_validity",
+      "exclusions": {
+        "contribution_types": [],
+        "disciplines": [],
+        "overlays": [],
+        "subfields": [],
+        "tracks": [],
+        "venues": []
+      },
+      "source": {
+        "effective_date": "2026-08-08",
+        "freshness": "current",
+        "publisher": "Academic Research Skills",
+        "title": "ARS Review Criteria Framework",
+        "uri": "repository://academic-paper-reviewer/references/review_criteria_framework.md",
+        "verified_at": "2026-08-08"
+      },
+      "statement": "Each material claim should be supported at the strength and scope asserted, with uncertainty preserved.",
+      "title": "Claim and evidence alignment",
+      "version": "1.0"
+    },
+    {
+      "applicability": {
+        "contribution_types": [],
+        "disciplines": [],
+        "overlays": [],
+        "subfields": [],
+        "tracks": [],
+        "venues": []
+      },
+      "authority_class": "broad_field_fallback",
+      "blocking_policy": "blocking_allowed",
+      "conflict_group": null,
+      "criterion_id": "broad.method-evidence-alignment",
+      "dimension": "scientific_validity",
+      "exclusions": {
+        "contribution_types": [],
+        "disciplines": [],
+        "overlays": [],
+        "subfields": [],
+        "tracks": [],
+        "venues": []
+      },
+      "source": {
+        "effective_date": "2026-08-08",
+        "freshness": "current",
+        "publisher": "Academic Research Skills",
+        "title": "ARS Review Criteria Framework",
+        "uri": "repository://academic-paper-reviewer/references/review_criteria_framework.md",
+        "verified_at": "2026-08-08"
+      },
+      "statement": "Methods, data, and analysis should be fit for the research question and support reproducible scrutiny at the level claimed.",
+      "title": "Method and evidence alignment",
+      "version": "1.0"
+    },
+    {
+      "applicability": {
+        "contribution_types": [],
+        "disciplines": [],
+        "overlays": [],
+        "subfields": [],
+        "tracks": [],
+        "venues": []
+      },
+      "authority_class": "broad_field_fallback",
+      "blocking_policy": "blocking_allowed",
+      "conflict_group": null,
+      "criterion_id": "broad.limitation-calibration",
+      "dimension": "scientific_validity",
+      "exclusions": {
+        "contribution_types": [],
+        "disciplines": [],
+        "overlays": [],
+        "subfields": [],
+        "tracks": [],
+        "venues": []
+      },
+      "source": {
+        "effective_date": "2026-08-08",
+        "freshness": "current",
+        "publisher": "Academic Research Skills",
+        "title": "ARS Review Criteria Framework",
+        "uri": "repository://academic-paper-reviewer/references/review_criteria_framework.md",
+        "verified_at": "2026-08-08"
+      },
+      "statement": "Limitations, uncertainty, boundary conditions, and plausible alternatives should be visible and proportionate to the evidence.",
+      "title": "Limitation calibration",
+      "version": "1.0"
+    },
+    {
+      "applicability": {
+        "contribution_types": [],
+        "disciplines": [],
+        "overlays": [],
+        "subfields": [],
+        "tracks": [],
+        "venues": []
+      },
+      "authority_class": "broad_field_fallback",
+      "blocking_policy": "advisory_only",
+      "conflict_group": null,
+      "criterion_id": "broad.submission-traceability",
+      "dimension": "submission_readiness",
+      "exclusions": {
+        "contribution_types": [],
+        "disciplines": [],
+        "overlays": [],
+        "subfields": [],
+        "tracks": [],
+        "venues": []
+      },
+      "source": {
+        "effective_date": "2026-08-08",
+        "freshness": "current",
+        "publisher": "Academic Research Skills",
+        "title": "ARS Review Criteria Framework",
+        "uri": "repository://academic-paper-reviewer/references/review_criteria_framework.md",
+        "verified_at": "2026-08-08"
+      },
+      "statement": "Required declarations, supporting artifacts, and unresolved limitations should be traceable without presenting field-general guidance as venue-specific compliance.",
+      "title": "Submission traceability",
+      "version": "1.0"
+    },
+    {
+      "applicability": {
+        "contribution_types": [
+          "Full Paper"
+        ],
+        "disciplines": [],
+        "overlays": [],
+        "subfields": [],
+        "tracks": [
+          "Technical Papers"
+        ],
+        "venues": [
+          "MSR 2027"
+        ]
+      },
+      "authority_class": "official_venue_type",
+      "blocking_policy": "blocking_allowed",
+      "conflict_group": null,
+      "criterion_id": "official.msr2027.technical.full.scope",
+      "dimension": "venue_fit",
+      "exclusions": {
+        "contribution_types": [],
+        "disciplines": [],
+        "overlays": [],
+        "subfields": [],
+        "tracks": [],
+        "venues": []
+      },
+      "source": {
+        "effective_date": "2026-08-24",
+        "freshness": "current",
+        "publisher": "MSR 2027",
+        "title": "MSR 2027 Technical Papers — Call for Papers",
+        "uri": "https://2027.msrconf.org/track/msr-2027-technical-papers#Call-for-Papers",
+        "verified_at": "2026-08-24"
+      },
+      "statement": "An MSR 2027 Technical Papers Full Paper should make software data central, present a significant research contribution, and describe a new technique or novel research result with high technical rigor and scientific evaluation.",
+      "title": "MSR 2027 full-paper scope and contribution",
+      "version": "2027-cfp.pane-sha256-2546217a5f2b7dccb3b617b976e75cf7427c9a3881fda3092323c94a35231795"
+    },
+    {
+      "applicability": {
+        "contribution_types": [
+          "Full Paper"
+        ],
+        "disciplines": [],
+        "overlays": [],
+        "subfields": [],
+        "tracks": [
+          "Technical Papers"
+        ],
+        "venues": [
+          "MSR 2027"
+        ]
+      },
+      "authority_class": "official_venue_type",
+      "blocking_policy": "blocking_allowed",
+      "conflict_group": null,
+      "criterion_id": "official.msr2027.technical.full.validity",
+      "dimension": "scientific_validity",
+      "exclusions": {
+        "contribution_types": [],
+        "disciplines": [],
+        "overlays": [],
+        "subfields": [],
+        "tracks": [],
+        "venues": []
+      },
+      "source": {
+        "effective_date": "2026-08-24",
+        "freshness": "current",
+        "publisher": "MSR 2027",
+        "title": "MSR 2027 Technical Papers — Evaluation Criteria",
+        "uri": "https://2027.msrconf.org/track/msr-2027-technical-papers#evaluation-criteria",
+        "verified_at": "2026-08-24"
+      },
+      "statement": "Assess whether the contribution addresses its research questions through relevant procedures and whether its claims can be independently checked through a replication package or enough information about data acquisition, analysis, interpretation, or technique operation.",
+      "title": "MSR 2027 soundness and replicability",
+      "version": "2027-cfp.pane-sha256-2546217a5f2b7dccb3b617b976e75cf7427c9a3881fda3092323c94a35231795"
+    },
+    {
+      "applicability": {
+        "contribution_types": [
+          "Full Paper"
+        ],
+        "disciplines": [],
+        "overlays": [],
+        "subfields": [],
+        "tracks": [
+          "Technical Papers"
+        ],
+        "venues": [
+          "MSR 2027"
+        ]
+      },
+      "authority_class": "official_venue_type",
+      "blocking_policy": "blocking_allowed",
+      "conflict_group": null,
+      "criterion_id": "official.msr2027.technical.full.open-science",
+      "dimension": "submission_readiness",
+      "exclusions": {
+        "contribution_types": [],
+        "disciplines": [],
+        "overlays": [],
+        "subfields": [],
+        "tracks": [],
+        "venues": []
+      },
+      "source": {
+        "effective_date": "2026-08-24",
+        "freshness": "current",
+        "publisher": "MSR 2027",
+        "title": "MSR 2027 Technical Papers — Open Science Policy",
+        "uri": "https://2027.msrconf.org/track/msr-2027-technical-papers#open-science-policy",
+        "verified_at": "2026-08-24"
+      },
+      "statement": "Include a data-availability statement; disclose relevant source code, anonymized and curated study data, and reproduction or replication instructions when possible; identify and explain any ethical, legal, technical, economic, or other barrier to disclosure.",
+      "title": "MSR 2027 data-availability and artifact disclosure",
+      "version": "2027-cfp.pane-sha256-2546217a5f2b7dccb3b617b976e75cf7427c9a3881fda3092323c94a35231795"
+    },
+    {
+      "applicability": {
+        "contribution_types": [],
+        "disciplines": [
+          "Software Engineering"
+        ],
+        "overlays": [
+          "ACM SIGSOFT Repository Mining Standard"
+        ],
+        "subfields": [],
+        "tracks": [],
+        "venues": []
+      },
+      "authority_class": "field_society_standard",
+      "blocking_policy": "advisory_only",
+      "conflict_group": null,
+      "criterion_id": "field.sigsoft.empirical.general-essential",
+      "dimension": "scientific_validity",
+      "exclusions": {
+        "contribution_types": [],
+        "disciplines": [],
+        "overlays": [],
+        "subfields": [],
+        "tracks": [],
+        "venues": []
+      },
+      "source": {
+        "effective_date": "2025-02-19",
+        "freshness": "current",
+        "publisher": "ACM SIGSOFT",
+        "title": "ACM SIGSOFT Empirical Standards — General Standard",
+        "uri": "https://github.com/acmsigsoft/EmpiricalStandards/blob/d131d7209f2fad7e8dfd30afbd2b8ea605ea3141/docs/standards/GeneralStandard.md#L7-L75",
+        "verified_at": "2026-08-24"
+      },
+      "statement": "For a software-engineering study that collects and analyzes data, state and motivate its questions; name and justify the methodology; describe data collection and analysis; connect results and conclusions to the questions and evidence; disclose major limitations; and address applicable research risks and empirical standards.",
+      "title": "ACM SIGSOFT General Standard essential attributes",
+      "version": "d131d7209f2fad7e8dfd30afbd2b8ea605ea3141"
+    },
+    {
+      "applicability": {
+        "contribution_types": [],
+        "disciplines": [
+          "Software Engineering"
+        ],
+        "overlays": [
+          "ACM SIGSOFT Repository Mining Standard"
+        ],
+        "subfields": [],
+        "tracks": [],
+        "venues": []
+      },
+      "authority_class": "reporting_design_overlay",
+      "blocking_policy": "advisory_only",
+      "conflict_group": null,
+      "criterion_id": "overlay.sigsoft.repository-mining.essential",
+      "dimension": "scientific_validity",
+      "exclusions": {
+        "contribution_types": [],
+        "disciplines": [],
+        "overlays": [],
+        "subfields": [],
+        "tracks": [],
+        "venues": []
+      },
+      "source": {
+        "effective_date": "2025-05-26",
+        "freshness": "current",
+        "publisher": "ACM SIGSOFT",
+        "title": "ACM SIGSOFT Empirical Standards — Repository Mining",
+        "uri": "https://github.com/acmsigsoft/EmpiricalStandards/blob/53c14e1a85aac1aeafb0788a622c5aaafec5c8b9/docs/standards/RepositoryMining.md#L6-L55",
+        "verified_at": "2026-08-24"
+      },
+      "statement": "For quantitative studies that automatically extract software-repository data, justify method fit, sources, repository selection, acquisition, preprocessing, measures, and any sampling or annotation procedure; validate selection criteria and measures where applicable; and discuss external-validity threats and method-specific boundaries.",
+      "title": "ACM SIGSOFT Repository Mining Standard essential attributes",
+      "version": "53c14e1a85aac1aeafb0788a622c5aaafec5c8b9"
+    },
+    {
+      "applicability": {
+        "contribution_types": [],
+        "disciplines": [
+          "Medicine"
+        ],
+        "overlays": [],
+        "subfields": [
+          "Respiratory medicine"
+        ],
+        "tracks": [],
+        "venues": []
+      },
+      "authority_class": "field_society_standard",
+      "blocking_policy": "advisory_only",
+      "conflict_group": null,
+      "criterion_id": "field.ers-ats.respiratory-measurement",
+      "dimension": "scientific_validity",
+      "exclusions": {
+        "contribution_types": [],
+        "disciplines": [],
+        "overlays": [],
+        "subfields": [],
+        "tracks": [],
+        "venues": []
+      },
+      "source": {
+        "effective_date": "2026-10-10",
+        "freshness": "current",
+        "publisher": "Europe PMC",
+        "title": "ATS/ERS Spirometry Standardization Update",
+        "uri": "https://europepmc.org/article/MED/31613151",
+        "verified_at": "2026-10-10"
+      },
+      "statement": "Use the relevant ATS/ERS technical standards for spirometry (2019), single-breath DLCO (2017), and interpretation of routine lung-function tests (2022); use the race-neutral GLI equations described in the ATS statement.",
+      "title": "ATS/ERS respiratory measurement standards",
+      "version": "2019"
+    },
+    {
+      "applicability": {
+        "contribution_types": [],
+        "disciplines": [
+          "Medicine"
+        ],
+        "overlays": [
+          "RECORD"
+        ],
+        "subfields": [
+          "Respiratory medicine"
+        ],
+        "tracks": [],
+        "venues": []
+      },
+      "authority_class": "reporting_design_overlay",
+      "blocking_policy": "advisory_only",
+      "conflict_group": null,
+      "criterion_id": "overlay.record.routine-data",
+      "dimension": "scientific_validity",
+      "exclusions": {
+        "contribution_types": [],
+        "disciplines": [],
+        "overlays": [],
+        "subfields": [],
+        "tracks": [],
+        "venues": []
+      },
+      "source": {
+        "effective_date": "2026-10-10",
+        "freshness": "current",
+        "publisher": "Europe PMC",
+        "title": "The RECORD statement",
+        "uri": "https://europepmc.org/article/MED/26440803",
+        "verified_at": "2026-10-10"
+      },
+      "statement": "For observational studies using routinely collected health data, consider the RECORD reporting guideline, which extends STROBE.",
+      "title": "RECORD for routinely collected health data",
+      "version": "2015"
+    },
+    {
+      "applicability": {
+        "contribution_types": [],
+        "disciplines": [
+          "Medicine"
+        ],
+        "overlays": [
+          "STROME-ID"
+        ],
+        "subfields": [
+          "Respiratory medicine"
+        ],
+        "tracks": [],
+        "venues": []
+      },
+      "authority_class": "reporting_design_overlay",
+      "blocking_policy": "advisory_only",
+      "conflict_group": null,
+      "criterion_id": "overlay.strome-id.infection",
+      "dimension": "scientific_validity",
+      "exclusions": {
+        "contribution_types": [],
+        "disciplines": [],
+        "overlays": [],
+        "subfields": [],
+        "tracks": [],
+        "venues": []
+      },
+      "source": {
+        "effective_date": "2026-10-10",
+        "freshness": "current",
+        "publisher": "Europe PMC",
+        "title": "STROME-ID: an extension of the STROBE statement",
+        "uri": "https://europepmc.org/article/MED/24631223",
+        "verified_at": "2026-10-10"
+      },
+      "statement": "For infectious-disease molecular epidemiology, consider STROME-ID, an extension to STROBE with additional checklist items.",
+      "title": "STROME-ID for infectious-disease molecular epidemiology",
+      "version": "2014"
+    },
+    {
+      "applicability": {
+        "contribution_types": [],
+        "disciplines": [
+          "Medicine"
+        ],
+        "overlays": [],
+        "subfields": [
+          "Respiratory medicine"
+        ],
+        "tracks": [],
+        "venues": []
+      },
+      "authority_class": "field_society_standard",
+      "blocking_policy": "advisory_only",
+      "conflict_group": null,
+      "criterion_id": "ro.manuscript-statements.ethics",
+      "dimension": "submission_readiness",
+      "exclusions": {
+        "contribution_types": [],
+        "disciplines": [],
+        "overlays": [],
+        "subfields": [],
+        "tracks": [],
+        "venues": []
+      },
+      "source": {
+        "effective_date": "2026-10-10",
+        "freshness": "current",
+        "publisher": "OUG 29/2022",
+        "title": "OUG 29/2022 (agency-hosted consolidated print)",
+        "uri": "https://www.anm.ro/_/STUDII%20CLINICE/OUG%2029-2022.pdf",
+        "verified_at": "2026-10-10"
+      },
+      "statement": "The manuscript should identify the ethics committee and state the ethics review or opinion relevant to the study.",
+      "title": "Ethics statement",
+      "version": "2025"
+    },
+    {
+      "applicability": {
+        "contribution_types": [],
+        "disciplines": [
+          "Medicine"
+        ],
+        "overlays": [],
+        "subfields": [
+          "Respiratory medicine"
+        ],
+        "tracks": [],
+        "venues": []
+      },
+      "authority_class": "field_society_standard",
+      "blocking_policy": "advisory_only",
+      "conflict_group": null,
+      "criterion_id": "ro.manuscript-statements.consent-anonymisation",
+      "dimension": "submission_readiness",
+      "exclusions": {
+        "contribution_types": [],
+        "disciplines": [],
+        "overlays": [],
+        "subfields": [],
+        "tracks": [],
+        "venues": []
+      },
+      "source": {
+        "effective_date": "2026-10-10",
+        "freshness": "current",
+        "publisher": "Law 46/2003 consolidated print",
+        "title": "Law 46/2003 consolidated print (Ministry of Health copy)",
+        "uri": "https://ms.ro/media/documents/LEGE_Nr._46_2003_forma_la_data_de_20.11.2023.pdf",
+        "verified_at": "2026-10-10"
+      },
+      "statement": "The manuscript should state the consent approach for scientific research; where anonymisation and a committee decision are reported, describe them without presenting anonymisation as a statutory waiver.",
+      "title": "Consent or anonymisation statement",
+      "version": "2025"
+    },
+    {
+      "applicability": {
+        "contribution_types": [],
+        "disciplines": [
+          "Medicine"
+        ],
+        "overlays": [],
+        "subfields": [
+          "Respiratory medicine"
+        ],
+        "tracks": [],
+        "venues": []
+      },
+      "authority_class": "field_society_standard",
+      "blocking_policy": "advisory_only",
+      "conflict_group": null,
+      "criterion_id": "ro.manuscript-statements.inn-only",
+      "dimension": "submission_readiness",
+      "exclusions": {
+        "contribution_types": [],
+        "disciplines": [],
+        "overlays": [],
+        "subfields": [],
+        "tracks": [],
+        "venues": []
+      },
+      "source": {
+        "effective_date": "2026-10-10",
+        "freshness": "current",
+        "publisher": "CMR Deontology Code 2025",
+        "title": "CMR Deontology Code 2025",
+        "uri": "https://www.cmr.ro/wp-content/uploads/2026/01/codul-de-deontologie-medicala-al-colegiului-medicilor-din-romania-din-30102025-1.pdf",
+        "verified_at": "2026-10-10"
+      },
+      "statement": "For CMR members, medicines in scientific publications are referred to by their international nonproprietary names (INNs).",
+      "title": "INN-only medicine names",
+      "version": "2025"
+    },
+    {
+      "applicability": {
+        "contribution_types": [],
+        "disciplines": [
+          "Medicine"
+        ],
+        "overlays": [],
+        "subfields": [
+          "Respiratory medicine"
+        ],
+        "tracks": [],
+        "venues": []
+      },
+      "authority_class": "field_society_standard",
+      "blocking_policy": "advisory_only",
+      "conflict_group": null,
+      "criterion_id": "ro.manuscript-statements.image-consent",
+      "dimension": "submission_readiness",
+      "exclusions": {
+        "contribution_types": [],
+        "disciplines": [],
+        "overlays": [],
+        "subfields": [],
+        "tracks": [],
+        "venues": []
+      },
+      "source": {
+        "effective_date": "2026-10-10",
+        "freshness": "current",
+        "publisher": "Law 46/2003 consolidated print",
+        "title": "Law 46/2003 consolidated print (Ministry of Health copy)",
+        "uri": "https://ms.ro/media/documents/LEGE_Nr._46_2003_forma_la_data_de_20.11.2023.pdf",
+        "verified_at": "2026-10-10"
+      },
+      "statement": "The manuscript should document consent for identifiable patient images, consistent with the cited rule on photography or filming in a medical unit.",
+      "title": "Consent for identifiable images",
+      "version": "2025"
+    },
+    {
+      "applicability": {
+        "contribution_types": [],
+        "disciplines": [
+          "Medicine"
+        ],
+        "overlays": [],
+        "subfields": [
+          "Respiratory medicine"
+        ],
+        "tracks": [],
+        "venues": []
+      },
+      "authority_class": "field_society_standard",
+      "blocking_policy": "advisory_only",
+      "conflict_group": null,
+      "criterion_id": "ro.manuscript-statements.conflict-of-interest",
+      "dimension": "submission_readiness",
+      "exclusions": {
+        "contribution_types": [],
+        "disciplines": [],
+        "overlays": [],
+        "subfields": [],
+        "tracks": [],
+        "venues": []
+      },
+      "source": {
+        "effective_date": "2026-10-10",
+        "freshness": "current",
+        "publisher": "CMR Deontology Code 2025",
+        "title": "CMR Deontology Code 2025",
+        "uri": "https://www.cmr.ro/wp-content/uploads/2026/01/codul-de-deontologie-medicala-al-colegiului-medicilor-din-romania-din-30102025-1.pdf",
+        "verified_at": "2026-10-10"
+      },
+      "statement": "The manuscript should include a conflict-of-interest disclosure.",
+      "title": "Conflict-of-interest disclosure",
+      "version": "2025"
+    }
+  ],
+  "registry_id": "review-criteria-ro-respiratory-overlay",
+  "registry_version": "2026.08.24-ro.1",
+  "schema_version": "review-criteria-registry/1.0"
+}

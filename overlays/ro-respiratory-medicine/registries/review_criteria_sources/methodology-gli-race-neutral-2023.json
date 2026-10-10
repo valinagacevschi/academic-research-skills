@@ -1,0 +1,36 @@
+{
+  "receipt_version": "review-criteria-source-receipt/1.0",
+  "receipt_kind": "mutable_web_semantic_snapshot",
+  "source_uri": "https://europepmc.org/article/MED/36383197",
+  "publisher": "A Race-neutral Approach to the Interpretation of Lung Function Measurements",
+  "retrieved_at": "2026-10-10T14:43:10Z",
+  "capture": {
+    "method": "GET https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:36383197&format=json",
+    "http_status": 200,
+    "content_type": "application/json;charset=UTF-8",
+    "etag": null,
+    "last_modified": null,
+    "raw_body_size_bytes": 1035,
+    "raw_body_sha256": "4ff0308174e2544b9ea6a296d85f5698db6562e22c089981d6153d162b782ce7"
+  },
+  "semantic_snapshot": {
+    "selection": "Backing data row locator and quoted source note",
+    "normalization": "UTF-8 text exactly as recorded in the verified overlay data row; no whitespace normalization",
+    "encoding": "UTF-8",
+    "size_bytes": 118,
+    "word_count": 15,
+    "sha256": "90ebacfe499c652bcd6271df6150111529f76e18b2fdd9414d7b522df75724c7"
+  },
+  "criterion_locators": [
+    {
+      "criterion_id": "field.ers-ats.respiratory-measurement",
+      "fragment": "“to create race-neutral GLI global (2022) equations.”",
+      "locator": "Europe PMC record; title, publication date/year and abstract"
+    }
+  ],
+  "retention": {
+    "full_body_committed": false,
+    "reason": "Retain only the verified source-row locator and quote; do not redistribute the source body.",
+    "drift_rule": "Recheck source URI and locator against the current source before relying on a changed criterion."
+  }
+}

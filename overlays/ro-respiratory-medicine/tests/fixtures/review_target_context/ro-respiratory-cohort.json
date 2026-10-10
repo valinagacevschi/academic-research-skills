@@ -1,0 +1,41 @@
+{
+  "schema_version": "review-target-declaration/1.0",
+  "confirmed_by": "author",
+  "confirmed_at": "2026-10-10T12:00:00Z",
+  "criteria_as_of": "2026-10-10",
+  "discipline": {
+    "primary": "Medicine",
+    "subfield": "Respiratory medicine",
+    "additional_disciplines": []
+  },
+  "target": {
+    "venue": null,
+    "track": null,
+    "contribution_type": "Original Article"
+  },
+  "reporting_design_overlays": [
+    "RECORD"
+  ],
+  "criterion_selection": {
+    "mode": "all_applicable",
+    "ids": []
+  },
+  "precedence": [
+    {
+      "rank": 1,
+      "authority_class": "official_venue_type"
+    },
+    {
+      "rank": 2,
+      "authority_class": "field_society_standard"
+    },
+    {
+      "rank": 3,
+      "authority_class": "reporting_design_overlay"
+    },
+    {
+      "rank": 4,
+      "authority_class": "broad_field_fallback"
+    }
+  ]
+}

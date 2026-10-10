@@ -205,6 +205,63 @@ def check_human_subjects_registry(root: Path, repo_root: Path) -> list[str]:
         return [f"human-subjects registry: {exc}"]
     return []
 
+def check_review_criteria_registry(root: Path, repo_root: Path) -> list[str]:
+    generated = root / "registries/generated/review_criteria_registry.json"
+    if not generated.exists():
+        return []
+    try:
+        sys.path.insert(0, str(repo_root))
+        sys.path.insert(0, str(root / "registries"))
+        from scripts.resolve_review_target_context import validate_registry
+        from build_registries import build_review_criteria, rendered
+        payload = load_json(generated)
+        core = load_json(repo_root / "shared/review_criteria_registry.json")
+        prefix = core["registry_version"] + "-ro."
+        if not payload.get("registry_version", "").startswith(prefix):
+            return ["generated review-criteria registry version does not match current core registry"]
+        fresh = rendered(build_review_criteria(core_path=repo_root / "shared/review_criteria_registry.json", delta_path=root / "registries/review_criteria.delta.json"))
+        if generated.read_text(encoding="utf-8") != fresh:
+            return ["generated review-criteria registry is stale; rebuild registries"]
+        validate_registry(payload)
+        if payload["criteria"][:len(core["criteria"])] != core["criteria"]:
+            return ["generated review-criteria registry changed core criteria rows"]
+        delta = load_json(root / "registries/review_criteria.delta.json")
+        delta_errors = validate_json(delta, root / "schemas/review_criteria_delta.schema.json")
+        if delta_errors:
+            return ["review-criteria delta invalid: " + "; ".join(delta_errors)]
+        rows, row_errors = load_rows(root)
+        if row_errors:
+            return ["data rows invalid: " + "; ".join(row_errors)]
+        verified = {row["source"]["url"] for row in rows}
+        for criterion in delta["criteria"]:
+            if criterion["source"]["uri"] not in verified:
+                return [f"criterion {criterion['criterion_id']} source is not backed by a data/ row"]
+        manuscript_rows = [c for c in delta["criteria"] if c["criterion_id"].startswith("ro.manuscript-statements.")]
+        if any(c["blocking_policy"] != "advisory_only" for c in manuscript_rows):
+            return ["manuscript-statement criteria must use advisory_only blocking policy"]
+        receipt_schema = load_json(repo_root / "shared/contracts/review_target/review_criteria_source_receipt.schema.json")
+        receipt_validator = Draft202012Validator(receipt_schema, format_checker=FormatChecker())
+        receipts = sorted((root / "registries/review_criteria_sources").glob("*.json"))
+        if not receipts:
+            return ["review-criteria source receipts are missing"]
+        receipt_criterion_ids: set[str] = set()
+        for receipt_path in receipts:
+            receipt = load_json(receipt_path)
+            receipt_errors = list(receipt_validator.iter_errors(receipt))
+            if receipt_errors:
+                return [f"source receipt {receipt_path.name} invalid: {receipt_errors[0].message}"]
+            for locator in receipt.get("criterion_locators", []):
+                receipt_criterion_ids.add(locator["criterion_id"])
+                if not any(row["source"]["url"] == receipt["source_uri"] and row["source"]["locator"] == locator["locator"] and row["notes"] == locator["fragment"] for row in rows):
+                    return [f"source receipt {receipt_path.name} has locator not backed by a data/ row"]
+        missing_receipts = {criterion["criterion_id"] for criterion in delta["criteria"]} - receipt_criterion_ids
+        if missing_receipts:
+            return ["criteria missing source receipts: " + ", ".join(sorted(missing_receipts))]
+    except Exception as exc:
+        return [f"review-criteria registry: {exc}"]
+    return []
+
+
 def changed_paths(repo_root: Path, base: str) -> tuple[set[str], str | None]:
     paths: set[str] = set()
     commands = [
@@ -287,6 +344,14 @@ def main(argv: list[str] | None = None) -> int:
     elif (args.overlay_root / "registries/generated/human_subjects_authority_registry.json").exists():
         report("human-subjects registry", "PASS", "valid, current and legally anchored")
 
+    review_errors = check_review_criteria_registry(args.overlay_root, args.repo_root)
+    if review_errors:
+        for error in review_errors:
+            report("review-criteria registry", "FAIL", error)
+        failures += 1
+    elif (args.overlay_root / "registries/generated/review_criteria_registry.json").exists():
+        report("review-criteria registry", "PASS", "valid, current and backed by data rows")
+
     for label, present, reason in check_later_artifacts(args.overlay_root):
         if label == "profile/respiratory_medicine.json" and present:
             errors = check_profile(args.overlay_root, args.repo_root)
@@ -296,7 +361,7 @@ def main(argv: list[str] | None = None) -> int:
                 failures += 1
             else:
                 report(label, "PASS", "valid and manifest digest matches")
-        elif label == "registries/generated/human_subjects_authority_registry.json":
+        elif label in {"registries/generated/human_subjects_authority_registry.json", "registries/generated/review_criteria_registry.json"}:
             continue
         else:
             report(label, "PASS" if present else "SKIPPED", "present" if present else reason)

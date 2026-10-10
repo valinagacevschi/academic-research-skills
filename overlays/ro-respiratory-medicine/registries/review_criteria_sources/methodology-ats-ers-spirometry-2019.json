@@ -1,0 +1,36 @@
+{
+  "receipt_version": "review-criteria-source-receipt/1.0",
+  "receipt_kind": "mutable_web_semantic_snapshot",
+  "source_uri": "https://europepmc.org/article/MED/31613151",
+  "publisher": "ATS/ERS Spirometry Standardization Update",
+  "retrieved_at": "2026-10-10T14:43:10Z",
+  "capture": {
+    "method": "GET https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:31613151&format=json",
+    "http_status": 200,
+    "content_type": "application/json;charset=UTF-8",
+    "etag": null,
+    "last_modified": null,
+    "raw_body_size_bytes": 1258,
+    "raw_body_sha256": "3225ceef295ea6ee3c6dda3d887f192cac76cc18d711cd29832f5112bf5ba7ed"
+  },
+  "semantic_snapshot": {
+    "selection": "Backing data row locator and quoted source note",
+    "normalization": "UTF-8 text exactly as recorded in the verified overlay data row; no whitespace normalization",
+    "encoding": "UTF-8",
+    "size_bytes": 129,
+    "word_count": 18,
+    "sha256": "454a1adfd11c4ba7470a052f6d8f80e9fd77edfb928ee09193baa90f079ca9ec"
+  },
+  "criterion_locators": [
+    {
+      "criterion_id": "field.ers-ats.respiratory-measurement",
+      "fragment": "“the need to update the 2005 technical standards for spirometry”",
+      "locator": "Europe PMC record; title, publication date/year and abstract"
+    }
+  ],
+  "retention": {
+    "full_body_committed": false,
+    "reason": "Retain only the verified source-row locator and quote; do not redistribute the source body.",
+    "drift_rule": "Recheck source URI and locator against the current source before relying on a changed criterion."
+  }
+}

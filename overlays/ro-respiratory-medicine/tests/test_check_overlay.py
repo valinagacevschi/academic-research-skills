@@ -179,5 +179,5 @@ def test_cli_reports_later_slice_skips(capsys):
     code = check.main(["--overlay-root", str(ROOT), "--repo-root", str(ROOT.parents[1]), "--today", "2026-10-10"])
     output = capsys.readouterr().out
     assert code == 0
-    assert output.count("SKIPPED ") == 2
-    assert output.count("artifact not present:") == 1
+    assert output.count("SKIPPED ") == 1
+    assert output.count("artifact not present:") == 0
