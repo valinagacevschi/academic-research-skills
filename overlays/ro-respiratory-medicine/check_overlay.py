@@ -111,6 +111,38 @@ def check_evidence(root: Path, today: date) -> tuple[list[str], list[str]]:
     return errors, warnings
 
 
+def check_verified_row_coverage(root: Path, today: date) -> list[str]:
+    """Require each effective fact-check evidence row to be anchored or explicitly gapped."""
+    try:
+        legal_payload = load_json(root / "data/legal_ro.json")
+        rows = legal_payload["rows"]
+        schema_errors = [
+            error.message
+            for row in rows
+            for error in Draft202012Validator(
+                load_json(root / "schemas/evidence_row.schema.json"),
+                format_checker=FormatChecker(),
+            ).iter_errors(row)
+        ]
+        if schema_errors:
+            return ["legal_ro rows invalid: " + "; ".join(schema_errors)]
+        delta = load_json(root / "registries/human_subjects.delta.json")
+    except (OSError, json.JSONDecodeError, KeyError, TypeError) as exc:
+        return [f"legal-row coverage: {exc}"]
+    anchors = {
+        (req["authority_anchor"]["authority_url"], req["authority_anchor"]["provision"])
+        for profile in delta["profiles"] for req in profile["requirements"]
+    }
+    gaps = "\n".join(delta.get("known_gaps", []))
+    return [
+        f"{row['value_id']}: effective fact_check row is not anchored or named in delta known_gaps"
+        for row in rows
+        if effective_use(row, today) == "fact_check"
+        and (row["source"]["url"], row["source"]["locator"]) not in anchors
+        and row["value_id"] not in gaps
+    ]
+
+
 def check_later_artifacts(root: Path) -> list[tuple[str, bool, str]]:
     artifacts = [
         "profile/respiratory_medicine.json",
@@ -138,6 +170,40 @@ def check_profile(root: Path, repo_root: Path) -> list[str]:
         ]
     return []
 
+
+def check_human_subjects_registry(root: Path, repo_root: Path) -> list[str]:
+    generated = root / "registries/generated/human_subjects_authority_registry.json"
+    if not generated.exists():
+        return []
+    try:
+        sys.path.insert(0, str(repo_root))
+        sys.path.insert(0, str(root / "registries"))
+        from scripts.resolve_human_subjects_authority import validate_registry
+        from build_registries import build_human_subjects, rendered
+        payload = load_json(generated)
+        if generated.read_text(encoding="utf-8") != rendered(build_human_subjects(core_path=repo_root / "shared/human_subjects_authority_registry.json", delta_path=root / "registries/human_subjects.delta.json")):
+            return ["generated human-subjects registry is stale; rebuild registries"]
+        validate_registry(payload)
+        core = load_json(repo_root / "shared/human_subjects_authority_registry.json")
+        prefix = core["registry_version"] + "-ro."
+        if not payload.get("registry_version", "").startswith(prefix):
+            return ["generated human-subjects registry version does not match current core registry"]
+        delta = load_json(root / "registries/human_subjects.delta.json")
+        rows, row_errors = load_rows(root)
+        if row_errors:
+            return ["legal_ro rows invalid: " + "; ".join(row_errors)]
+        verified = {(r["source"]["url"], r["source"]["locator"]): r for r in rows}
+        for profile in delta["profiles"]:
+            for req in profile["requirements"]:
+                anchor = req["authority_anchor"]
+                row = verified.get((anchor["authority_url"], anchor["provision"]))
+                if row is None:
+                    return [f"delta requirement {req['requirement_id']} has no legal_ro.json anchor row"]
+                if effective_use(row, date.today()) != "fact_check":
+                    return [f"delta requirement {req['requirement_id']} anchor is not effective fact_check"]
+    except Exception as exc:
+        return [f"human-subjects registry: {exc}"]
+    return []
 
 def changed_paths(repo_root: Path, base: str) -> tuple[set[str], str | None]:
     paths: set[str] = set()
@@ -205,6 +271,22 @@ def main(argv: list[str] | None = None) -> int:
     else:
         report("demoted to advisory", "PASS", "none")
 
+    coverage_errors = check_verified_row_coverage(args.overlay_root, today)
+    if coverage_errors:
+        for error in coverage_errors:
+            report("verified-row coverage", "FAIL", error)
+        failures += 1
+    else:
+        report("verified-row coverage", "PASS", "all effective fact_check rows accounted for")
+
+    hs_errors = check_human_subjects_registry(args.overlay_root, args.repo_root)
+    if hs_errors:
+        for error in hs_errors:
+            report("human-subjects registry", "FAIL", error)
+        failures += 1
+    elif (args.overlay_root / "registries/generated/human_subjects_authority_registry.json").exists():
+        report("human-subjects registry", "PASS", "valid, current and legally anchored")
+
     for label, present, reason in check_later_artifacts(args.overlay_root):
         if label == "profile/respiratory_medicine.json" and present:
             errors = check_profile(args.overlay_root, args.repo_root)
@@ -214,6 +296,8 @@ def main(argv: list[str] | None = None) -> int:
                 failures += 1
             else:
                 report(label, "PASS", "valid and manifest digest matches")
+        elif label == "registries/generated/human_subjects_authority_registry.json":
+            continue
         else:
             report(label, "PASS" if present else "SKIPPED", "present" if present else reason)
     boundary_errors = check_boundary(args.repo_root, args.base)
