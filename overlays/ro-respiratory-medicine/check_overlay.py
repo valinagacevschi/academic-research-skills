@@ -120,6 +120,25 @@ def check_later_artifacts(root: Path) -> list[tuple[str, bool, str]]:
     return [(path, (root / path).exists(), f"artifact not present: {path}") for path in artifacts]
 
 
+def check_profile(root: Path, repo_root: Path) -> list[str]:
+    """Validate the sealed profile and its manifest binding using core contracts."""
+    sys.path.insert(0, str(repo_root))
+    try:
+        from scripts.research_workflow_profile import load_profile
+
+        profile = load_profile(root / "profile/respiratory_medicine.json")
+        manifest = load_json(root / "MANIFEST.json")
+    except Exception as exc:
+        return [f"profile: {exc}"]
+    expected = manifest.get("profile_content_sha256")
+    if profile["content_sha256"] != expected:
+        return [
+            "profile: content_sha256 does not match MANIFEST.json "
+            f"({profile['content_sha256']} != {expected})"
+        ]
+    return []
+
+
 def changed_paths(repo_root: Path, base: str) -> tuple[set[str], str | None]:
     paths: set[str] = set()
     commands = [
@@ -187,7 +206,16 @@ def main(argv: list[str] | None = None) -> int:
         report("demoted to advisory", "PASS", "none")
 
     for label, present, reason in check_later_artifacts(args.overlay_root):
-        report(label, "PASS" if present else "SKIPPED", "present" if present else reason)
+        if label == "profile/respiratory_medicine.json" and present:
+            errors = check_profile(args.overlay_root, args.repo_root)
+            if errors:
+                for error in errors:
+                    report(label, "FAIL", error)
+                failures += 1
+            else:
+                report(label, "PASS", "valid and manifest digest matches")
+        else:
+            report(label, "PASS" if present else "SKIPPED", "present" if present else reason)
     boundary_errors = check_boundary(args.repo_root, args.base)
     if boundary_errors is None:
         report("boundary", "SKIPPED", "--base not supplied")
