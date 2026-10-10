@@ -273,5 +273,44 @@
       "review_window_months": 12,
       "notes": "Agency-hosted copy; consolidated print. “identifica şi ... înlătura orice situaţie reală sau potenţială de conflict de interese”"
     }
+    ,{
+      "value_id": "ro.l190-art3",
+      "area": "legal.ro.data-protection",
+      "statement": "Processing genetic, biometric or health data for automated decision-making or profiling is allowed only with explicit consent or express legal provisions with appropriate safeguards.",
+      "numeric": false,
+      "use": "fact_check",
+      "evidence_tag": "primary-full-text",
+      "source": {"url": "https://portal.just.ro/101/Documents/LEGE__190_2018_date_cu_caracter_personal.pdf", "title": "Law 190/2018, official court portal copy", "locator": "Art. 3(1)"},
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 12,
+      "notes": "“Prelucrarea ... pentru ... profilare ... se poate efectua numai cu consimţământul explicit ... sau ... prevederi legale exprese”"
+    },
+    {
+      "value_id": "ro.l190-art4",
+      "area": "legal.ro.data-protection",
+      "statement": "Processing a national identification number requires the safeguards listed in Law 190/2018 Article 4(2), including technical and organisational measures and a defined retention period.",
+      "numeric": false,
+      "use": "fact_check",
+      "evidence_tag": "primary-full-text",
+      "source": {"url": "https://portal.just.ro/101/Documents/LEGE__190_2018_date_cu_caracter_personal.pdf", "title": "Law 190/2018, official court portal copy", "locator": "Art. 4(1)–(2)"},
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 12,
+      "notes": "“operatorii ... sunt obligaţi să instituie ... măsuri tehnice şi organizatorice adecvate”"
+    },
+    {
+      "value_id": "ro.l190-art8",
+      "area": "legal.ro.data-protection",
+      "statement": "For archiving in the public interest, scientific or historical research, or statistics, specified data-subject rights may be restricted only when exercising them would make the purpose impossible or seriously impair it and the restriction is necessary.",
+      "numeric": false,
+      "use": "fact_check",
+      "evidence_tag": "primary-full-text",
+      "source": {"url": "https://portal.just.ro/101/Documents/LEGE__190_2018_date_cu_caracter_personal.pdf", "title": "Law 190/2018, official court portal copy", "locator": "Art. 8(1)–(3)"},
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 12,
+      "notes": "“exercitarea acestor drepturi ar face imposibilă sau ar afecta în mod grav realizarea scopurilor specifice”"
+    }
   ]
 }

@@ -1,4 +1,362 @@
 {
   "schema_version": "ro-overlay-evidence-rows/1.0",
-  "rows": []
+  "rows": [
+    {
+      "value_id": "airways.acq-mcid",
+      "area": "airways",
+      "statement": "The minimal important difference for the Asthma Control Questionnaire is approximately 0.5 points.",
+      "numeric": true,
+      "use": "fact_check",
+      "evidence_tag": "primary-abstract",
+      "source": {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID%3A15823451&resultType=core&format=json",
+        "title": "Juniper et al., Shortened versions of the Asthma Control Questionnaire",
+        "locator": "Abstract, conclusion"
+      },
+      "verified_at": "2026-10-10",
+      "edition": "2005",
+      "review_window_months": 12,
+      "notes": "“the minimal important difference for all four versions was close to 0.5.”"
+    },
+    {
+      "value_id": "airways.gold-2026-group-e",
+      "area": "airways",
+      "statement": "GOLD 2026 Group E includes individuals with one moderate exacerbation in the previous year.",
+      "numeric": true,
+      "use": "fact_check",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://goldcopd.org/wp-content/uploads/2026/01/GOLD-REPORT-2026-v1.3-8Dec2025_WMV2.pdf",
+        "title": "GOLD 2026 Report v1.3",
+        "locator": "Chapter 2, Combined initial COPD assessment, paragraph beginning ‘Consequently, Group E has been modified’"
+      },
+      "verified_at": "2026-10-10",
+      "edition": "2026",
+      "review_window_months": 12,
+      "notes": "“Group E has been modified to include individuals with one moderate exacerbation in the previous year.”"
+    },
+    {
+      "value_id": "airways.gold-2026-abe-symptom-thresholds",
+      "area": "airways",
+      "statement": "GOLD 2026 uses CAAT ≥10 and retains mMRC ≥2 as the threshold separating less from more breathlessness in the ABE assessment.",
+      "numeric": true,
+      "use": "fact_check",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://goldcopd.org/wp-content/uploads/2026/01/GOLD-REPORT-2026-v1.3-8Dec2025_WMV2.pdf",
+        "title": "GOLD 2026 Report v1.3",
+        "locator": "Chapter 2, Symptoms and Combined initial COPD assessment"
+      },
+      "verified_at": "2026-10-10",
+      "edition": "2026",
+      "review_window_months": 12,
+      "notes": "“The equivalent cut-point for the CAAT™ is 10”; “an mMRC of ≥ 2 is still included”"
+    },
+    {
+      "value_id": "airways.gina-2026-t2-thresholds",
+      "area": "airways",
+      "statement": "GINA 2026 considers refractory Type 2 inflammation with blood eosinophils ≥150/µL, FeNO ≥20 ppb, or sputum eosinophils ≥2% (or clinically allergen-driven asthma) on high-dose ICS or daily OCS.",
+      "numeric": true,
+      "use": "fact_check",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://ginasthma.org/wp-content/uploads/2026/05/GINA-2026-Strategy-Report-WMS.pdf",
+        "title": "GINA 2026 Strategy Report",
+        "locator": "Section 8, Type 2 inflammation assessment"
+      },
+      "verified_at": "2026-10-10",
+      "edition": "2026",
+      "review_window_months": 12,
+      "notes": "“Blood eosinophils ≥150/μL”; “FeNO ≥20 ppb”; “Sputum eosinophils ≥2%.”"
+    },
+    {
+      "value_id": "airways.gina-2026-severe-asthma-definition",
+      "area": "airways",
+      "statement": "GINA defines severe asthma as uncontrolled despite adherence to optimized high-dose ICS-LABA and management of contributory factors, or worsening when high-dose treatment is decreased.",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://ginasthma.org/wp-content/uploads/2026/05/GINA-2026-Strategy-Report-WMS.pdf",
+        "title": "GINA 2026 Strategy Report",
+        "locator": "Section 8, definition of severe asthma"
+      },
+      "verified_at": "2026-10-10",
+      "edition": "2026",
+      "review_window_months": 12,
+      "notes": "“uncontrolled despite good adherence to maximal optimized high-dose ICS-LABA treatment ... or that worsens when high-dose treatment is decreased.”"
+    },
+    {
+      "value_id": "airways.act-mcid",
+      "area": "airways",
+      "statement": "The minimal important difference for the Asthma Control Test is 3 points.",
+      "numeric": true,
+      "use": "fact_check",
+      "evidence_tag": "primary-abstract",
+      "source": {
+        "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=19767070",
+        "title": "Schatz et al., The minimally important difference of the Asthma Control Test",
+        "locator": "Abstract, conclusion"
+      },
+      "verified_at": "2026-10-10",
+      "edition": "2009",
+      "review_window_months": 12,
+      "notes": "Primary abstract reports an ACT minimally important difference of 3 points."
+    },
+    {
+      "value_id": "airways.cat-caat-mcid",
+      "area": "airways",
+      "statement": "The minimal clinically important difference for the COPD Assessment Test is 2 points; GOLD 2026 states CAT and CAAT scores are interchangeable.",
+      "numeric": true,
+      "use": "fact_check",
+      "evidence_tag": "primary-abstract",
+      "source": {
+        "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=24621681",
+        "title": "Kon et al., Minimum clinically important difference for the COPD Assessment Test",
+        "locator": "Abstract, conclusion"
+      },
+      "verified_at": "2026-10-10",
+      "edition": "2014",
+      "review_window_months": 12,
+      "notes": "Abstract: CAT MCID estimated at 2 points; GOLD 2026 report states CAT™ and CAAT™ scores are interchangeable."
+    },
+    {
+      "value_id": "airways.sgrq-mcid",
+      "area": "airways",
+      "statement": "A 4-unit change is the minimal important difference commonly used for the St George’s Respiratory Questionnaire in COPD.",
+      "numeric": true,
+      "use": "fact_check",
+      "evidence_tag": "primary-abstract",
+      "source": {
+        "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=17136966",
+        "title": "Jones, St George’s Respiratory Questionnaire: MCID",
+        "locator": "Abstract, conclusion"
+      },
+      "verified_at": "2026-10-10",
+      "edition": "2005",
+      "review_window_months": 12,
+      "notes": "PubMed abstract states the accepted SGRQ minimal important difference is 4 units."
+    },
+    {
+      "value_id": "airways.fev1-mcid",
+      "area": "airways",
+      "statement": "An approximately 100 mL change in trough FEV1 is an estimate of a clinically meaningful difference, with the source noting that a precise MCID has not been established.",
+      "numeric": true,
+      "use": "reference",
+      "evidence_tag": "primary-abstract",
+      "source": {
+        "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=17136971",
+        "title": "Donohue, Minimal clinically important differences in COPD lung function",
+        "locator": "Abstract, conclusion"
+      },
+      "verified_at": "2026-10-10",
+      "edition": "2005",
+      "review_window_months": 12,
+      "notes": "Abstract: “about 100 mL”; “a precise MCID ... has not been established.”"
+    },
+    {
+      "value_id": "airways.qolb-mid",
+      "area": "airways",
+      "statement": "The QOL-B Respiratory Symptoms scale minimal important difference is 8.0 points.",
+      "numeric": true,
+      "use": "fact_check",
+      "evidence_tag": "primary-abstract",
+      "source": {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID%3A25323621&resultType=core&format=json",
+        "title": "Quittner et al., Quality of Life Questionnaire-Bronchiectasis",
+        "locator": "Abstract, results"
+      },
+      "verified_at": "2026-10-10",
+      "edition": "2015",
+      "review_window_months": 12,
+      "notes": "“The minimal important difference score for the Respiratory Symptoms scale was 8.0 points.”"
+    },
+    {
+      "value_id": "airways.cfq-r-mcid",
+      "area": "airways",
+      "statement": "CFQ-R Respiratory MCID is 4.0 points when stable and 8.5 points during an exacerbation.",
+      "numeric": true,
+      "use": "fact_check",
+      "evidence_tag": "primary-abstract",
+      "source": {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID%3A19447923&resultType=core&format=json",
+        "title": "Quittner et al., CFQ-R respiratory symptom scale MCID",
+        "locator": "Abstract, results"
+      },
+      "verified_at": "2026-10-10",
+      "edition": "2009",
+      "review_window_months": 12,
+      "notes": "“MCID scores were larger ... exacerbation (8.5 points) ... stable (4.0 points).”"
+    },
+    {
+      "value_id": "airways.lcq-mid",
+      "area": "airways",
+      "statement": "The Leicester Cough Questionnaire minimal important difference is 1.3 points for the total score.",
+      "numeric": true,
+      "use": "fact_check",
+      "evidence_tag": "primary-abstract",
+      "source": {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID%3A18825348&resultType=core&format=json",
+        "title": "Raj et al., Clinical cough IV: LCQ minimal important difference",
+        "locator": "Abstract, results and conclusion"
+      },
+      "verified_at": "2026-10-10",
+      "edition": "2009",
+      "review_window_months": 12,
+      "notes": "“We have demonstrated that the LCQ MID is 1.3.”"
+    },
+    {
+      "value_id": "airways.ers-bronchiectasis-2025",
+      "area": "airways",
+      "statement": "The ERS 2025 adult bronchiectasis clinical practice guideline contains eight PICO and three narrative questions.",
+      "numeric": true,
+      "use": "reference",
+      "evidence_tag": "primary-abstract",
+      "source": {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID%3A41016738&resultType=core&format=json",
+        "title": "Chalmers et al., European Respiratory Society clinical practice guideline for adult bronchiectasis",
+        "locator": "Abstract, Methods"
+      },
+      "verified_at": "2026-10-10",
+      "edition": "2025",
+      "review_window_months": 12,
+      "notes": "Abstract states “a total of eight PICO ... questions and three narrative questions.”"
+    },
+    {
+      "value_id": "airways.bronchiectasis-exacerbation-definition",
+      "area": "airways",
+      "statement": "For bronchiectasis research, exacerbation is deterioration in at least three of six key symptoms for at least 48 hours plus a clinician decision that treatment must change.",
+      "numeric": true,
+      "use": "fact_check",
+      "evidence_tag": "primary-abstract",
+      "source": {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID%3A28596426&resultType=core&format=json",
+        "title": "Hill et al., Pulmonary exacerbation in adults with bronchiectasis",
+        "locator": "Abstract, consensus definition"
+      },
+      "verified_at": "2026-10-10",
+      "edition": "2017",
+      "review_window_months": 12,
+      "notes": "Abstract definition: deterioration in ≥3 symptoms for ≥48 h AND clinician determines treatment change is required."
+    },
+    {
+      "value_id": "airways.bsi",
+      "area": "airways",
+      "statement": "The Bronchiectasis Severity Index is a validated tool predicting mortality, hospitalisation and exacerbations.",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-abstract",
+      "source": {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID%3A24328736&resultType=core&format=json",
+        "title": "Chalmers et al., The bronchiectasis severity index",
+        "locator": "Abstract, conclusions"
+      },
+      "verified_at": "2026-10-10",
+      "edition": "2014",
+      "review_window_months": 12,
+      "notes": "“The BSI is a useful clinical predictive tool” for future mortality, hospitalization and exacerbations."
+    },
+    {
+      "value_id": "airways.faced",
+      "area": "airways",
+      "statement": "FACED is a seven-point bronchiectasis score using FEV1, age, chronic P. aeruginosa colonisation, radiological extension and dyspnoea to classify prognosis.",
+      "numeric": true,
+      "use": "reference",
+      "evidence_tag": "primary-abstract",
+      "source": {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID%3A24232697&resultType=core&format=json",
+        "title": "Martínez-García et al., FACED score",
+        "locator": "Abstract, results"
+      },
+      "verified_at": "2026-10-10",
+      "edition": "2014",
+      "review_window_months": 12,
+      "notes": "Abstract calls it a “final seven-point score” and lists five dichotomised variables."
+    },
+    {
+      "value_id": "airways.ecfs-standards-2023-2024",
+      "area": "airways",
+      "statement": "The ECFS standards of care update includes 2023 and 2024 papers; the fourth paper in the reported four-paper series was not identified in the retrieved records.",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-abstract",
+      "source": {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID%3A36916675%20OR%20EXT_ID%3A38129255%20OR%20EXT_ID%3A38233247&resultType=core&format=json",
+        "title": "ECFS standards of care 2023–2024 papers",
+        "locator": "Abstracts; 2023 variant-specific therapy and 2024 health standards and issues"
+      },
+      "verified_at": "2026-10-10",
+      "edition": "2023–2024",
+      "review_window_months": 12,
+      "notes": "The 2023 paper describes a series; fetched records verify three cited instalments only. Fourth paper not confirmed."
+    },
+    {
+      "value_id": "airways.chronic-cough-duration",
+      "area": "airways",
+      "statement": "ERS 2020 defines chronic cough duration as eight weeks in adults and four weeks in children.",
+      "numeric": true,
+      "use": "fact_check",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://www.ncbi.nlm.nih.gov/research/bionlp/RESTful/pmcoa.cgi/BioC_xml/PMC6942543/unicode",
+        "title": "Morice et al., ERS guidelines on chronic cough",
+        "locator": "Definition of chronic cough"
+      },
+      "verified_at": "2026-10-10",
+      "edition": "2020",
+      "review_window_months": 12,
+      "notes": "“More recent guidelines have adopted eight weeks in adults and four weeks in children.”"
+    },
+    {
+      "value_id": "airways.aatd-ers-2017",
+      "area": "airways",
+      "statement": "The ERS 2017 statement addresses diagnosis and treatment of pulmonary disease in alpha-1 antitrypsin deficiency and recommends prospective registries and expert centres.",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-abstract",
+      "source": {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID%3A29191952&resultType=core&format=json",
+        "title": "Miravitlles et al., ERS statement on pulmonary disease in AATD",
+        "locator": "Abstract, conclusion"
+      },
+      "verified_at": "2026-10-10",
+      "edition": "2017",
+      "review_window_months": 12,
+      "notes": "Abstract states national/international registries are crucial and management must be supervised by expert centres."
+    },
+    {
+      "value_id": "airways.earco-2024",
+      "area": "airways",
+      "statement": "The 2024 EARCO Delphi consensus addresses assessment and monitoring of severe AATD; 38 pulmonologists from 15 countries completed the first round.",
+      "numeric": true,
+      "use": "reference",
+      "evidence_tag": "primary-abstract",
+      "source": {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID%3A39160517&resultType=core&format=json",
+        "title": "Miravitlles et al., EARCO Delphi consensus",
+        "locator": "Abstract, Results"
+      },
+      "verified_at": "2026-10-10",
+      "edition": "2024",
+      "review_window_months": 12,
+      "notes": "“38/103 ... pulmonologists from across 15 countries” completed all first-round questions."
+    },
+    {
+      "value_id": "airways.ers-2022-ecopd-cos",
+      "area": "airways",
+      "statement": "The ERS 2022 COPD exacerbation core outcome set includes survival, treatment success, breathlessness, quality of life, activities of daily living, higher level of care, arterial blood gases, disease progression, future exacerbations and admissions, safety, and adherence.",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-abstract",
+      "source": {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID%3A34649975&resultType=core&format=json",
+        "title": "Mathioudakis et al., ERS statement: core outcome set for COPD exacerbation trials",
+        "locator": "Abstract, core outcomes"
+      },
+      "verified_at": "2026-10-10",
+      "edition": "2022",
+      "review_window_months": 12,
+      "notes": "Abstract lists the core outcomes, from survival and treatment success through safety and adherence."
+    }
+  ]
 }
