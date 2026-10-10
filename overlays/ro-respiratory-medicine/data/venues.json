@@ -1,4 +1,107 @@
 {
   "schema_version": "ro-overlay-evidence-rows/1.0",
-  "rows": []
+  "rows": [
+    {
+      "value_id": "venue.rjme.abstract_limit",
+      "area": "venue.rjme",
+      "statement": "The abstract limit is 250 words.",
+      "numeric": true,
+      "use": "fact_check",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://rjme.ro/guide-for-authors/",
+        "title": "RJME Guide for Authors",
+        "locator": "3.2 Abstract and Keywords: “A concise abstract of no more 250 words is required.”"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“A concise abstract of no more 250 words is required.”"
+    },
+    {
+      "value_id": "venue.rjme.abstract_structure",
+      "area": "venue.rjme",
+      "statement": "The unstructured abstract briefly states the purpose, main results and major conclusions.",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://rjme.ro/guide-for-authors/",
+        "title": "RJME Guide for Authors",
+        "locator": "3.2 Abstract and Keywords"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“state briefly the purpose of the research, the main results and major conclusions.”"
+    },
+    {
+      "value_id": "venue.rjme.reference_style",
+      "area": "venue.rjme",
+      "statement": "References are numbered in square brackets; list all authors and include DOI, PMID and PMCID.",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://rjme.ro/guide-for-authors/",
+        "title": "RJME Guide for Authors",
+        "locator": "3.4 References"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“References (indicated by numbers in square brackets)… DOI, PMID and PMCID numbers are mandatory.”"
+    },
+    {
+      "value_id": "venue.ers_congress.abstract_limit",
+      "area": "venue.ers_congress",
+      "statement": "The abstract body limit is 1810 characters, including spaces.",
+      "numeric": true,
+      "use": "fact_check",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://www.ersnet.org/frequently-asked-questions-about-abstracts/",
+        "title": "ERS Frequently Asked Questions About Abstracts",
+        "locator": "Abstract length / character count FAQ"
+      },
+      "verified_at": "2026-10-10",
+      "edition": "ERS International Congress 2026",
+      "review_window_months": 6,
+      "notes": "“The maximum length of an abstract is 1810 characters, including characters and spaces.”"
+    },
+    {
+      "value_id": "venue.ers_congress.counting_rule",
+      "area": "venue.ers_congress",
+      "statement": "The 1810-character allowance includes the abstract body, table and figures; each table cell adds one character and each inserted figure deducts 277 characters; the title is separate and limited to 250 characters.",
+      "numeric": true,
+      "use": "fact_check",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://www.ersnet.org/frequently-asked-questions-about-abstracts/",
+        "title": "ERS Frequently Asked Questions About Abstracts",
+        "locator": "Abstract length / character count FAQ"
+      },
+      "verified_at": "2026-10-10",
+      "edition": "ERS International Congress 2026",
+      "review_window_months": 6,
+      "notes": "“1810 characters… abstract body, table, and figures”; “title… separate… limited to 250”; figure “deducts 277 characters.”"
+    },
+    {
+      "value_id": "venue.srp_congress.abstract_limit",
+      "area": "venue.srp_congress",
+      "statement": "The abstract body limit is 300 words per language; the English half is limited to 300 words.",
+      "numeric": true,
+      "use": "fact_check",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://www.congres-srp.ro/rezumate/",
+        "title": "Congres SRP: Rezumate",
+        "locator": "Caracteristici tehnice de redactare a rezumatelor"
+      },
+      "verified_at": "2026-10-10",
+      "edition": "29th SRP National Congress, 2026",
+      "review_window_months": 6,
+      "notes": "“corpul rezumatului nu trebuie să depășească 300 de cuvinte pentru fiecare limbă”"
+    }
+  ]
 }

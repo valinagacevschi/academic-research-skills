@@ -4,13 +4,14 @@ Run date: 2026-10-10
 
 ## Method
 
-Read SPEC §§9–10.4, glossary, evidence schema, data README, and `check_overlay.py`. Read the seven named research findings files. For encoded legal provisions, fetched the cited PDF using `curl -sL`, extracted the PDF text with Python 3.12 and `pypdf`, then recorded the article locator and a short Romanian proof quote. Legal copy URLs were agency-hosted or Ministry/court-hosted; none was verified on legislatie.just.ro. Therefore these rows remain explicitly marked as unofficial copies for S4 authenticity review. No value was encoded from memory. Venue and clinical-source verification was not completed in this run; no unverified values were placed in data tables.
+Read SPEC §§9–10.4, glossary, evidence schema, data README, and `check_overlay.py`. Read the seven named research findings files. For encoded legal provisions, fetched the cited PDF using `curl -sL`, extracted the PDF text with Python 3.12 and `pypdf`, then recorded the article locator and a short Romanian proof quote. Legal copy URLs were agency-hosted or Ministry/court-hosted; none was verified on legislatie.just.ro. Therefore these rows remain explicitly marked as unofficial copies for S4 authenticity review. No value was encoded from memory. Round 2 retried the official legislatie.just.ro Law 190/2018 page and sampled live venue pages, but those responses did not expose article text or the needed author-instruction values in a readable form. Europe PMC abstracts were fetched for ACQ and K-BILD; only values explicitly present in those abstracts were encoded. Other requested sources were not verified in this run. No value was encoded from memory.
 
 ## Outcome counts
 
 | Outcome | Count |
 |---|---:|
 | Promoted to primary-full-text | 16 |
+| Promoted to primary-abstract | 2 |
 | Advisory | 0 |
 | Dropped | 0 |
 | Not attempted / unresolved | 35 named §10.4 backlog entries below |
@@ -39,7 +40,7 @@ The not-attempted count treats each semicolon-separated backlog value and each v
 | CMR Code 2025 Art. 62(2), conflict of interest | legal.ro.cmr | primary-full-text in research | promoted | `ro.cmr-conflict-interest` |
 | GOLD FEV1 grade cut-offs | airways | recalled / snippet / unverified | not attempted | No source fetched in this run |
 | CNAS protocol list | data_sources | recalled / snippet / unverified | not attempted | No source fetched in this run |
-| AQLQ MID | airways | recalled / snippet / unverified | not attempted | No source fetched in this run |
+| AQLQ MID | airways | recalled / snippet / unverified | not attempted | No primary source value verified in this run |
 | Sweat-chloride thresholds | airways | recalled / snippet / unverified | not attempted | No source fetched in this run |
 | Fuchs criteria | airways | recalled / snippet / unverified | not attempted | No source fetched in this run |
 | PPF decline thresholds | ild | recalled / snippet / unverified | not attempted | No source fetched in this run |
@@ -80,3 +81,27 @@ The not-attempted count treats each semicolon-separated backlog value and each v
 - `https://legislatie.just.ro/Public/DetaliiDocument/203151` — not fetched during this run; not used for any encoded row.
 - `https://www.cmr.ro/wp-content/uploads/2025/12/Codul-de-deontologie-medicala-2025.pdf` — HTTP 404. Working official CMR PDF was fetched at `https://www.cmr.ro/wp-content/uploads/2026/01/codul-de-deontologie-medicala-al-colegiului-medicilor-din-romania-din-30102025-1.pdf` and used.
 - `https://pneumologia.eu/Instructiuni-autori-87.htm` — reported HTTP 500 in research; not retried during this run.
+
+
+## Round 2 additions and remaining requested coverage
+
+| value | area | original tag in findings | outcome | value_id or reason |
+|---|---|---|---|---|
+| ACQ minimal important difference, approximately 0.5 | airways | primary-abstract (freshly fetched) | promoted | `airways.acq-mcid` |
+| K-BILD total MCID, 4.7 improvement / 2.7 deterioration | ild | primary-abstract (freshly fetched) | promoted | `ild.kbild-mcid` |
+| Law 190/2018 Arts. 3, 4, 8 | legal_ro | consolidated-unofficial | not attempted | Official portal response was not a readable article page; no legal value encoded |
+| Remaining 10 venue records and their requested fields (abstract, headings, limits, checklists, AI placement, APC; ERS Congress counting rule) | venues | mixed | not attempted | Sources not freshly verified to readable author-instruction text in this run |
+| GOLD 2026 Group E rule; GINA 2026 T2 cut-offs | airways | primary-full-text in findings | not attempted | Fresh guideline text not retrieved/read in this run |
+| ACQ, ACT, CAT, SGRQ, FEV1, QOL-B, CFQ-R, LCQ MCIDs (except ACQ above) | airways | mixed | not attempted | Numeric abstract/full-text evidence not fetched and checked in this run |
+| FVC decline 2–6%; K-BILD 3.9 | ild | mixed | not attempted | K-BILD abstract located but the requested 3.9 FVC/MID claims were not verified |
+| mPAP >20 mmHg; PVR >2 WU; PAH 6MWD ~33 m | pulmonary_vascular | mixed | not attempted | Source text not fetched/read in this run |
+| 6MWD 25 m; ISWT 48 m | methodology | primary-abstract in findings | not attempted | Source text not fetched/read in this run |
+| Thoracic oncology QLQ-C30 bands | thoracic_oncology | unverified | not attempted | Source text not fetched/read in this run |
+| Guideline names, issuing bodies, years/editions and DOI in SPEC §§6.2–6.3 | methodology | mixed | not attempted | Complete primary-source verification not performed |
+| Data sources in SPEC §6.4 | data_sources | mixed | not attempted | Complete primary-source verification not performed |
+| Comma-below Unicode code points and NLM Citing Medicine diacritics rule | citations | mixed | not attempted | Standards pages not fetched/read in this run |
+| Measurement standards in SPEC §6.2 | methodology | mixed | not attempted | Full set of standards sources not fetched/read in this run |
+
+## Files with no round-2 additions
+
+The files `pulmonary_vascular.json`, `sleep.json`, `thoracic_oncology.json`, `infection_and_other.json`, `methodology.json`, `data_sources.json`, `venues.json`, and `citations.json` remain empty because no eligible primary evidence for their requested rows was verified in this run. This is an explicit unresolved outcome, not a finding that those areas have no relevant values. `legal_ro.json` retains its 16 round-1 rows; Law 190/2018 remains unresolved.

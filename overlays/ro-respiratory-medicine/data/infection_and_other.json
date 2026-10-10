@@ -1,4 +1,56 @@
 {
   "schema_version": "ro-overlay-evidence-rows/1.0",
-  "rows": []
+  "rows": [
+    {
+      "value_id": "infection_and_other.pneumonia_cos_2026",
+      "area": "infection.pneumonia",
+      "statement": "ERS adult CAP core outcomes: treatment success/failure, mortality, serious adverse events, readmission, symptom duration, clinical stability; mortality/readmission measured at 30 days.",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-abstract",
+      "source": {
+        "url": "https://pubmed.ncbi.nlm.nih.gov/42276741/",
+        "title": "Core outcome set for trials evaluating management of community-acquired and nosocomial pneumonia in adults: an ERS statement",
+        "locator": "Abstract, Results"
+      },
+      "verified_at": "2026-10-10",
+      "edition": "2026",
+      "review_window_months": 12,
+      "notes": "\u201cThe final COS for CAP includes: treatment success/failure, all-cause mortality, serious adverse events, readmissions \u2026 duration of symptoms and time to clinical stability.\u201d"
+    },
+    {
+      "value_id": "infection_and_other.nosocomial_pneumonia_cos_2026",
+      "area": "infection.pneumonia",
+      "statement": "ERS adult nosocomial pneumonia core outcomes include treatment success/failure, mortality, serious adverse events, readmission and need for ventilatory support.",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-abstract",
+      "source": {
+        "url": "https://pubmed.ncbi.nlm.nih.gov/42276741/",
+        "title": "Core outcome set for trials evaluating management of community-acquired and nosocomial pneumonia in adults: an ERS statement",
+        "locator": "Abstract, Results"
+      },
+      "verified_at": "2026-10-10",
+      "edition": "2026",
+      "review_window_months": 12,
+      "notes": "\u201cnosocomial pneumonia COS includes: treatment success/failure, all-cause mortality, serious adverse events, readmission and need for ventilatory support.\u201d"
+    },
+    {
+      "value_id": "infection_and_other.endosonography_2026",
+      "area": "infection.interventional",
+      "statement": "ERS/ESGE/ESTS 2026 guideline: systematic staging minimal standard; combined EBUS-TBNA+EUS(-B)-FNA preferred; 21G/22G standard.",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-abstract",
+      "source": {
+        "url": "https://pubmed.ncbi.nlm.nih.gov/42167778/",
+        "title": "ERS/ESGE/ESTS clinical practice guidelines on endobronchial and oesophageal endosonography",
+        "locator": "Abstract, Results"
+      },
+      "verified_at": "2026-10-10",
+      "edition": "2026",
+      "review_window_months": 12,
+      "notes": "\u201cSystematic staging is suggested \u2026 as the minimal standard\u201d; \u201c21G/22G TBNA needles are considered the standard.\u201d"
+    }
+  ]
 }

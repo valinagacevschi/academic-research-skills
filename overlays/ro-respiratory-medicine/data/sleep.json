@@ -1,4 +1,90 @@
 {
   "schema_version": "ro-overlay-evidence-rows/1.0",
-  "rows": []
+  "rows": [
+    {
+      "value_id": "sleep.aasm-v3-2023",
+      "area": "sleep",
+      "statement": "AASM Scoring Manual version 3 was released on 15 February 2023.",
+      "numeric": true,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://aasm.org/advocacy/position-statements/polysomnography-for-obstructive-sleep-apnea-should-include-arousal-based-scoring-an-american-academy-of-sleep-medicine-position-statement/",
+        "title": "Polysomnography for OSA should include arousal-based scoring: AASM position statement",
+        "locator": "Official AASM release announcement"
+      },
+      "verified_at": "2026-10-10",
+      "edition": "2023",
+      "review_window_months": 12,
+      "notes": "“On Feb. 15, 2023 ... Version 3.”"
+    },
+    {
+      "value_id": "sleep.aasm-hypopnoea-rule",
+      "area": "sleep",
+      "statement": "AASM recommended adult hypopnoea scoring is airflow reduction ≥30% for ≥10 seconds with ≥3% oxygen desaturation or arousal; version 3 changed the ≥4% rule from acceptable to optional.",
+      "numeric": true,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://aasm.org/aasm-releases-updated-version-scoring-manual/",
+        "title": "AASM releases updated version of scoring manual",
+        "locator": "AASM position statement on recommended hypopnoea criteria; AASM v3 updates announcement"
+      },
+      "verified_at": "2026-10-10",
+      "edition": "2023",
+      "review_window_months": 12,
+      "notes": "“≥30% ... ≥10 seconds ... either an arousal or ≥3% oxygen desaturation”"
+    },
+    {
+      "value_id": "sleep.ess-mid",
+      "area": "sleep",
+      "statement": "In OSA, the proposed Epworth Sleepiness Scale MID is 2 points.",
+      "numeric": true,
+      "use": "fact_check",
+      "evidence_tag": "primary-abstract",
+      "source": {
+        "url": "https://pubmed.ncbi.nlm.nih.gov/30100576/",
+        "title": "Minimum important difference of the Epworth Sleepiness Scale in obstructive sleep apnoea",
+        "locator": "Abstract, interpretation"
+      },
+      "verified_at": "2026-10-10",
+      "edition": "2018",
+      "review_window_months": 12,
+      "notes": "“We propose an MID for the ESS of 2 points”"
+    },
+    {
+      "value_id": "sleep.eu-driving-ahi-bands",
+      "area": "sleep",
+      "statement": "EU driving directive classifies moderate OSA syndrome as AHI 15–29 and severe as AHI ≥30, both associated with excessive daytime sleepiness.",
+      "numeric": true,
+      "use": "fact_check",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex%3A32014L0085",
+        "title": "Commission Directive 2014/85/EU amending Directive 2006/126/EC on driving licences",
+        "locator": "Annex III, section 11.2"
+      },
+      "verified_at": "2026-10-10",
+      "edition": "2014",
+      "review_window_months": 12,
+      "notes": "“between 15 and 29 ... 30 or more, both associated with excessive daytime sleepiness”"
+    },
+    {
+      "value_id": "sleep.cnas-cpap-adherence",
+      "area": "sleep",
+      "statement": "CNAS CPAP/BPAP renewal adherence rule is ≥4 hours per night on ≥70% of nights during the last 3 months.",
+      "numeric": true,
+      "use": "fact_check",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://cnas.ro/wp-content/uploads/2024/11/Anexa-CPAP-BPAP.pdf",
+        "title": "CNAS Annex CPAP-BPAP",
+        "locator": "Annex CPAP-BPAP, continuation criteria"
+      },
+      "verified_at": "2026-10-10",
+      "edition": "2024",
+      "review_window_months": 12,
+      "notes": "“≥4 ore pe noapte ... ≥70% din nopți în ultimele 3 luni”"
+    }
+  ]
 }
