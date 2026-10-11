@@ -55,7 +55,7 @@ Copy the glossary to `docs/GLOSSARY.md` (done). Use its terms exactly, in code i
 overlays/ro-respiratory-medicine/
   MANIFEST.json            # upstream_commit, registry_versions{hs, rc}, profile digest, overlay_version
   ACTIVATE.md              # activation preamble (§3.2)
-  install.py               # writes the preamble into a project's AGENTS.md; optional Codex CNP hook (§8)
+  install.py               # optional: adds the Codex CNP hook to one project (§8)
   check_overlay.py         # the overlay lint + drift check (§10.3)
   profile/respiratory_medicine.json
   registries/
@@ -90,7 +90,7 @@ overlays/ro-respiratory-medicine/
 - Upstream's locale-pack ownership policy does not apply, since we don't seek "supported" listing.
 
 ### 3.2 Activation preamble (`ACTIVATE.md`)
-A plain instruction block that the user adds to their project's agent instructions. `install.py` does this and is idempotent, with a marked begin/end block. It must state:
+An instruction block that every ARS skill reads from the installed plugin before its first reply (on by default). It must state:
 1. Output is English only.
 2. Human-subjects resolution, review-pathway traces and packet manifests use `registries/generated/human_subjects_authority_registry.json`. Review-target resolution uses `registries/generated/review_criteria_registry.json`. Pass these as `--registry` and never use the core paths.
 3. At intake, before drafting: build the Romanian context record (§7.2), show the venue notes for a named target (§9), and run patient-data tier handling (§8).
@@ -269,7 +269,7 @@ No registry change.
 - never paste identifiable images; anonymised imaging is fine with DICOM metadata stripped.
 
 **CNP hook (`hooks/cnp_guard.py`):**
-- opt-in, offered by `install.py`, for Codex `UserPromptSubmit` + `PreToolUse(Read)`;
+- opt-in, installed per project by `install.py`, for Codex `UserPromptSubmit` + `PreToolUse(Read)`;
 - blocks on a checksum-valid CNP: 13 digits, valid sex/century digit, valid date, valid county code, checksum with weights `279146358279`;
 - no heuristic name or address detection;
 - other runtimes rely on the preamble alone.
@@ -384,7 +384,7 @@ One slice per delegated task. Each is merged only when its acceptance check pass
 | S6 | Subdomain references, design add-ons, data sources, citations, reviewer prompts, edition watch (§6) | S2 | `check_overlay` green; every row tagged and dated |
 | S7 | Venue notes, venue extras schema, `check_venue_extras.py` (§9) | S2 | Venue-extras tests pass; notes rows tagged and dated |
 | S8 | Patient-data preamble section + `hooks/cnp_guard.py` (§8) | S1 | CNP tests pass; hook only installed on opt-in |
-| S9 | `ACTIVATE.md` + `install.py` (§3.2), wiring S3–S8 | S3–S8 | Installer is idempotent (tested); preamble names every generated path |
+| S9 | `ACTIVATE.md` loaded by every skill (§3.2), wiring S3–S8 | S3–S8 | Preamble names every generated path; hook installer idempotent (tested) |
 | S10 | Plugin evals (§11.2) | S9 | All six pass at `--runs 1`; results recorded in README |
 | S11 | `docs/UPSTREAM_ASKS.md` (§13) | — | Drafts written; **not filed** without Val's approval |
 

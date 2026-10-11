@@ -1,53 +1,18 @@
 #!/usr/bin/env python3
-"""Install the Romanian respiratory-medicine overlay preamble in one project."""
+"""Optionally install the CNP guard hook in one Codex project.
+
+The overlay instructions load automatically through the plugin's skills; this
+script only adds (or removes) the hard CNP block as a project Codex hook.
+"""
 
 from __future__ import annotations
 
 import argparse
 import json
-import re
 import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
-VERSION = json.loads((ROOT / "MANIFEST.json").read_text(encoding="utf-8"))["overlay_version"]
-BEGIN = f"<!-- ro-respiratory-overlay:begin v{VERSION} -->"
-END = "<!-- ro-respiratory-overlay:end -->"
-BLOCK_RE = re.compile(
-    rb"<!-- ro-respiratory-overlay:begin v[^\r\n]+ -->.*?<!-- ro-respiratory-overlay:end -->",
-    re.DOTALL,
-)
-
-
-def _block() -> bytes:
-    body = (ROOT / "ACTIVATE.md").read_text(encoding="utf-8").replace(
-        "{OVERLAY_ROOT}", str(ROOT)
-    ).replace("\r\n", "\n").strip("\n")
-    return f"{BEGIN}\n{body}\n{END}".encode("utf-8")
-
-
-def _with_block(original: bytes, block: bytes) -> bytes:
-    found = BLOCK_RE.search(original)
-    if found:
-        return original[: found.start()] + block + original[found.end() :]
-    if not original:
-        return block + b"\n"
-    # One separator newline belongs to the managed block and is removed on uninstall.
-    return original + b"\n" + block + b"\n"
-
-
-def _without_block(original: bytes) -> bytes:
-    found = BLOCK_RE.search(original)
-    if not found:
-        return original
-    start, end = found.span()
-    if start and original[start - 1 : start] == b"\n":
-        start -= 1
-    if end < len(original) and original[end : end + 1] == b"\n":
-        end += 1
-    return original[:start] + original[end:]
-
-
 def _hook_command() -> str:
     return f"python3 {ROOT / 'hooks/cnp_guard.py'}"
 
@@ -132,34 +97,18 @@ def _change(path: Path, transform, dry_run: bool) -> tuple[bool, bytes]:
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("project_dir", type=Path)
-    parser.add_argument("--with-cnp-hook", action="store_true")
     parser.add_argument("--uninstall", action="store_true")
     parser.add_argument("--dry-run", action="store_true")
     args = parser.parse_args(argv)
 
     project = args.project_dir.resolve()
-    transform = _without_block if args.uninstall else lambda raw: _with_block(raw, _block())
-    actions: list[str] = []
-    for path in (_safe_target(project, Path("AGENTS.md")),):
-        if args.uninstall and not path.exists():
-            continue
-        changed, _ = _change(path, transform, args.dry_run)
-        if changed:
-            actions.append(f"{'Would update' if args.dry_run else 'Updated'} {path}")
-        else:
-            actions.append(f"Unchanged {path}")
-
-    if args.with_cnp_hook or args.uninstall:
-        settings = _safe_target(project, Path(".codex/hooks.json"))
-        if settings.exists() or args.with_cnp_hook:
-            changed, _ = _change(settings, lambda raw: _merge_hooks(raw, args.uninstall), args.dry_run)
-            if changed:
-                actions.append(f"{'Would update' if args.dry_run else 'Updated'} {settings}")
-            else:
-                actions.append(f"Unchanged {settings}")
-    if not actions:
-        actions.append("No changes")
-    print("\n".join(actions))
+    settings = _safe_target(project, Path(".codex/hooks.json"))
+    if args.uninstall and not settings.exists():
+        print("No changes")
+        return 0
+    changed, _ = _change(settings, lambda raw: _merge_hooks(raw, args.uninstall), args.dry_run)
+    verb = "Would update" if args.dry_run else "Updated"
+    print(f"{verb} {settings}" if changed else f"Unchanged {settings}")
     return 0
 
 

@@ -27,6 +27,8 @@ For multi-agent roles, follow `shared/references/codex_subagent_dispatch.md` (re
 
 **Path resolution:** ARS root is the nearest ancestor of this skill’s resolved directory that contains `shared/` and root `scripts/`. Resolve `shared/...` and root-level `scripts/...` paths from ARS root; resolve this skill’s own `scripts/...` paths from this skill directory.
 
+**Respiratory-medicine layer (always on):** before your first reply in a session, read `overlays/ro-respiratory-medicine/ACTIVATE.md` from ARS root and follow it for the whole session. In that file, `{OVERLAY_ROOT}` means ARS root + `/overlays/ro-respiratory-medicine`.
+
 <!-- routing-core:begin -->
 **Step 0 — Escape hatch check (before any classification):** If the user's first message begins with `[direct-mode]` (case-insensitive byte-0 token, optionally preceded by whitespace/newlines that are stripped on parse), record this fact, strip the prefix and surrounding whitespace from the message, and skip directly to **Step 1 explicit-intent handling** on the stripped content. The literal `[direct-mode]` is NOT passed through to the dispatched agent. If the stripped message itself has no clear skill named, Step 1 falls through to Step 3 clarification (the escape hatch bypasses cross-phase clarification (Step 2), not all routing). When the token is honored and the named agent or skill needs inputs the message does not supply, read that agent's or skill's file and ask for what it requires, in its terms. Without the byte-0 token, naming an agent is not explicit intent: such a message goes through Steps 1-3 like any other, so cross-phase materials still get Step 2 clarification.
 
