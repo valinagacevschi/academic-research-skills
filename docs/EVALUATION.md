@@ -4,7 +4,7 @@ Four layers of testing, from "does the code work" to "does the AI behave like a 
 
 ```mermaid
 flowchart TB
-    L1["1 · Automated tests<br/>every change · ~10,000 tests"] --> L2
+    L1["1 · Automated tests<br/>every change · ~9,600 tests"] --> L2
     L2["2 · Verified respiratory facts<br/>every value has a source, quote and date"] --> L3
     L3["3 · Doctor-scenario tests<br/>realistic requests, graded automatically"] --> L4
     L4["4 · Checks inside every run<br/>references, claims, reporting checklists"]
@@ -16,7 +16,7 @@ Run on every change (GitHub Actions) and locally.
 
 | Suite | What it catches | Status |
 |---|---|---|
-| `pytest scripts tests` | Broken scripts, schema errors, citation-resolver bugs | 9,796 passing |
+| `pytest scripts tests` | Broken scripts, schema errors, citation-resolver bugs | 9,571 passing |
 | Consistency lints | Instructions that drifted out of sync, broken file references, skill descriptions over the length limit | Passing |
 | Overlay check | A respiratory fact without a source, a stale registry, the overlay touching core files | Passing |
 | Secret scan | API keys or credentials committed by mistake | Passing |

@@ -75,7 +75,7 @@ Every change is checked automatically, and the respiratory layer is tested with 
 
 | Check | Result |
 |---|---|
-| Automated test suite | 9,796 tests passing |
+| Automated test suite | 9,571 tests passing |
 | Respiratory facts (thresholds, MCIDs, legal provisions) | 112 values verified against primary sources, each with URL, quote and date |
 | Doctor-scenario tests (ethics routing, pasted CNP, GOLD edition, venue limits…) | 6 of 6 passed through the installed plugin (11 Oct 2026) |
 | Peer-review quality vs. real reviewers | **Not yet measured** |
