@@ -1,0 +1,14 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "title":"Romanian human-subjects registry delta",
+  "type":"object","additionalProperties":false,
+  "required":["schema_version","fact_definitions","sources","profiles","overlays","known_gaps"],
+  "properties":{
+    "schema_version":{"const":"human-subjects-authority-delta/1.0"},
+    "fact_definitions":{"type":"array","items":{"type":"object"}},
+    "sources":{"type":"array","items":{"type":"object"}},
+    "profiles":{"type":"array","items":{"type":"object"}},
+    "overlays":{"type":"array","maxItems":0},
+    "known_gaps":{"type":"array","items":{"type":"string","minLength":1}}
+  }
+}

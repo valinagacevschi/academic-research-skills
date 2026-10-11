@@ -1,0 +1,42 @@
+name: Romanian respiratory-medicine overlay
+
+on:
+  pull_request:
+    paths:
+      - 'overlays/ro-respiratory-medicine/**'
+      - 'shared/human_subjects_authority_registry.json'
+      - 'shared/review_criteria_registry.json'
+      - '.github/workflows/ro-overlay.yml'
+  push:
+    paths:
+      - 'overlays/ro-respiratory-medicine/**'
+      - 'shared/human_subjects_authority_registry.json'
+      - 'shared/review_criteria_registry.json'
+      - '.github/workflows/ro-overlay.yml'
+
+jobs:
+  ro-overlay:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+          cache-dependency-path: requirements-dev.txt
+
+      - name: Install deps
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements-dev.txt pytest
+
+      - name: Check overlay
+        run: python overlays/ro-respiratory-medicine/check_overlay.py --base origin/main
+
+      - name: Run overlay tests
+        run: pytest overlays/ro-respiratory-medicine/tests

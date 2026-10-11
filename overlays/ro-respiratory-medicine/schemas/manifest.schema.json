@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Romanian respiratory-medicine overlay manifest",
+  "type": "object",
+  "properties": {
+    "overlay_id": {
+      "const": "ro-respiratory-medicine"
+    },
+    "overlay_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "upstream_commit": {
+      "type": "string",
+      "minLength": 1
+    },
+    "upstream_registry_versions": {
+      "type": "object",
+      "properties": {
+        "human_subjects": {
+          "type": "string",
+          "minLength": 1
+        },
+        "review_criteria": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "human_subjects",
+        "review_criteria"
+      ],
+      "additionalProperties": false
+    },
+    "profile_content_sha256": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "required": [
+    "overlay_id",
+    "overlay_version",
+    "upstream_commit",
+    "upstream_registry_versions",
+    "profile_content_sha256"
+  ],
+  "additionalProperties": false
+}

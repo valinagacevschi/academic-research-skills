@@ -1,0 +1,226 @@
+{
+  "schema_version": "ro-overlay-evidence-rows/1.0",
+  "rows": [
+    {
+      "value_id": "methodology.ats_ers_spirometry_2019",
+      "area": "methodology",
+      "statement": "The ATS/ERS 2019 technical statement updates the 2005 spirometry technical standards.",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-abstract",
+      "source": {
+        "url": "https://europepmc.org/article/MED/31613151",
+        "title": "ATS/ERS Spirometry Standardization Update",
+        "locator": "Europe PMC record; title, publication date/year and abstract"
+      },
+      "verified_at": "2026-10-10",
+      "edition": "2019",
+      "review_window_months": 12,
+      "notes": "“the need to update the 2005 technical standards for spirometry”"
+    },
+    {
+      "value_id": "methodology.ats_ers_dlco_2017",
+      "area": "methodology",
+      "statement": "The 2017 ERS/ATS standard updates the 2005 single-breath DLCO standard.",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-abstract",
+      "source": {
+        "url": "https://europepmc.org/article/MED/28049168",
+        "title": "2017 ERS/ATS standards for single-breath carbon monoxide uptake in the lung",
+        "locator": "Europe PMC record; title, publication date/year and abstract"
+      },
+      "verified_at": "2026-10-10",
+      "edition": "2017",
+      "review_window_months": 12,
+      "notes": "“provides an update ... technical standards ... last updated in 2005.”"
+    },
+    {
+      "value_id": "methodology.ats_ers_interpretation_2022",
+      "area": "methodology",
+      "statement": "The ERS/ATS technical standard updates recommendations for interpretation of pulmonary function tests.",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-abstract",
+      "source": {
+        "url": "https://europepmc.org/article/MED/34949706",
+        "title": "ERS/ATS technical standard on interpretive strategies for routine lung function tests",
+        "locator": "Europe PMC record; title, publication date/year and abstract"
+      },
+      "verified_at": "2026-10-10",
+      "edition": "2022",
+      "review_window_months": 12,
+      "notes": "“We aimed to update the 2005 recommendations ... to establish new standards for PFT interpretation.”"
+    },
+    {
+      "value_id": "methodology.ats_ers_lung_volumes_2023",
+      "area": "methodology",
+      "statement": "The 2023 ERS/ATS statement updates the 2005 lung-volume measurement technical standard.",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-abstract",
+      "source": {
+        "url": "https://europepmc.org/article/MED/37500112",
+        "title": "ERS/ATS technical statement: standardisation of measurement of lung volumes, 2023 update",
+        "locator": "Europe PMC record; title, publication date/year and abstract"
+      },
+      "verified_at": "2026-10-10",
+      "edition": "2023",
+      "review_window_months": 12,
+      "notes": "“This document updates the 2005 ... technical standard for the measurement of lung volumes.”"
+    },
+    {
+      "value_id": "methodology.ats_ers_feno_2005",
+      "area": "methodology",
+      "statement": "The ATS/ERS 2005 recommendations standardize online/offline measurement of exhaled lower respiratory and nasal nitric oxide.",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-abstract",
+      "source": {
+        "url": "https://europepmc.org/article/MED/15817806",
+        "title": "ATS/ERS recommendations for standardized procedures for exhaled and nasal nitric oxide measurement",
+        "locator": "Europe PMC record; title, publication date/year and abstract"
+      },
+      "verified_at": "2026-10-10",
+      "edition": "2005",
+      "review_window_months": 12,
+      "notes": "Title identifies standardized procedures for online/offline measurement of exhaled lower respiratory and nasal nitric oxide."
+    },
+    {
+      "value_id": "methodology.ers_ats_field_walking_2014",
+      "area": "methodology",
+      "statement": "The ERS/ATS field-walking standard describes standard operating procedures for the 6MWT, ISWT, and ESWT.",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-abstract",
+      "source": {
+        "url": "https://europepmc.org/article/MED/25359355",
+        "title": "ERS/ATS technical standard: field walking tests in chronic respiratory disease",
+        "locator": "Europe PMC record; title, publication date/year and abstract"
+      },
+      "verified_at": "2026-10-10",
+      "edition": "2014",
+      "review_window_months": 12,
+      "notes": "“aim ... describe the standard operating procedures for the 6-min walk test (6MWT), ISWT and ESWT.”"
+    },
+    {
+      "value_id": "methodology.gli_race_neutral_2023",
+      "area": "methodology",
+      "statement": "The 2023 ATS statement reports development of race-neutral GLI global (2022) equations.",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-abstract",
+      "source": {
+        "url": "https://europepmc.org/article/MED/36383197",
+        "title": "A Race-neutral Approach to the Interpretation of Lung Function Measurements",
+        "locator": "Europe PMC record; title, publication date/year and abstract"
+      },
+      "verified_at": "2026-10-10",
+      "edition": "2023",
+      "review_window_months": 12,
+      "notes": "“to create race-neutral GLI global (2022) equations.”"
+    },
+    {
+      "value_id": "methodology.record_2015",
+      "area": "methodology",
+      "statement": "RECORD is a 2015 reporting guideline extending STROBE for observational studies using routinely collected health data.",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-abstract",
+      "source": {
+        "url": "https://europepmc.org/article/MED/26440803",
+        "title": "The RECORD statement",
+        "locator": "Europe PMC record; title, publication date/year and abstract"
+      },
+      "verified_at": "2026-10-10",
+      "edition": "2015",
+      "review_window_months": 12,
+      "notes": "“created as an extension to the STROBE statement ... observational studies using routinely collected health data.”"
+    },
+    {
+      "value_id": "methodology.record_pe_2018",
+      "area": "methodology",
+      "statement": "The RECORD-PE article extends RECORD with pharmacoepidemiology-specific reporting guidance.",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-abstract",
+      "source": {
+        "url": "https://europepmc.org/article/MED/30429167",
+        "title": "The RECORD-PE statement",
+        "locator": "Europe PMC/PubMed abstract"
+      },
+      "verified_at": "2026-10-10",
+      "edition": "2018",
+      "review_window_months": 12,
+      "notes": "“extended the RECORD statement to include reporting guidelines specific to pharmacoepidemiological research (RECORD-PE).”"
+    },
+    {
+      "value_id": "methodology.strome_id_2014",
+      "area": "methodology",
+      "statement": "STROME-ID is an infectious-disease molecular epidemiology reporting extension to STROBE, with 20 items added to the 22-item checklist.",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-abstract",
+      "source": {
+        "url": "https://europepmc.org/article/MED/24631223",
+        "title": "STROME-ID: an extension of the STROBE statement",
+        "locator": "Europe PMC/PubMed abstract"
+      },
+      "verified_at": "2026-10-10",
+      "edition": "2014",
+      "review_window_months": 12,
+      "notes": "“20 items were added to the 22 item STROBE checklist.”"
+    },
+    {
+      "value_id": "methodology.strobe_mr_2021",
+      "area": "methodology",
+      "statement": "STROBE-MR is a reporting guideline that helps authors report Mendelian randomisation research clearly and transparently.",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-abstract",
+      "source": {
+        "url": "https://europepmc.org/article/MED/34702754",
+        "title": "STROBE-MR statement",
+        "locator": "Europe PMC/PubMed abstract"
+      },
+      "verified_at": "2026-10-10",
+      "edition": "2021",
+      "review_window_months": 12,
+      "notes": "“STROBE-MR ... assists authors in reporting their MR research clearly and transparently.”"
+    },
+    {
+      "value_id": "methodology.daynes_6mwd_mid_2025",
+      "area": "methodology.field_walking",
+      "statement": "For respiratory conditions, the anchor-based MID for 6-minute walk distance is 25 m (95% CI 24–26 m).",
+      "numeric": true,
+      "use": "fact_check",
+      "evidence_tag": "primary-abstract",
+      "source": {
+        "url": "https://europepmc.org/article/MED/40436612",
+        "title": "Determining the minimum important differences for field walking tests in adults with long-term conditions",
+        "locator": "Abstract, Results"
+      },
+      "verified_at": "2026-10-10",
+      "edition": "2025",
+      "review_window_months": 12,
+      "notes": "“The MID for the 6MWD was 25 m (24-26 m) for respiratory conditions.”"
+    },
+    {
+      "value_id": "methodology.daynes_iswt_mid_2025",
+      "area": "methodology.field_walking",
+      "statement": "For respiratory conditions, the anchor-based MID for the incremental shuttle walk test is 48 m (95% CI 39–57 m).",
+      "numeric": true,
+      "use": "fact_check",
+      "evidence_tag": "primary-abstract",
+      "source": {
+        "url": "https://europepmc.org/article/MED/40436612",
+        "title": "Determining the minimum important differences for field walking tests in adults with long-term conditions",
+        "locator": "Abstract, Results"
+      },
+      "verified_at": "2026-10-10",
+      "edition": "2025",
+      "review_window_months": 12,
+      "notes": "“The MID for the ISWT was 48 m (39-57 m) for respiratory conditions.”"
+    }
+  ]
+}

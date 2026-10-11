@@ -1,0 +1,316 @@
+{
+  "schema_version": "ro-overlay-evidence-rows/1.0",
+  "rows": [
+    {
+      "value_id": "ro.ctr-authority",
+      "area": "legal.ro.ctr",
+      "statement": "ANMDMR is Romania’s competent authority and national contact point for interventional medicinal-product clinical trials.",
+      "numeric": false,
+      "use": "fact_check",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://www.anm.ro/_/STUDII%20CLINICE/OUG%2029-2022.pdf",
+        "title": "OUG 29/2022 (agency-hosted consolidated print)",
+        "locator": "Art. 2(1)"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 12,
+      "notes": "Agency-hosted copy; consolidated print. “Se desemnează ... ANMDMR ... ca autoritate competentă”"
+    },
+    {
+      "value_id": "ro.cnbmdm-ethics",
+      "area": "legal.ro.ctr",
+      "statement": "CNBMDM performs ethical analysis and issues opinions for interventional medicinal-product trials.",
+      "numeric": false,
+      "use": "fact_check",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://www.anm.ro/_/STUDII%20CLINICE/OUG%2029-2022.pdf",
+        "title": "OUG 29/2022 (agency-hosted consolidated print)",
+        "locator": "Art. 2(2)"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 12,
+      "notes": "Agency-hosted copy; consolidated print. “să efectueze analiza etică şi să emită avize”"
+    },
+    {
+      "value_id": "ro.ctis-evaluation",
+      "area": "legal.ro.ctr",
+      "statement": "CNBMDM performs ethical review, ANMDMR scientific review, and decisions are transmitted through CTIS.",
+      "numeric": false,
+      "use": "fact_check",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://www.anm.ro/_/STUDII%20CLINICE/OUG%2029-2022.pdf",
+        "title": "OUG 29/2022 (agency-hosted consolidated print)",
+        "locator": "Art. 3(2)"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 12,
+      "notes": "Agency-hosted copy; consolidated print. “analiza etică ... CNBMDM ... analiza ştiinţifică ... ANMDMR ... CTIS”"
+    },
+    {
+      "value_id": "ro.ct-dossier-language",
+      "area": "legal.ro.ctr",
+      "statement": "The clinical-trial application dossier is submitted in Romanian; documents not intended for subjects may also be submitted in English.",
+      "numeric": false,
+      "use": "fact_check",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://www.anm.ro/_/STUDII%20CLINICE/OUG%2029-2022.pdf",
+        "title": "OUG 29/2022 (agency-hosted consolidated print)",
+        "locator": "Art. 4(1)–(2)"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 12,
+      "notes": "Agency-hosted copy; consolidated print. “dosar ... în limba română ... nu este destinată subiecţilor ... limba engleză”"
+    },
+    {
+      "value_id": "ro.patient-rights-research-consent",
+      "area": "legal.ro.patient_rights",
+      "statement": "Patient consent is mandatory for participation in scientific research.",
+      "numeric": false,
+      "use": "fact_check",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://ms.ro/media/documents/LEGE_Nr._46_2003_forma_la_data_de_20.11.2023.pdf",
+        "title": "Law 46/2003 consolidated print (Ministry of Health copy)",
+        "locator": "Art. 19"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 12,
+      "notes": "Agency-hosted copy; consolidated print. “Consimţământul pacientului este obligatoriu ... la cercetarea ştiinţifică”"
+    },
+    {
+      "value_id": "ro.patient-rights-samples",
+      "area": "legal.ro.patient_rights",
+      "statement": "Patient consent is mandatory to collect, store, or use biological products taken from the patient.",
+      "numeric": false,
+      "use": "fact_check",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://ms.ro/media/documents/LEGE_Nr._46_2003_forma_la_data_de_20.11.2023.pdf",
+        "title": "Law 46/2003 consolidated print (Ministry of Health copy)",
+        "locator": "Art. 18"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 12,
+      "notes": "Agency-hosted copy; consolidated print. “Consimţământul pacientului este obligatoriu pentru recoltarea, păstrarea, folosirea tuturor produselor biologice”"
+    },
+    {
+      "value_id": "ro.patient-rights-images",
+      "area": "legal.ro.patient_rights",
+      "statement": "A patient may not be photographed or filmed in a medical unit without consent, subject to the stated diagnostic, treatment, and malpractice exception.",
+      "numeric": false,
+      "use": "fact_check",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://ms.ro/media/documents/LEGE_Nr._46_2003_forma_la_data_de_20.11.2023.pdf",
+        "title": "Law 46/2003 consolidated print (Ministry of Health copy)",
+        "locator": "Art. 20"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 12,
+      "notes": "Agency-hosted copy; consolidated print. “Pacientul nu poate fi fotografiat sau filmat ... fără consimţământul său”"
+    },
+    {
+      "value_id": "ro.patient-confidentiality",
+      "area": "legal.ro.patient_rights",
+      "statement": "Patient health information and personal data are confidential, including after death.",
+      "numeric": false,
+      "use": "fact_check",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://ms.ro/media/documents/LEGE_Nr._46_2003_forma_la_data_de_20.11.2023.pdf",
+        "title": "Law 46/2003 consolidated print (Ministry of Health copy)",
+        "locator": "Art. 21"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 12,
+      "notes": "Agency-hosted copy; consolidated print. “Toate informaţiile ... sunt confidenţiale chiar şi după decesul acestuia”"
+    },
+    {
+      "value_id": "ro.patient-disclosure",
+      "area": "legal.ro.patient_rights",
+      "statement": "Confidential information may be supplied only with the patient’s explicit consent or where the law expressly requires it.",
+      "numeric": false,
+      "use": "fact_check",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://ms.ro/media/documents/LEGE_Nr._46_2003_forma_la_data_de_20.11.2023.pdf",
+        "title": "Law 46/2003 consolidated print (Ministry of Health copy)",
+        "locator": "Art. 22"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 12,
+      "notes": "Agency-hosted copy; consolidated print. “numai în cazul în care pacientul îşi dă consimţământul explicit sau dacă legea o cere în mod expres”"
+    },
+    {
+      "value_id": "ro.mdr-ethics-review",
+      "area": "legal.ro.mdr",
+      "statement": "CNBMDM performs ethics review of medical-device clinical investigations; ANMDMR performs scientific review.",
+      "numeric": false,
+      "use": "fact_check",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://www.anm.ro/_/DM/LEGISLATIE/Ordin%20330-2023.pdf",
+        "title": "OMS 330/2023 methodological norms (ANMDMR copy)",
+        "locator": "Norms Art. 4(1)–(2)"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 12,
+      "notes": "Agency-hosted copy; consolidated print. “Analiza etică se efectuează de către CNBMDM ... Analiza ştiinţifică ... ANMDMR”"
+    },
+    {
+      "value_id": "ro.mdr-positive-opinion",
+      "area": "legal.ro.mdr",
+      "statement": "Medical-device clinical investigations require a positive CNBMDM ethics opinion, with ANMDMR validation or authorisation depending on device class.",
+      "numeric": false,
+      "use": "fact_check",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://www.anm.ro/_/DM/LEGISLATIE/Ordin%20330-2023.pdf",
+        "title": "OMS 330/2023 methodological norms (ANMDMR copy)",
+        "locator": "Norms Art. 16(1)–(2)"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 12,
+      "notes": "Agency-hosted copy; consolidated print. “cu condiţia emiterii de către CNBMDM a unui aviz etic pozitiv”"
+    },
+    {
+      "value_id": "ro.clinical-consent-taker",
+      "area": "legal.ro.ctr",
+      "statement": "The person obtaining informed consent must be a physician on the investigation team, trained in the protocol and good clinical practice.",
+      "numeric": false,
+      "use": "fact_check",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://www.anm.ro/_/STUDII%20CLINICE/Ordin%203390-2022.pdf",
+        "title": "OMS 3390/2022 norms (ANMDMR copy)",
+        "locator": "Norms Art. 15(1)"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 12,
+      "notes": "Agency-hosted copy; consolidated print. “trebuie să fie medic, membru al echipei de investigaţie, instruit ... protocolul şi buna practică”"
+    },
+    {
+      "value_id": "ro.pi-qualification",
+      "area": "legal.ro.ctr",
+      "statement": "The principal investigator must be a specialist physician with more than three years in specialty or a primary physician.",
+      "numeric": true,
+      "use": "fact_check",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://www.anm.ro/_/STUDII%20CLINICE/Ordin%203390-2022.pdf",
+        "title": "OMS 3390/2022 norms (ANMDMR copy)",
+        "locator": "Norms Art. 16(2)"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 12,
+      "notes": "Agency-hosted copy; consolidated print. “medic specialist, cu o vechime mai mare de 3 ani ... sau medic primar”"
+    },
+    {
+      "value_id": "ro.cmr-publication-drug-name",
+      "area": "legal.ro.cmr",
+      "statement": "CMR members must preserve patient confidentiality in scientific publications and refer to medicines only by INN.",
+      "numeric": false,
+      "use": "fact_check",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://www.cmr.ro/wp-content/uploads/2026/01/codul-de-deontologie-medicala-al-colegiului-medicilor-din-romania-din-30102025-1.pdf",
+        "title": "CMR Deontology Code 2025",
+        "locator": "Art. 46(1)"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 12,
+      "notes": "Agency-hosted copy; consolidated print. “respectarea strictă a confidenţialităţii ... numai cu denumirea comună internaţională”"
+    },
+    {
+      "value_id": "ro.cmr-research-consent",
+      "area": "legal.ro.cmr",
+      "statement": "Research on a person able to consent requires ethics approval and express, specific, freely given written consent, with withdrawal information.",
+      "numeric": false,
+      "use": "fact_check",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://www.cmr.ro/wp-content/uploads/2026/01/codul-de-deontologie-medicala-al-colegiului-medicilor-din-romania-din-30102025-1.pdf",
+        "title": "CMR Deontology Code 2025",
+        "locator": "Art. 51(b)–(e)"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 12,
+      "notes": "Agency-hosted copy; consolidated print. “avizat ... comisiile etice ... consimţământul ... consemnat în scris”"
+    },
+    {
+      "value_id": "ro.cmr-conflict-interest",
+      "area": "legal.ro.cmr",
+      "statement": "Physicians must identify and eliminate actual or potential conflicts of interest that could influence medical decisions.",
+      "numeric": false,
+      "use": "fact_check",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://www.cmr.ro/wp-content/uploads/2026/01/codul-de-deontologie-medicala-al-colegiului-medicilor-din-romania-din-30102025-1.pdf",
+        "title": "CMR Deontology Code 2025",
+        "locator": "Art. 62(2)"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 12,
+      "notes": "Agency-hosted copy; consolidated print. “identifica şi ... înlătura orice situaţie reală sau potenţială de conflict de interese”"
+    }
+    ,{
+      "value_id": "ro.l190-art3",
+      "area": "legal.ro.data-protection",
+      "statement": "Processing genetic, biometric or health data for automated decision-making or profiling is allowed only with explicit consent or express legal provisions with appropriate safeguards.",
+      "numeric": false,
+      "use": "fact_check",
+      "evidence_tag": "primary-full-text",
+      "source": {"url": "https://portal.just.ro/101/Documents/LEGE__190_2018_date_cu_caracter_personal.pdf", "title": "Law 190/2018, official court portal copy", "locator": "Art. 3(1)"},
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 12,
+      "notes": "“Prelucrarea ... pentru ... profilare ... se poate efectua numai cu consimţământul explicit ... sau ... prevederi legale exprese”"
+    },
+    {
+      "value_id": "ro.l190-art4",
+      "area": "legal.ro.data-protection",
+      "statement": "Processing a national identification number requires the safeguards listed in Law 190/2018 Article 4(2), including technical and organisational measures and a defined retention period.",
+      "numeric": false,
+      "use": "fact_check",
+      "evidence_tag": "primary-full-text",
+      "source": {"url": "https://portal.just.ro/101/Documents/LEGE__190_2018_date_cu_caracter_personal.pdf", "title": "Law 190/2018, official court portal copy", "locator": "Art. 4(1)–(2)"},
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 12,
+      "notes": "“operatorii ... sunt obligaţi să instituie ... măsuri tehnice şi organizatorice adecvate”"
+    },
+    {
+      "value_id": "ro.l190-art8",
+      "area": "legal.ro.data-protection",
+      "statement": "For archiving in the public interest, scientific or historical research, or statistics, specified data-subject rights may be restricted only when exercising them would make the purpose impossible or seriously impair it and the restriction is necessary.",
+      "numeric": false,
+      "use": "fact_check",
+      "evidence_tag": "primary-full-text",
+      "source": {"url": "https://portal.just.ro/101/Documents/LEGE__190_2018_date_cu_caracter_personal.pdf", "title": "Law 190/2018, official court portal copy", "locator": "Art. 8(1)–(3)"},
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 12,
+      "notes": "“exercitarea acestor drepturi ar face imposibilă sau ar afecta în mod grav realizarea scopurilor specifice”"
+    }
+  ]
+}

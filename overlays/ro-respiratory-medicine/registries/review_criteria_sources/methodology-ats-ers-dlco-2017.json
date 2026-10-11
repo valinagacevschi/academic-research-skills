@@ -1,0 +1,36 @@
+{
+  "receipt_version": "review-criteria-source-receipt/1.0",
+  "receipt_kind": "mutable_web_semantic_snapshot",
+  "source_uri": "https://europepmc.org/article/MED/28049168",
+  "publisher": "2017 ERS/ATS standards for single-breath carbon monoxide uptake in the lung",
+  "retrieved_at": "2026-10-10T14:43:10Z",
+  "capture": {
+    "method": "GET https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:28049168&format=json",
+    "http_status": 200,
+    "content_type": "application/json;charset=UTF-8",
+    "etag": null,
+    "last_modified": null,
+    "raw_body_size_bytes": 962,
+    "raw_body_sha256": "1ca8a2bdef3d333f728f07996680e323c4dc30b9db0e85b6ae0f843056086977"
+  },
+  "semantic_snapshot": {
+    "selection": "Backing data row locator and quoted source note",
+    "normalization": "UTF-8 text exactly as recorded in the verified overlay data row; no whitespace normalization",
+    "encoding": "UTF-8",
+    "size_bytes": 135,
+    "word_count": 19,
+    "sha256": "ef63f2c834a87cca2bcbe5be9f4fff5691a7836f3b95aea8b135e0f4f362d666"
+  },
+  "criterion_locators": [
+    {
+      "criterion_id": "field.ers-ats.respiratory-measurement",
+      "fragment": "“provides an update ... technical standards ... last updated in 2005.”",
+      "locator": "Europe PMC record; title, publication date/year and abstract"
+    }
+  ],
+  "retention": {
+    "full_body_committed": false,
+    "reason": "Retain only the verified source-row locator and quote; do not redistribute the source body.",
+    "drift_rule": "Recheck source URI and locator against the current source before relying on a changed criterion."
+  }
+}

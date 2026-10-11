@@ -1,0 +1,41 @@
+{
+  "receipt_version": "review-criteria-source-receipt/1.0",
+  "receipt_kind": "mutable_web_semantic_snapshot",
+  "source_uri": "https://www.cmr.ro/wp-content/uploads/2026/01/codul-de-deontologie-medicala-al-colegiului-medicilor-din-romania-din-30102025-1.pdf",
+  "publisher": "CMR Deontology Code 2025",
+  "retrieved_at": "2026-10-10T14:43:10Z",
+  "capture": {
+    "method": "GET https://www.cmr.ro/wp-content/uploads/2026/01/codul-de-deontologie-medicala-al-colegiului-medicilor-din-romania-din-30102025-1.pdf",
+    "http_status": 200,
+    "content_type": "application/pdf",
+    "etag": "\"3033e-64977254cf400\"",
+    "last_modified": "Wed, 28 Jan 2026 18:45:36 GMT",
+    "raw_body_size_bytes": 197438,
+    "raw_body_sha256": "801bc60d9ba0c67e32ccb3550a7148c6d17ec0030202302dcb3ea001c2629c98"
+  },
+  "semantic_snapshot": {
+    "selection": "Backing data row locator and quoted source note",
+    "normalization": "UTF-8 text exactly as recorded in the verified overlay data row; no whitespace normalization",
+    "encoding": "UTF-8",
+    "size_bytes": 150,
+    "word_count": 19,
+    "sha256": "bab9ba7354092fff0776b76758b38e51fd1004f08b475cade8df9eecd2e8ba44"
+  },
+  "criterion_locators": [
+    {
+      "criterion_id": "ro.manuscript-statements.conflict-of-interest",
+      "fragment": "Agency-hosted copy; consolidated print. “identifica şi ... înlătura orice situaţie reală sau potenţială de conflict de interese”",
+      "locator": "Art. 62(2)"
+    },
+    {
+      "criterion_id": "ro.manuscript-statements.inn-only",
+      "fragment": "Agency-hosted copy; consolidated print. “respectarea strictă a confidenţialităţii ... numai cu denumirea comună internaţională”",
+      "locator": "Art. 46(1)"
+    }
+  ],
+  "retention": {
+    "full_body_committed": false,
+    "reason": "Retain only the verified source-row locator and quote; do not redistribute the source body.",
+    "drift_rule": "Recheck source URI and locator against the current source before relying on a changed criterion."
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "receipt_version": "review-criteria-source-receipt/1.0",
+  "receipt_kind": "mutable_web_semantic_snapshot",
+  "source_uri": "https://www.anm.ro/_/STUDII%20CLINICE/OUG%2029-2022.pdf",
+  "publisher": "OUG 29/2022",
+  "retrieved_at": "2026-10-10T14:43:10Z",
+  "capture": {
+    "method": "GET https://www.anm.ro/_/STUDII%20CLINICE/OUG%2029-2022.pdf",
+    "http_status": 200,
+    "content_type": "application/pdf",
+    "etag": "\"624c4242-392c4\"",
+    "last_modified": "Tue, 05 Apr 2022 13:21:06 GMT",
+    "raw_body_size_bytes": 234180,
+    "raw_body_sha256": "96da639dd361138df6f47630283270a72d2b19c75e43a7352283964f57d164a2"
+  },
+  "semantic_snapshot": {
+    "selection": "Backing data row locator and quoted source note",
+    "normalization": "UTF-8 text exactly as recorded in the verified overlay data row; no whitespace normalization",
+    "encoding": "UTF-8",
+    "size_bytes": 145,
+    "word_count": 19,
+    "sha256": "fc238c37f6fc5cd52e7e4cd8e54d3dc775f6eafc2f96f7105bda4bb94a6f144a"
+  },
+  "criterion_locators": [
+    {
+      "criterion_id": "ro.manuscript-statements.ethics",
+      "fragment": "Agency-hosted copy; consolidated print. “să efectueze analiza etică şi să emită avize”",
+      "locator": "Art. 2(2)"
+    }
+  ],
+  "retention": {
+    "full_body_committed": false,
+    "reason": "Retain only the verified source-row locator and quote; do not redistribute the source body.",
+    "drift_rule": "Recheck source URI and locator against the current source before relying on a changed criterion."
+  }
+}

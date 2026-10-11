@@ -1,0 +1,1365 @@
+{
+  "schema_version": "ro-overlay-evidence-rows/1.0",
+  "rows": [
+    {
+      "value_id": "venue.rjme.abstract_limit",
+      "area": "venue.rjme",
+      "statement": "The abstract limit is 250 words.",
+      "numeric": true,
+      "use": "fact_check",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://rjme.ro/guide-for-authors/",
+        "title": "RJME Guide for Authors",
+        "locator": "3.2 Abstract and Keywords: “A concise abstract of no more 250 words is required.”"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“A concise abstract of no more 250 words is required.”"
+    },
+    {
+      "value_id": "venue.rjme.abstract_structure",
+      "area": "venue.rjme",
+      "statement": "The unstructured abstract briefly states the purpose, main results and major conclusions.",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://rjme.ro/guide-for-authors/",
+        "title": "RJME Guide for Authors",
+        "locator": "3.2 Abstract and Keywords"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“state briefly the purpose of the research, the main results and major conclusions.”"
+    },
+    {
+      "value_id": "venue.rjme.reference_style",
+      "area": "venue.rjme",
+      "statement": "References are numbered in square brackets; list all authors and include DOI, PMID and PMCID.",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://rjme.ro/guide-for-authors/",
+        "title": "RJME Guide for Authors",
+        "locator": "3.4 References"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“References (indicated by numbers in square brackets)… DOI, PMID and PMCID numbers are mandatory.”"
+    },
+    {
+      "value_id": "venue.ers_congress.abstract_limit",
+      "area": "venue.ers_congress",
+      "statement": "The abstract body limit is 1810 characters, including spaces.",
+      "numeric": true,
+      "use": "fact_check",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://www.ersnet.org/frequently-asked-questions-about-abstracts/",
+        "title": "ERS Frequently Asked Questions About Abstracts",
+        "locator": "Abstract length / character count FAQ"
+      },
+      "verified_at": "2026-10-10",
+      "edition": "ERS International Congress 2026",
+      "review_window_months": 6,
+      "notes": "“The maximum length of an abstract is 1810 characters, including characters and spaces.”"
+    },
+    {
+      "value_id": "venue.ers_congress.counting_rule",
+      "area": "venue.ers_congress",
+      "statement": "The 1810-character allowance includes the abstract body, table and figures; each table cell adds one character and each inserted figure deducts 277 characters; the title is separate and limited to 250 characters.",
+      "numeric": true,
+      "use": "fact_check",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://www.ersnet.org/frequently-asked-questions-about-abstracts/",
+        "title": "ERS Frequently Asked Questions About Abstracts",
+        "locator": "Abstract length / character count FAQ"
+      },
+      "verified_at": "2026-10-10",
+      "edition": "ERS International Congress 2026",
+      "review_window_months": 6,
+      "notes": "“1810 characters… abstract body, table, and figures”; “title… separate… limited to 250”; figure “deducts 277 characters.”"
+    },
+    {
+      "value_id": "venue.srp_congress.abstract_limit",
+      "area": "venue.srp_congress",
+      "statement": "The abstract body limit is 300 words per language; the English half is limited to 300 words.",
+      "numeric": true,
+      "use": "fact_check",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://www.congres-srp.ro/rezumate/",
+        "title": "Congres SRP: Rezumate",
+        "locator": "Caracteristici tehnice de redactare a rezumatelor"
+      },
+      "verified_at": "2026-10-10",
+      "edition": "29th SRP National Congress, 2026",
+      "review_window_months": 6,
+      "notes": "“corpul rezumatului nu trebuie să depășească 300 de cuvinte pentru fiecare limbă”"
+    },
+    {
+      "value_id": "venue.medicina.abstract_limit",
+      "area": "venue.medicina",
+      "statement": "The abstract is a single paragraph of about 300 words maximum.",
+      "numeric": true,
+      "use": "fact_check",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://www.mdpi.com/journal/medicina/instructions",
+        "title": "Instructions for Authors | Medicina | MDPI",
+        "locator": "Abstract"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“about 300 words maximum.” fetched via r.jina.ai reader proxy on 2026-10-10."
+    },
+    {
+      "value_id": "venue.medicina.abstract_structure",
+      "area": "venue.medicina",
+      "statement": "The structured-style abstract uses Background and Objectives, Materials and Methods, Results, and Conclusion headings.",
+      "numeric": false,
+      "use": "fact_check",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://www.mdpi.com/journal/medicina/instructions",
+        "title": "Instructions for Authors | Medicina | MDPI",
+        "locator": "Abstract"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“headings: Background and Objectives; Materials and Methods; Results; Conclusion.” fetched via r.jina.ai reader proxy on 2026-10-10."
+    },
+    {
+      "value_id": "venue.medicina.article_structure",
+      "area": "venue.medicina",
+      "statement": "Research manuscripts comprise Introduction, Materials and Methods, Results, Discussion, and Conclusions.",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://www.mdpi.com/journal/medicina/instructions",
+        "title": "Instructions for Authors | Medicina | MDPI",
+        "locator": "General Considerations, Research manuscripts"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“Introduction, Materials and Methods, Results, Discussion, Conclusions.” fetched via r.jina.ai reader proxy on 2026-10-10."
+    },
+    {
+      "value_id": "venue.medicina.reference_style",
+      "area": "venue.medicina",
+      "statement": "Free-format initial submissions may use any consistently formatted reference style.",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://www.mdpi.com/journal/medicina/instructions",
+        "title": "Instructions for Authors | Medicina | MDPI",
+        "locator": "Free Format Submission"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“references may be in any style,” if formatting is consistent. fetched via r.jina.ai reader proxy on 2026-10-10."
+    },
+    {
+      "value_id": "venue.medicina.checklists",
+      "area": "venue.medicina",
+      "statement": "Scoping reviews require PRISMA-ScR; randomized trials require CONSORT 2025 and a flow diagram; animal studies use ARRIVE.",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://www.mdpi.com/journal/medicina/instructions",
+        "title": "Instructions for Authors | Medicina | MDPI",
+        "locator": "Types of Publications; Randomized Clinical Trial Reporting Guidelines; Animal Research"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“PRISMA extension” for scoping reviews; “CONSORT 2025 checklist”; ARRIVE checklist. fetched via r.jina.ai reader proxy on 2026-10-10."
+    },
+    {
+      "value_id": "venue.medicina.ai_disclosure",
+      "area": "venue.medicina",
+      "statement": "Disclose applicable GenAI use in Materials and Methods; superficial language editing need not be declared.",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://www.mdpi.com/journal/medicina/instructions",
+        "title": "Instructions for Authors | Medicina | MDPI",
+        "locator": "Materials and Methods"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“disclose in this section” (Materials and Methods); superficial text editing need not be declared. fetched via r.jina.ai reader proxy on 2026-10-10."
+    },
+    {
+      "value_id": "venue.maedica.abstract_structure",
+      "area": "venue.maedica",
+      "statement": "Abstract describes Objectives, Materials and methods, Results, and Conclusions in that order.",
+      "numeric": false,
+      "use": "fact_check",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://www.maedica.ro/wp-content/uploads/misc/Instructions_for_authors.pdf",
+        "title": "Maedica Instructions for Authors (2026)",
+        "locator": "General Structure of the Articles, item (2), p. 535"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“Objectives, Materials and methods, Results and Conclusions” in the same order. fetched via r.jina.ai reader proxy on 2026-10-10."
+    },
+    {
+      "value_id": "venue.maedica.main_text_limit",
+      "area": "venue.maedica",
+      "statement": "A submitted manuscript must not exceed 15 pages, inclusive of front matter, main text, references and explanatory materials.",
+      "numeric": true,
+      "use": "fact_check",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://www.maedica.ro/wp-content/uploads/misc/Instructions_for_authors.pdf",
+        "title": "Maedica Instructions for Authors (2026)",
+        "locator": "Structure of the Journal, p. 536"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“must not exceed 15 pages,” including title through references and explanatory materials. fetched via r.jina.ai reader proxy on 2026-10-10."
+    },
+    {
+      "value_id": "venue.maedica.ai_policy",
+      "area": "venue.maedica",
+      "statement": "The journal states a maximum accepted AI-use percentage of 30%.",
+      "numeric": true,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://www.maedica.ro/wp-content/uploads/misc/Instructions_for_authors.pdf",
+        "title": "Maedica Instructions for Authors (2026)",
+        "locator": "Structure of the Journal, p. 536"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“maximum accepted percentage for artificial intelligence (AI) use is 30%.” fetched via r.jina.ai reader proxy on 2026-10-10."
+    },
+    {
+      "value_id": "venue.maedica.reference_style",
+      "area": "venue.maedica",
+      "statement": "References are cited consecutively with Arabic numerals and listed in citation order; article references list up to three authors, then et al. when there are more than four.",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://www.maedica.ro/wp-content/uploads/misc/Instructions_for_authors.pdf",
+        "title": "Maedica Instructions for Authors (2026)",
+        "locator": "General Structure of the Articles, item (4), p. 535; Referencing, p. 537"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“cited ... in consecutive order, using Arabic numbers”; “List all authors” (instructions specify up to 3 then et al. for >4). fetched via r.jina.ai reader proxy on 2026-10-10."
+    },
+    {
+      "value_id": "venue.ijtld.abstract_limit",
+      "area": "venue.ijtld",
+      "statement": "Original-article abstract maximum is 200 words.",
+      "numeric": true,
+      "use": "fact_check",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://theunion.org/sites/default/files/2025-06/Instructions-for-Authors%20IJTLD%202025%20Updated.pdf",
+        "title": "The International Journal of Tuberculosis and Lung Disease: Instructions for Authors (2025)",
+        "locator": "Format of Submitted Articles table; Abstract section"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“Original Article ... Abstract 200 words”; “An informative abstract of no more than 200 words.”"
+    },
+    {
+      "value_id": "venue.ijtld.abstract_structure",
+      "area": "venue.ijtld",
+      "statement": "Original-article abstracts should use Background, Methods, Results, and Conclusion headings.",
+      "numeric": false,
+      "use": "fact_check",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://theunion.org/sites/default/files/2025-06/Instructions-for-Authors%20IJTLD%202025%20Updated.pdf",
+        "title": "The International Journal of Tuberculosis and Lung Disease: Instructions for Authors (2025)",
+        "locator": "Abstract section"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“use the headings Background, Methods, Results and Conclusion.”"
+    },
+    {
+      "value_id": "venue.ijtld.main_text_limit",
+      "area": "venue.ijtld",
+      "statement": "Original articles should be no more than 2,500 words, excluding abstract, references, tables and figure captions; six typeset pages.",
+      "numeric": true,
+      "use": "fact_check",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://theunion.org/sites/default/files/2025-06/Instructions-for-Authors%20IJTLD%202025%20Updated.pdf",
+        "title": "The International Journal of Tuberculosis and Lung Disease: Instructions for Authors (2025)",
+        "locator": "Original Articles and Reviews"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“6 typeset pages, typically including a maximum of 2,500 words (excluding abstract, references, Tables and Figure captions).”"
+    },
+    {
+      "value_id": "venue.ijtld.reference_limit",
+      "area": "venue.ijtld",
+      "statement": "Original articles allow up to 35 references (50 for systematic reviews and meta-analyses).",
+      "numeric": true,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://theunion.org/sites/default/files/2025-06/Instructions-for-Authors%20IJTLD%202025%20Updated.pdf",
+        "title": "The International Journal of Tuberculosis and Lung Disease: Instructions for Authors (2025)",
+        "locator": "Format of Submitted Articles table"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“References 35 (50 for Systematic Reviews and meta-analyses).”"
+    },
+    {
+      "value_id": "venue.ijtld.checklists",
+      "area": "venue.ijtld",
+      "statement": "Clinical trials must follow CONSORT; epidemiological studies STROBE; systematic reviews PRISMA; observational meta-analyses MOOSE, with checklist submission for PRISMA/MOOSE.",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://theunion.org/sites/default/files/2025-06/Instructions-for-Authors%20IJTLD%202025%20Updated.pdf",
+        "title": "The International Journal of Tuberculosis and Lung Disease: Instructions for Authors (2025)",
+        "locator": "Original Articles and Reviews"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“Clinical trials ... CONSORT”; “Epidemiological studies ... STROBE”; “Reporting should follow PRISMA ... MOOSE ... completed PRISMA or MOOSE checklist.”"
+    },
+    {
+      "value_id": "venue.ijtld.publication_charges",
+      "area": "venue.ijtld",
+      "statement": "The instructions state no charges for articles within page limits; excess pages cost €375/page and supplementary data cost €325 per 10 pages (fees stated for 2025).",
+      "numeric": true,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://theunion.org/sites/default/files/2025-06/Instructions-for-Authors%20IJTLD%202025%20Updated.pdf",
+        "title": "The International Journal of Tuberculosis and Lung Disease: Instructions for Authors (2025)",
+        "locator": "Publication Charges"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“There are no charges ... excess page charges of €375 per page”; “A charge of 325€ ... per 10 pp of Supplementary Data.”"
+    },
+    {
+      "value_id": "venue.srp_congress.abstract_content",
+      "area": "venue.srp_congress",
+      "statement": "The abstract must state a distinct hypothesis and a methodology that distinguishes it from other submissions.",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://www.congres-srp.ro/rezumate/",
+        "title": "Congres SRP: Rezumate 2026",
+        "locator": "Caracteristici tehnice de redactare a rezumatelor"
+      },
+      "verified_at": "2026-10-10",
+      "edition": "2026",
+      "review_window_months": 6,
+      "notes": "“fiecare rezumat trebuie să aibă o ipoteză distinctă și o metodologie care să o diferențieze de alte lucrări înscrise.”"
+    },
+    {
+      "value_id": "venue.srp_congress.registration_requirement",
+      "area": "venue.srp_congress",
+      "statement": "Abstract evaluation requires at least one author to be registered for the congress and have paid the participation fee.",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://www.congres-srp.ro/rezumate/",
+        "title": "Congres SRP: Rezumate 2026",
+        "locator": "Evaluarea rezumatelor"
+      },
+      "verified_at": "2026-10-10",
+      "edition": "2026",
+      "review_window_months": 6,
+      "notes": "“taxa de participare achitată, a cel puțin unuia dintre autori.”"
+    },
+    {
+      "value_id": "venue.pneumologia.publication_fee",
+      "area": "venue.pneumologia",
+      "statement": "Pneumologia has no publication fee.",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://sciendo.com/journal/PNEUM?tab=for-authors",
+        "title": "Pneumologia | Sciendo, For Authors",
+        "locator": "For Authors page, journal description"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“There is no publication fee.”"
+    },
+    {
+      "value_id": "venue.ers_journals.abstract_limit",
+      "area": "venue.ers_journals",
+      "statement": "Original research abstracts are limited to 250 words.",
+      "numeric": true,
+      "use": "fact_check",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://publications.ersnet.org/authors/erj/instructions",
+        "title": "European Respiratory Journal instructions for authors",
+        "locator": "Types of article, article requirements table"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "Fetched via r.jina.ai reader proxy on 2026-10-10; “Original research articles ... Abstract: Yes, 250 words.”"
+    },
+    {
+      "value_id": "venue.ers_journals.main_text_limit",
+      "area": "venue.ers_journals",
+      "statement": "The ERJ article table lists a 3,000-word limit for original research articles, while the guide says strict word limits are not enforced at first submission.",
+      "numeric": true,
+      "use": "fact_check",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://publications.ersnet.org/authors/erj/instructions",
+        "title": "European Respiratory Journal instructions for authors",
+        "locator": "Types of article, article requirements table"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "Fetched via r.jina.ai reader proxy on 2026-10-10; “Original research articles | 3000”; first submissions: “we will not enforce strict formatting or word limit guidelines.”"
+    },
+    {
+      "value_id": "venue.ers_journals.reference_limit",
+      "area": "venue.ers_journals",
+      "statement": "Original research articles allow up to 40 references.",
+      "numeric": true,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://publications.ersnet.org/authors/erj/instructions",
+        "title": "European Respiratory Journal instructions for authors",
+        "locator": "Types of article, article requirements table"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "Fetched via r.jina.ai reader proxy on 2026-10-10; “Original research articles ... References: 40.”"
+    },
+    {
+      "value_id": "venue.ers_journals.checklists",
+      "area": "venue.ers_journals",
+      "statement": "The ERJ requires CONSORT for clinical trials, STROBE for epidemiological studies, PRISMA/MOOSE for systematic reviews/meta-analyses, and TRIPOD for prediction models, with checklists submitted as stated.",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://publications.ersnet.org/authors/erj/instructions",
+        "title": "European Respiratory Journal instructions for authors",
+        "locator": "What we expect from submissions: RCTs; Observational and cohort studies; Systematic reviews and meta-analyses; Prediction models"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "Fetched via r.jina.ai reader proxy on 2026-10-10; “completed CONSORT checklist”; “completed STROBE checklist”; “completed PRISMA or MOOSE checklist”; “copy of the relevant TRIPOD checklist.”"
+    },
+    {
+      "value_id": "venue.ers_journals.apc",
+      "area": "venue.ers_journals",
+      "statement": "Open-access fees are EUR 2,665 standard or EUR 3,640 for the mandated CC BY option.",
+      "numeric": true,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://publications.ersnet.org/authors/erj/instructions",
+        "title": "European Respiratory Journal instructions for authors",
+        "locator": "Open Access, Costs"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "Fetched via r.jina.ai reader proxy on 2026-10-10; “standard ... EUR 2665”; mandated CC BY ... “EUR 3640.”"
+    },
+    {
+      "value_id": "venue.thorax.main_text_limit",
+      "area": "venue.thorax",
+      "statement": "Original research articles allow up to 3,500 words (Introduction, Methods, Results, Discussion); the count excludes the title page, abstract, tables, acknowledgements, contributions and references.",
+      "numeric": true,
+      "use": "fact_check",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://web.archive.org/web/20260519161404/https://thorax.bmj.com/pages/authors",
+        "title": "Thorax: Authors / instructions for authors (Wayback Machine snapshot of thorax.bmj.com/pages/authors, archived 2026-05-19)",
+        "locator": "Submission guidelines; Original research (as archived 2026-05-19; live page behind bot verification)"
+      },
+      "verified_at": "2026-05-19",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“Word count: up to 3,500: Introduction, Methods, Results, Discussion”; “The word count excludes the title page, abstract, tables, acknowledgements, contributions and references.”"
+    },
+    {
+      "value_id": "venue.thorax.title_limit",
+      "area": "venue.thorax",
+      "statement": "Original research titles have a maximum of 20 words.",
+      "numeric": true,
+      "use": "fact_check",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://web.archive.org/web/20260519161404/https://thorax.bmj.com/pages/authors",
+        "title": "Thorax: Authors / instructions for authors (Wayback Machine snapshot of thorax.bmj.com/pages/authors, archived 2026-05-19)",
+        "locator": "Submission guidelines; Original research (as archived 2026-05-19; live page behind bot verification)"
+      },
+      "verified_at": "2026-05-19",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“Title: maximum of 20 words”"
+    },
+    {
+      "value_id": "venue.thorax.abstract_limit",
+      "area": "venue.thorax",
+      "statement": "Original research requires a structured abstract of up to 250; the page states no unit (the adjacent title limit is in words).",
+      "numeric": true,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://web.archive.org/web/20260519161404/https://thorax.bmj.com/pages/authors",
+        "title": "Thorax: Authors / instructions for authors (Wayback Machine snapshot of thorax.bmj.com/pages/authors, archived 2026-05-19)",
+        "locator": "Submission guidelines; Original research (as archived 2026-05-19; live page behind bot verification)"
+      },
+      "verified_at": "2026-05-19",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“Structured abstract: up to 250”"
+    },
+    {
+      "value_id": "venue.thorax.reference_limit",
+      "area": "venue.thorax",
+      "statement": "Original research allows up to 40 references; figures are not limited but must be justified.",
+      "numeric": true,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://web.archive.org/web/20260519161404/https://thorax.bmj.com/pages/authors",
+        "title": "Thorax: Authors / instructions for authors (Wayback Machine snapshot of thorax.bmj.com/pages/authors, archived 2026-05-19)",
+        "locator": "Submission guidelines; Original research (as archived 2026-05-19; live page behind bot verification)"
+      },
+      "verified_at": "2026-05-19",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“Figures: are not limited, but must be justified”; “References: up to 40”"
+    },
+    {
+      "value_id": "venue.thorax.key_messages",
+      "area": "venue.thorax",
+      "statement": "Original research must include a key-messages box after the abstract with three headings (What is already known on this topic; What this study adds; How this study might affect research, practice or policy), in no more than 3–5 sentences.",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://web.archive.org/web/20260519161404/https://thorax.bmj.com/pages/authors",
+        "title": "Thorax: Authors / instructions for authors (Wayback Machine snapshot of thorax.bmj.com/pages/authors, archived 2026-05-19)",
+        "locator": "Submission guidelines; Original research (as archived 2026-05-19; live page behind bot verification)"
+      },
+      "verified_at": "2026-05-19",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“Please include the key messages of your article after your abstract using the following headings ... no more than 3-5 sentences”"
+    },
+    {
+      "value_id": "venue.thorax.checklists",
+      "area": "venue.thorax",
+      "statement": "Randomised trials must be reported according to CONSORT, epidemiological studies must follow STROBE (STREGA for genetic association studies), and systematic reviews must follow PRISMA with a protocol public before the review began.",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://web.archive.org/web/20260519161404/https://thorax.bmj.com/pages/authors",
+        "title": "Thorax: Authors / instructions for authors (Wayback Machine snapshot of thorax.bmj.com/pages/authors, archived 2026-05-19)",
+        "locator": "Submission guidelines; Original research article types; Reporting guidelines (as archived 2026-05-19; live page behind bot verification)"
+      },
+      "verified_at": "2026-05-19",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“must be reported according to the CONSORT guidelines”; “Epidemiological studies must follow STROBE guidelines (or STREGA guidelines for genetic association studies)”; “Systematic reviews must be reported according to the PRISMA guidelines and the protocol for the review must have been publicly available before the review commenced”"
+    },
+    {
+      "value_id": "venue.thorax.data_availability",
+      "area": "venue.thorax",
+      "statement": "All research articles must contain a Data Availability Statement; trials enrolling from 1 January 2019 need a data sharing plan with trial registration.",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://web.archive.org/web/20260519161404/https://thorax.bmj.com/pages/authors",
+        "title": "Thorax: Authors / instructions for authors (Wayback Machine snapshot of thorax.bmj.com/pages/authors, archived 2026-05-19)",
+        "locator": "Data sharing (as archived 2026-05-19; live page behind bot verification)"
+      },
+      "verified_at": "2026-05-19",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“All research articles must contain a Data Availability Statement.”; “a data sharing plan must be included with trial registration for clinical trials that begin enrolling participants on or after 1st January 2019.”"
+    },
+    {
+      "value_id": "venue.ajrccm.abstract_limit",
+      "area": "venue.ajrccm",
+      "statement": "Original Research structured abstracts have a maximum of 250 words.",
+      "numeric": true,
+      "use": "fact_check",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://academic.oup.com/ajrccm/pages/author-guidelines",
+        "title": "Author guidelines | American Journal of Respiratory and Critical Care Medicine | Oxford Academic",
+        "locator": "Article types; Original Research (saved copy 2026-10-10 from a logged-in browser; automated fetch is blocked)"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“Structured abstract—maximum word count: 250”"
+    },
+    {
+      "value_id": "venue.ajrccm.abstract_structure",
+      "area": "venue.ajrccm",
+      "statement": "Preferred Original Research abstract headers are Rationale, Objectives, Methods, Measurements and Main Results, and Conclusions.",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://academic.oup.com/ajrccm/pages/author-guidelines",
+        "title": "Author guidelines | American Journal of Respiratory and Critical Care Medicine | Oxford Academic",
+        "locator": "Article types; Original Research (saved copy 2026-10-10 from a logged-in browser; automated fetch is blocked)"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“Preferred/suggested abstract headers: Rationale, Objectives, Methods, Measurements and Main Results, Conclusions”"
+    },
+    {
+      "value_id": "venue.ajrccm.main_text_limit",
+      "area": "venue.ajrccm",
+      "statement": "Original Research text has a maximum of 3,500 words with first-level headers Introduction, Methods, Results, Discussion (not combined) and Conclusion.",
+      "numeric": true,
+      "use": "fact_check",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://academic.oup.com/ajrccm/pages/author-guidelines",
+        "title": "Author guidelines | American Journal of Respiratory and Critical Care Medicine | Oxford Academic",
+        "locator": "Article types; Original Research (saved copy 2026-10-10 from a logged-in browser; automated fetch is blocked)"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“Text length—maximum word count: 3,500”; “Introduction, Methods, Results, Discussion (Results and Discussion may not be combined) and Conclusion.”"
+    },
+    {
+      "value_id": "venue.ajrccm.reference_limit",
+      "area": "venue.ajrccm",
+      "statement": "Original Research allows a maximum of 50 references; tables and figures have no limit.",
+      "numeric": true,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://academic.oup.com/ajrccm/pages/author-guidelines",
+        "title": "Author guidelines | American Journal of Respiratory and Critical Care Medicine | Oxford Academic",
+        "locator": "Article types; Original Research (saved copy 2026-10-10 from a logged-in browser; automated fetch is blocked)"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“References— maximum of 50”; “May include tables and figures—no limit”"
+    },
+    {
+      "value_id": "venue.ajrccm.at_a_glance",
+      "area": "venue.ajrccm",
+      "statement": "Original Research revisions need an At a Glance Commentary on the title page (Scientific Knowledge on the Subject; What This Study Adds to the Field) of no more than 200 words.",
+      "numeric": true,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://academic.oup.com/ajrccm/pages/author-guidelines",
+        "title": "Author guidelines | American Journal of Respiratory and Critical Care Medicine | Oxford Academic",
+        "locator": "Article types; Original Research (saved copy 2026-10-10 from a logged-in browser; automated fetch is blocked)"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“For Original Research revisions only: include an “At a Glance Commentary” on the title page”; “The entire \"At a Glance Commentary\" section should not exceed 200 words.”"
+    },
+    {
+      "value_id": "venue.ajrccm.reference_style",
+      "area": "venue.ajrccm",
+      "statement": "The journal follows AMA reference style with a numerical citation system, numbered in order of appearance.",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://academic.oup.com/ajrccm/pages/author-guidelines",
+        "title": "Author guidelines | American Journal of Respiratory and Critical Care Medicine | Oxford Academic",
+        "locator": "References (saved copy 2026-10-10 from a logged-in browser; automated fetch is blocked)"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“The Journal follows the AMA reference style with a numerical citation system.”; “The references should be numbered in order of appearance”"
+    },
+    {
+      "value_id": "venue.ajrccm.checklists",
+      "area": "venue.ajrccm",
+      "statement": "Clinical trials must follow CONSORT, including the 30-item checklist and flow diagram.",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://academic.oup.com/ajrccm/pages/author-guidelines",
+        "title": "Author guidelines | American Journal of Respiratory and Critical Care Medicine | Oxford Academic",
+        "locator": "Preparing your manuscript; clinical trials (saved copy 2026-10-10 from a logged-in browser; automated fetch is blocked)"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“Clinical trials must follow the CONSORT guidelines.”; “complies with the 30-item CONSORT checklist and flow diagram.”"
+    },
+    {
+      "value_id": "venue.ajrccm.publication_charges",
+      "area": "venue.ajrccm",
+      "statement": "A publication fee is charged on acceptance: $2,240 for ATS members and $2,800 for non-members, waived when an open access fee is paid.",
+      "numeric": true,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://academic.oup.com/ajrccm/pages/author-guidelines",
+        "title": "Author guidelines | American Journal of Respiratory and Critical Care Medicine | Oxford Academic",
+        "locator": "Charges; Article charges (saved copy 2026-10-10 from a logged-in browser; automated fetch is blocked)"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“$2240 per article for members and $2800 per article for non- members.”; “This charge is not levied if an open access license and fee is paid.”"
+    },
+    {
+      "value_id": "venue.ajrccm.ai_disclosure",
+      "area": "venue.ajrccm",
+      "statement": "AI use (e.g. generating content, writing code, processing data) must be disclosed in the cover letter and in the Methods or Acknowledgments.",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://academic.oup.com/ajrccm/pages/author-guidelines",
+        "title": "Author guidelines | American Journal of Respiratory and Critical Care Medicine | Oxford Academic",
+        "locator": "Authorship; AI (saved copy 2026-10-10 from a logged-in browser; automated fetch is blocked)"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“The use of AI (for example, to help generate content, write code, or process data) should be disclosed both in cover letters to editors and in the Methods or Acknowledgments section of manuscripts.”"
+    },
+    {
+      "value_id": "venue.respiratory_medicine.main_text_limit",
+      "area": "venue.respiratory_medicine",
+      "statement": "Original Research Articles have a word count of at most 3,500 words and up to 8 figures and tables combined.",
+      "numeric": true,
+      "use": "fact_check",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://www.sciencedirect.com/journal/respiratory-medicine/publish/guide-for-authors",
+        "title": "Guide for authors - Respiratory Medicine - ISSN 0954-6111 | ScienceDirect",
+        "locator": "Article types; 1. Original Research Articles (saved copy 2026-10-10 from a logged-in browser; automated fetch is blocked)"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“Word count: ≤ 3,500 words”; “Figures/Tables: up to 8 combined”"
+    },
+    {
+      "value_id": "venue.respiratory_medicine.reference_limit",
+      "area": "venue.respiratory_medicine",
+      "statement": "Original Research Articles allow up to 75 references, extendable to 100 with justification.",
+      "numeric": true,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://www.sciencedirect.com/journal/respiratory-medicine/publish/guide-for-authors",
+        "title": "Guide for authors - Respiratory Medicine - ISSN 0954-6111 | ScienceDirect",
+        "locator": "Article types; 1. Original Research Articles (saved copy 2026-10-10 from a logged-in browser; automated fetch is blocked)"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“References: up to 75 (extendable to 100 with justification)”"
+    },
+    {
+      "value_id": "venue.respiratory_medicine.abstract_limit",
+      "area": "venue.respiratory_medicine",
+      "statement": "The structured abstract must not exceed 250 words and should use appropriate headings.",
+      "numeric": true,
+      "use": "fact_check",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://www.sciencedirect.com/journal/respiratory-medicine/publish/guide-for-authors",
+        "title": "Guide for authors - Respiratory Medicine - ISSN 0954-6111 | ScienceDirect",
+        "locator": "Writing and formatting; Structured abstract (saved copy 2026-10-10 from a logged-in browser; automated fetch is blocked)"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“provide a concise and factual abstract which does not exceed 250 words.”; “Structure the abstract with appropriate headings.”"
+    },
+    {
+      "value_id": "venue.respiratory_medicine.highlights",
+      "area": "venue.respiratory_medicine",
+      "statement": "Article highlights are required at submission: 3 to 5 bullet points, each at most 85 characters including spaces, as a separate editable file.",
+      "numeric": true,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://www.sciencedirect.com/journal/respiratory-medicine/publish/guide-for-authors",
+        "title": "Guide for authors - Respiratory Medicine - ISSN 0954-6111 | ScienceDirect",
+        "locator": "Writing and formatting; Highlights (saved copy 2026-10-10 from a logged-in browser; automated fetch is blocked)"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“You are required to provide article highlights at submission.”; “Highlights should consist of 3 to 5 bullet points, each a maximum of 85 characters, including spaces.”"
+    },
+    {
+      "value_id": "venue.respiratory_medicine.reference_style",
+      "area": "venue.respiratory_medicine",
+      "statement": "References are numbered in square brackets in order of appearance, with journal names abbreviated per LTWA.",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://www.sciencedirect.com/journal/respiratory-medicine/publish/guide-for-authors",
+        "title": "Guide for authors - Respiratory Medicine - ISSN 0954-6111 | ScienceDirect",
+        "locator": "References; Reference style (saved copy 2026-10-10 from a logged-in browser; automated fetch is blocked)"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“Indicate references by adding a number within square brackets in the text.”; “Number references in the order they appear in your article.”"
+    },
+    {
+      "value_id": "venue.respiratory_medicine.ai_disclosure",
+      "area": "venue.respiratory_medicine",
+      "statement": "Authors must declare the use of generative AI tools in manuscript preparation upon submission.",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://www.sciencedirect.com/journal/respiratory-medicine/publish/guide-for-authors",
+        "title": "Guide for authors - Respiratory Medicine - ISSN 0954-6111 | ScienceDirect",
+        "locator": "Ethics and policies; Declaration of generative AI use (saved copy 2026-10-10 from a logged-in browser; automated fetch is blocked)"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“Authors must declare the use of generative AI tools in the manuscript preparation process upon submission of the paper.”"
+    },
+    {
+      "value_id": "venue.chest.checklists",
+      "area": "venue.chest",
+      "statement": "For original research, CHEST requires adherence to reporting guidelines by study type, e.g. CONSORT for RCTs, STROBE for observational studies, PRISMA for systematic reviews, CARE for case reports, AGREE for guidelines.",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://journal.chestnet.org/authinfo_gpp",
+        "title": "CHEST Guide for Authors: General Policies and Procedures",
+        "locator": "Reporting Guidelines and Checklists (saved copy 2026-10-10 from a logged-in browser; automated fetch is blocked)"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“For original research manuscripts, CHEST requires adherence to appropriate reporting guidelines and checklists dependent on the type of study being conducted.”"
+    },
+    {
+      "value_id": "venue.chest.ai_disclosure",
+      "area": "venue.chest",
+      "statement": "Generative AI in the writing process may only be used to improve readability and language, under human oversight, and must be disclosed in the manuscript.",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://journal.chestnet.org/authinfo_gpp",
+        "title": "CHEST Guide for Authors: General Policies and Procedures",
+        "locator": "Artificial Intelligence and AI-Assisted Technologies (saved copy 2026-10-10 from a logged-in browser; automated fetch is blocked)"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“authors should only use these technologies to improve readability and language.”; “Authors should disclose in their manuscript the use of AI and AI-assisted technologies in the writing process by following the instructions below.”"
+    },
+    {
+      "value_id": "venue.chest.abstract_limit",
+      "area": "venue.chest",
+      "statement": "Original Research abstracts have a maximum of 300 words in structured format, including clinical trial information for RCTs.",
+      "numeric": true,
+      "use": "fact_check",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://journal.chestnet.org/authinfo_articletype",
+        "title": "CHEST Guide for Authors: Guidance for Specific Article Types",
+        "locator": "Original Research; Article Element table (saved copy 2026-10-10 from a logged-in browser; automated fetch is blocked)"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“300 words, structured format, include clinical trial information for randomized controlled trials”"
+    },
+    {
+      "value_id": "venue.chest.abstract_structure",
+      "area": "venue.chest",
+      "statement": "Original Research abstract sections are Background, Research Question, Study Design and Methods, Results, Interpretation, and Clinical Trial Registration Number (where applicable).",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://journal.chestnet.org/authinfo_articletype",
+        "title": "CHEST Guide for Authors: Guidance for Specific Article Types",
+        "locator": "Original Research; Format (saved copy 2026-10-10 from a logged-in browser; automated fetch is blocked)"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“The abstract should be divided into the following sections: Background, Research Question, Study Design and Methods, Results, Interpretation, and Clinical Trial Registration Number (where applicable).”"
+    },
+    {
+      "value_id": "venue.chest.main_text_limit",
+      "area": "venue.chest",
+      "statement": "Original Research text is limited to 3,200 words, excluding abstract, references, figure legends and tables, with sections Introduction (not labeled), Study Design and Methods, Results, Discussion, and Interpretation.",
+      "numeric": true,
+      "use": "fact_check",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://journal.chestnet.org/authinfo_articletype",
+        "title": "CHEST Guide for Authors: Guidance for Specific Article Types",
+        "locator": "Original Research; article-type table footnote b; Format (saved copy 2026-10-10 from a logged-in browser; automated fetch is blocked)"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“Text length 3,200 words”; “Text word counts exclude abstract, references, figure legends, and tables.”; “The body of the text should be divided into the following sections: Introduction (not labeled), Study Design and Methods, Results, Discussion, and Interpretation.”"
+    },
+    {
+      "value_id": "venue.chest.reference_limit",
+      "area": "venue.chest",
+      "statement": "Original Research allows up to 50 references.",
+      "numeric": true,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://journal.chestnet.org/authinfo_articletype",
+        "title": "CHEST Guide for Authors: Guidance for Specific Article Types",
+        "locator": "Original Research; Article Element table (saved copy 2026-10-10 from a logged-in browser; automated fetch is blocked)"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“Reference count 50 references”"
+    },
+    {
+      "value_id": "venue.chest.take_home_points",
+      "area": "venue.chest",
+      "statement": "Original Research needs a Take-Home Point pullout with one sentence each for Study Question, Results, and Interpretation.",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://journal.chestnet.org/authinfo_articletype",
+        "title": "CHEST Guide for Authors: Guidance for Specific Article Types",
+        "locator": "Original Research; Format (saved copy 2026-10-10 from a logged-in browser; automated fetch is blocked)"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“Finally, a Take-Home Point pullout will be published. Please provide a sentence for the Study Question, Results, and Interpretation.”"
+    },
+    {
+      "value_id": "venue.chest.ethics_statement",
+      "area": "venue.chest",
+      "statement": "Original Research must state IRB (or equivalent) approval or exemption anonymised in Methods, with the committee name and approval number on the title page.",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://journal.chestnet.org/authinfo_articletype",
+        "title": "CHEST Guide for Authors: Guidance for Specific Article Types",
+        "locator": "Original Research; Institutional Review Board (IRB) Approval (saved copy 2026-10-10 from a logged-in browser; automated fetch is blocked)"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“CHEST requires that authors include the committee/organization name and approval number on the title page, and an anonymized description of the approval in full manuscript.”"
+    },
+    {
+      "value_id": "venue.rjme.indexing",
+      "area": "venue.rjme",
+      "statement": "NLM Catalog: RJME (Rom J Morphol Embryol) is currently indexed in MEDLINE (coverage v36n2, 1990-); currently indexed in PubMed (coverage v36n2, 1990-).",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://www.ncbi.nlm.nih.gov/nlmcatalog/9112454",
+        "title": "NLM Catalog record 9112454: Romanian journal of morphology and embryology = Revue roumaine de morphologie et embryologie.",
+        "locator": "IndexingSourceList (E-utilities efetch db=nlmcatalog id=9112454, 2026-10-10); ISSN 1220-0522"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“MEDLINE” IndexingStatus=“Currently-indexed”, Coverage “v36n2, 1990-”; “PubMed” IndexingStatus=“Currently-indexed”, Coverage “v36n2, 1990-”"
+    },
+    {
+      "value_id": "venue.medicina.indexing",
+      "area": "venue.medicina",
+      "statement": "NLM Catalog: Medicina (Medicina (Kaunas)) is currently indexed in MEDLINE (coverage v38n1, 2002-); currently indexed in PubMed (coverage v38n1, 2002-).",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://www.ncbi.nlm.nih.gov/nlmcatalog/9425208",
+        "title": "NLM Catalog record 9425208: Medicina.",
+        "locator": "IndexingSourceList (E-utilities efetch db=nlmcatalog id=9425208, 2026-10-10); ISSN 1010-660X"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“MEDLINE” IndexingStatus=“Currently-indexed”, Coverage “v38n1, 2002-”; “PubMed” IndexingStatus=“Currently-indexed”, Coverage “v38n1, 2002-”"
+    },
+    {
+      "value_id": "venue.maedica.indexing",
+      "area": "venue.maedica",
+      "statement": "NLM Catalog: Maedica (Maedica (Bucur)) is not listed for MEDLINE; currently indexed in PubMed (coverage v5, 2010-).",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://www.ncbi.nlm.nih.gov/nlmcatalog/101526930",
+        "title": "NLM Catalog record 101526930: Mædica.",
+        "locator": "IndexingSourceList (E-utilities efetch db=nlmcatalog id=101526930, 2026-10-10); ISSN 1841-9038"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“PubMed” IndexingStatus=“Currently-indexed”, Coverage “v5, 2010-”"
+    },
+    {
+      "value_id": "venue.ijtld.indexing",
+      "area": "venue.ijtld",
+      "statement": "NLM Catalog: IJTLD (Int J Tuberc Lung Dis) is currently indexed in MEDLINE (coverage v1n1,Feb. 1997-); currently indexed in PubMed (coverage v1n1,Feb. 1997-).",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://www.ncbi.nlm.nih.gov/nlmcatalog/9706389",
+        "title": "NLM Catalog record 9706389: The international journal of tuberculosis and lung disease : the official journal of the International Union against Tuberculosis and Lung Disease.",
+        "locator": "IndexingSourceList (E-utilities efetch db=nlmcatalog id=9706389, 2026-10-10); ISSN 1027-3719"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“MEDLINE” IndexingStatus=“Currently-indexed”, Coverage “v1n1,Feb. 1997-”; “PubMed” IndexingStatus=“Currently-indexed”, Coverage “v1n1,Feb. 1997-”"
+    },
+    {
+      "value_id": "venue.pneumologia.indexing",
+      "area": "venue.pneumologia",
+      "statement": "NLM Catalog: Pneumologia (Pneumologia) is deselected from MEDLINE (coverage v48n4,Oct.-Dec. 1999-v65n4, Oct.-Dec. 2016); deselected from PubMed (coverage v48n4,Oct.-Dec. 1999-v65n4, Oct.-Dec. 2016).",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://www.ncbi.nlm.nih.gov/nlmcatalog/100941067",
+        "title": "NLM Catalog record 100941067: Pneumologia : revista Societății Române de Pneumologie",
+        "locator": "IndexingSourceList (E-utilities efetch db=nlmcatalog id=100941067, 2026-10-10); ISSN 2067-2993"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“MEDLINE” IndexingStatus=“Deselected”, Coverage “v48n4,Oct.-Dec. 1999-v65n4, Oct.-Dec. 2016”; “PubMed” IndexingStatus=“Deselected”, Coverage “v48n4,Oct.-Dec. 1999-v65n4, Oct.-Dec. 2016”"
+    },
+    {
+      "value_id": "venue.ers_journals.indexing_erj",
+      "area": "venue.ers_journals",
+      "statement": "NLM Catalog: ERJ (Eur Respir J) is currently indexed in MEDLINE (coverage v1n1,Jan. 1988-); currently indexed in PubMed (coverage v1n1,Jan. 1988-).",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://www.ncbi.nlm.nih.gov/nlmcatalog/8803460",
+        "title": "NLM Catalog record 8803460: The European respiratory journal.",
+        "locator": "IndexingSourceList (E-utilities efetch db=nlmcatalog id=8803460, 2026-10-10); ISSN 0903-1936"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“MEDLINE” IndexingStatus=“Currently-indexed”, Coverage “v1n1,Jan. 1988-”; “PubMed” IndexingStatus=“Currently-indexed”, Coverage “v1n1,Jan. 1988-”"
+    },
+    {
+      "value_id": "venue.ajrccm.indexing",
+      "area": "venue.ajrccm",
+      "statement": "NLM Catalog: AJRCCM (Am J Respir Crit Care Med) is currently indexed in MEDLINE (coverage v149n1, Jan. 1994-); currently indexed in PubMed (coverage v149n1, Jan.1994-).",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://www.ncbi.nlm.nih.gov/nlmcatalog/9421642",
+        "title": "NLM Catalog record 9421642: American journal of respiratory and critical care medicine.",
+        "locator": "IndexingSourceList (E-utilities efetch db=nlmcatalog id=9421642, 2026-10-10); ISSN 1073-449X"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“MEDLINE” IndexingStatus=“Currently-indexed”, Coverage “v149n1, Jan. 1994-”; “PubMed” IndexingStatus=“Currently-indexed”, Coverage “v149n1, Jan.1994-”"
+    },
+    {
+      "value_id": "venue.chest.indexing",
+      "area": "venue.chest",
+      "statement": "NLM Catalog: CHEST (Chest) is currently indexed in MEDLINE (coverage v57n1, Jan. 1970-); currently indexed in PubMed (coverage v57n1, Jan. 1970-).",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://www.ncbi.nlm.nih.gov/nlmcatalog/231335",
+        "title": "NLM Catalog record 0231335: Chest.",
+        "locator": "IndexingSourceList (E-utilities efetch db=nlmcatalog id=0231335, 2026-10-10); ISSN 0012-3692"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“MEDLINE” IndexingStatus=“Currently-indexed”, Coverage “v57n1, Jan. 1970-”; “PubMed” IndexingStatus=“Currently-indexed”, Coverage “v57n1, Jan. 1970-”"
+    },
+    {
+      "value_id": "venue.thorax.indexing",
+      "area": "venue.thorax",
+      "statement": "NLM Catalog: Thorax (Thorax) is currently indexed in MEDLINE (coverage v20n6, Nov. 1965-); currently indexed in PubMed (coverage v1n1, Mar. 1946-).",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://www.ncbi.nlm.nih.gov/nlmcatalog/417353",
+        "title": "NLM Catalog record 0417353: Thorax.",
+        "locator": "IndexingSourceList (E-utilities efetch db=nlmcatalog id=0417353, 2026-10-10); ISSN 0040-6376"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“MEDLINE” IndexingStatus=“Currently-indexed”, Coverage “v20n6, Nov. 1965-”; “PubMed” IndexingStatus=“Currently-indexed”, Coverage “v1n1, Mar. 1946-”"
+    },
+    {
+      "value_id": "venue.respiratory_medicine.indexing",
+      "area": "venue.respiratory_medicine",
+      "statement": "NLM Catalog: Respiratory Medicine (Respir Med) is currently indexed in MEDLINE (coverage v83n1,Jan. 1989-); currently indexed in PubMed (coverage v83n1,Jan. 1989-).",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://www.ncbi.nlm.nih.gov/nlmcatalog/8908438",
+        "title": "NLM Catalog record 8908438: Respiratory medicine.",
+        "locator": "IndexingSourceList (E-utilities efetch db=nlmcatalog id=8908438, 2026-10-10); ISSN 0954-6111"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“MEDLINE” IndexingStatus=“Currently-indexed”, Coverage “v83n1,Jan. 1989-”; “PubMed” IndexingStatus=“Currently-indexed”, Coverage “v83n1,Jan. 1989-”"
+    },
+    {
+      "value_id": "venue.bmj_open_respiratory_research.indexing",
+      "area": "venue.bmj_open_respiratory_research",
+      "statement": "NLM Catalog: BMJ Open Respiratory Research (BMJ Open Respir Res) is currently indexed in MEDLINE (coverage v6n1, 2019-); currently indexed in PubMed (coverage v1n1, 2013-).",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://www.ncbi.nlm.nih.gov/nlmcatalog/101638061",
+        "title": "NLM Catalog record 101638061: BMJ open respiratory research.",
+        "locator": "IndexingSourceList (E-utilities efetch db=nlmcatalog id=101638061, 2026-10-10); ISSN 2052-4439"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“MEDLINE” IndexingStatus=“Currently-indexed”, Coverage “v6n1, 2019-”; “PubMed” IndexingStatus=“Currently-indexed”, Coverage “v1n1, 2013-”"
+    },
+    {
+      "value_id": "venue.ers_journals.indexing_erj_open_research",
+      "area": "venue.ers_journals",
+      "statement": "NLM Catalog: ERJ Open Research (ERJ Open Res) is not listed for MEDLINE; currently indexed in PubMed (coverage v1n1, 2015-).",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://www.ncbi.nlm.nih.gov/nlmcatalog/101671641",
+        "title": "NLM Catalog record 101671641: ERJ open research.",
+        "locator": "IndexingSourceList (E-utilities efetch db=nlmcatalog id=101671641, 2026-10-10); ISSN 2312-0541"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“PubMed” IndexingStatus=“Currently-indexed”, Coverage “v1n1, 2015-”"
+    },
+    {
+      "value_id": "venue.bmj_open_respiratory_research.main_text_limit",
+      "area": "venue.bmj_open_respiratory_research",
+      "statement": "Original research allows up to 4,000 words, excluding the title page, abstract, tables, acknowledgements, contributions and references; structure is Abstract, Key Messages, Introduction, Methods, Results, Discussion, References.",
+      "numeric": true,
+      "use": "fact_check",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://bmjopenrespres.bmj.com/pages/authors",
+        "title": "Authors | BMJ Open Respiratory Research",
+        "locator": "Submission guidelines; Original research (saved copy 2026-10-10 from a logged-in browser; automated fetch is blocked)"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“Word count: up to 4,000”; “The word count excludes the title page, abstract, tables, acknowledgements, contributions and references.”; “Original research should follow the basic structure of Abstract, Key Messages, Introduction, Methods, Results, Discussion, References”"
+    },
+    {
+      "value_id": "venue.bmj_open_respiratory_research.abstract_limit",
+      "area": "venue.bmj_open_respiratory_research",
+      "statement": "Original research requires a structured abstract of up to 300; the page states no unit.",
+      "numeric": true,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://bmjopenrespres.bmj.com/pages/authors",
+        "title": "Authors | BMJ Open Respiratory Research",
+        "locator": "Submission guidelines; Original research (saved copy 2026-10-10 from a logged-in browser; automated fetch is blocked)"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“Structured abstract: up to 300”"
+    },
+    {
+      "value_id": "venue.bmj_open_respiratory_research.reference_limit",
+      "area": "venue.bmj_open_respiratory_research",
+      "statement": "Original research allows up to 100 references and up to 5 tables/illustrations.",
+      "numeric": true,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://bmjopenrespres.bmj.com/pages/authors",
+        "title": "Authors | BMJ Open Respiratory Research",
+        "locator": "Submission guidelines; Original research (saved copy 2026-10-10 from a logged-in browser; automated fetch is blocked)"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“References: up to 100”; “Tables/illustrations: up to 5”"
+    },
+    {
+      "value_id": "venue.bmj_open_respiratory_research.key_messages",
+      "area": "venue.bmj_open_respiratory_research",
+      "statement": "Original research must include a key-messages box after the abstract (What is already known on this topic; What this study adds; How this study might affect research, practice or policy) in no more than 3–5 sentences.",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://bmjopenrespres.bmj.com/pages/authors",
+        "title": "Authors | BMJ Open Respiratory Research",
+        "locator": "Submission guidelines; Original research (saved copy 2026-10-10 from a logged-in browser; automated fetch is blocked)"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“Please include the key messages of your article after your abstract using the following headings.”; “This section should be no more than 3-5 sentences”"
+    },
+    {
+      "value_id": "venue.bmj_open_respiratory_research.checklists",
+      "area": "venue.bmj_open_respiratory_research",
+      "statement": "Reporting guidelines (CONSORT incl. the abstracts extension, STROBE, STARD, PRISMA, SPIRIT, TRIPOD and others) should be followed where appropriate; completed checklists and flow diagrams are uploaded and published with the paper.",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://bmjopenrespres.bmj.com/pages/authors",
+        "title": "Authors | BMJ Open Respiratory Research",
+        "locator": "Reporting guidelines (saved copy 2026-10-10 from a logged-in browser; automated fetch is blocked)"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“Completed applicable checklists, structured abstracts and flow diagrams should be uploaded with your submission and will be published alongside the final version of your paper.”; “please use the appropriate extension to the CONSORT statement, including the extension for writing abstracts”"
+    },
+    {
+      "value_id": "venue.bmj_open_respiratory_research.ppi_statement",
+      "area": "venue.bmj_open_respiratory_research",
+      "statement": "Research articles must include a Patient and Public Involvement statement in the Methods section.",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://bmjopenrespres.bmj.com/pages/authors",
+        "title": "Authors | BMJ Open Respiratory Research",
+        "locator": "Submission guidelines; Reporting patient and public involvement in research (saved copy 2026-10-10 from a logged-in browser; automated fetch is blocked)"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“Patient and Public Involvement statement in the Methods section”"
+    },
+    {
+      "value_id": "venue.bmj_open_respiratory_research.apc",
+      "area": "venue.bmj_open_respiratory_research",
+      "statement": "Open access APC is 2,460 GBP (exclusive of VAT for UK and EU authors); study protocols 1,240 GBP; no submission, colour or page charges. Some society members and recent reviewers get 25–35% discounts.",
+      "numeric": true,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://bmjopenrespres.bmj.com/pages/authors",
+        "title": "Authors | BMJ Open Respiratory Research",
+        "locator": "Article processing charges (saved copy 2026-10-10 from a logged-in browser; automated fetch is blocked)"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“levies an Article Processing Charge (APC) of 2,460 GBP (exclusive of VAT for UK and EU authors).”; “The charge for publishing a study protocol is 1,240 GBP. There are no submission, colour or page charges.”"
+    },
+    {
+      "value_id": "venue.bmj_open_respiratory_research.data_availability",
+      "area": "venue.bmj_open_respiratory_research",
+      "statement": "The journal follows BMJ’s Tier 2 data policy: data sharing strongly encouraged, trial data available on reasonable request, and a data sharing plan with trial registration for trials enrolling from 1 January 2019.",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://bmjopenrespres.bmj.com/pages/authors",
+        "title": "Authors | BMJ Open Respiratory Research",
+        "locator": "Data sharing (saved copy 2026-10-10 from a logged-in browser; automated fetch is blocked)"
+      },
+      "verified_at": "2026-10-10",
+      "edition": null,
+      "review_window_months": 6,
+      "notes": "“adheres to BMJ’s Tier 2 data policy.”; “we require that a data sharing plan must be included with trial registration for clinical trials that begin enrolling participants on or after 1st January 2019.”"
+    }
+  ]
+}

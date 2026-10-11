@@ -1,0 +1,175 @@
+{
+  "schema_version": "ro-overlay-evidence-rows/1.0",
+  "rows": [
+    {
+      "value_id": "ild.ipf-ppf-2022",
+      "area": "ild",
+      "statement": "Guideline citation: ATS/ERS/JRS/ALAT 2022 clinical practice guideline updates IPF and defines progressive pulmonary fibrosis in adults.",
+      "numeric": true,
+      "use": "reference",
+      "evidence_tag": "primary-abstract",
+      "source": {
+        "url": "https://pubmed.ncbi.nlm.nih.gov/35486072/",
+        "title": "Idiopathic Pulmonary Fibrosis (an Update) and Progressive Pulmonary Fibrosis in Adults: Official ATS/ERS/JRS/ALAT Clinical Practice Guideline",
+        "locator": "ATS/ERS/JRS/ALAT guideline, abstract/citation"
+      },
+      "verified_at": "2026-10-10",
+      "edition": "2022",
+      "review_window_months": 12,
+      "notes": "“An Official ATS/ERS/JRS/ALAT Clinical Practice Guideline”"
+    },
+    {
+      "value_id": "ild.ppf-criteria",
+      "area": "ild",
+      "statement": "For non-IPF ILD with radiological fibrosis, PPF requires at least 2 of 3 domains within 1 year without alternative explanation; physiologic thresholds are absolute FVC decline ≥5 percentage points or hemoglobin-corrected DLCO decline ≥10 percentage points predicted.",
+      "numeric": true,
+      "use": "fact_check",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9851481/",
+        "title": "Idiopathic Pulmonary Fibrosis (an Update) and Progressive Pulmonary Fibrosis in Adults: Official ATS/ERS/JRS/ALAT Clinical Practice Guideline",
+        "locator": "Table 3, Definition of PPF; Physiological Criteria for PPF"
+      },
+      "verified_at": "2026-10-10",
+      "edition": "2022",
+      "review_window_months": 12,
+      "notes": "“at least two of the following three criteria” and “Absolute decline in FVC of ⩾5%”"
+    },
+    {
+      "value_id": "ild.fvc-mcid",
+      "area": "ild",
+      "statement": "In IPF, an FVC decline of 2–6% predicted is an estimated clinically important difference.",
+      "numeric": true,
+      "use": "fact_check",
+      "evidence_tag": "primary-abstract",
+      "source": {
+        "url": "https://pubmed.ncbi.nlm.nih.gov/21940789/",
+        "title": "Forced vital capacity in patients with idiopathic pulmonary fibrosis: test properties and minimal clinically important difference",
+        "locator": "Abstract, results and conclusions"
+      },
+      "verified_at": "2026-10-10",
+      "edition": "2011",
+      "review_window_months": 12,
+      "notes": "“The estimated MCID was 2-6%.”"
+    },
+    {
+      "value_id": "ild.kbild-mcid-3-9",
+      "area": "ild",
+      "statement": "K-BILD total score MCID estimate in ILD is 3.9 points.",
+      "numeric": true,
+      "use": "fact_check",
+      "evidence_tag": "primary-abstract",
+      "source": {
+        "url": "https://pubmed.ncbi.nlm.nih.gov/31221807/",
+        "title": "King's Brief Interstitial Lung Disease questionnaire: responsiveness and minimum clinically important difference",
+        "locator": "Abstract, results and conclusions"
+      },
+      "verified_at": "2026-10-10",
+      "edition": "2019",
+      "review_window_months": 12,
+      "notes": "“MCID estimates for KBILD-Total were 3.9 points.”"
+    },
+    {
+      "value_id": "ild.ipf-6mwd-mcid",
+      "area": "ild",
+      "statement": "IPF 6MWD MCID estimate is 24–45 m.",
+      "numeric": true,
+      "use": "fact_check",
+      "evidence_tag": "primary-abstract",
+      "source": {
+        "url": "https://pubmed.ncbi.nlm.nih.gov/21131468/",
+        "title": "Six-minute-walk test in idiopathic pulmonary fibrosis: test validation and minimal clinically important difference",
+        "locator": "Abstract, measurements and main results"
+      },
+      "verified_at": "2026-10-10",
+      "edition": "2011",
+      "review_window_months": 12,
+      "notes": "“The estimated MCID was 24-45 m.”"
+    },
+    {
+      "value_id": "ild.iip-classification-2025",
+      "area": "ild",
+      "statement": "ERS/ATS 2025 statement updates the international multidisciplinary classification of interstitial pneumonias.",
+      "numeric": true,
+      "use": "reference",
+      "evidence_tag": "primary-abstract",
+      "source": {
+        "url": "https://pubmed.ncbi.nlm.nih.gov/40774805/",
+        "title": "Update of the international multidisciplinary classification of the interstitial pneumonias: an ERS/ATS statement",
+        "locator": "PubMed citation and abstract"
+      },
+      "verified_at": "2026-10-10",
+      "edition": "2025",
+      "review_window_months": 12,
+      "notes": "“Update of the international multidisciplinary classification”"
+    },
+    {
+      "value_id": "ild.ila-ats-2025",
+      "area": "ild",
+      "statement": "ATS 2025 statement distinguishes ILD from ILA using attributable symptoms, abnormal/declining lung function, fibrotic change involving ≥5% total lung volume, progression, or specific fibrotic pattern.",
+      "numeric": true,
+      "use": "reference",
+      "evidence_tag": "primary-abstract",
+      "source": {
+        "url": "https://pubmed.ncbi.nlm.nih.gov/40387336/",
+        "title": "Approach to the Evaluation and Management of Interstitial Lung Abnormalities: ATS Clinical Statement",
+        "locator": "Abstract"
+      },
+      "verified_at": "2026-10-10",
+      "edition": "2025",
+      "review_window_months": 12,
+      "notes": "“fibrotic ... involving ≥5% of total lung volume”"
+    },
+    {
+      "value_id": "ild.ctd-ild-ers-eular-2026",
+      "area": "ild",
+      "statement": "ERS/EULAR published CTD-ILD clinical practice guidelines in 2026.",
+      "numeric": true,
+      "use": "reference",
+      "evidence_tag": "primary-abstract",
+      "source": {
+        "url": "https://pubmed.ncbi.nlm.nih.gov/40907995/",
+        "title": "ERS/EULAR clinical practice guidelines for connective tissue disease-associated interstitial lung disease",
+        "locator": "PubMed citation and abstract"
+      },
+      "verified_at": "2026-10-10",
+      "edition": "2026",
+      "review_window_months": 12,
+      "notes": "“ERS/EULAR clinical practice guidelines for connective tissue disease-associated interstitial lung disease”"
+    },
+    {
+      "value_id": "ild.sarcoidosis-ers-2021",
+      "area": "ild",
+      "statement": "ERS sarcoidosis treatment guideline issued 12 recommendations for seven PICO questions.",
+      "numeric": true,
+      "use": "reference",
+      "evidence_tag": "primary-abstract",
+      "source": {
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34140301/",
+        "title": "ERS clinical practice guidelines on treatment of sarcoidosis",
+        "locator": "Abstract, results"
+      },
+      "verified_at": "2026-10-10",
+      "edition": "2021",
+      "review_window_months": 12,
+      "notes": "“12 recommendations for seven PICOs.”"
+    },
+    {
+      "value_id": "ild.sarcoidosis-ats-2020",
+      "area": "ild",
+      "statement": "ATS sarcoidosis diagnosis guideline identifies compatible clinical presentation, nonnecrotizing granulomatous inflammation, and exclusion of alternative causes as diagnostic criteria.",
+      "numeric": false,
+      "use": "reference",
+      "evidence_tag": "primary-abstract",
+      "source": {
+        "url": "https://pubmed.ncbi.nlm.nih.gov/32293205/",
+        "title": "Diagnosis and Detection of Sarcoidosis: ATS Clinical Practice Guideline",
+        "locator": "Abstract, background"
+      },
+      "verified_at": "2026-10-10",
+      "edition": "2020",
+      "review_window_months": 12,
+      "notes": "“based on three major criteria: a compatible clinical presentation ...”"
+    }
+  ]
+}

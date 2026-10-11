@@ -1,0 +1,41 @@
+{
+  "receipt_version": "review-criteria-source-receipt/1.0",
+  "receipt_kind": "mutable_web_semantic_snapshot",
+  "source_uri": "https://ms.ro/media/documents/LEGE_Nr._46_2003_forma_la_data_de_20.11.2023.pdf",
+  "publisher": "Law 46/2003 consolidated print",
+  "retrieved_at": "2026-10-10T14:43:10Z",
+  "capture": {
+    "method": "GET https://ms.ro/media/documents/LEGE_Nr._46_2003_forma_la_data_de_20.11.2023.pdf",
+    "http_status": 200,
+    "content_type": "application/pdf",
+    "etag": "\"655e5508-159ac\"",
+    "last_modified": "Wed, 22 Nov 2023 19:22:48 GMT",
+    "raw_body_size_bytes": 88492,
+    "raw_body_sha256": "78c94bc80e34a0071b9ef34a96bc8c5f9ba6772db6c9cfbeba1056f79a406aec"
+  },
+  "semantic_snapshot": {
+    "selection": "Backing data row locator and quoted source note",
+    "normalization": "UTF-8 text exactly as recorded in the verified overlay data row; no whitespace normalization",
+    "encoding": "UTF-8",
+    "size_bytes": 163,
+    "word_count": 24,
+    "sha256": "1025606979a9a0dbd4030387a88e9964e647fbc237178f3827f2f5b80781048b"
+  },
+  "criterion_locators": [
+    {
+      "criterion_id": "ro.manuscript-statements.consent-anonymisation",
+      "fragment": "Agency-hosted copy; consolidated print. “Consimţământul pacientului este obligatoriu ... la cercetarea ştiinţifică”",
+      "locator": "Art. 19"
+    },
+    {
+      "criterion_id": "ro.manuscript-statements.image-consent",
+      "fragment": "Agency-hosted copy; consolidated print. “Pacientul nu poate fi fotografiat sau filmat ... fără consimţământul său”",
+      "locator": "Art. 20"
+    }
+  ],
+  "retention": {
+    "full_body_committed": false,
+    "reason": "Retain only the verified source-row locator and quote; do not redistribute the source body.",
+    "drift_rule": "Recheck source URI and locator against the current source before relying on a changed criterion."
+  }
+}

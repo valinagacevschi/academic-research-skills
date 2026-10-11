@@ -1,0 +1,7 @@
+{
+  "schema_version": "ro-overlay-evidence-rows/1.0",
+  "rows": [
+    {"value_id":"citation.unicode-comma-below","area":"citations.ro.orthography","statement":"The Unicode NamesList identifies U+0218–U+021B as Latin S/s and T/t with comma below and directs Romanian users from the cedilla forms to U+0219 and U+021B.","numeric":false,"use":"reference","evidence_tag":"primary-full-text","source":{"url":"https://www.unicode.org/Public/18.0.0/ucd/NamesList.txt","title":"Unicode Character Database 18.0.0 NamesList","locator":"Entries U+015F, U+0163, U+0218–U+021B"},"verified_at":"2026-10-10","edition":"Unicode 18.0.0","review_window_months":12,"notes":"“the character 0219 should be used instead for Romanian”; “the character 021B should be used instead for Romanian”."},
+    {"value_id":"citation.doom2-comma-below-advisory","area":"citations.ro.orthography","statement":"A DOOM2 note says Romanian ș and ț use a comma below s and t, not a cedilla.","numeric":false,"use":"advisory","evidence_tag":"secondary","source":{"url":"https://dexonline.ro/article/Ortografie_-_2005_-_Ce_e_nou_%C3%AEn_DOOM2","title":"Ortografie - 2005 - Ce e nou în DOOM2 (dexonline mirror)","locator":"Note to alphabet table"},"verified_at":"2026-10-10","edition":"DOOM2 (2005)","review_window_months":12,"notes":"Mirror quote: “ș și ț au sub s și t o virguliță, și nu o sedilă”; primary DOOM2 text not located."}
+  ]
+}

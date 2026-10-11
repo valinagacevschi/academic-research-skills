@@ -1,0 +1,36 @@
+{
+  "receipt_version": "review-criteria-source-receipt/1.0",
+  "receipt_kind": "mutable_web_semantic_snapshot",
+  "source_uri": "https://europepmc.org/article/MED/34949706",
+  "publisher": "ERS/ATS technical standard on interpretive strategies for routine lung function tests",
+  "retrieved_at": "2026-10-10T14:43:10Z",
+  "capture": {
+    "method": "GET https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:34949706&format=json",
+    "http_status": 200,
+    "content_type": "application/json;charset=UTF-8",
+    "etag": null,
+    "last_modified": null,
+    "raw_body_size_bytes": 1039,
+    "raw_body_sha256": "50997ff21b737632bdf9795c88d5f9c8a30d9541dacea2f889a67c406781303b"
+  },
+  "semantic_snapshot": {
+    "selection": "Backing data row locator and quoted source note",
+    "normalization": "UTF-8 text exactly as recorded in the verified overlay data row; no whitespace normalization",
+    "encoding": "UTF-8",
+    "size_bytes": 165,
+    "word_count": 23,
+    "sha256": "cf05b29b2f1a776ea29ee1bd7ee5efb2bcba447e6455c9d7b54c62158f61e149"
+  },
+  "criterion_locators": [
+    {
+      "criterion_id": "field.ers-ats.respiratory-measurement",
+      "fragment": "“We aimed to update the 2005 recommendations ... to establish new standards for PFT interpretation.”",
+      "locator": "Europe PMC record; title, publication date/year and abstract"
+    }
+  ],
+  "retention": {
+    "full_body_committed": false,
+    "reason": "Retain only the verified source-row locator and quote; do not redistribute the source body.",
+    "drift_rule": "Recheck source URI and locator against the current source before relying on a changed criterion."
+  }
+}

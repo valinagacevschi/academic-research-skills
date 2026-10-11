@@ -1,0 +1,73 @@
+{
+  "schema_version": "ro-overlay-evidence-rows/1.0",
+  "rows": [
+    {
+      "value_id": "pulmonary_vascular.ph-definition",
+      "area": "pulmonary_vascular",
+      "statement": "ESC/ERS 2022 and 7th WSPH 2024 define PH as mPAP >20 mmHg; precapillary PH requires PAWP ≤15 mmHg and PVR >2 WU.",
+      "numeric": true,
+      "use": "fact_check",
+      "evidence_tag": "primary-abstract",
+      "source": {
+        "url": "https://doi.org/10.1183/13993003.01324-2024",
+        "title": "Definition, classification and diagnosis of pulmonary hypertension (7th World Symposium on Pulmonary Hypertension)",
+        "locator": "Abstract"
+      },
+      "verified_at": "2026-10-10",
+      "edition": "2024",
+      "review_window_months": 12,
+      "notes": "“mPAP >20 mmHg ... PAWP ≤15 mmHg, PVR >2 Wood Units”"
+    },
+    {
+      "value_id": "pulmonary_vascular.pah-6mwd-mid",
+      "area": "pulmonary_vascular",
+      "statement": "The estimated consensus MID in 6MWD for PAH is approximately 33 m.",
+      "numeric": true,
+      "use": "fact_check",
+      "evidence_tag": "primary-abstract",
+      "source": {
+        "url": "https://pubmed.ncbi.nlm.nih.gov/22723290/",
+        "title": "The minimal important difference in the 6-minute walk test for patients with pulmonary arterial hypertension",
+        "locator": "Abstract, conclusions"
+      },
+      "verified_at": "2026-10-10",
+      "edition": "2012",
+      "review_window_months": 12,
+      "notes": "“estimated consensus MID ... approximately 33 m.”"
+    },
+    {
+      "value_id": "pulmonary_vascular.esc-pe-risk-classes",
+      "area": "pulmonary_vascular",
+      "statement": "ESC 2019 acute PE risk classes comprise high, intermediate-high, intermediate-low, and low risk.",
+      "numeric": true,
+      "use": "reference",
+      "evidence_tag": "primary-full-text",
+      "source": {
+        "url": "https://academic.oup.com/eurheartj/article/41/4/543/5556136",
+        "title": "2019 ESC Guidelines for the diagnosis and management of acute pulmonary embolism developed in collaboration with the European Respiratory Society (ERS)",
+        "locator": "Section 5.6, Table 8: Classification of PE severity and risk of early death"
+      },
+      "verified_at": "2026-10-10",
+      "edition": "2019",
+      "review_window_months": 12,
+      "notes": "“intermediate−high-risk and intermediate−low-risk PE” (Table 8 also identifies high and low risk)"
+    },
+    {
+      "value_id": "pulmonary_vascular.esc-pe-guideline-2019",
+      "area": "pulmonary_vascular",
+      "statement": "ESC/ERS 2019 acute pulmonary embolism guideline remains a European guideline anchor; PubMed identifies the 2019 ESC guideline citation.",
+      "numeric": true,
+      "use": "reference",
+      "evidence_tag": "primary-abstract",
+      "source": {
+        "url": "https://pubmed.ncbi.nlm.nih.gov/31690957/",
+        "title": "2019 ESC/ERS Guidelines for the diagnosis and management of acute pulmonary embolism",
+        "locator": "PubMed record, title/citation"
+      },
+      "verified_at": "2026-10-10",
+      "edition": "2019",
+      "review_window_months": 12,
+      "notes": "“2019 ESC Guidelines ... acute pulmonary embolism”"
+    }
+  ]
+}
