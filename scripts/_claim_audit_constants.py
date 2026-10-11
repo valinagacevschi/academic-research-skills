@@ -7,7 +7,7 @@ drift hole — a spec bump that updates the lint without updating the
 runtime would change one side silently. Tests cover both call sites; the
 shared import binds them.
 
-See docs/design/2026-05-15-issue-103-claim-alignment-audit-spec.md §3.1
+See dev/design/2026-05-15-issue-103-claim-alignment-audit-spec.md §3.1
 (matrix + INV catalogue) and §4 step 3 (sampling) for canonical
 definitions.
 """

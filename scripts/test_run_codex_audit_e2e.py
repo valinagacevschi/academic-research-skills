@@ -1,6 +1,6 @@
 """End-to-end dispatch test for scripts/run_codex_audit.sh (Phase 6.1 deferred gate).
 
-Spec: docs/design/2026-04-30-ars-v3.6.7-step-6-orchestrator-hooks-spec.md
+Spec: dev/design/2026-04-30-ars-v3.6.7-step-6-orchestrator-hooks-spec.md
       §4.1 (Bash 4+ guard) + §4.4 (wrapper internal behavior) +
       Phase 6.1 verification gate (lines 2308) — "synthetic smoke test (codex CLI mocked
       or invoked against a tiny fixture deliverable) produces a well-formed proposal

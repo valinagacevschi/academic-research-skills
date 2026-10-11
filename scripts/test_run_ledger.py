@@ -1,6 +1,6 @@
 """Tests for scripts/run_ledger.py (#887).
 
-Design: docs/design/2026-09-23-887-handoff-integrity-design.md. The six
+Design: dev/design/2026-09-23-887-handoff-integrity-design.md. The six
 scenarios in HandoffScenarioTest are the deterministic fixture that the
 design's §7 decision 3 and §8 step 3 name. They show that the report reads a
 ledger correctly; whether the orchestrator writes the entries stays

@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://github.com/Imbad0202/academic-research-skills/shared/contracts/re_review/legacy/v1_0/verdict_record.schema.json",
   "title": "Re-review Phase 2A Verdict-record Artifact",
-  "description": "Phase 2A (persuasion-blind) evidence-verdict artifact of the #576 Spec B three-gate re-review contract. Committed BEFORE the Response to Reviewers is revealed; immutable once emitted ([EVIDENCE-COMMITTED]) — Phase 2B differences ride typed AdjustmentRecords in the §5.3 traceability sidecar, and the new_issues set FREEZES here whole-record (§13 byte-equality witness). Hash-bound to the Phase 1 artifact via precommitment_hash. Spec: docs/design/2026-07-27-576-spec-b-re-review-precommitment-contract-spec.md §5.2.",
+  "description": "Phase 2A (persuasion-blind) evidence-verdict artifact of the #576 Spec B three-gate re-review contract. Committed BEFORE the Response to Reviewers is revealed; immutable once emitted ([EVIDENCE-COMMITTED]) — Phase 2B differences ride typed AdjustmentRecords in the §5.3 traceability sidecar, and the new_issues set FREEZES here whole-record (§13 byte-equality witness). Hash-bound to the Phase 1 artifact via precommitment_hash. Spec: dev/design/2026-07-27-576-spec-b-re-review-precommitment-contract-spec.md §5.2.",
 
   "type": "object",
   "additionalProperties": false,

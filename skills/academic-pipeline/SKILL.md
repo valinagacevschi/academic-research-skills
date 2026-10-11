@@ -369,7 +369,7 @@ academic-pipeline is the orchestrator skill that coordinates the full ARS pipeli
 
 **Mode B — phase-by-phase (cross-session resume):** User invokes one phase agent at a time across sessions, typically via `ARS_PASSPORT_RESET=1` + `resume_from_passport=<hash>` (see `references/passport_as_reset_boundary.md`).
 
-In Mode B, **single-phase agents (Bucket A per `docs/design/2026-05-18-ars-v3.9.2-agent-phase-classification.md`) in the downstream skills (deep-research, academic-paper, academic-paper-reviewer) stay strictly within their assigned phase for writes**. The 5 agents in academic-pipeline itself are all cross-phase / meta by design (Bucket C/D) — they have no fence by design:
+In Mode B, **single-phase agents (Bucket A per `dev/design/2026-05-18-ars-v3.9.2-agent-phase-classification.md`) in the downstream skills (deep-research, academic-paper, academic-paper-reviewer) stay strictly within their assigned phase for writes**. The 5 agents in academic-pipeline itself are all cross-phase / meta by design (Bucket C/D) — they have no fence by design:
 
 - `pipeline_orchestrator_agent` (D — orchestrator, full pipeline visibility)
 - `state_tracker_agent` (D — meta state, all phases)
@@ -407,7 +407,7 @@ omit the block completely. Every shown interaction offers `skip`, `off`, and
 reset-to-simple-path; these hide future surfaces without deleting the ledger.
 The summary is advisory state memory and never changes an integrity verdict or
 checkpoint requirement. Full protocol and crash semantics:
-`docs/design/2026-08-17-743-inquiry-branch-ledger-design.md`.
+`dev/design/2026-08-17-743-inquiry-branch-ledger-design.md`.
 
 ---
 
@@ -547,7 +547,7 @@ Activity data never enters a Material Passport, handoff, Process Record,
 reviewer/model/observer/compliance input, gate, verdict, checkpoint input, or
 stage transition. No live model, judge, eval, network/API, ambient clock,
 directory scan, or glob participates. Full details and frozen receipt schemas
-remain in `docs/design/2026-08-10-673-cross-run-adjudication-activity-spec.md`
+remain in `dev/design/2026-08-10-673-cross-run-adjudication-activity-spec.md`
 and `shared/contracts/activity/`.
 
 ---
@@ -682,7 +682,6 @@ Explicit prohibitions to prevent common failure modes:
 | `references/reproducibility_audit.md` | Standardized workflow contract, deterministic replay boundary, and audit trail format |
 | `references/progress_dashboard_template.md` | ASCII progress dashboard template |
 | `references/reinforcement_content.md` | Stage-specific reinforcement focus table for transitions |
-| `references/changelog.md` | Full version history |
 | `shared/handoff_schemas.md` | Cross-skill data contracts: 9 schemas for all inter-stage handoff artifacts |
 | `shared/collaboration_depth_rubric.md` | Collaboration Depth Observer rubric (v1.0): 4 dimensions based on Wang & Zhang (2026) IJETHE 23:11 |
 
@@ -766,6 +765,3 @@ Stage 5: academic-paper (format-convert mode)
 
 ---
 
-## Changelog
-
-> See `references/changelog.md` for full version history.

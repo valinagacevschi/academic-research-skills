@@ -2,7 +2,7 @@
 
 This suite freezes a bounded evaluation of two Layer-1 Socratic mechanisms. The
 authority is
-[`docs/design/2026-08-13-659-within-session-ideation-diversity-design.md`](../../../docs/design/2026-08-13-659-within-session-ideation-diversity-design.md).
+[`dev/design/2026-08-13-659-within-session-ideation-diversity-design.md`](../../../dev/design/2026-08-13-659-within-session-ideation-diversity-design.md).
 
 ## Current status
 

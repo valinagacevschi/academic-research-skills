@@ -1,6 +1,6 @@
 """Test harness for ARS v3.6.7 Step 8 pattern-eval fixtures.
 
-Spec: docs/design/2026-04-30-ars-v3.6.7-step-6-orchestrator-hooks-spec.md §7.4
+Spec: dev/design/2026-04-30-ars-v3.6.7-step-6-orchestrator-hooks-spec.md §7.4
 
 This harness exercises §5.6 Path B's verdict-to-ship/block decision logic
 against each fixture's BAD/GOOD pair (or per-round per-agent slots for the

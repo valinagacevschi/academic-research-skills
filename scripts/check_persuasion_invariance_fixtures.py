@@ -72,7 +72,7 @@ INDEX = ROOT / "heldout_set.json"
 LANGUAGES = ["en", "zh-TW"]
 ISSUE = 576
 SPEC_AUTHORITY = (
-    "docs/design/2026-07-27-576-spec-b-re-review-precommitment-contract-spec.md"
+    "dev/design/2026-07-27-576-spec-b-re-review-precommitment-contract-spec.md"
 )
 
 # Expected inventory — update deliberately when scenarios, arms, pairs or cells are

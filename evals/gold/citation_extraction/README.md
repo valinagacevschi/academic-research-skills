@@ -12,7 +12,7 @@ The harness computes the predicted `lookup_verified` from each tuple's `resolver
 
 ## Spec reference
 
-`docs/design/2026-05-21-v3.10-184-extend-eval-harness-spec.md` §3.1.1
+`dev/design/2026-05-21-v3.10-184-extend-eval-harness-spec.md` §3.1.1
 
 ## Tuple distribution
 

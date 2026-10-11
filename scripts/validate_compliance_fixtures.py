@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 """Validate all compliance_report YAML fixtures against Schema 12.
 
-Loads each examples/compliance/fixture_*.yaml in-process and runs it
+Loads each tests/fixtures/compliance/fixture_*.yaml in-process and runs it
 through scripts.check_compliance_report.validate(). Exits 0 if every
 fixture validates; exits 1 on first failure or if no fixtures are found.
 
 Usage:
   python scripts/validate_compliance_fixtures.py [fixture_dir]
 
-Default fixture_dir: examples/compliance (relative to repo root).
+Default fixture_dir: tests/fixtures/compliance (relative to repo root).
 """
 from __future__ import annotations
 
@@ -21,7 +21,7 @@ import yaml
 from check_compliance_report import validate
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_DIR = REPO_ROOT / "examples" / "compliance"
+DEFAULT_DIR = REPO_ROOT / "tests" / "fixtures" / "compliance"
 
 
 def validate_fixture(yaml_path: Path) -> list[str]:

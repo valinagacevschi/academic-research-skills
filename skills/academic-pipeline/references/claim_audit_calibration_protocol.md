@@ -168,7 +168,7 @@ The CI-equivalent invocation lives in `.github/workflows/spec-consistency.yml` (
 
 ## References
 
-- Spec: `docs/design/2026-05-15-issue-103-claim-alignment-audit-spec.md` §7.7 (test contract) + §1 deliverable 7 (this doc) + §9 (acceptance criteria) + §13 step 10 (implementation order).
+- Spec: `dev/design/2026-05-15-issue-103-claim-alignment-audit-spec.md` §7.7 (test contract) + §1 deliverable 7 (this doc) + §9 (acceptance criteria) + §13 step 10 (implementation order).
 - Issue: [academic-research-skills #103](https://github.com/Imbad0202/academic-research-skills/issues/103) acceptance criterion (FNR < 0.15 + FPR < 0.10 gates).
 - Parent agent: `academic-pipeline/agents/claim_ref_alignment_audit_agent.md` — dispatches calibration mode and consumes the report's thresholds block. The agent prompt and this doc form a two-way pair following the v3.6.5 protocol-doc convention (`literature_corpus_consumers.md` ↔ `bibliography_agent.md`).
 - Reviewer calibration baseline: `academic-paper-reviewer/references/calibration_mode_protocol.md` (same vocabulary, different unit of analysis).

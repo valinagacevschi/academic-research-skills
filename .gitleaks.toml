@@ -36,8 +36,8 @@ paths = [
   '''scripts/adapters/examples/.*''',
   '''scripts/adapters/tests/test_zotero\.py''',
   '''academic-paper/examples/version_family_reconciliation_example\.md''',
-  '''docs/design/2026-05-28-kong-258-version-family-reconciliation\.md''',
-  '''docs/design/2026-04-23-ars-v3\.6\.4-literature-corpus-adapters-plan\.md''',
+  '''dev/design/2026-05-28-kong-258-version-family-reconciliation\.md''',
+  '''dev/design/2026-04-23-ars-v3\.6\.4-literature-corpus-adapters-plan\.md''',
   '''scripts/test_version_records_schema\.py''',
 ]
 

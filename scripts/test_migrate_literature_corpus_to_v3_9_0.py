@@ -5,7 +5,7 @@ Tests scripts/migrate_literature_corpus_to_v3_9_0.py — the CLI that
 backfills `openalex_unmatched` and `crossref_unmatched` on v3.7.3-onward
 literature_corpus[] entries per v3.9.0 spec §3.7.
 
-Design: docs/design/2026-05-17-ars-v3.9.0-cross-index-triangulation-measurement-spec.md
+Design: dev/design/2026-05-17-ars-v3.9.0-cross-index-triangulation-measurement-spec.md
 """
 from __future__ import annotations
 

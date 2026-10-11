@@ -1,6 +1,6 @@
 # Intent Clarification Protocol (v3.9.2)
 
-**Spec:** v3.9.2 hot-fix per `docs/design/2026-05-18-ars-v3.9.2-phase-boundary-spec.md`
+**Spec:** v3.9.2 hot-fix per `dev/design/2026-05-18-ars-v3.9.2-phase-boundary-spec.md`
 **Issue:** #133 (phase scope inflation hot-fix)
 **Forward note:** v3.10 active conductor (#134) will replace this clarification gate with structured intake + task envelope dispatch. v3.9.2 ships clarification-only as interim.
 

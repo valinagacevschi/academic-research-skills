@@ -25,7 +25,7 @@ that advertise or package the inventory:
 It also checks that any "<N> skills" count claim equals the number of skills
 on disk, on the three CURRENT-STATE metadata surfaces that carry one:
 `.codex-plugin/plugin.json` description, `marketplace.json` top-level and
-per-plugin descriptions, and `MODE_REGISTRY.md`. README and CHANGELOG are deliberately out of scope: they
+per-plugin descriptions, and `shared/references/mode_registry.md`. README and CHANGELOG are deliberately out of scope: they
 carry historical release notes whose counts are legitimately frozen at the
 time of writing, so a prose-wide grep would flag correct history. A surface
 that carries no count makes no claim and is not checked.
@@ -52,7 +52,7 @@ SKILLS_DIR = "skills"
 AGENTS_MD = Path("AGENTS.md")
 MARKETPLACE_JSON = Path(".agents") / "plugins" / "marketplace.json"
 PLUGIN_JSON = Path(".codex-plugin") / "plugin.json"
-MODE_REGISTRY_MD = Path("MODE_REGISTRY.md")
+MODE_REGISTRY_MD = Path("shared/references/mode_registry.md")
 
 SKILLS_OVERVIEW_HEADING = "## Skills Overview"
 # Row grammar shared with check_version_consistency.py. FULL is what the version

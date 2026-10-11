@@ -5,7 +5,7 @@ Tests scripts/migrate_literature_corpus_to_v3_7_3.py — the CLI that
 backfills `contamination_signals` on pre-v3.7.3 literature_corpus[]
 entries per v3.7.3 spec §3.2 R-L3-2-B.
 
-Design: docs/design/2026-05-15-issue-105-contamination-signals-backfill-design.md
+Design: dev/design/2026-05-15-issue-105-contamination-signals-backfill-design.md
 """
 from __future__ import annotations
 

@@ -43,7 +43,7 @@ ADVISORY_SCHEMA = Path(
 RUNTIME = Path("scripts/build_cross_document_consistency_advisory.py")
 RUNTIME_TEST = Path("scripts/test_cross_document_consistency_advisory.py")
 DESIGN_SPEC = Path(
-    "docs/design/2026-08-10-672-cross-document-consistency-advisory-spec.md"
+    "dev/design/2026-08-10-672-cross-document-consistency-advisory-spec.md"
 )
 PROTOCOL = Path(
     "shared/references/cross_document_consistency_advisory_protocol.md"
@@ -67,7 +67,6 @@ INTEGRITY_PROTOCOL = Path(
     "academic-pipeline/references/integrity_review_protocol.md"
 )
 STATE_MACHINE = Path("academic-pipeline/references/pipeline_state_machine.md")
-CHANGELOG = Path("CHANGELOG.md")
 HELDOUT_ROOT = Path("evals/heldout/cross_document_consistency")
 HELDOUT_STATUS = HELDOUT_ROOT / "README.md"
 CI_MANIFEST = Path("scripts/_ci_pytest_manifest.toml")
@@ -85,7 +84,7 @@ LEGACY_HASHES = {
     Path("scripts/evidence_rows.py"):
         "b3510133914b23115d7cd285f657450ff8de75f3ea678d843e4101634b6b8e9e",
     Path("shared/contracts/passport/claim_intent_manifest.schema.json"):
-        "d6c4fd060812dc2a2b2dd73b6d9e77e366fcc0803486d5f38b4def6893d70cec",
+        "0516bd0b86e5cb80c713b56893ed93bb300082f810e705a0e8431a5f6173d1d2",
     Path("shared/contracts/revision/claim_surface_manifest.schema.json"):
         "85460c1c195c890eb505c95e2767f72461c4a1f631203b7b26decb7a841afb1d",
     Path("deep-research/templates/preregistration_template.md"):
@@ -494,11 +493,6 @@ REQUIRED_POINTERS: dict[Path, tuple[str, ...]] = {
         "UNMEASURED",
         "no `measurement-*.json`",
         "not proof of agreement",
-    ),
-    CHANGELOG: (
-        "cross-document consistency advisory",
-        "#672",
-        "UNMEASURED",
     ),
 }
 

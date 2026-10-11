@@ -55,12 +55,12 @@ def _hook_command() -> str:
 def _merge_hooks(raw: bytes, uninstall: bool) -> bytes:
     data = json.loads(raw.decode("utf-8")) if raw.strip() else {}
     if not isinstance(data, dict):
-        raise ValueError("settings.json must contain a JSON object")
+        raise ValueError(".codex/hooks.json must contain a JSON object")
     if uninstall and not isinstance(data.get("hooks"), dict):
         return raw
     hooks = data.setdefault("hooks", {})
     if not isinstance(hooks, dict):
-        raise ValueError("settings.json hooks must be a JSON object")
+        raise ValueError(".codex/hooks.json hooks must be a JSON object")
     command = _hook_command()
     wanted = {
         "UserPromptSubmit": {"hooks": [{"type": "command", "command": command}]},
@@ -72,7 +72,7 @@ def _merge_hooks(raw: bytes, uninstall: bool) -> bytes:
     for event, entry in wanted.items():
         entries = hooks.setdefault(event, [])
         if not isinstance(entries, list):
-            raise ValueError(f"settings.json hooks.{event} must be an array")
+            raise ValueError(f".codex/hooks.json hooks.{event} must be an array")
         if uninstall:
             kept = []
             for existing in entries:
@@ -132,18 +132,16 @@ def _change(path: Path, transform, dry_run: bool) -> tuple[bool, bytes]:
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("project_dir", type=Path)
-    parser.add_argument("--claude-md", type=Path)
     parser.add_argument("--with-cnp-hook", action="store_true")
     parser.add_argument("--uninstall", action="store_true")
     parser.add_argument("--dry-run", action="store_true")
     args = parser.parse_args(argv)
 
     project = args.project_dir.resolve()
-    claude_path = _safe_target(project, args.claude_md or Path("CLAUDE.md"))
     transform = _without_block if args.uninstall else lambda raw: _with_block(raw, _block())
     actions: list[str] = []
-    for path in (claude_path, _safe_target(project, Path("AGENTS.md"))):
-        if path.name == "AGENTS.md" and not path.exists():
+    for path in (_safe_target(project, Path("AGENTS.md")),):
+        if args.uninstall and not path.exists():
             continue
         changed, _ = _change(path, transform, args.dry_run)
         if changed:
@@ -152,7 +150,7 @@ def main(argv: list[str] | None = None) -> int:
             actions.append(f"Unchanged {path}")
 
     if args.with_cnp_hook or args.uninstall:
-        settings = _safe_target(project, Path(".claude/settings.json"))
+        settings = _safe_target(project, Path(".codex/hooks.json"))
         if settings.exists() or args.with_cnp_hook:
             changed, _ = _change(settings, lambda raw: _merge_hooks(raw, args.uninstall), args.dry_run)
             if changed:

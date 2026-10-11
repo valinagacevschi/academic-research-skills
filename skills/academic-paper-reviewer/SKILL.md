@@ -279,7 +279,7 @@ Two invocation modes:
 
 **Mode B — phase-by-phase (cross-session resume):** User invokes one reviewer agent per phase across sessions, or runs the full reviewer panel standalone via `$academic-paper-reviewer full` equivalent.
 
-In Mode B, **single-phase agents (Bucket A per `docs/design/2026-05-18-ars-v3.9.2-agent-phase-classification.md`) stay strictly within their assigned phase for writes**. The 6 Bucket A agents in academic-paper-reviewer are: `eic_agent`, `methodology_reviewer`, `domain_reviewer`, `perspective_reviewer`, `devils_advocate_reviewer` (all Phase 1 panel) + `editorial_synthesizer` (Phase 2 synthesis). Reading the full paper draft is **expected** for all reviewers — without context they cannot evaluate.
+In Mode B, **single-phase agents (Bucket A per `dev/design/2026-05-18-ars-v3.9.2-agent-phase-classification.md`) stay strictly within their assigned phase for writes**. The 6 Bucket A agents in academic-paper-reviewer are: `eic_agent`, `methodology_reviewer`, `domain_reviewer`, `perspective_reviewer`, `devils_advocate_reviewer` (all Phase 1 panel) + `editorial_synthesizer` (Phase 2 synthesis). Reading the full paper draft is **expected** for all reviewers — without context they cannot evaluate.
 
 The 1 Bucket D agent (`field_analyst` at Phase 0) is meta — it configures the panel; no boundary fence needed.
 
@@ -432,7 +432,6 @@ pointer; a changed target starts a new, explicitly non-comparable review id.
 | `references/review_panel_provenance_protocol.md` | Closed six-axis execution-provenance semantics, correlated-error disclosure, and deterministic build/replay rules; no binary independence reduction | dispatcher, editorial_synthesizer, re-review consumer |
 | `references/reviewer_sprint_prompt_source.md` | Canonical marked source for the five inline sprint-reviewer Phase 1/2 prompt fragments and the synthesizer protocol; runtime mirrors stay inline for bare dispatch and are exact-sync linted | five panel reviewers, editorial_synthesizer |
 | `references/integration_guide.md` | Complete 9-step pipeline usage example | — |
-| `references/changelog.md` | Full version history | — |
 
 ---
 
@@ -527,6 +526,3 @@ Follows the paper's language. Academic terms remain in English. User can overrid
 
 ---
 
-## Changelog
-
-> See `references/changelog.md` for full version history.

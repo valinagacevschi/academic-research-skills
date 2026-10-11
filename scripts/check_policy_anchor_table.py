@@ -2,11 +2,11 @@
 """#108 policy_anchor_table.md static lint.
 
 Decision Doc reference:
-  docs/design/2026-05-14-ai-disclosure-schema-decision.md §4.1 (item 6a)
+  dev/design/2026-05-14-ai-disclosure-schema-decision.md §4.1 (item 6a)
   + §4.3 invariants.
 
 Implementation spec reference:
-  docs/design/2026-05-14-ai-disclosure-impl-spec.md §2.1 (file map) + §4
+  dev/design/2026-05-14-ai-disclosure-impl-spec.md §2.1 (file map) + §4
   (TDD test discipline) + §4.4 (Nature ↔ v3.2 venue de-dup guard).
 
 This lint enforces structural invariants on the anchor data table — the

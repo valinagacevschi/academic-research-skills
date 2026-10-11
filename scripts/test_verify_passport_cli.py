@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Tests for the verify_passport CLI (Delta 5 ad-hoc entry point).
 
-Spec: docs/design/2026-05-21-v3.10-182-promote-citation-gate-spec.md §2 Delta 5
+Spec: dev/design/2026-05-21-v3.10-182-promote-citation-gate-spec.md §2 Delta 5
 (`python -m scripts.verify_passport <passport.yaml>`).
 
 The CLI is a thin wrapper: it loads a passport YAML and prints the

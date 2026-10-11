@@ -39,7 +39,7 @@ CLI: `python scripts/pdf_read_preflight.py FILE [--classify-content]
 verdict was produced (the verdict is data, not an error; orchestration consumes the JSON
 without exit-code branching); exit 2 on usage errors only.
 
-Design: docs/design/2026-07-20-512-pdf-read-preflight-spec.md.
+Design: dev/design/2026-07-20-512-pdf-read-preflight-spec.md.
 """
 
 from __future__ import annotations

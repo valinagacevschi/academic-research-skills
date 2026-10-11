@@ -4,7 +4,7 @@
 Renamed from the original `test_default_blocking_gate.py` (the v3.10 blocking-default
 form was withdrawn by the v3.11 C-V6 amendment in favour of the opt-in
 `terminal_policies.citation_existence` model). Spec:
-docs/design/2026-05-21-v3.10-182-promote-citation-gate-spec.md §2 Delta 3 + §0(4) +
+dev/design/2026-05-21-v3.10-182-promote-citation-gate-spec.md §2 Delta 3 + §0(4) +
 INVARIANT C-V6, deliverable 13.
 
 WHAT IS DETERMINISTICALLY TESTABLE HERE. The finalizer that co-emits the terminal

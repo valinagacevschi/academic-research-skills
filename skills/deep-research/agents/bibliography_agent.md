@@ -333,7 +333,7 @@ When you have NOT retrieved the original source — or have retrieved it but hav
 
 ## Contamination Signal Computation (v3.7.3)
 
-External motivation: Zhao, Wang, Stuart, De Vaan, Ginsparg, Yin "LLM hallucinations in the wild: Large-scale evidence from non-existent citations" (arXiv:2605.07723, 2026-05). The paper documents a corpus-scale audit of 111M references finding 146,932 hallucinated citations in 2025 alone across arXiv / bioRxiv / SSRN / PMC, with the inflection point at mid-2024 and Google Scholar increasingly indexing citation-only entries with no underlying publication. Spec: `docs/design/2026-05-12-ars-v3.7.3-claim-faithfulness-and-contaminated-source-spec.md` §3.2.
+External motivation: Zhao, Wang, Stuart, De Vaan, Ginsparg, Yin "LLM hallucinations in the wild: Large-scale evidence from non-existent citations" (arXiv:2605.07723, 2026-05). The paper documents a corpus-scale audit of 111M references finding 146,932 hallucinated citations in 2025 alone across arXiv / bioRxiv / SSRN / PMC, with the inflection point at mid-2024 and Google Scholar increasingly indexing citation-only entries with no underlying publication. Spec: `dev/design/2026-05-12-ars-v3.7.3-claim-faithfulness-and-contaminated-source-spec.md` §3.2.
 
 For every literature_corpus entry you produce, compute the optional `contamination_signals` object at ingest time:
 
@@ -384,7 +384,7 @@ The contamination_signals object is computed at ingest time and is **advisory at
 
 ### Triangulation Extension (v3.9.0)
 
-Spec: `docs/design/2026-05-17-ars-v3.9.0-cross-index-triangulation-measurement-spec.md` §3.6.
+Spec: `dev/design/2026-05-17-ars-v3.9.0-cross-index-triangulation-measurement-spec.md` §3.6.
 
 v3.9.0 extends contamination_signals from single-index (Semantic Scholar) to three-index triangulation. The v3.7.3 Vector 1 (preprint_post_llm_inflection) and Vector 2 (semantic_scholar_unmatched) computations are preserved. Two new lookup-time signals join them:
 

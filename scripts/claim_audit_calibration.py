@@ -12,7 +12,7 @@ Test contract is pinned by `scripts/test_claim_audit_calibration.py`
 (T-C1 / T-C2 / T-C3 per spec §7.7). The default thresholds reflect the
 spec §7.7 + §9 acceptance criteria — FNR < 0.15 AND FPR < 0.10.
 
-Spec: docs/design/2026-05-15-issue-103-claim-alignment-audit-spec.md
+Spec: dev/design/2026-05-15-issue-103-claim-alignment-audit-spec.md
       §7.7 (test contract) + §1 deliverable 7 (protocol doc) + §13 step 10.
 """
 from __future__ import annotations

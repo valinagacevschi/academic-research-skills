@@ -224,7 +224,7 @@ def test_the_manifests_are_unreadable_as_prompt_material():
         with pytest.raises(harness.PreconditionFailure):
             harness.read_prompt_material(path)
     with pytest.raises(harness.PreconditionFailure):
-        harness.read_prompt_material(harness.REPO / "CHANGELOG.md")
+        harness.read_prompt_material(harness.REPO / "README.md")
 
 
 def test_every_real_prompt_material_is_readable():

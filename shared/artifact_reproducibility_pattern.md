@@ -85,7 +85,7 @@ tooling or audit the change manually.
 
 ### ars_version
 
-Suite version from CHANGELOG. This couples the prompt hashes to the release: changing
+Suite version from AGENTS.md. This couples the prompt hashes to the release: changing
 `ars_version` will change the bundle hash even if individual prompt files didn't change.
 That coupling is intentional — version boundaries mark coordinated changes.
 

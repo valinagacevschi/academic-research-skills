@@ -1,7 +1,7 @@
 """Audit-pipeline unit tests for v3.8 claim_ref_alignment_audit_agent (T-P1..T-P11).
 
 Per spec §7.2 in
-docs/design/2026-05-15-issue-103-claim-alignment-audit-spec.md.
+dev/design/2026-05-15-issue-103-claim-alignment-audit-spec.md.
 
 These tests pin the contract of `scripts/claim_audit_pipeline.py`, the
 Python module that implements the §4 Step 1-6 pipeline the agent prompt

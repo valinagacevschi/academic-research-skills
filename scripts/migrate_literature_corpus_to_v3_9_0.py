@@ -20,7 +20,7 @@ sequentially if parallelism is not available") documented in
 deep-research/agents/bibliography_agent.md is a separate concern — this one-shot
 tool simply requires threading and does not fall back.
 
-Design: docs/design/2026-05-17-ars-v3.9.0-cross-index-triangulation-measurement-spec.md §3.7
+Design: dev/design/2026-05-17-ars-v3.9.0-cross-index-triangulation-measurement-spec.md §3.7
 """
 from __future__ import annotations
 
@@ -272,7 +272,7 @@ def _parse_args(argv: list[str]) -> argparse.Namespace:
         description=(
             "Backfill v3.9.0 openalex_unmatched + crossref_unmatched on "
             "v3.7.3-onward literature_corpus[] entries. "
-            "See docs/design/2026-05-17-ars-v3.9.0-cross-index-triangulation-measurement-spec.md §3.7"
+            "See dev/design/2026-05-17-ars-v3.9.0-cross-index-triangulation-measurement-spec.md §3.7"
         )
     )
     parser.add_argument("path", type=Path, help="Passport YAML file")

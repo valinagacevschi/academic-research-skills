@@ -41,7 +41,7 @@ gold-set metric:
      <platform>/ directory. Small edits to an existing port do not count. -->
 
 If this PR adds a new `<platform>/` directory, read the
-[Platform ports policy](https://github.com/Imbad0202/academic-research-skills/blob/main/CONTRIBUTING.md#platform-ports-community-maintained-only)
+
 and **open a design issue first**. Otherwise, leave this section as "Not a platform port."
 
 > Not a platform port.

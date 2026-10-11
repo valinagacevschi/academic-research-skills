@@ -3,7 +3,7 @@
 **Status**: #108 implementation (parented to Decision Doc 20ed72d)
 **Parent skill**: `academic-paper`
 **Consumer**: `policy_anchor_disclosure_protocol.md` (the LLM-prose renderer reads this table at runtime when in `disclosure` mode with `--policy-anchor=<a>` selector).
-**Provenance**: cells below carry verbatim policy quotes lifted from the discovery doc §4.3-4.6 source-of-truth (`docs/design/2026-05-13-ai-disclosure-schema-discovery.md`). Each anchor section records its snapshot id + truncated sha256 so the lint validator can confirm provenance integrity. Live URLs may drift after capture; the wayback snapshot is canonical.
+**Provenance**: cells below carry verbatim policy quotes lifted from the discovery doc §4.3-4.6 source-of-truth (`dev/design/2026-05-13-ai-disclosure-schema-discovery.md`). Each anchor section records its snapshot id + truncated sha256 so the lint validator can confirm provenance integrity. Live URLs may drift after capture; the wayback snapshot is canonical.
 
 **Lint contract**: `scripts/check_policy_anchor_table.py` enforces 4-anchor coverage, 16-field-per-anchor canonical order, source_strength enum membership, and verbatim-quote presence for mandate/recommend/conditional cells. Mutation tests live at `scripts/test_check_policy_anchor_table.py`.
 
@@ -148,9 +148,9 @@
 
 ## Related
 
-- Decision Doc (parent): `docs/design/2026-05-14-ai-disclosure-schema-decision.md`
-- Implementation spec (parent): `docs/design/2026-05-14-ai-disclosure-impl-spec.md`
-- Discovery doc (verbatim quote source-of-truth): `docs/design/2026-05-13-ai-disclosure-schema-discovery.md` §4.3-4.6
+- Decision Doc (parent): `dev/design/2026-05-14-ai-disclosure-schema-decision.md`
+- Implementation spec (parent): `dev/design/2026-05-14-ai-disclosure-impl-spec.md`
+- Discovery doc (verbatim quote source-of-truth): `dev/design/2026-05-13-ai-disclosure-schema-discovery.md` §4.3-4.6
 - Renderer protocol (consumer): `policy_anchor_disclosure_protocol.md` (forthcoming in this branch)
 - v3.2 venue policy database (Nature de-dup peer): `venue_disclosure_policies.md`
 - v3.2 disclosure mode protocol (extension target): `disclosure_mode_protocol.md`

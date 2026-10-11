@@ -6,7 +6,7 @@ This is a PURE LOCAL YAML transform — it needs NO network / API client (unlike
 the v3.9.0 migration, which injected OpenAlex / Crossref clients). It only adds
 the default-advisory terminal-policy keys where they are absent.
 
-Behavior (spec docs/design/2026-05-31-ars-v3.10-policy-layer-rescope-spec.md
+Behavior (spec dev/design/2026-05-31-ars-v3.10-policy-layer-rescope-spec.md
 §3 PR-B item 12):
 
 - **Deep-merge, not overwrite (R1 P1):** write each default-advisory key ONLY
@@ -193,7 +193,7 @@ def _parse_args(argv: list[str]) -> argparse.Namespace:
             "Seed passport-level terminal_policies (default advisory) on "
             "v3.9.0-onward literature_corpus passports. Pure local transform; "
             "deep-merge (only absent keys), idempotent. "
-            "See docs/design/2026-05-31-ars-v3.10-policy-layer-rescope-spec.md §3 PR-B item 12"
+            "See dev/design/2026-05-31-ars-v3.10-policy-layer-rescope-spec.md §3 PR-B item 12"
         )
     )
     parser.add_argument("path", type=Path, help="Passport YAML file")

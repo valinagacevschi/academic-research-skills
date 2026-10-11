@@ -1,43 +1,34 @@
-# Romanian respiratory-medicine overlay
+# Respiratory medicine for Codex
 
-This Overlay adds Romanian respiratory-medicine context to ARS through a field profile, registry additions, and sourced Subdomain references. It leaves ARS core files unchanged and applies only after activation. See the [specification](docs/SPEC.md) and [glossary](docs/GLOSSARY.md).
+Adds Romanian respiratory-medicine context to ARS: GOLD and ERS/ATS guidance, Romanian ethics and data rules, reporting guidance, and pulmonary subdomain references. It is for research and manuscript work, not clinical decisions.
 
-## Local checks
+Read the [ARS workflow overview](../../docs/HOW_IT_WORKS.md).
 
-Run the linter and tests with Python 3.12 and the project check dependencies:
+## Install in a project
 
-```sh
-uv run --no-project --python 3.12 --with pyyaml --with 'jsonschema[format]' --with pytest python overlays/ro-respiratory-medicine/check_overlay.py
-uv run --no-project --python 3.12 --with pyyaml --with 'jsonschema[format]' --with pytest python -m pytest overlays/ro-respiratory-medicine/tests -q
-```
-
-## Use it in a project
-
-Install the activation preamble in a project's `CLAUDE.md` (and in an existing `AGENTS.md`):
+From the ARS repository, run:
 
 ```sh
 python3 overlays/ro-respiratory-medicine/install.py /path/to/project
 ```
 
-To enable the optional Claude Code CNP guard, add `--with-cnp-hook`. Uninstall the overlay's instruction blocks and hook entries with `--uninstall`:
+This adds the overlay instructions to that project's `AGENTS.md`. To also stop submitted prompts and file reads containing a checksum-valid Romanian personal numeric code (CNP), install the optional Codex hook:
 
 ```sh
 python3 overlays/ro-respiratory-medicine/install.py /path/to/project --with-cnp-hook
+```
+
+The hook is added to `.codex/hooks.json`. It reports a masked value and asks for redaction. It does not remove data already present in a transcript.
+
+Remove the overlay instructions and its hook entries with:
+
+```sh
 python3 overlays/ro-respiratory-medicine/install.py /path/to/project --uninstall
 ```
 
-## Slice status
+## Verify
 
-| Slice | Status |
-|---|---|
-| S1 — Skeleton and checks | Done |
-| S2 — Evidence verification | Done |
-| S3 — Field profile | Done |
-| S4 — Human-subjects registry | Done |
-| S5 — Review-criteria registry | Done |
-| S6 — Subdomain references and methodology notes | Done |
-| S7 — Venue notes and extras | Done |
-| S8 — Patient-data guidance and CNP hook | Done |
-| S9 — Activation preamble and installer | Done |
-| S10 — Model-behaviour evals | Done (Codex run of record, 6/6) |
-| S11 — Upstream asks | Done |
+```sh
+python3 overlays/ro-respiratory-medicine/check_overlay.py
+python3 -m pytest overlays/ro-respiratory-medicine/tests -q
+```

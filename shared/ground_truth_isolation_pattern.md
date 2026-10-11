@@ -156,8 +156,8 @@ file around them, such as the claim-audit judge prompt and the cross-model
 prompts, carry the sentences without the markers. `HOTSPOT_AGENTS` and
 `PROMPT_TEMPLATES` in `scripts/check_instruction_data_boundary.py` are the
 authoritative lists; the design docs
-`docs/design/2026-09-23-890-instruction-data-boundary-extension.md` (#890) and
-`docs/design/2026-09-24-894-instruction-data-boundary-tool-calls.md` (#894)
+`dev/design/2026-09-23-890-instruction-data-boundary-extension.md` (#890) and
+`dev/design/2026-09-24-894-instruction-data-boundary-tool-calls.md` (#894)
 record the inventories, the selection rules, and the surfaces left uncovered.
 
 ---

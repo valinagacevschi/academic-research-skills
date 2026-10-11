@@ -433,7 +433,7 @@ STORM's perspective discovery anchors framings in the real structure of related
 topics; Co-STORM's moderator deliberately injects information adjacent to — but not
 directly answering — the current question to break local stagnation. This layer
 borrows that *intent*, anchored in LLM internal knowledge (no retrieval). See
-`docs/design/2026-06-18-socratic-adjacent-framing-probe-spec.md`.
+`dev/design/2026-06-18-socratic-adjacent-framing-probe-spec.md`.
 
 ### Activation
 
@@ -542,7 +542,7 @@ is mis-calibrated for this user. Stage 6 AI Self-Reflection reads these tags.
 
 ### Banned Patterns
 
-Aligned with the Kong L2 verb test (`docs/design/2026-06-08-kong-255-l2-advisory-not-generation.md`):
+Aligned with the Kong L2 verb test (`dev/design/2026-06-08-kong-255-l2-advisory-not-generation.md`):
 the Mentor must never **propose**, **substitute**, **rank**, **expand**, or **select**
 an idea for the user. The probe surfaces and asks — nothing more.
 

@@ -72,7 +72,9 @@ def _write_symlinks(root: Path, names: tuple[str, ...]) -> None:
 
 
 def _write_registry(root: Path, text: str) -> None:
-    (root / "MODE_REGISTRY.md").write_text(text, encoding="utf-8")
+    path = root / "shared/references/mode_registry.md"
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(text, encoding="utf-8")
 
 
 def _build_root(root: Path, names: tuple[str, ...] = NAMES) -> None:
@@ -379,13 +381,13 @@ def test_description_without_count_makes_no_claim(tmp_path: Path) -> None:
 def test_stale_mode_registry_count_fails(tmp_path: Path) -> None:
     _build_root(tmp_path)
     _write_registry(tmp_path, "**27 modes** across 4 skills.\n")
-    _assert_single(_violations(tmp_path), "MODE_REGISTRY.md: claims '4 skills'")
+    _assert_single(_violations(tmp_path), "shared/references/mode_registry.md: claims '4 skills'")
 
 
 def test_missing_mode_registry_fails(tmp_path: Path) -> None:
     _build_root(tmp_path)
-    (tmp_path / "MODE_REGISTRY.md").unlink()
-    _assert_single(_violations(tmp_path), "MODE_REGISTRY.md: file is missing")
+    (tmp_path / "shared/references/mode_registry.md").unlink()
+    _assert_single(_violations(tmp_path), "shared/references/mode_registry.md: file is missing")
 
 
 def test_missing_plugin_json_fails(tmp_path: Path) -> None:

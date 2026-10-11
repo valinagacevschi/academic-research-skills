@@ -1,6 +1,6 @@
 """Mutation tests for ARS v3.7.1 Step 2 — D2 audit Scope Report lint.
 
-Spec: docs/design/2026-04-30-ars-v3.6.8-trust-provenance-and-drift-transparency-spec.md
+Spec: dev/design/2026-04-30-ars-v3.6.8-trust-provenance-and-drift-transparency-spec.md
       §3.2 (D2 — Audit scope coverage non-disclosure)
       §4 Step 2 — Audit report Scope Report block
 

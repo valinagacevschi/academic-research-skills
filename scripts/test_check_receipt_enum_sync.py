@@ -12,7 +12,7 @@ import pytest
 REPO_ROOT = Path(__file__).resolve().parents[1]
 CHECKER = REPO_ROOT / "scripts" / "check_receipt_enum_sync.py"
 CANONICAL = "academic-paper-reviewer/references/reviewer_sprint_prompt_source.md"
-SPEC = "docs/design/2026-08-02-610-statistical-recompute-baseline-spec.md"
+SPEC = "dev/design/2026-08-02-610-statistical-recompute-baseline-spec.md"
 
 
 def _run(root: Path) -> subprocess.CompletedProcess[str]:

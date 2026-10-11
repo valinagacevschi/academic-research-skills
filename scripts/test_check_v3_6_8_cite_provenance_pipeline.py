@@ -1,6 +1,6 @@
 """Mutation tests for ARS v3.7.1 Step 3b — Cite-Time Provenance Finalizer.
 
-Spec: docs/design/2026-04-30-ars-v3.6.8-trust-provenance-and-drift-transparency-spec.md
+Spec: dev/design/2026-04-30-ars-v3.6.8-trust-provenance-and-drift-transparency-spec.md
       § Step 3b — Pipeline finalizer (academic-pipeline mode)
 
 Step 3b acceptance (spec lines 454-457):

@@ -21,7 +21,6 @@ COPIED = tuple(
             guard.CONTRACT_README,
             guard.MANIFEST,
             guard.WORKFLOW,
-            guard.CHANGELOG,
             *guard.FIXTURES,
             *guard.RESOLVER_HASHES,
         )

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """ARS v3.7.1 byte-equivalence SHA gate + Step 3a Two-Layer Citation Emission invariants.
 
-Spec: docs/design/2026-04-30-ars-v3.6.8-trust-provenance-and-drift-transparency-spec.md
+Spec: dev/design/2026-04-30-ars-v3.6.8-trust-provenance-and-drift-transparency-spec.md
       § Step 0 — Lint manifest separation (round-1 codex F-004 amend)
       § Step 3a — Two-Layer Citation Emission (uniform across all modes)
 

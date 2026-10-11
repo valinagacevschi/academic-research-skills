@@ -21,11 +21,10 @@ PROTOCOL = Path("shared/references/claim_standing_candidate_ledger_protocol.md")
 PHASE_E_PROTOCOL = Path(
     "academic-pipeline/references/claim_verification_protocol.md"
 )
-DESIGN = Path("docs/design/2026-08-13-655-search-bounded-claim-standing-probe-design.md")
+DESIGN = Path("dev/design/2026-08-13-655-search-bounded-claim-standing-probe-design.md")
 CONTRACT_README = Path("shared/contracts/README.md")
 MANIFEST = Path("scripts/_ci_pytest_manifest.toml")
 WORKFLOW = Path(".github/workflows/spec-consistency.yml")
-CHANGELOG = Path("CHANGELOG.md")
 FIXTURES = (
     Path("scripts/fixtures/claim_standing_candidate_ledger/query_plan.json"),
     Path("scripts/fixtures/claim_standing_candidate_ledger/retrieval_input.json"),
@@ -34,7 +33,7 @@ RESOLVER_HASHES = {
     Path("scripts/semantic_scholar_client.py"): "86e2c3d713804d0e9f4d095e245db0521afb0d198686434515a0c1b225d0f787",
     Path("scripts/openalex_client.py"): "e90207a2b591a385dab61a55a86a92a6623cb60c428edce360a4199947209cda",
     Path("scripts/crossref_client.py"): "06da046164f882e20383cd63ec9e9b6da2507d7a5e1f23066adebb88f2256e25",
-    Path("scripts/arxiv_client.py"): "76ace0911bf98b1a288e64ee41f4c2caf993b9df48ef3abb0c57b8446acf02a7",
+    Path("scripts/arxiv_client.py"): "77df150792f959e288329197e3c4f56dade7ead45624c67c454f87b873384ea1",
 }
 ALLOWED_RUNTIME_DIRECT_IMPORTS = {
     "argparse",
@@ -435,10 +434,6 @@ def run_checks(root: Path) -> list[str]:
             "shared/references/claim_standing_candidate_ledger_protocol.md",
             "STANCE CLASSIFICATION UNMEASURED",
             "gate_effect = none",
-        ),
-        CHANGELOG: (
-            "candidate-ledger substrate (#655 Track A)",
-            "Pipeline wiring for the #655 claim-standing probe",
         ),
         MANIFEST: (
             'id = "655-claim-standing-candidate-ledger"',

@@ -168,7 +168,7 @@ each other's work. What each role sees, and why: `references/reviewer_roles.md`.
 | `audit` | a set of exclusions to double-check (yours or another tool's) | records that should probably advance |
 | `report` | decisions already exist | PRISMA counts, methods text, exports, handoff files |
 
-Mode recipes: `references/orchestration.md` § 5. The mode registry entry is in `MODE_REGISTRY.md`.
+Mode recipes: `references/orchestration.md` § 5. The mode registry entry is in `shared/references/mode_registry.md`.
 
 ---
 
@@ -485,8 +485,5 @@ All screening roles use the GPT model configured for the Codex session. Use high
 
 ---
 
-## Version History
-
-| Version | Date | Changes |
 |---------|------|---------|
 | 1.0.0 | 2026-09-29 | Initial release in Academic Research Skills. Grew out of a lean screening agent used for dual title/abstract screening of about 16,000 records in a diagnostic accuracy review. |

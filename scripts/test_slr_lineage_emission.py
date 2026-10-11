@@ -16,7 +16,7 @@ Two layers under test:
    the §4.3 G2 invariant gate without a manual `mode_param='systematic-
    review'` supplied at cold-start.
 
-Design doc: `docs/design/2026-05-15-issue-111-slr-lineage-emission-design.md`.
+Design doc: `dev/design/2026-05-15-issue-111-slr-lineage-emission-design.md`.
 """
 from __future__ import annotations
 

@@ -17,7 +17,7 @@ arXiv ID, only a bogus title) reduces to `unresolvable`, NOT `false`, so the
 citation-existence gate does not block it — it is indistinguishable from a
 legitimately unindexed (regional / non-English / pre-digital) paper. This is an
 accepted recall limit, caught instead by the v3.8 claim-faithfulness audit +
-human review. The user-facing explanation of this limit (in docs/ARCHITECTURE.md
+human review. The user-facing explanation of this limit (
 and the user guide) and the policy that consumes this verdict
 (`terminal_policies.citation_existence`, enum {advisory, strict}) both land with
 the Delta 3 / C-V6 policy batch — this data-layer batch only computes the
@@ -28,7 +28,7 @@ canary is #250's accepted corpus-representativeness limit, not a client-test
 gap; #431/#432 cover title-match behavior directly and there is no current
 gold-tuple action item.
 
-Spec: docs/design/2026-05-21-v3.10-182-promote-citation-gate-spec.md
+Spec: dev/design/2026-05-21-v3.10-182-promote-citation-gate-spec.md
 §2 Delta 4 + §0(4a) + INVARIANT C-V6(a).
 """
 from __future__ import annotations

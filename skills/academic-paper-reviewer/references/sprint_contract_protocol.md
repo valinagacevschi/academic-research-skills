@@ -3,13 +3,13 @@
 > Authoritative orchestration reference for the ARS v3.6.2 sprint-contract hard gate.
 > Schema: `shared/sprint_contract.schema.json` (Schema 13.2).
 > Templates: `shared/contracts/reviewer/*.json`.
-> Design spec: `docs/design/2026-04-23-ars-v3.6.2-sprint-contract-design.md`.
+> Design spec: `dev/design/2026-04-23-ars-v3.6.2-sprint-contract-design.md`.
 > Canonical inline prompt source: `references/reviewer_sprint_prompt_source.md`.
 > Its rendered fragments remain in the five reviewer agents and synthesizer because
 > the dispatcher sends those prompt sections verbatim; `scripts/check_reviewer_sprint_prompt_sync.py`
 > enforces byte-exact mirrors plus an explicit content-hash re-pin.
 >
-> **v3.6.6 cross-reference**: this reviewer protocol is byte-equivalent across v3.6.2 → v3.6.6 (zero-touch promise per §3.6 of `docs/design/2026-04-27-ars-v3.6.6-generator-evaluator-contract-design.md`). The v3.6.6 release adds a parallel generator-evaluator protocol inside `academic-paper` for the in-pair writer / evaluator pair (see `academic-paper/SKILL.md` § "v3.6.6 Generator-Evaluator Contract Protocol" and design doc §5).
+> **v3.6.6 cross-reference**: this reviewer protocol is byte-equivalent across v3.6.2 → v3.6.6 (zero-touch promise per §3.6 of `dev/design/2026-04-27-ars-v3.6.6-generator-evaluator-contract-design.md`). The v3.6.6 release adds a parallel generator-evaluator protocol inside `academic-paper` for the in-pair writer / evaluator pair (see `academic-paper/SKILL.md` § "v3.6.6 Generator-Evaluator Contract Protocol" and design doc §5).
 
 ## 1. Overview
 

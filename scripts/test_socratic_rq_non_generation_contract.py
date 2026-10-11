@@ -38,7 +38,6 @@ _END_VERB = re.compile(
 )
 
 PATHS = {
-    "positioning": REPO_ROOT / "POSITIONING.md",
     "skill": REPO_ROOT / "deep-research" / "SKILL.md",
     "mentor": REPO_ROOT / "deep-research" / "agents" / "socratic_mentor_agent.md",
     "rq_agent": REPO_ROOT / "deep-research" / "agents" / "research_question_agent.md",
@@ -103,7 +102,7 @@ def _contract_errors(documents: dict[str, str]) -> list[str]:
     if "select the closest" in socratic_failure.lower():
         errors.append("failure_paths: Socratic default still presents an AI menu")
 
-    for name in ("mentor", "rq_agent", "failure_paths", "protocol", "skill", "positioning"):
+    for name in ("mentor", "rq_agent", "failure_paths", "protocol", "skill"):
         prose = documents[name].replace(MARKER, "")
         normalized = " ".join(prose.lower().split())
         if "explicit user request" not in normalized and "explicitly asks" not in normalized:

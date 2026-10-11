@@ -1,7 +1,7 @@
 """Schema-validation tests for v3.8 claim_ref_alignment_audit_agent (T-S1..T-S8).
 
 Per spec §7.1 in
-docs/design/2026-05-15-issue-103-claim-alignment-audit-spec.md.
+dev/design/2026-05-15-issue-103-claim-alignment-audit-spec.md.
 
 The test plan section §7.1 lists T-S1..T-S8 keyed to claim_audit_result
 (§3.1) and claim_intent_manifest (§3.2) and uncited_assertion (§3.3).

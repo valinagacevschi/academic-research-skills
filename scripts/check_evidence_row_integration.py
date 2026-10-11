@@ -94,7 +94,7 @@ REQUIRED_POINTERS = {
         "requested page",
         "--allow-legacy-absence",
     ),
-    "docs/design/2026-08-09-656-shared-evidence-row-contract-spec.md": (
+    "dev/design/2026-08-09-656-shared-evidence-row-contract-spec.md": (
         SCHEMA_REL,
         RUNTIME_REL,
         "evidence-row/1.0",

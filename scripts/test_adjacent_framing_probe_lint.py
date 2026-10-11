@@ -1,6 +1,6 @@
 """Lint tests for the opt-in Socratic adjacent-framing probe.
 
-Target spec: docs/design/2026-06-18-socratic-adjacent-framing-probe-spec.md.
+Target spec: dev/design/2026-06-18-socratic-adjacent-framing-probe-spec.md.
 
 File-content lints (read bytes + regex, no LLM runtime, no subprocess fork) against:
 - deep-research/agents/socratic_mentor_agent.md §"Optional Adjacent-Framing Probe Layer"

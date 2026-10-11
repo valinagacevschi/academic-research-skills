@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Opt-in Claude Code guard for Romanian personal numeric codes (CNPs)."""
+"""Optional Codex guard for Romanian personal numeric codes (CNPs)."""
 
 from __future__ import annotations
 

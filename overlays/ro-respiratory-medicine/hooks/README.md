@@ -1,29 +1,7 @@
-# CNP guard
+# Optional Codex CNP hook
 
-`cnp_guard.py` is an opt-in Claude Code hook that detects checksum-valid Romanian CNPs in submitted prompts and files opened with `Read`. On detection it blocks the event and asks for a redacted re-send; its message masks the number. It fails open on malformed input and unreadable, binary, or over-5-MB files.
+`install.py --with-cnp-hook` adds `UserPromptSubmit` and `PreToolUse` for `Read` to the project's `.codex/hooks.json`. The guard checks submitted prompts and readable text files for checksum-valid Romanian CNPs.
 
-The guard checks CNP structure, dates, county codes, and checksum only. It does not detect names, addresses, other identifiers, or health data without a valid CNP. It cannot remove information already held in a session transcript or by a model provider. Other runtimes rely on the patient-data preamble only.
+On detection, it stops the prompt or read and asks for a redacted copy. The notice masks the identifier. It fails open on malformed hook input and unreadable, binary, or over-5-MB files.
 
-Add this to `.claude/settings.json` to enable both events:
-
-```json
-{
-  "hooks": {
-    "UserPromptSubmit": [
-      {
-        "hooks": [
-          { "type": "command", "command": "python3 /path/to/overlays/ro-respiratory-medicine/hooks/cnp_guard.py" }
-        ]
-      }
-    ],
-    "PreToolUse": [
-      {
-        "matcher": "Read",
-        "hooks": [
-          { "type": "command", "command": "python3 /path/to/overlays/ro-respiratory-medicine/hooks/cnp_guard.py" }
-        ]
-      }
-    ]
-  }
-}
-```
+Codex must trust the project hook before running it. This hook cannot remove data already present in a transcript.

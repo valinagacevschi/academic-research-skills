@@ -8,8 +8,7 @@ from pathlib import Path
 
 def test_repo_root_points_to_ars_repo(repo_root):
     """Sanity: the fixture must resolve to a directory that contains the
-    canonical ARS markers (CHANGELOG.md and shared/ live at root)."""
-    assert (repo_root / "CHANGELOG.md").exists()
+    canonical ARS marker (shared/ lives at root)."""
     assert (repo_root / "shared").is_dir()
 
 

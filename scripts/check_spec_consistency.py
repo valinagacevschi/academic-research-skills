@@ -75,7 +75,7 @@ def check_relative_markdown_links(rel_path: str) -> None:
 
 
 def check_mode_registry() -> None:
-    rel_path = "MODE_REGISTRY.md"
+    rel_path = "shared/references/mode_registry.md"
     text = read(rel_path)
     expect_contains(rel_path, "Last updated: v3.23.0 (2026-10-03)")
     for heading in (
@@ -89,8 +89,8 @@ def check_mode_registry() -> None:
 
 def check_agents_md() -> None:
     rel_path = "AGENTS.md"
-    expect_contains(rel_path, "integrity check (Stage 2.5)")
-    expect_contains(rel_path, "final integrity check (Stage 4.5)")
+    expect_contains(rel_path, "integrity (Stage 2.5)")
+    expect_contains(rel_path, "integrity (Stage 4.5)")
     expect_contains(rel_path, "**Suite version**: 3.23.0")
     for forbidden in (
         "6th independent reviewer",
@@ -111,9 +111,6 @@ def _skill_version_paths() -> tuple[str, ...]:
         f"{skill_md.parent.name}/SKILL.md" for skill_md in iter_skill_files(ROOT)
     )
 
-# The single skill whose `version` tracks the suite version. The other three move independently,
-# so only this one's date is sanity-checked against the release (CHANGELOG) in #377(b).
-_SUITE_SKILL_PATH = "academic-pipeline/SKILL.md"
 
 
 def _parse_skill_version_block(rel_path: str) -> tuple[str, str, str, str] | None:
@@ -161,48 +158,6 @@ def check_skill_version_blocks() -> None:
             )
 
 
-def _latest_changelog_date() -> str | None:
-    """Parse the date of the latest release entry in CHANGELOG.md. The file follows
-    Keep-a-Changelog convention — entries are reverse-chronological under a leading
-    dateless `## [Unreleased]` header — so the FIRST date-bearing
-    `## [X.Y.Z] - YYYY-MM-DD` header is the latest release. `## [Unreleased]` carries no
-    `- YYYY-MM-DD` suffix and so never matches this date-bearing pattern."""
-    match = re.search(rf"^## \[{_VERSION}\] - (\d{{4}}-\d{{2}}-\d{{2}})", read("CHANGELOG.md"), re.M)
-    return match.group(1) if match else None
-
-
-def check_suite_skill_date_sanity() -> None:
-    """#377(b): the suite-tracking skill's `last_updated` must NOT predate the latest CHANGELOG
-    entry date — a release that bumps the suite version but forgets the date fails here.
-
-    Scope is deliberately narrow: only `academic-pipeline/SKILL.md` (the suite-tracking skill) is
-    date-checked. `academic-paper` / `academic-paper-reviewer` / `deep-research` version
-    independently and legitimately keep their own earlier last-change dates, so forcing
-    release-date alignment on them would be wrong (#377 out-of-scope)."""
-    # check_skill_version_blocks() runs first and already parses the suite SKILL. If it recorded
-    # an error for that file (unparseable frontmatter/table), skip rather than re-report the same
-    # root cause from a second re-parse here.
-    if any(e.startswith(f"{_SUITE_SKILL_PATH}:") for e in ERRORS):
-        return
-
-    changelog_date = _latest_changelog_date()
-    if changelog_date is None:
-        fail("CHANGELOG.md: could not parse latest release entry date")
-        return
-
-    parsed = _parse_skill_version_block(_SUITE_SKILL_PATH)
-    if parsed is None:
-        return
-    last_updated = parsed[1]
-
-    # ISO-8601 dates compare correctly as strings (zero-padded, fixed-width).
-    if last_updated < changelog_date:
-        fail(
-            f"{_SUITE_SKILL_PATH}: last_updated {last_updated!r} predates latest CHANGELOG entry "
-            f"date {changelog_date!r} — the suite version bumped but the skill date is stale"
-        )
-
-
 def check_pipeline_docs() -> None:
     for rel_path in (
         "academic-pipeline/SKILL.md",
@@ -219,207 +174,6 @@ def check_pipeline_docs() -> None:
         "academic-pipeline/agents/pipeline_orchestrator_agent.md",
         "Stage 4.5 can NEVER be skipped",
     )
-
-
-# A version token is a dot-separated run of ≥3 numeric components. The repo's own grammar
-# already ships 4-component versions (v3.9.4.2), so a fixed `\d+\.\d+\.\d+` would capture only
-# the first three components of `3.9.4.2` and silently compare a truncated `3.9.4` — making a
-# genuinely-stale 4-component marker pass. `(?:\.\d+)*` is greedy, so it captures the FULL token;
-# the trailing `(?!\.?\d)` is a hard right boundary so a longer numeric run can never tail-match a
-# shorter capture (e.g. `3.9.4` must not partial-match inside `3.9.4.2`).
-_VERSION = r"\d+\.\d+\.\d+(?:\.\d+)*(?!\.?\d)"
-
-
-def _suite_version() -> str | None:
-    """Parse the canonical suite version from `AGENTS.md` (`**Suite version**: X.Y.Z[.W]`)."""
-    match = re.search(rf"\*\*Suite version\*\*:\s*({_VERSION})", read("AGENTS.md"))
-    return match.group(1) if match else None
-
-
-def check_architecture_component_version() -> None:
-    """Invariant-4 (#345): the *current-component* `academic-pipeline` version markers in
-    docs/ARCHITECTURE.md must equal the suite version.
-
-    docs/ARCHITECTURE.md carries two kinds of version string and only the first must track the
-    suite version:
-      - current-component markers — the mermaid orchestrator node + the component table row + the
-        four stage-table `(gate)` / stage-6 rows — describe what the *current* pipeline is.
-      - feature-history markers — the `timeline` block (`vX.Y.Z : <feature>`) and inline
-        "introduced in vX.Y.Z" provenance — record which version first shipped a gate/feature and
-        must NOT be bumped on a release that adds no new gate.
-
-    This check anchors on the `academic-pipeline <ver>` component pattern specifically (mermaid
-    `<br/>vX.Y.Z` node + ` academic-pipeline vX.Y.Z` table/stage rows) and never inspects the
-    timeline block, so a stale current-component marker fails while a feature-history marker is
-    left alone. (Surfaced during the v3.11.1 release: six component markers were missed by the
-    bump and only caught by a manual sweep — #343/#344.)
-    """
-    rel_path = "docs/ARCHITECTURE.md"
-    version = _suite_version()
-    if version is None:
-        fail("AGENTS.md: could not parse '**Suite version**: X.Y.Z' for ARCHITECTURE check")
-        return
-    text = read(rel_path)
-
-    # 1. Mermaid orchestrator node: `academic-pipeline<br/>orchestrator<br/>vX.Y.Z`.
-    node_versions = re.findall(
-        rf"academic-pipeline<br/>orchestrator<br/>v({_VERSION})", text
-    )
-    if not node_versions:
-        fail(f"{rel_path}: no mermaid `academic-pipeline<br/>orchestrator<br/>vX.Y.Z` node found")
-    for found in node_versions:
-        if found != version:
-            fail(
-                f"{rel_path}: mermaid orchestrator node version v{found} != suite v{version} "
-                f"(invariant-4: current-component marker must equal the suite version)"
-            )
-
-    # 2. Component table + stage rows: ` academic-pipeline vX.Y.Z` (table cell / `(gate)` rows).
-    #    Anchored to markdown table rows (`^\s*\|` … on the same line) so the scan only ever sees
-    #    component/stage cells — never prose like `` `academic-pipeline` v3.9.4 introduced … ``,
-    #    which is feature-history provenance and must NOT be policed against the suite version.
-    #    The timeline `vX.Y.Z :` form never carries the `academic-pipeline` token, so it is already
-    #    out of scope; the table-row anchor additionally excludes any narrative mention.
-    row_versions = re.findall(
-        rf"(?m)^\s*\|.*?`?academic-pipeline`?\s+v({_VERSION})", text
-    )
-    if not row_versions:
-        fail(f"{rel_path}: no `academic-pipeline vX.Y.Z` component/stage row found")
-    for found in row_versions:
-        if found != version:
-            fail(
-                f"{rel_path}: `academic-pipeline v{found}` component/stage row != suite v{version} "
-                f"(invariant-4: current-component marker must equal the suite version)"
-            )
-
-
-# README changelog sections keep only the most recent releases; the full history
-# (including the one-paragraph summaries) lives in CHANGELOG.md, and each
-# translated README additionally points at its frozen docs/changelog-archive/
-# copy. Bump README_CHANGELOG_KEEP at every release (prepend the new release,
-# drop the oldest) — the lint fails on any extra `### v` heading so the section
-# cannot silently regrow (2026-09-15 README slimming).
-README_CHANGELOG_KEEP = (
-    ("3.23.0", "2026-10-03"),
-    ("3.22.2", "2026-09-25"),
-    ("3.22.1", "2026-09-23"),
-)
-README_CHANGELOG_LINK = "CHANGELOG.md"
-_README_RELEASE_HEADING_RE = re.compile(r"^### v[^\n]*$", re.M)
-
-
-def check_readme_changelog_section(
-    rel_path: str, text: str, h2: str, paren: str, archive: str | None = None
-) -> None:
-    """The README changelog section carries exactly README_CHANGELOG_KEEP.
-
-    `paren` is "ascii" (`### vX.Y.Z (YYYY-MM-DD)`, en / ja / ko / es) or
-    "fullwidth" (`### vX.Y.Z（YYYY-MM-DD）`, zh-TW / zh-CN). The section must
-    link to CHANGELOG.md and, for translated READMEs, to the frozen archive.
-    Fenced code and HTML comments are stripped first, so a commented-out or
-    fenced copy of the section neither satisfies nor trips the checks.
-    """
-    rendered = strip_non_rendering(text)
-    marker = "\n" + h2 + "\n"
-    idx = rendered.find(marker)
-    if idx == -1:
-        fail(f"{rel_path}: missing changelog heading {h2!r}")
-        return
-    section = rendered[idx + 1 :]
-    nxt = re.search(r"^## ", section[len(h2) + 1 :], re.M)
-    if nxt:
-        section = section[: len(h2) + 1 + nxt.start()]
-    if paren == "ascii":
-        expected = [f"### v{v} ({d})" for v, d in README_CHANGELOG_KEEP]
-    else:
-        expected = [f"### v{v}（{d}）" for v, d in README_CHANGELOG_KEEP]
-    found = [m.group(0) for m in _README_RELEASE_HEADING_RE.finditer(section)]
-    for exp in expected:
-        hits = sum(1 for h in found if h.startswith(exp))
-        if hits == 0:
-            fail(f"{rel_path}: changelog section missing {exp!r}")
-        elif hits > 1:
-            fail(f"{rel_path}: changelog section repeats {exp!r} {hits} times")
-    extra = [h for h in found if not any(h.startswith(e) for e in expected)]
-    if extra:
-        fail(
-            f"{rel_path}: changelog section keeps {len(found)} release headings; only the "
-            f"{len(expected)} most recent belong in the README (unexpected: {extra[:3]!r}). "
-            f"Older summaries live in {README_CHANGELOG_LINK}"
-            + (f" and the frozen {archive}" if archive else "")
-            + "."
-        )
-    targets = set(extract_link_targets(section))
-    for link in (README_CHANGELOG_LINK, archive):
-        if link and link not in targets:
-            fail(f"{rel_path}: changelog section must link to {link}")
-
-
-def check_readme_sections() -> None:
-    rel_path = "README.md"
-    text = read(rel_path)
-
-    expect_contains(rel_path, "version-v3.23.0-blue")
-    expect_contains(rel_path, "releases/tag/v3.23.0")
-    check_readme_changelog_section(rel_path, text, "## Changelog", "ascii")
-    for heading in (
-        "#### Deep Research (8 modes)",
-        "#### Academic Paper (11 modes)",
-        "#### Academic Paper Reviewer (6 modes)",
-        "### Deep Research (v2.12.1)",
-        "### Academic Paper (v3.3.1)",
-        "### Academic Paper Reviewer (v1.11.1)",
-        "### Academic Pipeline (v3.23.0)",
-    ):
-        if heading not in text:
-            fail(f"{rel_path}: missing heading {heading!r}")
-
-    paper_usage = extract_section(
-        text, "#### Academic Paper (11 modes)", "#### Academic Paper Reviewer (6 modes)"
-    )
-    for expected in ("outline-only mode", "abstract-only mode", "disclosure mode"):
-        if expected not in paper_usage:
-            fail(f"{rel_path}: Academic Paper usage section missing {expected!r}")
-    for forbidden in ("bilingual-abstract mode", "writing-polish mode", "full-auto mode"):
-        if forbidden in paper_usage:
-            fail(f"{rel_path}: Academic Paper usage section still contains {forbidden!r}")
-
-    deep_usage = extract_section(
-        text, "#### Deep Research (8 modes)", "#### Academic Paper (11 modes)"
-    )
-    if "review mode" not in deep_usage:
-        fail(f"{rel_path}: Deep Research usage section missing 'review mode'")
-    if "paper-review" in deep_usage:
-        fail(f"{rel_path}: Deep Research usage section still contains 'paper-review'")
-
-    reviewer_usage = extract_section(
-        text, "#### Academic Paper Reviewer (6 modes)", "#### Academic Pipeline (Orchestrator)"
-    )
-    if "calibration mode" not in reviewer_usage:
-        fail(f"{rel_path}: reviewer usage section missing 'calibration mode'")
-
-    for forbidden in (
-        "6th independent reviewer",
-        "Peer review gains 6th independent reviewer",
-    ):
-        expect_absent(rel_path, forbidden)
-    # DOCX contract lines moved to docs/SETUP.md in v3.3.6; checked there instead.
-    expect_contains(rel_path, "DOCX (via Pandoc when available)")
-    check_relative_markdown_links(rel_path)
-
-
-def check_setup_docs() -> None:
-    expect_contains("docs/SETUP.md", "Install as a Codex plugin")
-    expect_contains("docs/SETUP.md", "Install Pandoc for DOCX conversion")
-    expect_contains("docs/SETUP.zh-TW.md", "安裝 Codex plugin")
-    expect_contains("docs/SETUP.zh-TW.md", "DOCX 轉換需要 Pandoc")
-    check_relative_markdown_links("docs/SETUP.md")
-    check_relative_markdown_links("docs/SETUP.zh-TW.md")
-    for locale in ("zh-TW", "zh-CN", "ja-JP", "ko-KR", "es-ES"):
-        check_relative_markdown_links(f"docs/changelog-archive/{locale}.md")
-    # #758 data-flow map: its outbound relative links (audit doc, SECURITY,
-    # THIRD_PARTY, cross_model_verification) must keep resolving.
-    check_relative_markdown_links("docs/DATA_FLOWS.md")
 
 
 def check_docx_contract() -> None:
@@ -786,10 +540,10 @@ def check_ideation_diversity_no_call_contract() -> None:
         elif isinstance(node, ast.ExceptHandler):
             if isinstance(node.name, str) and node.name in direct_module_bindings:
                 shadowed_module_bindings.add(node.name)
-        elif isinstance(node, (ast.MatchAs, ast.MatchStar)):
+        elif hasattr(ast, "MatchAs") and isinstance(node, (ast.MatchAs, ast.MatchStar)):
             if isinstance(node.name, str) and node.name in direct_module_bindings:
                 shadowed_module_bindings.add(node.name)
-        elif isinstance(node, ast.MatchMapping):
+        elif hasattr(ast, "MatchMapping") and isinstance(node, ast.MatchMapping):
             if isinstance(node.rest, str) and node.rest in direct_module_bindings:
                 shadowed_module_bindings.add(node.rest)
         elif isinstance(node, ast.ImportFrom):
@@ -901,7 +655,6 @@ def check_ideation_diversity_no_call_contract() -> None:
         fail(f"{runner_path}: command set must be exactly {sorted(expected_commands)!r}")
 
     readme = f"{suite}/README.md"
-    design_doc = "docs/design/2026-08-13-659-within-session-ideation-diversity-design.md"
     for rel_path, phrases in (
         (
             readme,
@@ -916,18 +669,6 @@ def check_ideation_diversity_no_call_contract() -> None:
                 "two independent human judges",
             ),
         ),
-        (
-            design_doc,
-            (
-                "Phase-2 no-call execution envelope",
-                "= 48 subject-session",
-                "API spend ceiling USD 0",
-                "48 write-once isolated single-session packets",
-                "durable deterministic blind intent",
-                "does not authenticate operator identity",
-                "No subject, actor, judge, or adjudicator session is authorized",
-            ),
-        ),
     ):
         for phrase in phrases:
             expect_contains(rel_path, phrase)
@@ -939,14 +680,9 @@ def check_ideation_diversity_no_call_contract() -> None:
         "scripts/_ci_pytest_manifest.toml",
         'path = "scripts/test_run_ideation_diversity_no_call.py"',
     )
-    expect_contains(
-        "CHANGELOG.md",
-        "Within-session ideation-diversity Phase-2 no-call envelope (#659)",
-    )
 def check_indirect_prompt_injection_no_call_envelope() -> None:
     """Pin #675 Phase-2's no-call surface and human-evidence boundary."""
     readme = "evals/heldout/indirect_prompt_injection_behavior/README.md"
-    design = "docs/design/2026-08-13-675-indirect-prompt-injection-behavior-eval-spec.md"
     workflow = ".github/workflows/spec-consistency.yml"
     manifest = "scripts/_ci_pytest_manifest.toml"
     for rel_path in (
@@ -990,25 +726,6 @@ def check_indirect_prompt_injection_no_call_envelope() -> None:
         "map is unencrypted",
     ):
         expect_contains(readme, needle)
-    for needle in (
-        "exactly 64 subject",
-        "provider transport, detect, dispatch, probe, model, network, process",
-        "does not authenticate the operator",
-        "two independent arm-blind human judges",
-        "closed write-once stop",
-        "pre-arms 64 immutable ingestion journal tokens",
-        "one pre-load-terminal",
-        "same-inode completed",
-        "claimed-only state is permanently ambiguous",
-        "deterministic sibling staging path",
-        "pre-load quarantine",
-        "future closed assignment ledger",
-        "does not prove that property",
-        "unique receipt id",
-        "final manifest binds the exact",
-        "private map is not encrypted",
-    ):
-        expect_contains(design, needle)
     expect_contains(workflow, "python3 scripts/check_indirect_prompt_injection_no_call.py")
     expect_contains(manifest, 'path = "scripts/test_run_indirect_prompt_injection_no_call.py"')
     check_relative_markdown_links(readme)
@@ -1695,11 +1412,7 @@ def main() -> int:
     check_mode_registry()
     check_agents_md()
     check_skill_version_blocks()
-    check_suite_skill_date_sanity()
     check_pipeline_docs()
-    check_architecture_component_version()
-    check_readme_sections()
-    check_setup_docs()
     check_docx_contract()
     check_reference_docs()
     check_rebuttal_audit_guard()

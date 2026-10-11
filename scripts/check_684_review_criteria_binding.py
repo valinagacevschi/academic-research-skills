@@ -13,7 +13,7 @@ from jsonschema import Draft202012Validator
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-SPEC = Path("docs/design/2026-08-11-684-review-criteria-consumer-binding-spec.md")
+SPEC = Path("dev/design/2026-08-11-684-review-criteria-consumer-binding-spec.md")
 BINDING_SCHEMA = Path("shared/contracts/review_target/review_criteria_binding_manifest.schema.json")
 FINDINGS_SCHEMA = Path("shared/contracts/review_target/constructive_review_findings.schema.json")
 PROTOCOL = Path("shared/references/review_criteria_consumer_protocol.md")

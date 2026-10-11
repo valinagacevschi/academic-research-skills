@@ -12,7 +12,7 @@ defect_stage hint, VIOLATED. Production callers wire these to real
 retrieval/judge clients in their own dispatch layer.
 
 The full spec is in
-docs/design/2026-05-15-issue-103-claim-alignment-audit-spec.md §4-§5.
+dev/design/2026-05-15-issue-103-claim-alignment-audit-spec.md §4-§5.
 """
 from __future__ import annotations
 

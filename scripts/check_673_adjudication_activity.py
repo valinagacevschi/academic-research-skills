@@ -21,7 +21,7 @@ from jsonschema import Draft202012Validator
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 
-SPEC = Path("docs/design/2026-08-10-673-cross-run-adjudication-activity-spec.md")
+SPEC = Path("dev/design/2026-08-10-673-cross-run-adjudication-activity-spec.md")
 INPUT_SCHEMA = Path(
     "shared/contracts/activity/adjudication_activity_input.schema.json"
 )

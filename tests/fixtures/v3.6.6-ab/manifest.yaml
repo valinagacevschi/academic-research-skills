@@ -1,7 +1,7 @@
 # ARS v3.6.6 A/B evidence fixture manifest.
 #
 # This manifest instantiates the §6.2 schema declared in
-# docs/design/2026-04-27-ars-v3.6.6-generator-evaluator-contract-design.md.
+# dev/design/2026-04-27-ars-v3.6.6-generator-evaluator-contract-design.md.
 # It is the single source of truth for what files compose the v3.6.6 A/B
 # fixture (§6.5 invariant 1).
 #

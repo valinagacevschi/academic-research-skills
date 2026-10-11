@@ -215,7 +215,7 @@
         "rule_anchors": {
           "const": [
             "deep-research/agents/socratic_mentor_agent.md#optional-adjacent-framing-probe-layer-internal-never-mention-probe-to-users",
-            "docs/design/2026-06-08-kong-255-l2-advisory-not-generation.md"
+            "dev/design/2026-06-08-kong-255-l2-advisory-not-generation.md"
           ]
         }
       }

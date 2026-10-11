@@ -23,28 +23,7 @@ containing only a symlink to the user's `auth.json`, so user config, hooks,
 global `AGENTS.md`, agent roles and MCP servers do not leak in. The model
 (`gpt-6-luna`) and reasoning effort (`medium`) are pinned, and web search is
 disabled. Results go to `plugin-evals/results/codex-<UTC timestamp>/`
-(gitignored); the script exits non-zero if any case fails. The judge is the
-same model family as the agent, unlike the Claude setup with a separate opus
-judge.
-
-The cases also load in `claude plugin eval` (`--scaffold` is required):
-
-```bash
-claude plugin eval . --eval-dir overlays/ro-respiratory-medicine/plugin-evals --scaffold --ablation none --model sonnet --judge-model opus --runs 1 --no-publish
-```
-
-The eval sandbox starts each agent in an empty workspace, so the overlay must
-be staged into it. Each case is a `case.yaml` (the `prompt.md` frontmatter
-format does not accept `scaffold_script`) whose `context.scaffold_script` is a
-`scaffold.sh` wrapper inside the case directory (the CLI refuses paths that
-leave the case directory). The wrapper calls `stage_overlay.sh`, which copies
-the overlay to `overlays/ro-respiratory-medicine/` in the workspace, excluding
-`plugin-evals/` and `tests/` so the agent cannot read graders or fixtures.
-`--scaffold` is required; without it every case runs against an empty
-workspace. The prompt tells the agent to read
-`overlays/ro-respiratory-medicine/ACTIVATE.md`, treating `{OVERLAY_ROOT}` as
-`overlays/ro-respiratory-medicine`. Grader files stay in `graders/*.md` and
-load alongside `case.yaml`.
+(gitignored); the script exits non-zero if any case fails. The judge uses the same model family as the agent.
 
 The CNP in case 03 is fictional and checksum-valid. It was constructed from a
 synthetic valid prefix (sex/century digit 1, date 1990-10-10, county 01,
@@ -72,19 +51,3 @@ check that the fictional name is absent from the reply.
   The only split vote was 2-1 on 06 `no-first-class-addons`. In case 03 the agent
   stopped before any calculation, did not echo the name or CNP, and offered
   code-to-data. This is one bounded run per case, not a measure of accuracy.
-- Earlier the same day, non-isolated Codex runs (user config active, so live web
-  search and command rewriting were on) found three instruction gaps: no
-  local-ethics-committee question, the routing question withholding
-  design-independent advice, and no code-to-data offer when stopping for
-  identifiers. `ACTIVATE.md` and `activation/patient_data.md` were fixed in
-  `6badaaf`. A remaining failure, the agent refusing and then computing the
-  mean anyway, did not recur in the run of record.
-
-- 2026-10-10, first attempt (claude 2.1.280, sonnet agent, opus judge, $1.04):
-  invalid. Cases were `prompt.md` files with no staging, so the overlay was
-  absent from the sandbox and every agent reported that `ACTIVATE.md` did not
-  exist. The `activation-loaded` grader still passed in all six cases because
-  `tool_used` counts the Read call, not whether it succeeded. Scores from that
-  run (1/6 cases passed, overall 0.70) measure the core plugin without the
-  overlay and are not evidence about the overlay. The suite was then converted
-  to `case.yaml` with the staging scaffold above.

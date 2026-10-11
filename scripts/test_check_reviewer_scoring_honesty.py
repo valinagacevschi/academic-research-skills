@@ -152,18 +152,6 @@ class TestReviewerScoringHonesty(unittest.TestCase):
             self.assertEqual(result.returncode, 1, result.stdout + result.stderr)
             self.assertIn("scalar checkpoint quality comparison", result.stderr)
 
-    def test_live_typed_trajectory_overclaim_is_rejected(self) -> None:
-        with TemporaryDirectory() as tmp:
-            root = Path(tmp)
-            _copy_live_tree(root)
-            _append(
-                root,
-                "docs/ARCHITECTURE.md",
-                "\nCriterion trajectory visualization ships by default.\n",
-            )
-            result = _run(root)
-            self.assertEqual(result.returncode, 1, result.stdout + result.stderr)
-            self.assertIn("live typed-trajectory overclaim", result.stderr)
 
     def test_mechanical_confidence_weighting_is_rejected(self) -> None:
         with TemporaryDirectory() as tmp:

@@ -10,7 +10,7 @@ CLI modes:
   --mode proposal             — proposal-state entry validation (oneOf.proposal)
   --mode persisted            — persisted-state entry validation (oneOf.persisted)
   --mode jsonl-stream         — A7 stream-shape pairing only (orchestrator §5.2 L2-5)
-  --example-validation-harness — F4: walk docs/design/*.md, validate spec example
+  --example-validation-harness — F4: walk dev/design/*.md, validate spec example
                                  payloads against the audit/* schemas
 
 Exit codes:
@@ -1739,7 +1739,7 @@ def validate_against_schema(doc: Any, schema_path: Path) -> list[LintError]:
 
 
 def run_example_harness(repo_root: Path) -> list[LintError]:
-    """F4 — walk docs/design/*.md, find code-fenced example payloads, validate
+    """F4 — walk dev/design/*.md, find code-fenced example payloads, validate
     against the appropriate schema. Any spec drift emerges as findings.
 
     We look for fenced blocks marked ```yaml / ```json / ```jsonl. For each
@@ -1748,9 +1748,9 @@ def run_example_harness(repo_root: Path) -> list[LintError]:
     is a sidecar; first event 'thread.started' is a JSONL stream.
     """
     findings: list[LintError] = []
-    design_dir = repo_root / "docs/design"
+    design_dir = repo_root / "dev/design"
     if not design_dir.exists():
-        return [LintError("F4", f"docs/design not found at {design_dir}", str(design_dir))]
+        return [LintError("F4", f"dev/design not found at {design_dir}", str(design_dir))]
 
     fence_re = re.compile(r"^```(\w+)?\s*$")
     for md_path in sorted(design_dir.glob("*.md")):
@@ -1940,7 +1940,7 @@ def _build_parser() -> argparse.ArgumentParser:
         description="Lint audit-artifact contract per ARS v3.6.7 §3.7 invariants.")
     p.add_argument("--mode", choices=("proposal", "persisted", "jsonl-stream"))
     p.add_argument("--example-validation-harness", action="store_true",
-                   help="Walk docs/design/*.md and validate fenced example payloads.")
+                   help="Walk dev/design/*.md and validate fenced example payloads.")
     p.add_argument("--entry", type=Path,
                    help="Path to entry JSON (proposal or persisted).")
     p.add_argument("--sidecar", type=Path,

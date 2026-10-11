@@ -1,6 +1,6 @@
 # Claim-Standing Stance Label Guide (v0.1)
 
-Authority for the closed vocabulary: `docs/design/2026-08-13-655-search-bounded-claim-standing-probe-design.md` §5.1. This guide operationalizes those rules for human expert labelers. Every label cites one criterion id below (`label_guide_criterion`).
+Authority for the closed vocabulary: `dev/design/2026-08-13-655-search-bounded-claim-standing-probe-design.md` §5.1. This guide operationalizes those rules for human expert labelers. Every label cites one criterion id below (`label_guide_criterion`).
 
 ## What you receive, and what you must not see
 

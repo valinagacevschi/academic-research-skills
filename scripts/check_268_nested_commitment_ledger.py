@@ -7,7 +7,7 @@ A1 / #269 surfaces; no JSON-schema exists for Schema 11, so this lint operates o
 the calibration seed YAML plus a cascade-completeness scan of the two prose
 surfaces that previously carried index notation.
 
-Invariants (spec docs/design/2026-05-31-ars-268-schema11-nested-commitment-ledger-spec.md §6):
+Invariants (spec dev/design/2026-05-31-ars-268-schema11-nested-commitment-ledger-spec.md §6):
 
   N1  every expected_commitments[] entry in the seed is a mapping carrying
       commitment_text + commitment_type + required_evidence_type.

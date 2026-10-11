@@ -12,7 +12,7 @@ Usage:
 PATH is either a passport YAML file or a directory containing passport
 YAML files (directory scan is non-recursive).
 
-Design: docs/design/2026-05-15-issue-105-contamination-signals-backfill-design.md
+Design: dev/design/2026-05-15-issue-105-contamination-signals-backfill-design.md
 """
 from __future__ import annotations
 
@@ -224,7 +224,7 @@ def _parse_args(argv: list[str]) -> argparse.Namespace:
         description=(
             "Backfill v3.7.3 contamination_signals on pre-v3.7.3 "
             "literature_corpus[] entries. See "
-            "docs/migration/v3.7.3-contamination-signals-backfill.md"
+            "dev/migration/v3.7.3-contamination-signals-backfill.md"
         )
     )
     parser.add_argument("path", type=Path, help="Passport YAML file or directory")

@@ -20,7 +20,7 @@ What does the hand-off spec look like, and how is it sliced for delegated implem
 
 Auto-approved 2026-10-10: Val asked to keep going and to auto-approve unanswered recommendations. Flagged for his review.
 
-- **Location.** `overlays/ro-respiratory-medicine/docs/SPEC.md`, with the glossary copied to `overlays/ro-respiratory-medicine/docs/GLOSSARY.md`. Everything the fork adds stays under one directory, plus one additive CI workflow, so upstream merges never conflict. `docs/design/` is upstream's namespace, so the spec doesn't go there.
+- **Location.** `overlays/ro-respiratory-medicine/docs/SPEC.md`, with the glossary copied to `overlays/ro-respiratory-medicine/docs/GLOSSARY.md`. Everything the fork adds stays under one directory, plus one additive CI workflow, so upstream merges never conflict. `dev/design/` is upstream's namespace, so the spec doesn't go there.
 - **Self-contained.** This map and its tickets live in an untracked `.scratch/` directory, so the spec states each decision as a requirement. Each section names the ticket it came from for provenance only. Facts behind the decisions point to the `research/*` branches by commit.
 - **Structure:**
   1. Destination and scope (in/out, upstream baseline commit)

@@ -2,11 +2,11 @@
 """#108 policy_anchor_disclosure_protocol.md static lint.
 
 Decision Doc reference:
-  docs/design/2026-05-14-ai-disclosure-schema-decision.md §4.1 (item 6) +
+  dev/design/2026-05-14-ai-disclosure-schema-decision.md §4.1 (item 6) +
   §4.3 invariants + §4.4 11 open concerns + §3 G10 7-row precedence table.
 
 Implementation spec reference:
-  docs/design/2026-05-14-ai-disclosure-impl-spec.md §3 (resolved-paths table).
+  dev/design/2026-05-14-ai-disclosure-impl-spec.md §3 (resolved-paths table).
 
 This lint enforces presence-of-required-content invariants on the protocol
 doc the LLM reads at runtime when in `disclosure` mode with

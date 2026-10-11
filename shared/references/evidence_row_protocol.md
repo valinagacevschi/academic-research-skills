@@ -3,7 +3,7 @@
 This protocol is the runtime-facing authority for evidence rows. The canonical
 field shape is `shared/contracts/evidence/evidence_row.schema.json`; cross-field
 semantics are implemented by `scripts/evidence_rows.py`; the frozen decision is
-`docs/design/2026-08-09-656-shared-evidence-row-contract-spec.md`.
+`dev/design/2026-08-09-656-shared-evidence-row-contract-spec.md`.
 
 ## V1 surface and persistence
 

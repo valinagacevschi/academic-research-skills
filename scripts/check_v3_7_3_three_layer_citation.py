@@ -5,7 +5,7 @@ External motivation: Zhao et al. arXiv:2605.07723 (2026-05) — corpus-scale
 audit of LLM hallucinations finds the L3 claim-faithfulness gap unaddressed
 by existing safeguards. v3.7.3 extends Two-Layer Citation Emission with a
 structured anchor marker. Spec:
-  docs/design/2026-05-12-ars-v3.7.3-claim-faithfulness-and-contaminated-source-spec.md
+  dev/design/2026-05-12-ars-v3.7.3-claim-faithfulness-and-contaminated-source-spec.md
   §3.1
 
 The lint checks a draft markdown file (e.g., output of synthesis_agent,

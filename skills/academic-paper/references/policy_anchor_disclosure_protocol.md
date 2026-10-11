@@ -190,8 +190,8 @@ For audit traceability, this protocol implements each Decision Doc §4.4 open co
 
 ## 8. Related
 
-- Decision Doc: `../docs/design/2026-05-14-ai-disclosure-schema-decision.md`
-- Implementation spec: `../docs/design/2026-05-14-ai-disclosure-impl-spec.md`
+- Decision Doc: `../dev/design/2026-05-14-ai-disclosure-schema-decision.md`
+- Implementation spec: `../dev/design/2026-05-14-ai-disclosure-impl-spec.md`
 - Anchor data table (consumer of this protocol): `policy_anchor_table.md`
 - v3.2 disclosure mode protocol (parallel track): `disclosure_mode_protocol.md`
 - v3.2 venue disclosure policies (Nature dedup peer): `venue_disclosure_policies.md`

@@ -1,6 +1,6 @@
 """#655 PR-C: transmission-ledger contract and gate-14 allowlist tests.
 
-Design authority: docs/design/2026-08-13-655-search-bounded-claim-standing-probe-design.md
+Design authority: dev/design/2026-08-13-655-search-bounded-claim-standing-probe-design.md
 §6 (separate transmission ledgers, per-event accounting) and §9 gate 14
 (transmission logs obey the consented content allowlist). Hermetic: synthetic
 fixtures and the injected fake transport only.

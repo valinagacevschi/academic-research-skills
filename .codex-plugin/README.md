@@ -26,4 +26,4 @@ done
 
 Each skill locates the ARS root by walking upward from its resolved directory to the directory containing `shared/` and root `scripts/`. Its own `scripts/` directory stays relative to the skill.
 
-See [setup](../docs/SETUP.md) and [control availability](../docs/CONTROL_AVAILABILITY.md) for requirements and install-channel limits.
+See [setup](../docs/SETUP.md) for installation instructions.

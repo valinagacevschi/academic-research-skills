@@ -4,7 +4,7 @@
 Stdlib-only, same architecture class as ``check_panel_synthesis.py`` (#510:
 recompute every layer from the primary artifacts; any mismatch voids the
 synthesis). Normative source:
-``docs/design/2026-07-27-576-spec-b-re-review-precommitment-contract-spec.md``
+``dev/design/2026-07-27-576-spec-b-re-review-precommitment-contract-spec.md``
 §5 (artifact shapes), §6 (decision derivation), §10 (reviewer-label
 normalization grammar), §11 (input manifest + apply-chain witness), §13
 (checker responsibilities).

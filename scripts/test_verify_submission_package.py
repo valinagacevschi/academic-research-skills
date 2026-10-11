@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Tests for verify_submission_package — #394 Slice 1 (CLI skeleton + Family C).
 
-Spec: docs/design/2026-06-10-394-submission-package-verifier-spec.md §3.3 / §5.1
+Spec: dev/design/2026-06-10-394-submission-package-verifier-spec.md §3.3 / §5.1
 / §7.3 / §8. Mutation discipline per repo convention: every check has a fixture
 that fails it and a test proving the failure fires.
 """

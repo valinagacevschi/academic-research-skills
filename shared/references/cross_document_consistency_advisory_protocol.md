@@ -2,7 +2,7 @@
 
 This protocol defines the consumer and handoff boundary for the closed
 `cross-document-consistency-advisory/1.0` family. The frozen design is
-`docs/design/2026-08-10-672-cross-document-consistency-advisory-spec.md`.
+`dev/design/2026-08-10-672-cross-document-consistency-advisory-spec.md`.
 The deterministic implementation is
 `scripts/build_cross_document_consistency_advisory.py`.
 

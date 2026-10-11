@@ -79,6 +79,6 @@ See `scripts/crossref_client.py`. Class `CrossrefClient` exposes `doi_lookup_wit
 
 ## Cross-references
 
-- Spec: `docs/design/2026-05-17-ars-v3.9.0-cross-index-triangulation-measurement-spec.md` §3.5
+- Spec: `dev/design/2026-05-17-ars-v3.9.0-cross-index-triangulation-measurement-spec.md` §3.5
 - Mirror template: `deep-research/references/semantic_scholar_api_protocol.md`
 - Sibling protocol: `deep-research/references/openalex_api_protocol.md`

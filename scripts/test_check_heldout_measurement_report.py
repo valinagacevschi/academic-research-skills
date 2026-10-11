@@ -1112,8 +1112,8 @@ def make_resolvable_report() -> dict:
     report["adjudication"]["rubric_sha256"] = _repo_file_sha256("README.md")
     report["preregistration"]["rubric_ref"] = "README.md"
     report["preregistration"]["rubric_sha256"] = _repo_file_sha256("README.md")
-    report["preregistration"]["plan_ref"] = "POSITIONING.md"
-    report["preregistration"]["plan_sha256"] = _repo_file_sha256("POSITIONING.md")
+    report["preregistration"]["plan_ref"] = "docs/HOW_IT_WORKS.md"
+    report["preregistration"]["plan_sha256"] = _repo_file_sha256("docs/HOW_IT_WORKS.md")
     execution_ref = (
         "evals/heldout/revision_claim_drift/runs/fixtures/"
         "execution-manifest-v1.1.json"

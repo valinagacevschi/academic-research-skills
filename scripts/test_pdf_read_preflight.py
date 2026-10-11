@@ -6,7 +6,7 @@ a truncated tail, an encrypted trailer, a page-tree cycle, and non-PDF bytes. Th
 preflight must answer PASS only when the declared root /Count, its own /Kids-walk
 enumeration, and pypdf's flattened page list all agree with no parser warnings —
 anything less confident lands in FAIL (counts disagree) or UNAVAILABLE (cannot
-vouch). Design: docs/design/2026-07-20-512-pdf-read-preflight-spec.md.
+vouch). Design: dev/design/2026-07-20-512-pdf-read-preflight-spec.md.
 """
 
 import ast

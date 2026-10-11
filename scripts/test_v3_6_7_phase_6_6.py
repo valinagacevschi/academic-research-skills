@@ -1,8 +1,8 @@
 """Static checks for ARS v3.6.7 Step 6 Phase 6.6 — orchestrator prompt §3.5
 Audit Artifact Gate subsection.
 
-Spec: docs/design/2026-04-30-ars-v3.6.7-step-6-orchestrator-hooks-spec.md
-Implementation plan: docs/design/2026-05-05-phase-6.6-scoping-note.md §5
+Spec: dev/design/2026-04-30-ars-v3.6.7-step-6-orchestrator-hooks-spec.md
+Implementation plan: dev/design/2026-05-05-phase-6.6-scoping-note.md §5
 
 Phase 6.6 ships a ~50-line decision-policy summary of the §5.6 audit gate
 into pipeline_orchestrator_agent.md. The full Path A → Path B procedure
@@ -59,7 +59,7 @@ LINE_BUDGET_V3_7_1_STEP_3B = 40
 
 # v3.7.3 additionally ships the `## Cite-Time Provenance Finalizer —
 # v3.7.3 extension` subsection per spec
-#   docs/design/2026-05-12-ars-v3.7.3-claim-faithfulness-and-contaminated-source-spec.md
+#   dev/design/2026-05-12-ars-v3.7.3-claim-faithfulness-and-contaminated-source-spec.md
 # §3.1+§3.2. The subsection adds the L3-1 precedence-zero NO-LOCATOR check
 # + L3-2 contamination annotation matrix + updated resolution order +
 # audit-trail columns. External motivation: Zhao et al. arXiv:2605.07723
@@ -71,7 +71,7 @@ LINE_BUDGET_V3_7_3_EXTENSION = 60
 
 # v3.8 additionally ships the `### 3.6 Claim-Faithfulness Audit Gate
 # (v3.8)` subsection per spec
-#   docs/design/2026-05-15-issue-103-claim-alignment-audit-spec.md §5
+#   dev/design/2026-05-15-issue-103-claim-alignment-audit-spec.md §5
 # The subsection adds the 8-row finalizer matrix + orchestrator dispatch
 # wiring + mode flag + Stage-6 histogram + cross-references for the v3.8
 # L3 claim-faithfulness audit. External motivation: Zhao et al.
@@ -85,7 +85,7 @@ LINE_BUDGET_V3_8_AUDIT_GATE = 60
 
 # v3.9.0 additionally ships the `## Cite-Time Provenance Finalizer —
 # v3.9.0 extension (triangulation tiers)` subsection per spec
-#   docs/design/2026-05-17-ars-v3.9.0-cross-index-triangulation-measurement-spec.md
+#   dev/design/2026-05-17-ars-v3.9.0-cross-index-triangulation-measurement-spec.md
 # §3.3. The subsection adds the 4-tier advisory matrix (k=0/1/2/3 over
 # present *_unmatched fields) + preprint composition shapes + gate
 # semantics note + example markers. External motivation: Zhao et al.
@@ -96,7 +96,7 @@ LINE_BUDGET_V3_9_0_EXTENSION = 50
 
 # v3.10 additionally ships the `## Cite-Time Provenance Finalizer —
 # v3.10 extension (terminal policy layer)` subsection per spec
-#   docs/design/2026-05-31-ars-v3.10-policy-layer-rescope-spec.md §3 PR-B items 6-9.
+#   dev/design/2026-05-31-ars-v3.10-policy-layer-rescope-spec.md §3 PR-B items 6-9.
 # The subsection adds the policy_hash slug rules + the two marker grammar
 # shapes (terminal / non-terminal) + strict & strict_articles_only promotion
 # rules + manual-entry exemption + the terminal_blocked[] audit-trail note.
@@ -131,7 +131,7 @@ LINE_BUDGET_394_GATE = 25
 # SUBTRACTED from the v3.6.7 Phase 6.6 +60 budget and carries its own dedicated
 # budget test below. The block embeds a fenced checkpoint template, so it is
 # heading-anchored, not fence-anchored. Spec:
-#   docs/design/2026-06-10-390-diff-patch-revision-mode-spec.md §3.3-§3.6.
+#   dev/design/2026-06-10-390-diff-patch-revision-mode-spec.md §3.3-§3.6.
 # Measured at landing: 47 lines. Budget 55 (~8 lines headroom).
 LINE_BUDGET_390_SEQUENCING = 55
 
@@ -152,7 +152,7 @@ LINE_BUDGET_670_AUTHORITY_EXTENSION = 48
 # scope and budget, subtracted from the v3.6.7 Phase 6.6 measurement.
 # Measured at first-write: 20 lines (heading + intro + 7 numbered steps +
 # producer-obligations + legacy paragraphs). Spec:
-#   docs/design/2026-07-27-576-spec-b-re-review-precommitment-contract-spec.md §16.
+#   dev/design/2026-07-27-576-spec-b-re-review-precommitment-contract-spec.md §16.
 LINE_BUDGET_576_STAGE3P_DISPATCH = 30
 
 # #656 ships the `##### Phase E Evidence-Row Rendering (#656)` checkpoint
@@ -213,7 +213,7 @@ LINE_BUDGET_G1_CHECKPOINT_AUTHORITY = 18
 
 # #887 adds one H2 section, `## Run ledger and handoff check (#887)`, the
 # orchestrator's operational rules for the run ledger kept beside the passport
-# (design docs/design/2026-09-23-887-handoff-integrity-design.md). It is an
+# (design dev/design/2026-09-23-887-handoff-integrity-design.md). It is an
 # independent extension, so it is subtracted from the historical v3.6.7 budget
 # and receives its own bounded test. Measured at landing: 14 lines; budget 19
 # leaves 5 lines of headroom.
@@ -477,7 +477,7 @@ def _measure_v3_8_audit_gate_block_lines(text: str) -> int:
     finalizer pass and the formatter hard gate. Like the v3.7.1 / v3.7.3
     blocks, the v3.8 block has its own scope and MUST be subtracted from
     the v3.6.7 Phase 6.6 +60 budget. Spec:
-      docs/design/2026-05-15-issue-103-claim-alignment-audit-spec.md §5
+      dev/design/2026-05-15-issue-103-claim-alignment-audit-spec.md §5
 
     Returns 0 if the v3.8 H3 heading is absent (e.g. when Step 8 has not
     yet shipped on a given branch).
@@ -511,7 +511,7 @@ def _measure_v3_7_3_extension_block_lines(text: str) -> int:
     precedence-zero check + contamination annotation). Like the v3.7.1
     Step 3b block, this v3.7.3 block has its own scope and MUST be
     subtracted from the v3.6.7 Phase 6.6 +60 budget. Spec:
-      docs/design/2026-05-12-ars-v3.7.3-claim-faithfulness-and-contaminated-source-spec.md §3.1+§3.2
+      dev/design/2026-05-12-ars-v3.7.3-claim-faithfulness-and-contaminated-source-spec.md §3.1+§3.2
 
     Returns 0 if the v3.7.3 H2 heading is absent.
 
@@ -576,7 +576,7 @@ def _measure_v3_10_extension_block_lines(text: str) -> int:
     marker grammar shapes + strict / strict_articles_only promotion + the
     terminal_blocked[] audit note. Like the v3.7.x / v3.9.0 blocks, it has
     its own scope and MUST be subtracted from the v3.6.7 Phase 6.6 +60 budget.
-    Spec: docs/design/2026-05-31-ars-v3.10-policy-layer-rescope-spec.md §3 PR-B.
+    Spec: dev/design/2026-05-31-ars-v3.10-policy-layer-rescope-spec.md §3 PR-B.
 
     Returns 0 if the v3.10 H2 heading is absent. The v3.10 section uses H3
     subsections internally, so the block-end anchor matches the next H1/H2
@@ -608,7 +608,7 @@ def _measure_390_sequencing_block_lines(text: str) -> int:
     gate + MANDATORY checkpoint, and the apply-failure path. Like the
     v3.7.x / v3.9.0 / v3.10 / #394 blocks, it has its own scope and MUST be
     subtracted from the v3.6.7 Phase 6.6 +60 budget. Spec:
-      docs/design/2026-06-10-390-diff-patch-revision-mode-spec.md §3.3-§3.6.
+      dev/design/2026-06-10-390-diff-patch-revision-mode-spec.md §3.3-§3.6.
 
     Returns 0 if the H2 heading is absent. The block embeds a fenced
     checkpoint template; the block-end anchor matches the next H1/H2 only
@@ -663,7 +663,7 @@ def _measure_394_gate_block_lines(text: str) -> int:
     fix loop, the freshness guard, and the recompute-each-pass rule. Like
     the v3.7.x / v3.9.0 / v3.10 blocks, it has its own scope and MUST be
     subtracted from the v3.6.7 Phase 6.6 +60 budget. Spec:
-      docs/design/2026-06-10-394-submission-package-verifier-spec.md §5.
+      dev/design/2026-06-10-394-submission-package-verifier-spec.md §5.
 
     Returns 0 if the H2 heading is absent. The block uses one H3
     internally, so the block-end anchor matches the next H1/H2 only —
@@ -692,7 +692,7 @@ def _measure_576_stage3p_dispatch_block_lines(text: str) -> int:
     PR-B2 adds the orchestrator-side three-gate dispatch contract. Like
     the v3.7.x / v3.9.0 / v3.10 / #394 / #390 blocks, it has its own
     scope and MUST be subtracted from the v3.6.7 Phase 6.6 +60 budget.
-    Spec: docs/design/2026-07-27-576-spec-b-re-review-precommitment-contract-spec.md §16.
+    Spec: dev/design/2026-07-27-576-spec-b-re-review-precommitment-contract-spec.md §16.
 
     Returns 0 if the H2 heading is absent. The block has no internal
     headings; the block-end anchor matches the next H1/H2.
@@ -1212,7 +1212,7 @@ class V373ExtensionLineBudgetTest(unittest.TestCase):
     decoupled from both the v3.6.7 Phase 6.6 budget and the v3.7.1
     Step 3b budget. External motivation: Zhao et al. arXiv:2605.07723
     (2026-05). Spec:
-      docs/design/2026-05-12-ars-v3.7.3-claim-faithfulness-and-contaminated-source-spec.md
+      dev/design/2026-05-12-ars-v3.7.3-claim-faithfulness-and-contaminated-source-spec.md
       §3.1+§3.2
 
     If a future v3.7.3 cascade legitimately requires more lines, raise
@@ -1248,7 +1248,7 @@ class V38AuditGateLineBudgetTest(unittest.TestCase):
     from the v3.6.7 Phase 6.6 budget AND the v3.7.x subsection budgets.
     External motivation: Zhao et al. arXiv:2605.07723 (2026-05) +
     Li et al. RubricEM arXiv:2605.10899. Spec:
-      docs/design/2026-05-15-issue-103-claim-alignment-audit-spec.md §5
+      dev/design/2026-05-15-issue-103-claim-alignment-audit-spec.md §5
 
     If a future v3.8 cascade legitimately requires more lines, raise
     `LINE_BUDGET_V3_8_AUDIT_GATE` explicitly and document the rationale.
@@ -1283,7 +1283,7 @@ class V390ExtensionLineBudgetTest(unittest.TestCase):
     this block's lines, decoupled from the v3.6.7 Phase 6.6 budget AND
     the v3.7.x / v3.8 subsection budgets. External motivation: Zhao et
     al. arXiv:2605.07723 §3 (cross-index triangulation). Spec:
-      docs/design/2026-05-17-ars-v3.9.0-cross-index-triangulation-measurement-spec.md
+      dev/design/2026-05-17-ars-v3.9.0-cross-index-triangulation-measurement-spec.md
       §3.3
 
     If a future v3.9.0 cascade legitimately requires more lines, raise
@@ -1295,7 +1295,7 @@ class V390ExtensionLineBudgetTest(unittest.TestCase):
 
         Dedicated budget test for the `## Cite-Time Provenance Finalizer —
         v3.9.0 extension (triangulation tiers)` subsection per spec
-        docs/design/2026-05-17-ars-v3.9.0-cross-index-triangulation-measurement-spec.md §3.3.
+        dev/design/2026-05-17-ars-v3.9.0-cross-index-triangulation-measurement-spec.md §3.3.
         """
         text = _read_prompt()
         block_lines = _measure_v3_9_0_extension_block_lines(text)
@@ -1325,7 +1325,7 @@ class V310ExtensionLineBudgetTest(unittest.TestCase):
     v3.10 extension (terminal policy layer)` subsection. Measures ONLY this
     block's lines, decoupled from the v3.6.7 Phase 6.6 budget AND the
     v3.7.x / v3.8 / v3.9.0 subsection budgets. Spec:
-      docs/design/2026-05-31-ars-v3.10-policy-layer-rescope-spec.md §3 PR-B.
+      dev/design/2026-05-31-ars-v3.10-policy-layer-rescope-spec.md §3 PR-B.
 
     If a future v3.10 cascade legitimately requires more lines, raise
     `LINE_BUDGET_V3_10_EXTENSION` explicitly and document the rationale.
@@ -1359,7 +1359,7 @@ class Gate394LineBudgetTest(unittest.TestCase):
     Dedicated budget test for the `## Submission-Package Terminal Gate`
     subsection. Measures ONLY this block's lines, decoupled from the
     v3.6.7 Phase 6.6 budget AND the other extension-subsection budgets.
-    Spec: docs/design/2026-06-10-394-submission-package-verifier-spec.md §5.
+    Spec: dev/design/2026-06-10-394-submission-package-verifier-spec.md §5.
 
     If a future #394 cascade legitimately requires more lines, raise
     `LINE_BUDGET_394_GATE` explicitly and document the rationale.
@@ -1392,7 +1392,7 @@ class Sequencing390LineBudgetTest(unittest.TestCase):
     Dedicated budget test for the `## Revision-Round Patch Sequencing
     (#390)` subsection. Measures ONLY this block's lines, decoupled from
     the v3.6.7 Phase 6.6 budget AND the other extension-subsection budgets.
-    Spec: docs/design/2026-06-10-390-diff-patch-revision-mode-spec.md §3.3-§3.6.
+    Spec: dev/design/2026-06-10-390-diff-patch-revision-mode-spec.md §3.3-§3.6.
 
     If a future #390 cascade legitimately requires more lines, raise
     `LINE_BUDGET_390_SEQUENCING` explicitly and document the rationale.

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Validate ARS v3.6.7 Step 8 pattern-eval fixture manifests.
 
-Spec: docs/design/2026-04-30-ars-v3.6.7-step-6-orchestrator-hooks-spec.md
+Spec: dev/design/2026-04-30-ars-v3.6.7-step-6-orchestrator-hooks-spec.md
       §7.2 (micro-fixture schema) + §7.3 (integration-fixture schema)
       + §7.5 (fixture-to-pattern coverage cross-check)
 

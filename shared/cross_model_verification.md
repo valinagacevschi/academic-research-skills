@@ -37,7 +37,7 @@ export ANTHROPIC_API_KEY="<your-anthropic-api-key>"
 # Or use: ARS_CROSS_MODEL="gemini-3.1-pro-preview" with GEMINI_API_KEY.
 ```
 
-This is intended configuration only; it does not activate requests today.
+This runtime is opt-in: requests run only when `ARS_CROSS_MODEL` is set and the required provider key is available.
 
 ## How It Works in Each Skill
 

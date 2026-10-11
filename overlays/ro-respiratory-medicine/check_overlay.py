@@ -64,6 +64,19 @@ def load_rows(overlay_root: Path) -> tuple[list[dict[str, Any]], list[str]]:
     return rows, errors
 
 
+
+def check_codex_install_surface(root: Path) -> list[str]:
+    errors: list[str] = []
+    readme = (root / "README.md").read_text(encoding="utf-8")
+    installer = (root / "install.py").read_text(encoding="utf-8")
+    if "Codex" not in readme or "../../docs/HOW_IT_WORKS.md" not in readme:
+        errors.append("README must describe the Codex overlay and link to the ARS workflow overview")
+    if "--claude-md" in installer or "CLAUDE.md" in installer or ".claude/" in installer:
+        errors.append("installer must target AGENTS.md and Codex project configuration only")
+    if 'Path(".codex/hooks.json")' not in installer:
+        errors.append("installer must write optional hooks to .codex/hooks.json")
+    return errors
+
 def check_manifest(root: Path) -> list[str]:
     path = root / "MANIFEST.json"
     try:
@@ -308,7 +321,7 @@ def main(argv: list[str] | None = None) -> int:
         return 1
 
     failures = 0
-    for label, errors in (("manifest", check_manifest(args.overlay_root)), ("upstream drift", check_upstream_drift(args.overlay_root, args.repo_root))):
+    for label, errors in (("manifest", check_manifest(args.overlay_root)), ("Codex install surface", check_codex_install_surface(args.overlay_root)), ("upstream drift", check_upstream_drift(args.overlay_root, args.repo_root))):
         if errors:
             for error in errors:
                 report(label, "FAIL", error)

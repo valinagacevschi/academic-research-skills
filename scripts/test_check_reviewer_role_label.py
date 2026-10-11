@@ -37,27 +37,11 @@ UNCOVERED_PUBLIC_SURFACES = {
     "academic-pipeline/references/reproducibility_audit.md": (
         "Journal-Fit Reviewer + R1/R2/R3 + Devil's Advocate — five role-separated perspectives",
     ),
-    "docs/ARCHITECTURE.md": (
-        "5 review reports (Journal-Fit Reviewer + R1 methodology + R2 domain + R3 interdisciplinary + Devil's Advocate)",
-    ),
-    "docs/PERFORMANCE.md": (
-        "Two reviewers (Journal-Fit Reviewer + methodology) each run two phases",
-    ),
-    "docs/PERFORMANCE.zh-TW.md": (
-        "Journal-Fit Reviewer + methodology 兩位 reviewer 各跑兩階段",
-    ),
 }
 REVIEW_DISPATCH_SURFACES = {
     "academic-paper-reviewer/references/re_review_mode_protocol.md": (
         "Contract-governed default re-review invokes neither `eic_agent` nor "
         "`editorial_synthesizer_agent` as an agent-file worker",
-    ),
-    "docs/ARCHITECTURE.md": (
-        "**Contract-governed re-review dispatch**: orchestrating layer + three "
-        "sequential fenced calls",
-    ),
-    "README.md": (
-        "First-round review panel vs. contract-governed re-review dispatch boundary",
     ),
 }
 PROVENANCE_LANGUAGE_SURFACES = {
@@ -368,18 +352,6 @@ def test_real_journal_editor_in_chief_remains_distinct(tree: Path) -> None:
         rel,
         "real journal's Editor-in-Chief (EIC)",
         "real journal's Journal-Fit Reviewer",
-    )
-    result = _run(tree)
-    assert result.returncode == 1
-    assert "display-label drift" in result.stderr
-
-
-def test_public_readme_cannot_restore_legacy_role_name(tree: Path) -> None:
-    _mutate(
-        tree,
-        "README.md",
-        "(Journal-Fit Reviewer + 3 dynamic reviewers",
-        "(EIC + 3 dynamic reviewers",
     )
     result = _run(tree)
     assert result.returncode == 1

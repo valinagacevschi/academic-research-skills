@@ -561,14 +561,14 @@ The cost is multiplicative: a 10-stage pipeline with cross-model enabled produce
 
 **Cross-references.**
 
-- Spec: `docs/design/2026-04-30-ars-v3.6.7-step-6-orchestrator-hooks-spec.md` §5.6 (full procedure), §5.2 (eleven gating checks), §5.3 (verdict semantics), §5.4 (round upper bound + escalation).
+- Spec: `dev/design/2026-04-30-ars-v3.6.7-step-6-orchestrator-hooks-spec.md` §5.6 (full procedure), §5.2 (eleven gating checks), §5.3 (verdict semantics), §5.4 (round upper bound + escalation).
 - Audit template: `shared/templates/codex_audit_multifile_template.md`
 - Schema: `shared/contracts/passport/audit_artifact_entry.schema.json`
 - Wrapper: `scripts/run_codex_audit.sh`
 
 ### 3.6 Claim-Faithfulness Audit Gate (v3.8)
 
-**Trigger.** Stage 4 → Stage 5 transition, in the same handoff slot as the v3.7.1 Cite-Time Provenance Finalizer; in pipeline mode both first run at Stage 4.5 (§ Final-Output Pre-Check at Stage 4.5 (#929)). The audit dispatches AFTER the Cite-Time Provenance Finalizer pass (anchor-presence settled per v3.7.3 §3.1) and BEFORE `formatter_agent` runs its hard gate at the start of Stage 5. Mirrors the §3.5 audit-between-deliverable-and-consumption ordering. Spec: `docs/design/2026-05-15-issue-103-claim-alignment-audit-spec.md` §5 + §1 deliverable 4.
+**Trigger.** Stage 4 → Stage 5 transition, in the same handoff slot as the v3.7.1 Cite-Time Provenance Finalizer; in pipeline mode both first run at Stage 4.5 (§ Final-Output Pre-Check at Stage 4.5 (#929)). The audit dispatches AFTER the Cite-Time Provenance Finalizer pass (anchor-presence settled per v3.7.3 §3.1) and BEFORE `formatter_agent` runs its hard gate at the start of Stage 5. Mirrors the §3.5 audit-between-deliverable-and-consumption ordering. Spec: `dev/design/2026-05-15-issue-103-claim-alignment-audit-spec.md` §5 + §1 deliverable 4.
 
 **Why not Stage 5→6:** `formatter_agent`'s terminal hard gate runs **during** Stage 5. Dispatching at Stage 5→6 would produce `claim_audit_results[]` after the gate has already passed; HIGH-WARN-CLAIM-NOT-SUPPORTED could not block output. Stage 4→5 is the only slot where (a) the draft prose carries resolved v3.7.3 anchors, (b) the cite finalizer has settled anchor presence, and (c) the formatter hard gate has NOT yet run.
 
@@ -618,7 +618,7 @@ The cost is multiplicative: a 10-stage pipeline with cross-model enabled produce
 
 **Cross-references.**
 
-- Spec: `docs/design/2026-05-15-issue-103-claim-alignment-audit-spec.md` §5 (matrix), §3 (schemas), §4 (agent prompt structure), §6 (lint)
+- Spec: `dev/design/2026-05-15-issue-103-claim-alignment-audit-spec.md` §5 (matrix), §3 (schemas), §4 (agent prompt structure), §6 (lint)
 - Agent prompt: `academic-pipeline/agents/claim_ref_alignment_audit_agent.md`
 - Schemas: `shared/contracts/passport/claim_audit_result.schema.json`, `claim_intent_manifest.schema.json`, `uncited_assertion.schema.json`, `claim_drift.schema.json`, `constraint_violation.schema.json`
 - Finalizer module: `scripts/claim_audit_finalizer.py` (8-row matrix + Stage 6 histogram)
@@ -651,7 +651,7 @@ The OR preserves any lineage signal already persisted on a resumed or mid-entry 
 
 **Reset-boundary interaction (v3.6.3+):** the §"Passport Reset Boundary" emission sequence above invokes this same OR before writing the passport that the boundary entry references. Otherwise `ARS_PASSPORT_RESET=1` on a `systematic-review` run would freeze the passport without `slr_lineage`, and the consuming `resume_from_passport=<hash>` session would see an empty `state_tracker.stages` + a flag-less incoming passport → OR resolves `false` → PRISMA-trAIce dispatch blocks. Note: `slr_lineage` lives at passport top-level and is **not** part of the `reset_boundary[]` ledger entry schema (the ledger schema is closed; the boundary hash covers only ledger entries per `passport_as_reset_boundary.md` §"The reset boundary protocol" step 2). The field is therefore persisted but **not hash-integrity-checked** by the boundary hash — same trust model as `origin_skill` / `version_label` / `verification_status` / other Schema 9 top-level passport fields. The protection v3.7.4 needs is correctness-at-write (the OR), not integrity-after-write.
 
-Reference helper: `scripts/slr_lineage.py` `emit(stages, incoming_slr_lineage)`. Pre-v3.7.4 passports lack the field and the renderer treats absence as `false` (cold-start fallback identical to pre-v3.7.4 behavior). See `shared/handoff_schemas.md` §"Run-level lineage signal (v3.7.4)" for the field contract, and `docs/design/2026-05-15-issue-111-slr-lineage-emission-design.md` for the design.
+Reference helper: `scripts/slr_lineage.py` `emit(stages, incoming_slr_lineage)`. Pre-v3.7.4 passports lack the field and the renderer treats absence as `false` (cold-start fallback identical to pre-v3.7.4 behavior). See `shared/handoff_schemas.md` §"Run-level lineage signal (v3.7.4)" for the field contract, and `dev/design/2026-05-15-issue-111-slr-lineage-emission-design.md` for the design.
 
 ## Review-target criteria binding lifecycle (#684)
 
@@ -797,13 +797,13 @@ Every MANDATORY and FULL checkpoint in this pipeline is a decision the researche
 - **Never assert consent or approval you did not receive.** Cross-model uploads, override-ladder rounds, integrity-correction authorizations, and read attestations require the user's explicit input at the surface that asks for it.
 - **Report the same way.** Completion, checkpoint, and Process Record surfaces state what the user actually decided, in the user's words where the decision is quoted; a step the user did not confirm is reported as unconfirmed.
 
-*Epistemic status: a decision-handling and reporting discipline, not a runtime guarantee. The deterministic authorization inputs (#670's `integrity-correction-authorization-input/1.0`, `scripts/ars_mark_read.py`'s explicit scope) are the enforced layer where they exist; everywhere else this rule is prompt-level and is indexed as risk R11 in `docs/RISK_REGISTER.md`.*
+*Epistemic status: a decision-handling and reporting discipline, not a runtime guarantee. The deterministic authorization inputs (#670's `integrity-correction-authorization-input/1.0`, `scripts/ars_mark_read.py`'s explicit scope) are the enforced layer where they exist; everywhere else this rule is prompt-level .*
 
 ---
 
 ## Run ledger and handoff check (#887)
 
-Context compaction replaces older turns with a model-written summary, and a subagent return shows only the subagent's report; either can drop a pending decision, the user's exact words, or a step's outcome. The run ledger keeps them beside the passport as they happen (design `docs/design/2026-09-23-887-handoff-integrity-design.md`, schema `shared/contracts/passport/run_ledger.schema.json`).
+Context compaction replaces older turns with a model-written summary, and a subagent return shows only the subagent's report; either can drop a pending decision, the user's exact words, or a step's outcome. The run ledger keeps them beside the passport as they happen (design `dev/design/2026-09-23-887-handoff-integrity-design.md`, schema `shared/contracts/passport/run_ledger.schema.json`).
 
 - **Write each event when it happens.** Once the run has a passport file, append each entry with `python3 scripts/run_ledger.py append --passport-path <passport> --entry-file <file>`. Write the entry JSON with the file-writing tool into run-local storage outside the repository, never inline in a shell command, because the user's words can contain quotes and shell characters. Record the user's initial instructions first; every FULL, SLIM, and MANDATORY checkpoint when it opens (stage, type, question, options) and when the user's response closes it (the answer and the user's exact words; `view progress`, `pause`, a refused `skip`, or a `continue` with an unmet precondition leaves it open), including audit-gate choices, reset-path overrides, and in-stage questions that change a deliverable; each item of a multi-item answer as the user gives it (coaching triage, E6 dispositions, E5 confirmations, re-review deferral answers, a structural-escalation scope); a receipt for each required step that reports only on stdout or by exit status (command, input files as `input_paths`, exit status, gate tokens or an output digest, status `passed`, `failed`, or `not_run`, retries used); the retry, loop, and fix-round counters, with the stage for a per-stage counter; and the path of each transient input a later step needs (the E6 raw event files, each file in the evidence source folder, recorded again after an integrity run rewrites it). Name files by path, relative to the passport's folder or absolute, and let the script hash them; it refuses a digest that does not match its file (#898). Under `ARS_PASSPORT_RESET=1`, an opened entry names its boundary hash (`reset_boundary_hash`). Show a refused append to the user as refused; never shorten or paraphrase the user's words to make an entry fit, and never edit the ledger by hand.
 - **Check after compaction, on resume, and after each subagent return.** Write a claims file with the decisions the summary or the report asserts, the outcomes it asserts for steps that report only on stdout or by exit status, and the stage's required steps of that kind, enumerated from the skills' text, and run `python3 scripts/run_ledger.py report --passport-path <passport> --claims <file>`. A paraphrase is not a decision: a checkpoint whose answer survives only as summary text stays open. A step counts as run only with a validating artifact, a receipt whose input files are unchanged (the report gives its outcome under `step_outcomes`), or a fresh run, and is otherwise `not run`, never `passed`; re-run a step with a retry limit only when a receipt shows the retries used, and otherwise ask the user first. At each stage close, run the same report with those required steps as `expected_steps`, alongside the state tracker's Material Gap Detection for deliverables and other artifacts, and name what is missing, including what a report did not mention.
@@ -812,7 +812,7 @@ Context compaction replaces older turns with a model-written summary, and a suba
 - **Read it only through the script.** Besides `report`, read the ledger with `python3 scripts/run_ledger.py show --passport-path <passport>`, which prints only the entries before any break (#898): the retries a receipt used, the recorded answers of a partly collected answer, a closed checkpoint another step looks for, and the words a record quotes. Never open the ledger file itself, and treat a `show` that exits 1 as the fail-closed case below.
 - **Keep it local.** Never put the whole ledger into a dispatch; a dispatch that carries a decision quotes only that decision's words (§ Checkpoint authority fidelity). Never name the ledger as a supporting file for the Codex audit wrapper. When the Stage 6 record quotes the initial instructions or a decision, take the words from what `show` prints.
 
-*Epistemic status: prompt-level, indexed as risk R12 in `docs/RISK_REGISTER.md`. The report is deterministic only over what the ledger contains. The orchestrator writes the entries, so a fabricated entry stays R11's failure, and anything lost before its entry is written cannot be recovered. The hashes detect accidental damage, not deliberate edits, a lost tail, or a restored older copy.*
+*Epistemic status: prompt-level, . The report is deterministic only over what the ledger contains. The orchestrator writes the entries, so a fabricated entry stays R11's failure, and anything lost before its entry is written cannot be recovered. The hashes detect accidental damage, not deliberate edits, a lost tail, or a restored older copy.*
 
 ---
 
@@ -1170,7 +1170,7 @@ In other words: the resolved status is a pure function of the corpus row, exact 
 
 ## Cite-Time Provenance Finalizer — v3.7.3 extension (5-cell + contamination annotation)
 
-Extends the v3.7.1 4-cell matrix above with two additive checks. External motivation: Zhao et al. arXiv:2605.07723 (2026-05). Spec: `docs/design/2026-05-12-ars-v3.7.3-claim-faithfulness-and-contaminated-source-spec.md` §3.1 + §3.2.
+Extends the v3.7.1 4-cell matrix above with two additive checks. External motivation: Zhao et al. arXiv:2605.07723 (2026-05). Spec: `dev/design/2026-05-12-ars-v3.7.3-claim-faithfulness-and-contaminated-source-spec.md` §3.1 + §3.2.
 
 ### Precedence-zero check: locator presence (L3-1)
 
@@ -1224,7 +1224,7 @@ Per-pass resolution counts gain ten new columns: NO-LOCATOR (precedence-zero hit
 
 ## Cite-Time Provenance Finalizer — v3.9.0 extension (triangulation tiers)
 
-Spec: `docs/design/2026-05-17-ars-v3.9.0-cross-index-triangulation-measurement-spec.md` §3.3.
+Spec: `dev/design/2026-05-17-ars-v3.9.0-cross-index-triangulation-measurement-spec.md` §3.3.
 
 v3.9.0 extends the v3.7.3 contamination annotation channel with three new lookup-derived suffix shapes. The base 5-cell matrix is unchanged. The annotation rule expands as follows:
 
@@ -1273,7 +1273,7 @@ Example markers:
 
 ## Cite-Time Provenance Finalizer — v3.10 extension (terminal policy layer)
 
-Spec: `docs/design/2026-05-31-ars-v3.10-policy-layer-rescope-spec.md` §3 PR-B items 6-9. Firm rule: `shared/references/firm_rules.md` R-L3-2-A (broad form) + R-L3-2-E.
+Spec: `dev/design/2026-05-31-ars-v3.10-policy-layer-rescope-spec.md` §3 PR-B items 6-9. Firm rule: `shared/references/firm_rules.md` R-L3-2-A (broad form) + R-L3-2-E.
 
 v3.10 adds an **opt-in terminal policy layer** on top of the v3.9.0 advisory channel. The finalizer is the **sole policy evaluator**: it reads the passport-level `terminal_policies` block (per `shared/contracts/passport/terminal_policies.schema.json`) and, under a non-advisory policy, stamps a `policy_hash` on every ref marker and co-emits a terminal `HIGH-BLOCK` token where the policy fires. **The default (absent `terminal_policies`, or every key `advisory`) is byte-equivalent to v3.9.0 (Invariant 7): the finalizer emits the EXACT v3.9.0 marker — no `policy_hash` stamp, no terminal token, no behavior change.** The `policy_hash` stamp is added ONLY when the passport carries a non-advisory policy (see below); this is what lets a v3.9.0 (stampless) draft and a v3.10 default-advisory draft be identical, and lets the formatter pass a stampless marker under an advisory passport.
 
@@ -1325,7 +1325,7 @@ The finalizer reads `venue_type` / `venue_type_provenance` only as DECLARED entr
 
 ### Citation-existence terminal promotion under strict (v3.11 / C-V6)
 
-The `terminal_policies.citation_existence` key (enum `{advisory, strict}`, spec `docs/design/2026-05-21-v3.10-182-promote-citation-gate-spec.md` §2 Delta 3 + INVARIANT C-V6) governs the `lookup_verified == false` verdict from the `citation_verification_summary[]` aggregate (Delta 4). It inherits the SAME opt-in terminal model as `contamination_triangulation` — default advisory, opt-in `strict` — and introduces NO second hard-block philosophy. The finalizer is the sole policy evaluator here too; no new control-plane writer is added (this is the L4-question-3 boundary, not L1 hidden culling — the verdict is external-API factual, the flagged citation stays visible and annotated, and `resolver_outcomes` makes the criterion fully auditable).
+The `terminal_policies.citation_existence` key (enum `{advisory, strict}`, spec `dev/design/2026-05-21-v3.10-182-promote-citation-gate-spec.md` §2 Delta 3 + INVARIANT C-V6) governs the `lookup_verified == false` verdict from the `citation_verification_summary[]` aggregate (Delta 4). It inherits the SAME opt-in terminal model as `contamination_triangulation` — default advisory, opt-in `strict` — and introduces NO second hard-block philosophy. The finalizer is the sole policy evaluator here too; no new control-plane writer is added (this is the L4-question-3 boundary, not L1 hidden culling — the verdict is external-API factual, the flagged citation stays visible and annotated, and `resolver_outcomes` makes the criterion fully auditable).
 
 The verdict input is the narrowed-`false` (C-V6(a)): `lookup_verified == false` ONLY when at least one ID-keyed (DOI / arXiv-ID) resolver returned `unmatched` with no `matched` — a provably-bogus identifier. A title-only `unmatched` with no resolvable identifier reduces to `unresolvable` (a coverage gap — regional / non-English / pre-digital paper indexed nowhere), NEVER `false`. The finalizer consumes the verdict the Delta 4 reducer already computed; it does NOT re-derive it.
 
@@ -1363,7 +1363,7 @@ The per-pass resolution counts gain a `terminal_blocked[]` bucket recording each
 
 ## Revision-Round Patch Sequencing (#390)
 
-When a revision stage dispatches `academic-paper` revision mode (Stage 3 → 4 / 3' → 4'; "Resolved next stage: 4 (mode: revision)" — and equally the integrity-FAIL correction rounds, Stage 2.5 FAIL → 2 and Stage 4.5 FAIL → 5 (revision), where the integrity correction list is only the round's proposed requirements; #89 Item 8, destination differences in the integrity-correction variant below — note the FAIL arrow lands on Stage 5's **revision** sub-step, not the PASS-path Stage 4.5 → 5 finalization handoff, and re-verification by the issuing gate is mandatory before finalization), the writer's deliverable is a **patch document**, not a re-emitted draft, and the orchestrator owns the deterministic steps around it. Spec: `docs/design/2026-06-10-390-diff-patch-revision-mode-spec.md` §3.3–§3.6. Protocol + exact commands: `academic-paper/references/revision_patch_protocol.md`. The toolchain is Slice A (#423): `scripts/ars_anchorize_draft.py` + `scripts/ars_apply_revision_patch.py`.
+When a revision stage dispatches `academic-paper` revision mode (Stage 3 → 4 / 3' → 4'; "Resolved next stage: 4 (mode: revision)" — and equally the integrity-FAIL correction rounds, Stage 2.5 FAIL → 2 and Stage 4.5 FAIL → 5 (revision), where the integrity correction list is only the round's proposed requirements; #89 Item 8, destination differences in the integrity-correction variant below — note the FAIL arrow lands on Stage 5's **revision** sub-step, not the PASS-path Stage 4.5 → 5 finalization handoff, and re-verification by the issuing gate is mandatory before finalization), the writer's deliverable is a **patch document**, not a re-emitted draft, and the orchestrator owns the deterministic steps around it. Spec: `dev/design/2026-06-10-390-diff-patch-revision-mode-spec.md` §3.3–§3.6. Protocol + exact commands: `academic-paper/references/revision_patch_protocol.md`. The toolchain is Slice A (#423): `scripts/ars_anchorize_draft.py` + `scripts/ars_apply_revision_patch.py`.
 
 **Normative order per revision round — nothing may rewrite the draft between steps 1 and 3:**
 
@@ -1475,7 +1475,7 @@ Contract-governed re-review IS the Stage 3' default. The orchestrator (the dispa
 
 ## Submission-Package Terminal Gate (#394 slice 4 — Stage 5, post-formatter)
 
-A **package-level** gate, explicitly NOT the ref-marker stamp path above: the v3.10/v3.11 terminality machinery is finalizer-stamped ref markers + the formatter's stamp-only rules, but this verifier runs AFTER the formatter has produced the whole output package, so that carrier cannot serve it (spec `docs/design/2026-06-10-394-submission-package-verifier-spec.md` §5 seam 2). The evaluated carrier is the verifier's report file itself (`header.package_fingerprint` + `header.policy_slug`) plus the `provenance_summary.md` `Submission Package Advisories` section (see `formatter_agent.md`). No ref-marker grammar change — markers are untouched by this gate. **Token disambiguation:** the literal `TERMINAL-BLOCK` is REUSED from the v3.10 marker grammar but lives in a different channel here — in the sections above it is an in-marker token carrying `severity=HIGH-BLOCK` + `policy_hash`, refused by the formatter's rule 11; here it is a **stdout line** carrying `policy=submission_package` with NO `severity=` and NO `policy_hash`, evaluated by THIS agent. The `policy=` value is the discriminator; rule 11 never fires on it (it is not inside a `<!--ref:...-->`).
+A **package-level** gate, explicitly NOT the ref-marker stamp path above: the v3.10/v3.11 terminality machinery is finalizer-stamped ref markers + the formatter's stamp-only rules, but this verifier runs AFTER the formatter has produced the whole output package, so that carrier cannot serve it (spec `dev/design/2026-06-10-394-submission-package-verifier-spec.md` §5 seam 2). The evaluated carrier is the verifier's report file itself (`header.package_fingerprint` + `header.policy_slug`) plus the `provenance_summary.md` `Submission Package Advisories` section (see `formatter_agent.md`). No ref-marker grammar change — markers are untouched by this gate. **Token disambiguation:** the literal `TERMINAL-BLOCK` is REUSED from the v3.10 marker grammar but lives in a different channel here — in the sections above it is an in-marker token carrying `severity=HIGH-BLOCK` + `policy_hash`, refused by the formatter's rule 11; here it is a **stdout line** carrying `policy=submission_package` with NO `severity=` and NO `policy_hash`, evaluated by THIS agent. The `policy=` value is the discriminator; rule 11 never fires on it (it is not inside a `<!--ref:...-->`).
 
 **Policy reading stays single-homed (§5.3).** The orchestrator is the SOLE reader of `terminal_policies.submission_package` and sole selector of the policy in force. `scripts/verify_submission_package.py` NEVER reads `terminal_policies` — the orchestrator hands the already-resolved value down via the `--policy` CLI argument, and the script applies it mechanically (deterministic evaluation tooling, not a second policy reader).
 

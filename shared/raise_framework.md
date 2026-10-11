@@ -73,7 +73,7 @@ Used when `raise.mode == "full"` (SR and other_evidence_synthesis). Each role ca
 2. Be transparent about when AI works best, its limitations, and any interests.
 3. Commit to continued learning, development, and monitoring.
 
-**ARS self-declaration:** ARS is open-source (CC BY-NC 4.0); CHANGELOG tracks limitations; calibration results published per `calibration_mode_protocol.md`.
+**ARS self-declaration:** ARS is open-source (CC BY-NC 4.0); limitations are disclosed; calibration results published per `calibration_mode_protocol.md`.
 
 ### Role 3 — Methodologists
 

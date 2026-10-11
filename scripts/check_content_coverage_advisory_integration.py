@@ -36,7 +36,7 @@ ADVISORY_PROTOCOL = Path(
     "shared/references/authority_content_coverage_advisory_protocol.md"
 )
 DESIGN_SPEC = Path(
-    "docs/design/2026-08-09-681-authority-content-coverage-advisory-spec.md"
+    "dev/design/2026-08-09-681-authority-content-coverage-advisory-spec.md"
 )
 HELDOUT_ROOT = Path("evals/heldout")
 HELDOUT_STATUS = HELDOUT_ROOT / "authority_content_coverage" / "README.md"

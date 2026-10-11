@@ -1,7 +1,7 @@
 """Manifest tests for v3.8 claim_ref_alignment_audit_agent (T-M1, T-M2, T-M3).
 
 Per spec §7.3 in
-docs/design/2026-05-15-issue-103-claim-alignment-audit-spec.md.
+dev/design/2026-05-15-issue-103-claim-alignment-audit-spec.md.
 
 These tests pin manifest-level contracts that pipeline-level T-P1..T-P11 do
 not exercise:

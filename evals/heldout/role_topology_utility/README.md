@@ -2,7 +2,7 @@
 
 Offline design and repository-owned synthetic seed for two independent classes:
 decomposable reviewer evidence review and sequential writing/revision. Authority:
-[`docs/design/2026-08-13-582-role-topology-utility-design.md`](../../../docs/design/2026-08-13-582-role-topology-utility-design.md).
+[`dev/design/2026-08-13-582-role-topology-utility-design.md`](../../../dev/design/2026-08-13-582-role-topology-utility-design.md).
 
 The exact arms, role graphs, budgets, tools, three-replicate rule, stopping rule,
 uncertainty disclosure, blinding, and UVV definition live in `study_plan.json` and

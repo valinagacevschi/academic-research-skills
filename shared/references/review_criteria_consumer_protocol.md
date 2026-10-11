@@ -6,7 +6,7 @@ panel. The binding is workflow conformance only. It never determines severity,
 an editorial verdict, a checkpoint state, or author triage.
 
 Normative design:
-`docs/design/2026-08-11-684-review-criteria-consumer-binding-spec.md`.
+`dev/design/2026-08-11-684-review-criteria-consumer-binding-spec.md`.
 Schemas:
 `shared/contracts/review_target/review_criteria_binding_manifest.schema.json`
 and

@@ -279,7 +279,7 @@ HEEACT 評鑑工具加 S0 的原因是「AI 把報告寫到無懈可擊 = 品質
 
 ## 附錄：方法與證據
 
-- 錨點文本全讀：POSITIONING.md（Rejected mechanisms 五條）、Kong L1/L2 design lessons（state-authority + verb test）、Co-Scientist L1（hidden ranking）、README、docs/PERFORMANCE.md、MODE_REGISTRY.md、data layer boundary memory（2026-04-22）。
+- 錨點文本全讀：POSITIONING.md（Rejected mechanisms 五條）、Kong L1/L2 design lessons（state-authority + verb test）、Co-Scientist L1（hidden ranking）、README、docs/PERFORMANCE.md、shared/references/mode_registry.md、data layer boundary memory（2026-04-22）。
 - AACSB *A Framework for Research Impact*（May 2026）46 頁全讀：spiral model（App. B）、Assessment Tool（pp.20-23）、impact indicators（App. D）、Campbell's Law 自引（p.19 n.15）。
 - 兩路 subagent 事實提取（SKILL.md 六軸地圖 + repo 八點掃描）→ 主 context 自查修正 3 處 → codex + gemini dual-track → 本版修訂 9 處。
 - 本報告不動工程線：#330/#272/#250/#219/#89/#387 各有歸屬。

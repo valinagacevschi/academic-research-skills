@@ -2,8 +2,6 @@
 
 This held-out suite measures a frozen model's behavior when synthetic retrieved
 or pasted content contains an inert embedded instruction. The authority is
-[`docs/design/2026-08-13-675-indirect-prompt-injection-behavior-eval-spec.md`](../../../docs/design/2026-08-13-675-indirect-prompt-injection-behavior-eval-spec.md).
-
 ## Current status
 
 `seed_version: 0.1.0` — design, fixtures, rubric, validator, diagnostic scorer,

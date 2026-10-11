@@ -1,6 +1,6 @@
 """Tests for v3.9.4 temporal verification spec lint + schema conformance.
 
-Per docs/design/2026-05-18-ars-v3.9.4-temporal-verification-spec.md §7.
+Per dev/design/2026-05-18-ars-v3.9.4-temporal-verification-spec.md §7.
 """
 from __future__ import annotations
 

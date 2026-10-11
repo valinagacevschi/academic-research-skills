@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """ARS v3.7.1 trust-chain frontmatter lint (spec § 3.1 firm rules).
 
-Spec: docs/design/2026-04-30-ars-v3.6.8-trust-provenance-and-drift-transparency-spec.md
+Spec: dev/design/2026-04-30-ars-v3.6.8-trust-provenance-and-drift-transparency-spec.md
       § 3.1 D1 — Frontmatter trust-strength conflation
       § Step 1 — Frontmatter schema split
 

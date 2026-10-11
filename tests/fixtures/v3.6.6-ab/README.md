@@ -2,7 +2,7 @@
 
 This directory holds the A/B evidence fixture for ARS v3.6.6's
 generator-evaluator contract gate. The `manifest.yaml` instantiates the §6.2
-schema declared in `docs/design/2026-04-27-ars-v3.6.6-generator-evaluator-contract-design.md`.
+schema declared in `dev/design/2026-04-27-ars-v3.6.6-generator-evaluator-contract-design.md`.
 
 ## State at this commit
 

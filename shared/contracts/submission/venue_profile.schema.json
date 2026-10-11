@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://github.com/Imbad0202/academic-research-skills/shared/contracts/submission/venue_profile.schema.json",
   "title": "Venue Profile",
-  "description": "#394 scholar-declared venue profile (spec docs/design/2026-06-10-394-submission-package-verifier-spec.md §4). The Family B comparison source for scripts/verify_submission_package.py --venue-profile. STANDALONE schema — never embedded in the passport entry schema (the Invariant 11 pattern). Declared values ONLY: the profile is never scraped or inferred from the journal name (the R-L3-2-D no-inference mirror) — a check whose field is null/absent reports NOT-CHECKED, never a guessed limit. Collected (optionally) at intake Step 3 when a target journal is named; storable and re-feedable across runs like any declared input.",
+  "description": "#394 scholar-declared venue profile (spec dev/design/2026-06-10-394-submission-package-verifier-spec.md §4). The Family B comparison source for scripts/verify_submission_package.py --venue-profile. STANDALONE schema — never embedded in the passport entry schema (the Invariant 11 pattern). Declared values ONLY: the profile is never scraped or inferred from the journal name (the R-L3-2-D no-inference mirror) — a check whose field is null/absent reports NOT-CHECKED, never a guessed limit. Collected (optionally) at intake Step 3 when a target journal is named; storable and re-feedable across runs like any declared input.",
   "type": "object",
   "additionalProperties": false,
   "required": [

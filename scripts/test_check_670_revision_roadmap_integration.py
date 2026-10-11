@@ -202,7 +202,7 @@ def test_author_facing_rank_or_time_presentation_fails(
 
 def test_required_documentation_pointer_removal_fails(tmp_path: Path) -> None:
     root = _tree(tmp_path)
-    relative = Path("docs/design/2026-08-10-670-non-ranking-revision-roadmap-spec.md")
+    relative = Path("dev/design/2026-08-10-670-non-ranking-revision-roadmap-spec.md")
     _replace(
         root,
         relative,

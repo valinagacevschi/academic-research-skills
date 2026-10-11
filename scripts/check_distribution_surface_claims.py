@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 """Distribution-surface claim discipline lint (#753).
 
-The #745 capability matrix pins README claim anchors, and version-consistency
-invariant 8 binds the plugin.json agent-count number to the tree — but the
+Version-consistency binds the plugin.json agent-count number to the tree — but the
 2026-08-17 ISO 42001-spirit audit (T-1) found the marketing surfaces
 themselves (`.codex-plugin/plugin.json` / `.agents/plugins/marketplace.json`
 description fields) sat outside every lock, so their language had silently
@@ -67,12 +66,10 @@ if str(_SCRIPTS_DIR) not in sys.path:
     sys.path.insert(0, str(_SCRIPTS_DIR))
 
 from check_agents_mirror_sync import MIRRORS  # noqa: E402
-from check_stage_capability_matrix import (  # noqa: E402
-    _MEASURED_LICENSED_STEMS,
-    _NEVER_LICENSED_STEMS,
-    _PERCENT_RE,
-)
-from check_version_consistency import AGENT_CLAIM_RE  # noqa: E402
+_NEVER_LICENSED_STEMS = ("guarantee", "proven", "state-of-the-art", "state of the art")
+_MEASURED_LICENSED_STEMS = ("improv", "outperform")
+_PERCENT_RE = re.compile(r"\d+(?:\.\d+)?\s*(?:%|percent)")
+AGENT_CLAIM_RE = re.compile(r"(\d+)(?:-agent\b|\s+prompt\s+roles\b)")
 
 REPO_ROOT = _SCRIPTS_DIR.parent
 
@@ -147,7 +144,7 @@ def _check_description(surface: str, value, errors: list[str]) -> None:
                 f"D3: {surface} description contains unlicensed claim "
                 f"language ({label!r}) — distribution surfaces must stay "
                 f"within the evidence record "
-                f"(docs/STAGE_CAPABILITY_MATRIX.md); see #753"
+                f"(the declared evidence ceiling); see #753"
             )
     # _PERCENT_RE spells "percent" lowercase and its matrix caller lowercases
     # its input first — mirror that here so "31 Percent" cannot slip through.

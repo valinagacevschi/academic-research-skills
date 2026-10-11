@@ -11,7 +11,7 @@
     "issue": {"const": 582},
     "phase_status": {"const": "design_and_synthetic_seed_only"},
     "content_class": {"type": "string", "minLength": 20},
-    "authority_design_ref": {"const": "docs/design/2026-08-13-582-role-topology-utility-design.md"},
+    "authority_design_ref": {"const": "dev/design/2026-08-13-582-role-topology-utility-design.md"},
     "invocation_adapter_ref": {"const": "evals/heldout/role_topology_utility/invocation_adapter.md"},
     "task_classes": {"type": "array", "minItems": 2, "maxItems": 2, "items": {"$ref": "#/$defs/taskClass"}},
     "model_contract": {"$ref": "#/$defs/modelContract"},

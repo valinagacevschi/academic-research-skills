@@ -17,7 +17,7 @@ guess pending empirical tuning (spec OQ-1, deferred).
 Concurrency: SQLite WAL mode (single-writer-many-readers). The audit pipeline
 is single-process; multi-user shared cache is out of scope (spec Delta 2).
 
-Spec: docs/design/2026-05-21-v3.10-182-promote-citation-gate-spec.md §2 Delta 2.
+Spec: dev/design/2026-05-21-v3.10-182-promote-citation-gate-spec.md §2 Delta 2.
 """
 from __future__ import annotations
 
@@ -30,7 +30,7 @@ from pathlib import Path
 from typing import Any
 
 # Spec OQ-1: 90-day window is a guess, deferred for empirical tuning.
-# Also documented user-facing in docs/DATA_FLOWS.md and docs/SETUP.md —
+# Also documented in docs/SETUP.md —
 # update both when tuning.
 _TTL_DAYS = 90
 
@@ -40,7 +40,7 @@ _TTL_DAYS = 90
 # is visible exactly where it is used. 0 disables the advisory. Advisory-only —
 # never a gate input.
 _STALE_ADVISORY_ENV = "ARS_CACHE_STALE_ADVISORY_DAYS"
-# Default also documented in docs/DATA_FLOWS.md — update both when tuning.
+# Default is documented in docs/SETUP.md.
 _STALE_ADVISORY_DEFAULT_DAYS = 30
 
 

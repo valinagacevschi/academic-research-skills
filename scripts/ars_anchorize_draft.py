@@ -2,7 +2,7 @@
 """Anchorize a draft: stamp block markers + emit the block manifest.
 
 #89 Item 7 Slice A. Normative source:
-`docs/design/2026-06-10-390-diff-patch-revision-mode-spec.md` §3.1.
+`dev/design/2026-06-10-390-diff-patch-revision-mode-spec.md` §3.1.
 
 What this script owns (and the LLM never does): block-ID assignment.
 It stamps every unlabeled block with a fresh `<!--block:BNNNN-->` marker

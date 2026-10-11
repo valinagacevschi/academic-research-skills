@@ -19,7 +19,7 @@ from scripts.check_heldout_measurement_report import validate_report
 REPO_ROOT = Path(__file__).resolve().parents[1]
 SUITE = Path(guard.SUITE_REL)
 FIXTURES = Path("scripts/fixtures/revision_claim_drift_v2")
-DESIGN = Path("docs/design/2026-08-10-679-revision-claim-drift-suite-v2-spec.md")
+DESIGN = Path("dev/design/2026-08-10-679-revision-claim-drift-suite-v2-spec.md")
 MEASUREMENT_SCHEMA = Path("evals/heldout/measurement_report.schema.json")
 EXECUTION_SCHEMA = Path("evals/heldout/execution_manifest.schema.json")
 LADDER = Path("shared/references/claim_strength_ladder.md")

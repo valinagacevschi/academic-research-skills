@@ -208,7 +208,7 @@ EXPERIMENTS = (
     ),
 )
 ASSET_PATHS = (
-    "docs/design/2026-08-13-659-within-session-ideation-diversity-design.md",
+    "dev/design/2026-08-13-659-within-session-ideation-diversity-design.md",
     "evals/heldout/within_session_ideation_diversity/README.md",
     "evals/heldout/within_session_ideation_diversity/heldout_set.json",
     "evals/heldout/within_session_ideation_diversity/heldout_set.schema.json",

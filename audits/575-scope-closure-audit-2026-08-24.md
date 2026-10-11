@@ -14,7 +14,7 @@ substitute for the preregistered human-expert evaluation.
 
 | #575 obligation | Repository evidence | Status |
 |---|---|---|
-| Author-confirmed target is authoritative; no target means an explicit field-general fallback | `docs/design/2026-08-08-683-review-target-context-spec.md`, the three review-target schemas, `scripts/resolve_review_target_context.py`, and focused tests | **Implemented** |
+| Author-confirmed target is authoritative; no target means an explicit field-general fallback | `dev/design/2026-08-08-683-review-target-context-spec.md`, the three review-target schemas, `scripts/resolve_review_target_context.py`, and focused tests | **Implemented** |
 | Criteria are partitioned by authority, provenance/freshness aware, and digest bound | `shared/contracts/review_target/criteria_registry.schema.json` and resolver validation | **Mechanism implemented** |
 | The live registry externalizes standards for a declared discipline, exact venue/track/type, and reporting/design overlay | `shared/review_criteria_registry.json` contains four `broad_field_fallback` rows; `official_venue_type`, `field_society_standard`, and `reporting_design_overlay` each contain zero rows | **OPEN — scope gap** |
 | Formative planning, internal evaluation, and external review bind to the same resolved pointers/digest | `shared/contracts/review_target/review_criteria_binding_manifest.schema.json`, `scripts/review_criteria_binding.py`, three-consumer integration guards, and #684 tests | **Mechanically implemented/tested** |

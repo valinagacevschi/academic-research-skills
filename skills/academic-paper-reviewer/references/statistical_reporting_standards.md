@@ -408,7 +408,7 @@ Step 7: Produce the criterion-bound completeness judgement and narrative synthes
 > a fully conforming receipt built on wrong arithmetic is still wrong.
 > Correctness is decided by human adjudication against the four-verdict
 > scale (`VERIFIED` / `CLAIM_ONLY` / `MISCOMPUTED` / `MISSED`) defined in
-> `docs/design/2026-08-02-610-statistical-recompute-baseline-spec.md` §7.1.
+> `dev/design/2026-08-02-610-statistical-recompute-baseline-spec.md` §7.1.
 > Everything in this section is a bounded aid to that human judgment, never
 > a substitute for it.
 

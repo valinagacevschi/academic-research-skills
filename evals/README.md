@@ -41,6 +41,6 @@ Run `python -m scripts.check_evals_gold_set evals/gold/<task>` to validate any g
 
 ## Provenance
 
-- Phase 1a (citation-extraction gold set) + Phase 1b (`run_evals.py` harness + lift gate): v3.10 #184, spec `docs/design/2026-05-21-v3.10-184-extend-eval-harness-spec.md`
-- RQ framing patterns: Kong #257 idea-diversity advisory, spec `docs/design/2026-05-28-kong-257-idea-diversity-coverage-gap-advisory.md`
+- Phase 1a (citation-extraction gold set) + Phase 1b (`run_evals.py` harness + lift gate): v3.10 #184, spec `dev/design/2026-05-21-v3.10-184-extend-eval-harness-spec.md`
+- RQ framing patterns: Kong #257 idea-diversity advisory, spec `dev/design/2026-05-28-kong-257-idea-diversity-coverage-gap-advisory.md`
 - Phase 2 (status + summarization): scheduled post-#183 ship

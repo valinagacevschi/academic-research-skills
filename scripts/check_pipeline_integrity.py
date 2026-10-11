@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Advisory verifier for ARS pipeline phase scope (v3.9.2).
 
-Spec: docs/design/2026-05-18-ars-v3.9.2-phase-boundary-spec.md Phase 4
+Spec: dev/design/2026-05-18-ars-v3.9.2-phase-boundary-spec.md Phase 4
 Issue: #133 (phase scope inflation hot-fix)
 Forward note: v3.10 active conductor (#134) replaces this with deterministic
 provenance-based verification via task envelope; this v3.9.2 advisory is
@@ -269,7 +269,7 @@ def format_text(report: Report) -> str:
 
     lines.append("")
     lines.append("Reminder: this output is ADVISORY. Findings do NOT block any workflow.")
-    lines.append("See docs/design/2026-05-18-ars-v3.9.2-phase-boundary-spec.md for rationale.")
+    lines.append("See dev/design/2026-05-18-ars-v3.9.2-phase-boundary-spec.md for rationale.")
     return "\n".join(lines)
 
 

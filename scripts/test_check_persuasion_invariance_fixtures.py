@@ -217,7 +217,7 @@ class PersuasionInvarianceFixtureTests(unittest.TestCase):
         self.assert_fails("1. index missing top-level keys")
 
     def test_wrong_spec_authority_fails(self) -> None:
-        self.index["spec_authority"] = "docs/design/some-other-spec.md"
+        self.index["spec_authority"] = "dev/design/some-other-spec.md"
         self.assert_fails("1. index spec_authority is")
 
     def test_wrong_issue_fails(self) -> None:

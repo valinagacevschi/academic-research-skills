@@ -1518,7 +1518,7 @@ def validate_prospective_measurement(
 def _check_docs(root: Path) -> None:
     readme_path = _safe_file(root, f"{SUITE_REL}/README.md", "suite README")
     design_path = _safe_file(
-        root, "docs/design/2026-08-10-679-revision-claim-drift-suite-v2-spec.md", "v2 design"
+        root, "dev/design/2026-08-10-679-revision-claim-drift-suite-v2-spec.md", "v2 design"
     )
     readme = readme_path.read_text(encoding="utf-8")
     design = design_path.read_text(encoding="utf-8")

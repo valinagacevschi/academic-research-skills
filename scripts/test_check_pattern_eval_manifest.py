@@ -71,7 +71,7 @@ def _well_formed_integration_doc() -> dict:
             "expected_acknowledgement_finding_ids": ["A3-finding-1", "C2-finding-1"],
         },
         "rationale_doc": (
-            "docs/design/2026-04-30-ars-v3.6.7-step-6-orchestrator-hooks-spec.md"
+            "dev/design/2026-04-30-ars-v3.6.7-step-6-orchestrator-hooks-spec.md"
             "#73-chapter-level-integration-fixture"
         ),
     }

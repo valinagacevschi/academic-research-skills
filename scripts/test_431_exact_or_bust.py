@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """#431 — exact-title-or-bust acceptance regression tests.
 
-The v5 architecture pivot (spec docs/design/2026-06-13-431-title-match-hardening-spec.md
+The v5 architecture pivot (spec dev/design/2026-06-13-431-title-match-hardening-spec.md
 §0.12): a NON-exact title is never promoted to `matched` on title-similarity +
 year/author alone — that high-overlap-same-author signal is the shared signature
 of an author's own related-but-distinct works (a correction and its original, a

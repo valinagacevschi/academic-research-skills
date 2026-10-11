@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Tests for the persistent verification cache (Delta 2).
 
-Spec: docs/design/2026-05-21-v3.10-182-promote-citation-gate-spec.md §2 Delta 2.
+Spec: dev/design/2026-05-21-v3.10-182-promote-citation-gate-spec.md §2 Delta 2.
 
 The cache is a local SQLite-backed store keyed by
 (citation_key, resolver_name, query_form). All tests point

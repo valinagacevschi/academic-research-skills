@@ -15,7 +15,7 @@ writing `submission_verification_report.json` (validating against
 shared/contracts/submission/submission_verification_report.schema.json) plus a
 human-readable summary to stdout.
 
-Design contract (spec docs/design/2026-06-10-394-submission-package-verifier-spec.md):
+Design contract (spec dev/design/2026-06-10-394-submission-package-verifier-spec.md):
 
 - Detection is unconditional; terminality is the policy evaluator's job. This
   script NEVER reads `terminal_policies` (§5.3) — `policy_slug` is emitted null.

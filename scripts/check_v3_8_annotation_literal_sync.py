@@ -26,7 +26,7 @@ carry a runtime `({violated_constraint_id})` interpolation that the
 formatter prose cannot duplicate verbatim — the prefix up to but not
 including the interpolation hole is the contract.
 
-Spec: docs/design/2026-05-15-issue-103-claim-alignment-audit-spec.md §5.
+Spec: dev/design/2026-05-15-issue-103-claim-alignment-audit-spec.md §5.
 
 Lint exit codes:
   0 = pass (all five HIGH-WARN annotation prefixes present in formatter).

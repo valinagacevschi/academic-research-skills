@@ -1,6 +1,6 @@
 """Tests for v3.7.3 Three-Layer Citation lint.
 
-Spec: docs/design/2026-05-12-ars-v3.7.3-claim-faithfulness-and-contaminated-source-spec.md §3.1
+Spec: dev/design/2026-05-12-ars-v3.7.3-claim-faithfulness-and-contaminated-source-spec.md §3.1
 External motivation: Zhao et al. arXiv:2605.07723 (2026-05).
 """
 from __future__ import annotations

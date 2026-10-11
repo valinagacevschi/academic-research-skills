@@ -2,7 +2,7 @@
 """Apply a revision patch to an anchored draft — two-phase, fail-closed.
 
 #89 Item 7 Slice A. Normative source:
-`docs/design/2026-06-10-390-diff-patch-revision-mode-spec.md` §3.3
+`dev/design/2026-06-10-390-diff-patch-revision-mode-spec.md` §3.3
 (deterministic apply), §3.2 (patch document constraints).
 
 **Phase 1 — validate everything, touch nothing.** Schema-validate the

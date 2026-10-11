@@ -6,7 +6,7 @@ from tempfile import TemporaryDirectory
 from tests.test_helpers import run_script
 
 SCRIPT = Path(__file__).resolve().parent / "validate_compliance_fixtures.py"
-REAL_FIXTURES = Path(__file__).resolve().parent.parent / "examples" / "compliance"
+REAL_FIXTURES = Path(__file__).resolve().parent.parent / "tests" / "fixtures" / "compliance"
 
 
 class TestValidateComplianceFixtures(unittest.TestCase):

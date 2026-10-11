@@ -20,7 +20,7 @@ arXiv-specific differences from the Crossref/OpenAlex siblings:
     (https://info.arxiv.org/help/api/tou.html), so `_ARXIV_MIN_INTERVAL`
     is 3.0s.
 
-Delta 1 of docs/design/2026-05-21-v3.10-182-promote-citation-gate-spec.md.
+Delta 1 of dev/design/2026-05-21-v3.10-182-promote-citation-gate-spec.md.
 """
 from __future__ import annotations
 

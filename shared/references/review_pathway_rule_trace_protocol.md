@@ -12,7 +12,7 @@ Normative contracts:
 - `shared/contracts/human_subjects/irb_context_record.schema.json`
 - `shared/contracts/human_subjects/authority_profile_registry.schema.json`
 - `shared/contracts/human_subjects/resolved_authority_context.schema.json`
-- `docs/design/2026-08-11-669-review-pathway-rule-trace-spec.md`
+- `dev/design/2026-08-11-669-review-pathway-rule-trace-spec.md`
 
 ## Fixed result and non-authorization boundary
 

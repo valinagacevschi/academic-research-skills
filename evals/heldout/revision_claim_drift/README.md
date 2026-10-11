@@ -89,7 +89,7 @@ excluded from that lock solely so this protocol can be recorded. A future row op
 into [`adjudication_rubric_v2.md`](adjudication_rubric_v2.md) only by
 pre-registering its exact hash from
 [`rubric_amendments.json`](rubric_amendments.json). The complete frozen design is
-[`docs/design/2026-08-10-679-revision-claim-drift-suite-v2-spec.md`](../../../docs/design/2026-08-10-679-revision-claim-drift-suite-v2-spec.md).
+[`dev/design/2026-08-10-679-revision-claim-drift-suite-v2-spec.md`](../../../dev/design/2026-08-10-679-revision-claim-drift-suite-v2-spec.md).
 
 ### v2 subject-context isolation protocol (prospective)
 

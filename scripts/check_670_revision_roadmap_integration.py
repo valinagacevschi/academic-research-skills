@@ -59,8 +59,8 @@ LEGACY_APPLY_RUNTIME = Path("scripts/legacy/ars_apply_revision_patch_v1_0.py")
 
 RUNTIME_HASHES = {
     ROADMAP_RUNTIME: "5341358d489a550b56f0e7efde850c551b6d9df41106b0462e2f804ab4de9998",
-    APPLY_RUNTIME: "9aa84eb23c1b10f5c23008ff51d2feb6e64440834b48b090c833fe44669014b3",
-    RE_REVIEW_RUNTIME: "b5ce94487857d2dc2c692f46efc671536a96664337fa1bcd76ffc3694f3f5346",
+    APPLY_RUNTIME: "61099f2a3bec0cf6b1aa0981ea901d18603f9f9d7559b56fda714bc7fca32eaa",
+    RE_REVIEW_RUNTIME: "fc3458281a374797f5f406f9158f4455c3518d24bfaad0b236b164a858b6ce16",
 }
 
 # #670 originally froze the five reviewer finding producers. Subsequent
@@ -97,7 +97,7 @@ AUTHOR_RANK_RE = re.compile(
 )
 
 REQUIRED_POINTERS = {
-    Path("docs/design/2026-08-10-670-non-ranking-revision-roadmap-spec.md"): (
+    Path("dev/design/2026-08-10-670-non-ranking-revision-roadmap-spec.md"): (
         "immutable reviewer-owned core",
         "author-adjudication/1.0",
         "claim-surface-manifest/1.0",

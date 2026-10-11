@@ -383,7 +383,7 @@ ARS pipeline runs in 6 phases. Two invocation modes:
 
 **Mode B — phase-by-phase (cross-session resume):** User invokes one agent per phase across sessions for long-running projects. Common pattern via `ARS_PASSPORT_RESET=1` + `resume_from_passport=<hash>` (see `academic-pipeline/references/passport_as_reset_boundary.md`).
 
-In Mode B, **single-phase agents (Bucket A per `docs/design/2026-05-18-ars-v3.9.2-agent-phase-classification.md`) stay strictly within their assigned phase for writes**. Reads from upstream phases are allowed. Multi-phase agents (Bucket B: `devils_advocate_agent`, `report_compiler_agent`) do exactly the work specified by the caller's invocation for that phase — no extension to other phases in the same call.
+In Mode B, **single-phase agents (Bucket A per `dev/design/2026-05-18-ars-v3.9.2-agent-phase-classification.md`) stay strictly within their assigned phase for writes**. Reads from upstream phases are allowed. Multi-phase agents (Bucket B: `devils_advocate_agent`, `report_compiler_agent`) do exactly the work specified by the caller's invocation for that phase — no extension to other phases in the same call.
 
 Routing into Mode B requires explicit user signal — `$skill-name <mode>` or `[direct-mode]` prefix. Ambiguous cross-phase input defaults to clarification per the routing core near the top of this file (Step 2) + `shared/references/intent_clarification_protocol.md`.
 
@@ -622,7 +622,6 @@ See `academic-pipeline/SKILL.md` for the complete workflow.
 | `references/socratic_mode_protocol.md` | Full 5-layer Socratic dialogue flow, management rules, auto-end conditions | socratic_mentor, research_question |
 | `references/systematic_review_protocol.md` | Full PRISMA pipeline, checkpoint rules, meta-analysis procedures | risk_of_bias, meta_analysis, bibliography, report_compiler |
 | `references/cross_agent_quality_definitions.md` | Peer-reviewed source tiers, currency standards, severity definitions | all agents |
-| `references/changelog.md` | Full version history | — |
 
 ---
 
@@ -718,6 +717,3 @@ deep-research (systematic-review) + academic-paper -> PRISMA systematic review p
 
 ---
 
-## Version History
-
-> See `references/changelog.md` for full version history.

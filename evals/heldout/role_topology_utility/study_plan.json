@@ -5,7 +5,7 @@
   "issue": 582,
   "phase_status": "design_and_synthetic_seed_only",
   "content_class": "repository-owned synthetic manuscripts, evidence summaries, and revision briefs",
-  "authority_design_ref": "docs/design/2026-08-13-582-role-topology-utility-design.md",
+  "authority_design_ref": "dev/design/2026-08-13-582-role-topology-utility-design.md",
   "invocation_adapter_ref": "evals/heldout/role_topology_utility/invocation_adapter.md",
   "task_classes": [
     {

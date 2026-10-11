@@ -5,7 +5,7 @@ carrying the v3.9.0 client fixtures forward would add test noise without coverin
 the new risk). Covers the deep-merge idempotent seed matrix + codex Q3's added
 structural / malformed cases.
 
-Spec: docs/design/2026-05-31-ars-v3.10-policy-layer-rescope-spec.md §3 PR-B item 12
+Spec: dev/design/2026-05-31-ars-v3.10-policy-layer-rescope-spec.md §3 PR-B item 12
       + §4 acceptance #7.
 """
 from __future__ import annotations

@@ -77,6 +77,6 @@ See `scripts/openalex_client.py`. The client class `OpenAlexClient` exposes `doi
 
 ## Cross-references
 
-- Spec: `docs/design/2026-05-17-ars-v3.9.0-cross-index-triangulation-measurement-spec.md` §3.4
+- Spec: `dev/design/2026-05-17-ars-v3.9.0-cross-index-triangulation-measurement-spec.md` §3.4
 - Mirror template: `deep-research/references/semantic_scholar_api_protocol.md`
 - Sibling protocol: `deep-research/references/crossref_api_protocol.md`

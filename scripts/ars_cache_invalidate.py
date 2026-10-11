@@ -6,7 +6,7 @@ deliverable 6). Removes every cached resolver entry (all resolvers, all query
 forms) for the named citation_key so the next pipeline run re-verifies it live.
 Idempotent: invalidating a citation with no cached rows succeeds as a no-op.
 
-Spec: docs/design/2026-05-21-v3.10-182-promote-citation-gate-spec.md §2 Delta 2.
+Spec: dev/design/2026-05-21-v3.10-182-promote-citation-gate-spec.md §2 Delta 2.
 """
 from __future__ import annotations
 

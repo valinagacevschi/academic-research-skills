@@ -1,6 +1,6 @@
 # Re-review Persuasion-Invariance Paired Controls (#576 Spec B §14, v0.1)
 
-Issue: #576. Authority: `docs/design/2026-07-27-576-spec-b-re-review-precommitment-contract-spec.md` §14.
+Issue: #576. Authority: `dev/design/2026-07-27-576-spec-b-re-review-precommitment-contract-spec.md` §14.
 
 > **Archived contract boundary:** v0.1 is frozen evidence for re-review contract
 > 1.0. Its P-3 no-original arm and `first_link_not_run` expectations are not

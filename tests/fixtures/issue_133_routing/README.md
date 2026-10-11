@@ -1,6 +1,6 @@
 # Issue #133 — L1 Routing Behavioral Smoke Test Fixtures (v3.9.2)
 
-**Spec:** `docs/design/2026-05-18-ars-v3.9.2-phase-boundary-spec.md` Phase L1.4
+**Spec:** `dev/design/2026-05-18-ars-v3.9.2-phase-boundary-spec.md` Phase L1.4
 **Issue:** #133 (phase scope inflation hot-fix)
 **Status:** v3.9.2 hot-fix; behavioral smoke tests, NOT deterministic unit tests
 

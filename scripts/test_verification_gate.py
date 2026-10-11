@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Tests for the verification_gate API (Delta 5).
 
-Spec: docs/design/2026-05-21-v3.10-182-promote-citation-gate-spec.md §2 Delta 5.
+Spec: dev/design/2026-05-21-v3.10-182-promote-citation-gate-spec.md §2 Delta 5.
 
 verify_citation composes the four resolvers, maps each resolver's execution to a
 {status, queried_by} outcome, derives lookup_verified via the Delta 4 reducer

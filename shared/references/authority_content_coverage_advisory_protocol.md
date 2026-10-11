@@ -13,7 +13,7 @@ Canonical artifacts:
 - `scripts/build_content_coverage_advisory.py`
 - `shared/references/submission_packet_manifest_protocol.md`
 - `shared/references/evidence_row_protocol.md`
-- `docs/design/2026-08-09-681-authority-content-coverage-advisory-spec.md`
+- `dev/design/2026-08-09-681-authority-content-coverage-advisory-spec.md`
 
 The schemas govern closed field shape. This protocol governs replay,
 noninterference, and safe consumption.

@@ -1,7 +1,7 @@
 """D4-c uncited-assertion token-detector tests (T-U1..T-U5).
 
 Per spec §7.4 in
-docs/design/2026-05-15-issue-103-claim-alignment-audit-spec.md.
+dev/design/2026-05-15-issue-103-claim-alignment-audit-spec.md.
 
 Spec §7 names the file `tests/test_uncited_assertion.py`; the repo
 convention puts pytest-discovered tests under `scripts/test_*.py`

@@ -1,7 +1,7 @@
 {
   "set_version": "0.1.0",
   "issue": 576,
-  "spec_authority": "docs/design/2026-07-27-576-spec-b-re-review-precommitment-contract-spec.md",
+  "spec_authority": "dev/design/2026-07-27-576-spec-b-re-review-precommitment-contract-spec.md",
   "spec_section": "14",
   "measured_surface": "ARCHIVED re-review contract 1.0 at Pipeline Stage 3'; no-original and first_link_not_run arms are historical and are not valid current 1.1 emissions after #670",
   "harness": {

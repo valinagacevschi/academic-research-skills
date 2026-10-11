@@ -101,7 +101,7 @@ def test_example_and_design_doc_cover_boundaries() -> None:
     assert "DISTRIBUTIONAL_SKEW_ADVISORY" in example
     assert "not say the idea is generic or bad" in example
 
-    design = _read("docs/design/2026-05-28-kong-257-idea-diversity-coverage-gap-advisory.md")
+    design = _read("dev/design/2026-05-28-kong-257-idea-diversity-coverage-gap-advisory.md")
     assert "## #134 Boundary" in design
     assert "What mode should we be in?" in design
     assert "Does this proposed RQ wording resemble an AI-typical shell?" in design

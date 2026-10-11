@@ -1,6 +1,6 @@
 """Tests for ARS v3.7.1 trust-chain frontmatter lint (Step 1 of v3.7.1 impl).
 
-Spec: docs/design/2026-04-30-ars-v3.6.8-trust-provenance-and-drift-transparency-spec.md
+Spec: dev/design/2026-04-30-ars-v3.6.8-trust-provenance-and-drift-transparency-spec.md
       § 3.1 D1, § Step 1
 
 Each spec firm rule gets at least one positive (valid combination passes)
@@ -322,7 +322,7 @@ def test_check_payload_clean_passport_returns_empty() -> None:
 
 
 # ---------- v3.10 venue_type / venue_type_provenance / venue_type_source ----------
-# Spec docs/design/2026-05-31-ars-v3.10-policy-layer-rescope-spec.md §3 PR-B items 2-4
+# Spec dev/design/2026-05-31-ars-v3.10-policy-layer-rescope-spec.md §3 PR-B items 2-4
 # + §4 acceptance #2. Positive + negative for every pair-dependency branch, plus
 # mutation tests (trivial accept-all replacement → violation FAILs) per
 # feedback_schema_mutation_test_for_constraints.

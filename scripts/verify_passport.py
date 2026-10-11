@@ -17,7 +17,7 @@ DIAGNOSTIC output (warned on stderr, not a real prose join). The real
 {citation_key: ref_slug} + {ref_slug: anchor} joins are wired by the Stage 4->5
 pipeline / formatter batch, not by this standalone tool.
 
-Spec: docs/design/2026-05-21-v3.10-182-promote-citation-gate-spec.md §2 Delta 5.
+Spec: dev/design/2026-05-21-v3.10-182-promote-citation-gate-spec.md §2 Delta 5.
 """
 from __future__ import annotations
 

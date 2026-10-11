@@ -18,7 +18,7 @@ ports, and (v3.6.7+) cross-model audit artifact pipelines.
   lints/tests (`conformance_pinned_by`, D4-style), and `claim_anchors` bind
   top-level capability sentences verbatim so rewording a claim without
   touching the matrix fails CI.
-- `docs/STAGE_CAPABILITY_MATRIX.md` is GENERATED from the matrix
+- `shared/contracts/capability/stage_capability_matrix.json` is the machine-readable capability matrix
   (`scripts/check_stage_capability_matrix.py --render`) and byte-pinned by the
   same lint. The matrix indexes evidence, it does not create it: a row licenses
   at most its recorded `max_licensed_claim`, never more.
@@ -129,7 +129,7 @@ second branch, and shows compact summaries only at the frozen Stage 1, 2.5,
 
 Runtime: `scripts/pdf_read_preflight.py` and
 `scripts/pdf_content_classifier_worker.py`. Frozen opt-in scope and residual risk:
-`docs/design/2026-08-13-512-pdf-content-classification-sandbox-spec.md`.
+`dev/design/2026-08-13-512-pdf-content-classification-sandbox-spec.md`.
 
 ## Claim-standing candidate ledger (#655 Track A)
 
@@ -213,7 +213,7 @@ Sprint contract templates for reviewer hard-gate orchestration.
 
 Schema: `shared/sprint_contract.schema.json` (Schema 13).
 Validator: `scripts/check_sprint_contract.py`.
-Spec: `docs/design/2026-04-23-ars-v3.6.2-sprint-contract-design.md`.
+Spec: `dev/design/2026-04-23-ars-v3.6.2-sprint-contract-design.md`.
 Protocol: `academic-paper-reviewer/references/sprint_contract_protocol.md`.
 
 ### Shipped templates
@@ -278,7 +278,7 @@ Schemas for Material Passport input ports.
   recording one cross-model audit run per downstream-agent deliverable. Two lifecycle
   states (proposal / persisted) share the schema via `oneOf`. Cross-artifact invariants
   are enforced by `scripts/check_audit_artifact_consistency.py`. Spec:
-  `docs/design/2026-04-30-ars-v3.6.7-step-6-orchestrator-hooks-spec.md` §3.1-§3.2.
+  `dev/design/2026-04-30-ars-v3.6.7-step-6-orchestrator-hooks-spec.md` §3.1-§3.2.
 - `passport/version_records.schema.json` (Kong #258) — optional
   `phase2_investigation/version_records.yaml` sidecar for academic citation version
   families (preprint -> proceedings -> journal extension). This is deliberately a
@@ -547,7 +547,7 @@ sidecar, and bundle, and copies
 author fields exactly into Schema 11. Version 1.0 is archived under
 `re_review/legacy/v1_0/`; mixed chains are invalid.
 
-Spec: `docs/design/2026-08-10-670-non-ranking-revision-roadmap-spec.md`.
+Spec: `dev/design/2026-08-10-670-non-ranking-revision-roadmap-spec.md`.
 
 ## Human-subjects correspondence contract (#668)
 
@@ -569,7 +569,7 @@ python scripts/check_committee_correspondence.py \
 The checker recomputes file/segment hashes, contiguous byte coverage, exact
 comment-to-concern accounting, source order, full-permutation working views, and
 response-skeleton coverage. Spec:
-`docs/design/2026-08-08-668-committee-correspondence-spec.md`.
+`dev/design/2026-08-08-668-committee-correspondence-spec.md`.
 
 ## Human-subjects authority context (#666)
 
@@ -613,7 +613,7 @@ The resolver is standard-library-only, opens only named files, evaluates a close
 Strong-Kleene predicate AST, never infers a jurisdiction, and rejects duplicate
 JSON keys and non-finite numbers. Protocol:
 `shared/references/human_subjects_authority_protocol.md`. Spec:
-`docs/design/2026-08-09-666-human-subjects-authority-contract-spec.md`.
+`dev/design/2026-08-09-666-human-subjects-authority-contract-spec.md`.
 
 ## Human-subjects submission-packet manifest (#667)
 
@@ -683,7 +683,7 @@ a contract error. `render` requires the same inputs and exact replay, so a
 self-consistent but forged manifest digest is insufficient.
 
 Protocol: `shared/references/submission_packet_manifest_protocol.md`. Spec:
-`docs/design/2026-08-09-667-submission-packet-manifest-spec.md`.
+`dev/design/2026-08-09-667-submission-packet-manifest-spec.md`.
 
 ## Review-pathway rule trace (#669)
 
@@ -740,7 +740,7 @@ permits a pathway term only in the exact candidate grammar. Successful replay or
 lint never changes a readiness, authorization, acceptance, verdict, checkpoint,
 or workflow gate. Protocol:
 `shared/references/review_pathway_rule_trace_protocol.md`. Spec:
-`docs/design/2026-08-11-669-review-pathway-rule-trace-spec.md`.
+`dev/design/2026-08-11-669-review-pathway-rule-trace-spec.md`.
 
 ## Authority-profile content-coverage advisory (#681)
 
@@ -779,7 +779,7 @@ there is no render-all mode.
 
 Protocol:
 `shared/references/authority_content_coverage_advisory_protocol.md`. Spec:
-`docs/design/2026-08-09-681-authority-content-coverage-advisory-spec.md`.
+`dev/design/2026-08-09-681-authority-content-coverage-advisory-spec.md`.
 
 ## Tortured-phrase screening contracts (#660)
 
@@ -812,7 +812,7 @@ paper-mill production, contextual validity, or accuracy, and no result creates
 a marker, terminal gate, replacement text, or automatic rewrite. All corpus
 rows render in the one canonical `Bibliographic Integrity Advisories` section.
 
-Spec: `docs/design/2026-08-10-660-tortured-phrase-screening-spec.md`.
+Spec: `dev/design/2026-08-10-660-tortured-phrase-screening-spec.md`.
 
 ## Cross-document consistency advisory (#672)
 
@@ -852,7 +852,7 @@ routing. Any manuscript revision stales both and requires both to rerun.
 The final carrier has no score, pass/fail, gate, readiness, authorization,
 rewrite, ClaimIntent, consent/protocol duplicate, or clean-document meaning.
 Protocol: `shared/references/cross_document_consistency_advisory_protocol.md`.
-Spec: `docs/design/2026-08-10-672-cross-document-consistency-advisory-spec.md`.
+Spec: `dev/design/2026-08-10-672-cross-document-consistency-advisory-spec.md`.
 
 ## Audit artifact contracts (v3.6.7 Step 6)
 
@@ -873,7 +873,7 @@ orchestrator agent reads at every per-agent audit gate.
   consistency with `finding_counts` and `failure_reason` is lint-enforced per
   spec §3.7 A1 / A2 / A5 / A6.
 
-Spec: `docs/design/2026-04-30-ars-v3.6.7-step-6-orchestrator-hooks-spec.md` §3.
+Spec: `dev/design/2026-04-30-ars-v3.6.7-step-6-orchestrator-hooks-spec.md` §3.
 
 ## Review target contracts (#683)
 
@@ -919,7 +919,7 @@ python scripts/resolve_review_target_context.py \
 The resolver is standard-library-only and opens only the named context and registry
 inputs. It never reads manuscript content, infers a venue, averages interdisciplinary
 criteria, or applies adaptive numeric weights. Spec:
-`docs/design/2026-08-08-683-review-target-context-spec.md`.
+`dev/design/2026-08-08-683-review-target-context-spec.md`.
 
 ## Review criteria consumer binding (#684)
 
@@ -940,4 +940,4 @@ hashes artifacts itself, and has no model/API/network/clock/ambient-scan path.
 The manifest is workflow-conformance authority only: it never supplies a
 severity, verdict, checkpoint, or author triage. Operational protocol:
 `shared/references/review_criteria_consumer_protocol.md`. Frozen spec:
-`docs/design/2026-08-11-684-review-criteria-consumer-binding-spec.md`.
+`dev/design/2026-08-11-684-review-criteria-consumer-binding-spec.md`.

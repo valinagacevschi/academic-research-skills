@@ -1,6 +1,6 @@
 """Shared block parser for the diff/patch revision mode toolchain (#89 Item 7 Slice A).
 
-Normative source: `docs/design/2026-06-10-390-diff-patch-revision-mode-spec.md`
+Normative source: `dev/design/2026-06-10-390-diff-patch-revision-mode-spec.md`
 §3.1 (block segmentation, marker grammar, malformed-state rules,
 unsupported-construct rejection). Both `ars_anchorize_draft.py` and
 `ars_apply_revision_patch.py` import this module so segmentation can never

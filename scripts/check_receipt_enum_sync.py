@@ -25,7 +25,7 @@ import check_phase_conformance as phase  # noqa: E402
 import check_reviewer_sprint_prompt_sync as sync  # noqa: E402
 
 CANONICAL_REL = sync.CANONICAL_REL
-SPEC_REL = "docs/design/2026-08-02-610-statistical-recompute-baseline-spec.md"
+SPEC_REL = "dev/design/2026-08-02-610-statistical-recompute-baseline-spec.md"
 _BACKTICK_NAME_RE = re.compile(r"`([a-z0-9_]+)`")
 _ANGLE_ENUM_RES = {
     "procedure_id": re.compile(r"`procedure_id: <([^>]+)>`"),

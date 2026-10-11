@@ -1,7 +1,7 @@
 """Calibration-mode test for v3.8 claim_ref_alignment_audit_agent (T-C1..T-C3).
 
 Per spec §7.7 in
-docs/design/2026-05-15-issue-103-claim-alignment-audit-spec.md.
+dev/design/2026-05-15-issue-103-claim-alignment-audit-spec.md.
 
 Three-tier acceptance:
 

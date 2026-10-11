@@ -28,7 +28,7 @@ Exit codes:
     1   one or more invariant violations (printed to stdout, one per line)
     2   internal error (passport not found / malformed JSON / schema not found)
 
-See docs/design/2026-05-15-issue-103-claim-alignment-audit-spec.md
+See dev/design/2026-05-15-issue-103-claim-alignment-audit-spec.md
 §3.1-§3.5 and §6 for the full invariant catalogue.
 """
 from __future__ import annotations
@@ -1265,7 +1265,7 @@ def _check_constraint_violation_invariants(
 # Surfaces transient judge outages on the uncited path that pre-v3.8.2 were
 # silently substituted as NOT_VIOLATED. Mirrors INV-14 semantics on the
 # cited path but uses a dedicated aggregate because claim_audit_result.ref_slug
-# is required. See docs/design/2026-05-15-issue-103-claim-alignment-audit-spec.md §3.6.
+# is required. See dev/design/2026-05-15-issue-103-claim-alignment-audit-spec.md §3.6.
 # ---------------------------------------------------------------------------
 
 

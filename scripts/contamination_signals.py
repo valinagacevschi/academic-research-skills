@@ -6,8 +6,8 @@ by the migration tool. bibliography_agent computes these at ingest time;
 this module gives the migration tool the equivalent computation for
 post-hoc backfill on pre-v3.7.3 entries.
 
-Design: docs/design/2026-05-15-issue-105-contamination-signals-backfill-design.md
-Spec: docs/design/2026-05-12-ars-v3.7.3-claim-faithfulness-and-contaminated-source-spec.md §3.2
+Design: dev/design/2026-05-15-issue-105-contamination-signals-backfill-design.md
+Spec: dev/design/2026-05-12-ars-v3.7.3-claim-faithfulness-and-contaminated-source-spec.md §3.2
 
 Omission reason-provenance (#511 Part A): wherever a resolver's contract below
 says "caller MUST omit field" because of API DEGRADATION (an *Unavailable

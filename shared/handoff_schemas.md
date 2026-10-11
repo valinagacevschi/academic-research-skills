@@ -903,7 +903,7 @@ revision stales both. See
 
 Schema 9 gains an optional append-only `audit_artifact[]` ledger recording cross-model audit runs that gate the three v3.6.7 downstream agents (`synthesis_agent`, `research_architect_agent` survey-designer mode, `report_compiler_agent` abstract-only mode). Each entry conforms to [`shared/contracts/passport/audit_artifact_entry.schema.json`](contracts/passport/audit_artifact_entry.schema.json).
 
-The ledger stores only `persisted` entries — those merged by `pipeline_orchestrator_agent` after Layer 2 (JSONL schema) + Layer 3 (sidecar metadata) anti-fake-audit checks pass per the eleven gating checks at [`docs/design/2026-04-30-ars-v3.6.7-step-6-orchestrator-hooks-spec.md`](../docs/design/2026-04-30-ars-v3.6.7-step-6-orchestrator-hooks-spec.md) §5.2. Wrapper-emitted `proposal` entries live under `audit_artifacts/<run_id>.audit_artifact_entry.json` until orchestrator consumes them; they never reach the passport.
+The ledger stores only `persisted` entries — those merged by `pipeline_orchestrator_agent` after Layer 2 (JSONL schema) + Layer 3 (sidecar metadata) anti-fake-audit checks pass per the eleven gating checks at [`dev/design/2026-04-30-ars-v3.6.7-step-6-orchestrator-hooks-spec.md`](../dev/design/2026-04-30-ars-v3.6.7-step-6-orchestrator-hooks-spec.md) §5.2. Wrapper-emitted `proposal` entries live under `audit_artifacts/<run_id>.audit_artifact_entry.json` until orchestrator consumes them; they never reach the passport.
 
 ```yaml
 audit_artifact:
@@ -939,9 +939,9 @@ audit_artifact:
 - Multiple entries for the same `(stage, agent, deliverable_sha)` represent multiple audit rounds; orchestrator selects the latest by `verified_at` for verdict reads.
 - If `deliverable_sha` changes (deliverable mutated), prior entries become stale but remain as audit history; orchestrator only honors entries whose `deliverable_sha` matches the current deliverable.
 
-**This mirrors the v3.6.3 `reset_boundary[]` append-only pattern**: history preserved, freshness computed by ledger scan. Deletion or reordering is forbidden; lint at `scripts/check_audit_artifact_consistency.py` enforces the invariant family at [`docs/design/2026-04-30-ars-v3.6.7-step-6-orchestrator-hooks-spec.md`](../docs/design/2026-04-30-ars-v3.6.7-step-6-orchestrator-hooks-spec.md) §3.7.
+**This mirrors the v3.6.3 `reset_boundary[]` append-only pattern**: history preserved, freshness computed by ledger scan. Deletion or reordering is forbidden; lint at `scripts/check_audit_artifact_consistency.py` enforces the invariant family at [`dev/design/2026-04-30-ars-v3.6.7-step-6-orchestrator-hooks-spec.md`](../dev/design/2026-04-30-ars-v3.6.7-step-6-orchestrator-hooks-spec.md) §3.7.
 
-For the orchestrator-side gate procedure (Path A latest-by-`verified_at` selection, Path B proposal merge after Layer 2 + Layer 3 verification), the canonical contract is [`docs/design/2026-04-30-ars-v3.6.7-step-6-orchestrator-hooks-spec.md`](../docs/design/2026-04-30-ars-v3.6.7-step-6-orchestrator-hooks-spec.md) §5.6 (Path A/B fall-through with the §5.6 A1.5 superseding-proposal preflight) plus §5.2 (eleven Layer 2 + Layer 3 gating checks). Implementation lands as a subsection of `academic-pipeline/agents/pipeline_orchestrator_agent.md` (Phase 6.6 deliverable). For the resume-time re-verification semantics, see [`academic-pipeline/references/passport_as_reset_boundary.md`](../academic-pipeline/references/passport_as_reset_boundary.md).
+For the orchestrator-side gate procedure (Path A latest-by-`verified_at` selection, Path B proposal merge after Layer 2 + Layer 3 verification), the canonical contract is [`dev/design/2026-04-30-ars-v3.6.7-step-6-orchestrator-hooks-spec.md`](../dev/design/2026-04-30-ars-v3.6.7-step-6-orchestrator-hooks-spec.md) §5.6 (Path A/B fall-through with the §5.6 A1.5 superseding-proposal preflight) plus §5.2 (eleven Layer 2 + Layer 3 gating checks). Implementation lands as a subsection of `academic-pipeline/agents/pipeline_orchestrator_agent.md` (Phase 6.6 deliverable). For the resume-time re-verification semantics, see [`academic-pipeline/references/passport_as_reset_boundary.md`](../academic-pipeline/references/passport_as_reset_boundary.md).
 
 ### Experiment Provenance Intake (#260)
 
@@ -986,7 +986,7 @@ Schema 9 gains the **intake + alignment** layer for experiments — NOT an execu
 
 **Invariants** (lint-enforced in `scripts/check_claim_audit_consistency.py`): EP-INV-1 (experiment_id unique/passport) · EP-INV-2 (planned_experiment_ids resolve; rename + forward-reference guard) · EP-INV-3 (experiment ids ⟹ empirical; mixed literature+experiment allowed) · EP-INV-4 (declaration↔provenance symmetry) · EA-INV-1 (finding_id unique) · EA-INV-2 (alignment row references resolve; dangling id = structural FAIL, never a verdict). Shape-only validation of a single entry is also available via `scripts/check_experiment_provenance.py`.
 
-See [`docs/design/2026-06-08-260-experiment-provenance-intake-spec.md`](../docs/design/2026-06-08-260-experiment-provenance-intake-spec.md) for the full design (7 decisions D1–D7) and [`examples/passport_with_experiment_provenance.yaml`](../examples/passport_with_experiment_provenance.yaml) for a worked passport.
+The experiment provenance entry shape is defined by [`experiment_provenance_entry.schema.json`](contracts/passport/experiment_provenance_entry.schema.json), with a worked passport in [`passport_with_experiment_provenance.yaml`](../tests/fixtures/passport_with_experiment_provenance.yaml).
 
 ### Run-level lineage signal (v3.7.4)
 
@@ -1004,7 +1004,7 @@ slr_lineage: true   # any pipeline stage was deep-research in systematic-review 
 - Backward compat: passports written before v3.7.4 lack the field; renderer treats absence as `false` (cold-start path requiring explicit `mode_param='systematic-review'`). Identical to pre-v3.7.4 behavior.
 - G1 boundary: this is a passport-level (run-level provenance) field, distinct from corpus-entry-level fields. The §4.4 #11 G1 invariant scope is `literature_corpus_entry.schema.json` (corpus entry data schema, frozen by Decision Doc §2.1); passport-schema extensions follow the v3.6.3 / v3.6.4 / v3.6.7 precedent and are permitted per Decision Doc §4.4 #11.
 
-Spec: [`docs/design/2026-05-15-issue-111-slr-lineage-emission-design.md`](../docs/design/2026-05-15-issue-111-slr-lineage-emission-design.md). Conformance test: `scripts/test_slr_lineage_emission.py`.
+Spec: [`dev/design/2026-05-15-issue-111-slr-lineage-emission-design.md`](../dev/design/2026-05-15-issue-111-slr-lineage-emission-design.md). Conformance test: `scripts/test_slr_lineage_emission.py`.
 
 ### Claim-Faithfulness Audit Aggregates (v3.8)
 
@@ -1027,7 +1027,7 @@ v3.8 introduces six passport aggregates around the L3 (claim-faithfulness) audit
 
 Cross-field invariants (INV-1..INV-18 / M-INV-1..M-INV-4 / U-INV-1..U-INV-4 / D-INV-1..D-INV-4 / CV-INV-1..CV-INV-4 / S-INV-1..S-INV-4) are lint-enforced by `scripts/check_claim_audit_consistency.py` because the conditional matrix relating judgment / audit_status / defect_stage / ref_retrieval_method exceeds what JSON Schema can express. Audit-side producer: `claim_ref_alignment_audit_agent` (`academic-pipeline/agents/`). Consumer: `formatter_agent` REFUSE rules 6-10 (see v3.8 spec §5 mode flag rationale). Default OFF for v3.8.0 — ramp-on plan deferred to post-calibration evidence.
 
-Spec: [`docs/design/2026-05-15-issue-103-claim-alignment-audit-spec.md`](../docs/design/2026-05-15-issue-103-claim-alignment-audit-spec.md) + decision doc [`2026-05-15-issue-103-claim-alignment-audit-decision.md`](../docs/design/2026-05-15-issue-103-claim-alignment-audit-decision.md) (D1-D6 settled).
+Spec: [`dev/design/2026-05-15-issue-103-claim-alignment-audit-spec.md`](../dev/design/2026-05-15-issue-103-claim-alignment-audit-spec.md) + decision doc [`2026-05-15-issue-103-claim-alignment-audit-decision.md`](../dev/design/2026-05-15-issue-103-claim-alignment-audit-decision.md) (D1-D6 settled).
 
 ---
 

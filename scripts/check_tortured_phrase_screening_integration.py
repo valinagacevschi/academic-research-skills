@@ -47,7 +47,7 @@ CITED_MISSING_FIXTURE = Path(
     "scripts/fixtures/bibliographic_integrity_signals/"
     "tortured_phrase_v1_2_abstract_missing.json"
 )
-DESIGN_SPEC = Path("docs/design/2026-08-10-660-tortured-phrase-screening-spec.md")
+DESIGN_SPEC = Path("dev/design/2026-08-10-660-tortured-phrase-screening-spec.md")
 SIGNAL_PROTOCOL = Path("shared/bibliographic_integrity_signals.md")
 CONTRACT_README = Path("shared/contracts/README.md")
 INTEGRITY_PROTOCOL = Path("academic-pipeline/references/integrity_review_protocol.md")

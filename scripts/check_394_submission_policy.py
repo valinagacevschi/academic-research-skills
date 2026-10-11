@@ -4,7 +4,7 @@
 Runs alongside the other policy lints (check_v3_10_policy.py pattern).
 Verifies the slice-4 contract across the terminal-policies schema, the
 orchestrator prompt, the formatter prompt, the verifier script, and the
-report schema. Spec: docs/design/2026-06-10-394-submission-package-verifier-
+report schema. Spec: dev/design/2026-06-10-394-submission-package-verifier-
 spec.md §5.2/§5.3/§7.
 
 Invariants (plan D5, post-gate-1):

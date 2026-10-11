@@ -4,7 +4,7 @@
 Each test mutates a known-good anchor-table snippet in a known-bad way and
 asserts the validator reports the expected violation. The goal is to prove
 the validator catches each documented bad case in
-docs/design/2026-05-14-ai-disclosure-impl-spec.md §4.1 (policy_anchor_table
+dev/design/2026-05-14-ai-disclosure-impl-spec.md §4.1 (policy_anchor_table
 lint scope) and §4.4 #11 (G1 scope-narrowing).
 """
 from __future__ import annotations

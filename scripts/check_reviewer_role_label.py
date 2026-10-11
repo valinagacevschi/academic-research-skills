@@ -15,12 +15,7 @@ INTERNAL_ROLE = "eic"
 SERIALIZED_ROLE = "EIC"
 
 REQUIRED = {
-    "README.md": (
-        "(Journal-Fit Reviewer + 3 dynamic reviewers + Devil's Advocate)",
-        "full mode (Journal-Fit Reviewer + R1/R2/R3 + Devil's Advocate)",
-        "First-round review panel vs. contract-governed re-review dispatch boundary",
-    ),
-    "MODE_REGISTRY.md": (
+    "shared/references/mode_registry.md": (
         "Journal-Fit Reviewer quick assessment + key issues list",
     ),
     "shared/mode_spectrum.md": (
@@ -168,20 +163,6 @@ REQUIRED = {
         "**Review team**: Journal-Fit Reviewer + R1",
         "The Journal-Fit Reviewer uses Socratic dialogue",
     ),
-    "examples/showcase/README.md": (
-        "Round 1: Journal-Fit Reviewer + 3 Reviewers + Devil's Advocate",
-        "legacy serialized source ID now displayed as **Journal-Fit Reviewer**",
-    ),
-    "docs/ARCHITECTURE.md": (
-        "5 review reports (Journal-Fit Reviewer + R1 methodology + R2 domain + R3 interdisciplinary + Devil's Advocate)",
-        "**Contract-governed re-review dispatch**: orchestrating layer + three sequential fenced calls",
-    ),
-    "docs/PERFORMANCE.md": (
-        "Two reviewers (Journal-Fit Reviewer + methodology) each run two phases",
-    ),
-    "docs/PERFORMANCE.zh-TW.md": (
-        "Journal-Fit Reviewer + methodology 兩位 reviewer 各跑兩階段",
-    ),
     "AGENTS.md": (
         "a blind and separately executed Devil's Advocate critique",
         "These execution facts are not a binary independence claim",
@@ -228,7 +209,6 @@ REVIEW_DISPATCH_NEEDLES = {
 }
 
 FORBIDDEN_DISPLAY = {
-    "README.md": ("(EIC + 3 dynamic reviewers",),
     "academic-paper-reviewer/agents/eic_agent.md": (
         "# EIC Agent",
         'description: "Editor-in-Chief seat;',
@@ -291,10 +271,6 @@ FORBIDDEN_REVIEW_DISPATCH = {
     "academic-paper-reviewer/references/re_review_mode_protocol.md": (
         "The inherited #576 narrow roster remains `eic_agent` plus `editorial_synthesizer_agent`",
     ),
-    "docs/ARCHITECTURE.md": (
-        "**Narrow re-review team**: eic_agent + editorial_synthesizer_agent",
-    ),
-    "README.md": ("First-round review team vs. narrow re-review team boundary",),
     "academic-paper-reviewer/agents/field_analyst_agent.md": (
         "**EIC Configuration**",
         "[Card #1: EIC]",

@@ -181,3 +181,12 @@ def test_cli_reports_later_slice_skips(capsys):
     assert code == 0
     assert output.count("SKIPPED ") == 1
     assert output.count("artifact not present:") == 0
+
+
+def test_codex_install_surface_passes():
+    assert check.check_codex_install_surface(ROOT) == []
+
+def test_codex_install_surface_rejects_claude_targets(tmp_path):
+    (tmp_path / "README.md").write_text("Codex ../../docs/HOW_IT_WORKS.md")
+    (tmp_path / "install.py").write_text('CLAUDE.md Path(".codex/hooks.json")')
+    assert any("Codex project configuration only" in error for error in check.check_codex_install_surface(tmp_path))

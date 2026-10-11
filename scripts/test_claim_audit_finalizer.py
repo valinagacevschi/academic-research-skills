@@ -1,7 +1,7 @@
 """Finalizer integration tests for v3.8 claim_ref_alignment_audit_agent (T-F1a..h + T-F2..T-F5).
 
 Per spec §7.5 in
-docs/design/2026-05-15-issue-103-claim-alignment-audit-spec.md.
+dev/design/2026-05-15-issue-103-claim-alignment-audit-spec.md.
 
 These tests pin the contract of `scripts/claim_audit_finalizer.py`, the
 Python module that implements the §5 orchestrator §3.6 8-row matrix and

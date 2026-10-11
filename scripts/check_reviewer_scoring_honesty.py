@@ -45,8 +45,6 @@ LIVE_FILES = (
     "academic-pipeline/references/score_trajectory_protocol.md",
     "academic-pipeline/references/integrity_review_protocol.md",
     "shared/handoff_schemas.md",
-    "docs/ARCHITECTURE.md",
-    "README.md",
 )
 
 REQUIRED = {
@@ -93,10 +91,6 @@ REQUIRED = {
         "Historical numeric values cannot feed current synthesis, trajectory, or calibration",
         "*(legacy/read-only)* Historical 0-100 editorial-confidence field",
     ),
-    "docs/ARCHITECTURE.md": (
-        "No numerical delta or typed machine trajectory is currently emitted",
-        "100% of E1 registered claims; semantic extraction completeness unknown",
-    ),
     "academic-paper-reviewer/agents/editorial_synthesizer_agent.md": (
         "Schema 6 criterion adapter and calibration boundary",
         "judgement_scale: sprint_contract",
@@ -131,10 +125,6 @@ REQUIRED = {
     ),
     "academic-pipeline/agents/pipeline_orchestrator_agent.md": (
         "Criterion status: [named criterion + evidence-anchored categorical judgement, or `NOT_COMPARABLE`]",
-    ),
-    "README.md": (
-        "Current live reviews remain `NOT_CALIBRATED`",
-        "the typed trajectory carrier is deferred",
     ),
 }
 

@@ -3,7 +3,7 @@
 
 This CLI never dispatches a model and has no network/provider transport. It is a
 behavioral evaluation probe, not a structural instruction/data enforcement
-mechanism. See docs/design/2026-08-13-675-...-spec.md.
+mechanism. See dev/design/2026-08-13-675-...-spec.md.
 """
 from __future__ import annotations
 

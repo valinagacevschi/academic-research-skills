@@ -7,7 +7,7 @@ verdict-derivation rules (schema + agent-prompt level), a mutation pass proving
 each new invariant is load-bearing, reverse-invariant pins on the writer/intake
 producers, and example + literature-only regressions.
 
-Spec: docs/design/2026-06-08-260-experiment-provenance-intake-spec.md
+Spec: dev/design/2026-06-08-260-experiment-provenance-intake-spec.md
 (§"Test strategy", D4-D7).
 
 Layering note (open question flagged for ship-gate review): the fail-closed
@@ -43,7 +43,7 @@ REPO = Path(__file__).resolve().parent.parent
 PASSPORT = REPO / "shared/contracts/passport"
 LINT = REPO / "scripts/check_claim_audit_consistency.py"
 SHAPE_VALIDATOR = REPO / "scripts/check_experiment_provenance.py"
-EXAMPLE = REPO / "examples/passport_with_experiment_provenance.yaml"
+EXAMPLE = REPO / "tests/fixtures/passport_with_experiment_provenance.yaml"
 
 # Import the lint module once at module level (the dual-path insert handles the
 # CLI-vs-unittest sys.path gap). MutationTests monkeypatches attributes on this
@@ -780,11 +780,6 @@ class ReverseInvariantTests(unittest.TestCase):
                     text,
                     msg=f"{name} prompt missing the planned_experiment_ids emission instruction",
                 )
-
-    def test_intake_declaration_producer_documented(self) -> None:
-        """The declaration is set at Stage 1 intake — README documents it."""
-        readme = (REPO / "README.md").read_text(encoding="utf-8")
-        self.assertIn("experiment_intake_declaration", readme)
 
     def test_orchestrator_asks_the_intake_question(self) -> None:
         """#925: in pipeline runs the orchestrator produces the declaration by

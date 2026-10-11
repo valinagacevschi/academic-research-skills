@@ -2,7 +2,7 @@
 """Validator for evals/gold/<task>/ gold subsets.
 
 Enforces 9 invariants documented in
-docs/design/2026-05-21-v3.10-184-extend-eval-harness-spec.md
+dev/design/2026-05-21-v3.10-184-extend-eval-harness-spec.md
 implementation plan (Task 4 of #184 Phase 1a; I10 added in 2026-05-24 amendment).
 
 Usage:

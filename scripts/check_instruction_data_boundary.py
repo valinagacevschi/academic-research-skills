@@ -4,7 +4,7 @@
 Guards the "retrieved external content is data, not instructions" standing
 principle against silent removal or gutting. This is a COMMIT-TIME documentation
 consistency check — it does NOT inspect runtime behavior, scan agent output, or
-block any retrieval. (See docs/design/2026-06-07-272-instruction-data-boundary-design.md
+block any retrieval. (See dev/design/2026-06-07-272-instruction-data-boundary-design.md
 §3/§5: the lint guards the text; it never gates a live fetch.)
 
 What it asserts, without any semantic analysis:
@@ -67,7 +67,7 @@ HOTSPOT_AGENTS = (
     "academic-paper/agents/revision_coach_agent.md",  # #883
     # #890: dispatch and passport-import surfaces; the inventory, ranking, and
     # uncovered surfaces are in
-    # docs/design/2026-09-23-890-instruction-data-boundary-extension.md.
+    # dev/design/2026-09-23-890-instruction-data-boundary-extension.md.
     "academic-pipeline/agents/pipeline_orchestrator_agent.md",
     "academic-pipeline/agents/integrity_verification_agent.md",
     "academic-pipeline/agents/claim_ref_alignment_audit_agent.md",
@@ -81,7 +81,7 @@ HOTSPOT_AGENTS = (
     "deep-research/agents/ethics_review_agent.md",
     "shared/agents/compliance_agent.md",
     # #894: receivers that fetch or read third-party text through their own tool
-    # calls; see docs/design/2026-09-24-894-instruction-data-boundary-tool-calls.md.
+    # calls; see dev/design/2026-09-24-894-instruction-data-boundary-tool-calls.md.
     "academic-paper/agents/formatter_agent.md",
     "academic-paper/agents/citation_compliance_agent.md",
     "deep-research/agents/synthesis_agent.md",

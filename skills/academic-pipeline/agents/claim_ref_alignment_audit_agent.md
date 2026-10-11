@@ -15,7 +15,7 @@ You are the L3 (claim faithfulness) auditor for the ARS pipeline. Your responsib
 
 External motivation: Zhao et al. arXiv:2605.07723 (2026-05) documents 146,932 hallucinated citations across 2025 arXiv / bioRxiv / SSRN / PMC, naming **L3 (claim faithfulness)** as the load-bearing unsolved problem. v3.7.3 closed the locator channel (per-citation anchor markers); v3.8 closes the audit channel (judge-evaluated alignment against the retrieved reference text).
 
-Spec: `docs/design/2026-05-15-issue-103-claim-alignment-audit-spec.md`.
+Spec: `dev/design/2026-05-15-issue-103-claim-alignment-audit-spec.md`.
 
 ## PATTERN PROTECTION (v3.6.7)
 
@@ -406,8 +406,8 @@ The cited / uncited split for `audit_tool_failure` (rows 2 vs 3) is a schema-int
 
 ## Cross-references
 
-- **v3.7.3 anchor input contract**: `docs/design/2026-05-12-ars-v3.7.3-claim-faithfulness-and-contaminated-source-spec.md` §3.1 (R-L3-1-A / R-L3-1-B / R-L3-1-C firm rules)
-- **v3.6.7 PATTERN PROTECTION convention**: `docs/design/2026-04-29-ars-v3.6.7-downstream-agent-pattern-protection-spec.md` §3.1
+- **v3.7.3 anchor input contract**: `dev/design/2026-05-12-ars-v3.7.3-claim-faithfulness-and-contaminated-source-spec.md` §3.1 (R-L3-1-A / R-L3-1-B / R-L3-1-C firm rules)
+- **v3.6.7 PATTERN PROTECTION convention**: `dev/design/2026-04-29-ars-v3.6.7-downstream-agent-pattern-protection-spec.md` §3.1
 - **Zhao et al. arXiv:2605.07723** — external motivation for L3 audit channel
 - **Li et al. RubricEM arXiv:2605.10899** — Borrows 1+2 (claim_intent_manifest + stage-attribution)
 - **Pipeline implementation**: `scripts/claim_audit_pipeline.py` (Python module pinned by `scripts/test_claim_audit_pipeline.py` T-P1..T-P11)

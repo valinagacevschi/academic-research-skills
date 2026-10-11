@@ -6,7 +6,7 @@ ways the tests exercise: (1) the response is Atom XML, not JSON; (2) the
 exact-key lookup is by arXiv ID (`arxiv_id_lookup`), not DOI; (3) there is
 no polite-pool email — pacing is a fixed min-interval.
 
-Spec: docs/design/2026-05-21-v3.10-182-promote-citation-gate-spec.md §2 Delta 1.
+Spec: dev/design/2026-05-21-v3.10-182-promote-citation-gate-spec.md §2 Delta 1.
 """
 from __future__ import annotations
 

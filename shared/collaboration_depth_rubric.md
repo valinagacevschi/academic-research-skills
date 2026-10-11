@@ -151,6 +151,6 @@ This rubric does **not**:
 
 ## Versioning
 
-`rubric_version` follows semver. Changes to dimension count, synthesis rule, or operationalisation language require a **minor** bump and a note in `CHANGELOG.md`. Example-refinement or phrasing changes are **patch** bumps.
+`rubric_version` follows semver. Changes to dimension count, synthesis rule, or operationalisation language require a **minor** bump. Example-refinement or phrasing changes are **patch** bumps.
 
 If a future paper supersedes or materially revises Wang & Zhang (2026)'s constructs, a **major** bump is required and the `paper_citation` field must be updated accordingly.

@@ -32,7 +32,7 @@ Step-9 acceptance note in
 `academic-pipeline/agents/claim_ref_alignment_audit_agent.md` is cleared by
 the regression test below.
 
-Spec: docs/design/2026-05-15-issue-103-claim-alignment-audit-spec.md §7.6 + §13 step 9.
+Spec: dev/design/2026-05-15-issue-103-claim-alignment-audit-spec.md §7.6 + §13 step 9.
 Repo convention places tests under `scripts/test_*.py` (CI runs
 `python -m unittest scripts.test_*`); the spec name `tests/test_e2e_claim_audit.py`
 maps to this file unchanged.

@@ -1,6 +1,6 @@
 """Mutation tests for ARS v3.7.1 byte-equivalence SHA gate.
 
-Spec: docs/design/2026-04-30-ars-v3.6.8-trust-provenance-and-drift-transparency-spec.md
+Spec: dev/design/2026-04-30-ars-v3.6.8-trust-provenance-and-drift-transparency-spec.md
       § Step 0 — Lint manifest separation (round-1 codex F-004 amend)
 
 Tests verify that:

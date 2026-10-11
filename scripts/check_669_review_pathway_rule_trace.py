@@ -23,7 +23,7 @@ RUNTIME_TEST = Path("scripts/test_review_pathway_rule_trace.py")
 LINT_FIXTURE = Path(
     "scripts/fixtures/review_pathway_rule_trace/lint-near-misses.json"
 )
-DESIGN = Path("docs/design/2026-08-11-669-review-pathway-rule-trace-spec.md")
+DESIGN = Path("dev/design/2026-08-11-669-review-pathway-rule-trace-spec.md")
 PROTOCOL = Path("shared/references/review_pathway_rule_trace_protocol.md")
 AUTHORITY_PROTOCOL = Path("shared/references/human_subjects_authority_protocol.md")
 CONTRACT_README = Path("shared/contracts/README.md")

@@ -7,7 +7,7 @@ compaction and subagent returns can drop: the user's initial instructions,
 checkpoint questions and the user's exact answers, partly collected
 multi-item answers, receipts for tool steps that report only on stdout or by
 exit status, progress counters, and fingerprints of transient input files.
-Design: docs/design/2026-09-23-887-handoff-integrity-design.md.
+Design: dev/design/2026-09-23-887-handoff-integrity-design.md.
 Entry schema: shared/contracts/passport/run_ledger.schema.json.
 
 Usage:

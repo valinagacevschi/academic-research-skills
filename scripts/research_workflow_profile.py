@@ -30,7 +30,7 @@ RECEIPT_SCHEMA_VERSION = "research-workflow-profile-selection-receipt/1.0"
 PROFILE_HASH_PLACEHOLDER = "0" * 64
 JCS_SAFE_INTEGER_MAX = 9_007_199_254_740_991
 
-# Frozen with docs/design/2026-08-17-742-... §2 and the #745 matrix.
+# Frozen with dev/design/2026-08-17-742-... §2 and the #745 matrix.
 TASK_FAMILIES = (
     "rq_formation",
     "retrieval",

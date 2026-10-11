@@ -10,7 +10,7 @@ closed list (per spec §3.2 Vector 1 + schema description).
 Signal 2 (semantic_scholar_unmatched): SS API lookup with manual exemption
 + API degradation handling (per spec §3.2 Vector 2 + R-L3-2-B).
 
-Design: docs/design/2026-05-15-issue-105-contamination-signals-backfill-design.md
+Design: dev/design/2026-05-15-issue-105-contamination-signals-backfill-design.md
 """
 from __future__ import annotations
 

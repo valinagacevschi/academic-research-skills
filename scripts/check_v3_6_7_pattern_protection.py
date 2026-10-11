@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Static audit for ARS v3.6.7 downstream-agent pattern protection.
 
-Spec: docs/design/2026-04-29-ars-v3.6.7-downstream-agent-pattern-protection-spec.md
+Spec: dev/design/2026-04-29-ars-v3.6.7-downstream-agent-pattern-protection-spec.md
 
 Greps the v3.6.7 reference files, audit template, and downstream agent prompts
 for the keywords and obligation phrases that make each pattern-protection
@@ -1125,7 +1125,7 @@ def _inv2_check_file(rel_path: str) -> tuple[bool, list[str]]:
             errors.append(
                 f"{rel_path}:{line_no}: {label} Clause 2 violation in {kind}: "
                 f"{normalized!r}. Sentence must be removed per "
-                f"docs/design/2026-04-30-ars-v3.6.7-step-6-orchestrator-hooks-spec.md §6.2."
+                f"dev/design/2026-04-30-ars-v3.6.7-step-6-orchestrator-hooks-spec.md §6.2."
             )
             # One label per segment is enough; further labels on the
             # same segment would be redundant.
@@ -1350,11 +1350,11 @@ def main(argv: list[str]) -> int:
             file=sys.stderr,
         )
         print(
-            "  docs/design/2026-04-29-ars-v3.6.7-downstream-agent-pattern-protection-spec.md",
+            "  dev/design/2026-04-29-ars-v3.6.7-downstream-agent-pattern-protection-spec.md",
             file=sys.stderr,
         )
         print(
-            "  docs/design/2026-04-30-ars-v3.6.7-step-6-orchestrator-hooks-spec.md (INV-1/2/3)",
+            "  dev/design/2026-04-30-ars-v3.6.7-step-6-orchestrator-hooks-spec.md (INV-1/2/3)",
             file=sys.stderr,
         )
         return 1

@@ -24,7 +24,7 @@ SET_PATH = SUITE_ROOT / "heldout_set.json"
 SCHEMA_PATH = SUITE_ROOT / "heldout_set.schema.json"
 VARIANT_PATH = SUITE_ROOT / "nonproduction_variant.json"
 CODEBOOK_PATH = SUITE_ROOT / "codebook.md"
-DESIGN_PATH = REPO_ROOT / "docs" / "design" / (
+DESIGN_PATH = REPO_ROOT / "dev" / "design" / (
     "2026-08-13-659-within-session-ideation-diversity-design.md"
 )
 SUITE = "within_session_ideation_diversity"

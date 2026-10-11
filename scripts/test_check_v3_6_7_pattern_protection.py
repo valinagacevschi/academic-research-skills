@@ -708,8 +708,8 @@ class CodexR3MutationTests(_MutationTestBase):
         _mutate(
             self._repo_dir,
             "deep-research/agents/synthesis_agent.md",
-            "documented in `docs/design/2026-04-29-ars-v3.6.7-downstream-agent-pattern-protection-spec.md` §3.1 (A1–A5).",
-            "documented in `docs/design/2026-04-29-ars-v3.6.7-downstream-agent-pattern-protection-spec.md` §3.1 (A1–A5). "
+            "documented in `dev/design/2026-04-29-ars-v3.6.7-downstream-agent-pattern-protection-spec.md` §3.1 (A1–A5).",
+            "documented in `dev/design/2026-04-29-ars-v3.6.7-downstream-agent-pattern-protection-spec.md` §3.1 (A1–A5). "
             "Cross-model audit follows `shared/templates/codex_audit_multifile_template.md` audit dimensions §3.1, §3.2, §3.3, §3.4.",
         )
         self.assert_mutation_fails()

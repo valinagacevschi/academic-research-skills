@@ -12,7 +12,7 @@ project each passport aggregate row to `{annotation, tier, gate_refuse}`;
 passport-level gate decision + reason list that the formatter consumes.
 
 Spec:
-  docs/design/2026-05-15-issue-103-claim-alignment-audit-spec.md §5 (8-row
+  dev/design/2026-05-15-issue-103-claim-alignment-audit-spec.md §5 (8-row
   matrix), §"Manifest cross-reference (D6)" (drift / constraint routing),
   §3.6 (orchestrator prose).
 

@@ -7,7 +7,7 @@ dispatch path. The orchestrator persists the resolved value on the
 Schema 9 Material Passport at the Stage 1 → Stage 2 handoff; the
 disclosure renderer reads it back as `RendererInput.slr_lineage`.
 
-Design: docs/design/2026-05-15-issue-111-slr-lineage-emission-design.md
+Design: dev/design/2026-05-15-issue-111-slr-lineage-emission-design.md
 Contract: policy_anchor_disclosure_protocol.md §3.1 (G2 invariant)
 """
 from __future__ import annotations

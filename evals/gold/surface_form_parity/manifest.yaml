@@ -47,5 +47,5 @@ related_issues:
     relationship: cross-reference-only
     note: >
       #273 (same-family / rubric-aware calibration) is a DIFFERENT mechanism. It is
-      NOT folded into #216 — see docs/design. Cross-reference only; no shared prompt,
+      NOT folded into #216 — see dev/design. Cross-reference only; no shared prompt,
       gold, or runtime wiring.

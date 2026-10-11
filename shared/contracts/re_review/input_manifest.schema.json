@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://github.com/Imbad0202/academic-research-skills/shared/contracts/re_review/input_manifest.schema.json",
   "title": "Re-review Input Manifest (hash-bound, freshness-checked)",
-  "description": "Emitted by the dispatching layer BEFORE Phase 1 of the #576 Spec B three-gate re-review contract. Every gate input is a present-DISCRIMINATED union — an absent artifact carries NO ref, hash, or freshness fields (no sentinel strings, no fabricated hashes); the §11 presence policies decide what each absence means. Its JSON-Canonical-Form sha256 rides in every phase artifact (input_manifest_hash -> precommitment_hash -> verdict_record_hash chain), so scripts/check_re_review_synthesis.py can prove all three gates saw the same inputs. Spec: docs/design/2026-07-27-576-spec-b-re-review-precommitment-contract-spec.md §11.",
+  "description": "Emitted by the dispatching layer BEFORE Phase 1 of the #576 Spec B three-gate re-review contract. Every gate input is a present-DISCRIMINATED union — an absent artifact carries NO ref, hash, or freshness fields (no sentinel strings, no fabricated hashes); the §11 presence policies decide what each absence means. Its JSON-Canonical-Form sha256 rides in every phase artifact (input_manifest_hash -> precommitment_hash -> verdict_record_hash chain), so scripts/check_re_review_synthesis.py can prove all three gates saw the same inputs. Spec: dev/design/2026-07-27-576-spec-b-re-review-precommitment-contract-spec.md §11.",
 
   "type": "object",
   "additionalProperties": false,

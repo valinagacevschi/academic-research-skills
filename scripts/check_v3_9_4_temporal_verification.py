@@ -39,7 +39,7 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 SCHEMAS = REPO_ROOT / "shared/contracts/passport"
 
 BIBLIOGRAPHY_AGENT_PATH = REPO_ROOT / "deep-research/agents/bibliography_agent.md"
-BIBLIOGRAPHY_AGENT_SHA256 = "9215237296cec0ed113ee738522aa50d8dc8ccff58afe100a83600186745c766"  # Codex-only skill migration baseline: no temporal/M6/M5 ownership logic changed.
+BIBLIOGRAPHY_AGENT_SHA256 = "63a5ba6bc6aba68ee641ba850c0b387ecde4e970c69d80ddd251d96424cc2646"  # Codex-only skill migration baseline: no temporal/M6/M5 ownership logic changed.
 
 
 def _validate(yaml_path: Path, schema_path: Path) -> list[str]:

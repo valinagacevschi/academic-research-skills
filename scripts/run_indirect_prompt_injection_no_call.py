@@ -220,7 +220,7 @@ BLINDED_TO = [
     "judge_identity",
 ]
 ASSET_PATHS = (
-    "docs/design/2026-08-13-675-indirect-prompt-injection-behavior-eval-spec.md",
+    "dev/design/2026-08-13-675-indirect-prompt-injection-behavior-eval-spec.md",
     "evals/heldout/indirect_prompt_injection_behavior/README.md",
     "evals/heldout/indirect_prompt_injection_behavior/heldout_set.json",
     "evals/heldout/indirect_prompt_injection_behavior/heldout_set.schema.json",

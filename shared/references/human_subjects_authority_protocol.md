@@ -11,7 +11,7 @@ Canonical artifacts:
 - `shared/contracts/human_subjects/resolved_authority_context.schema.json`
 - `shared/human_subjects_authority_registry.json`
 - `scripts/resolve_human_subjects_authority.py`
-- `docs/design/2026-08-09-666-human-subjects-authority-contract-spec.md`
+- `dev/design/2026-08-09-666-human-subjects-authority-contract-spec.md`
 
 The schemas are authoritative for field names and local shape. This protocol
 governs cross-artifact use.

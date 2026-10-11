@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Tests for citation_verification_summary — schema + reducer (Delta 4).
 
-Spec: docs/design/2026-05-21-v3.10-182-promote-citation-gate-spec.md §2 Delta 4
+Spec: dev/design/2026-05-21-v3.10-182-promote-citation-gate-spec.md §2 Delta 4
 + §0(4a) / INVARIANT C-V6(a) (narrowed-false).
 
 This file covers BOTH the JSON-Schema (this section) and the Python reducer

@@ -10,7 +10,7 @@ Canonical schema:
 Artifact version: `committee-correspondence/1.0`.
 Deterministic checker: `scripts/check_committee_correspondence.py`.
 Design authority:
-`docs/design/2026-08-08-668-committee-correspondence-spec.md`.
+`dev/design/2026-08-08-668-committee-correspondence-spec.md`.
 
 ## Activation gate
 

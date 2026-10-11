@@ -3,7 +3,7 @@
 
 Block-scoped string checks per repo convention (check_394 pattern) on the
 prompt surfaces that carry the patch protocol, plus schema example
-validation. Spec: docs/design/2026-06-10-390-diff-patch-revision-mode-
+validation. Spec: dev/design/2026-06-10-390-diff-patch-revision-mode-
 spec.md (§0 Slice B amendment + §3.2-§3.6 + §8.5).
 
 Invariants:
@@ -58,7 +58,7 @@ SCHEMAS = REPO_ROOT / "shared/handoff_schemas.md"
 PROTOCOL = REPO_ROOT / "academic-paper/references/revision_patch_protocol.md"
 FORMATTER = REPO_ROOT / "academic-paper/agents/formatter_agent.md"
 WORD_COUNT = REPO_ROOT / "shared/references/word_count_conventions.md"
-SPEC = REPO_ROOT / "docs/design/2026-06-10-390-diff-patch-revision-mode-spec.md"
+SPEC = REPO_ROOT / "dev/design/2026-06-10-390-diff-patch-revision-mode-spec.md"
 PATCH_SCHEMA = REPO_ROOT / "shared/contracts/patch/revision_patch.schema.json"
 APPLY_SCRIPT = REPO_ROOT / "scripts/ars_apply_revision_patch.py"
 

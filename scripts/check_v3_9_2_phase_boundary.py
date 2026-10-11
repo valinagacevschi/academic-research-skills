@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Static lint for ARS v3.9.2 phase boundary coverage (#133 hot-fix).
 
-Spec: docs/design/2026-05-18-ars-v3.9.2-phase-boundary-spec.md Phase 5
-Classification: docs/design/2026-05-18-ars-v3.9.2-agent-phase-classification.md
+Spec: dev/design/2026-05-18-ars-v3.9.2-phase-boundary-spec.md Phase 5
+Classification: dev/design/2026-05-18-ars-v3.9.2-agent-phase-classification.md
 
 Enforces three invariants:
 
@@ -54,7 +54,7 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parent.parent
 
 # Bucket A — 23 single-phase agents that MUST have Phase Boundary block.
-# Source: docs/design/2026-05-18-ars-v3.9.2-agent-phase-classification.md
+# Source: dev/design/2026-05-18-ars-v3.9.2-agent-phase-classification.md
 BUCKET_A_AGENTS = [
     # deep-research/agents/ (10)
     "deep-research/agents/research_question_agent.md",
@@ -179,7 +179,7 @@ def check_bucket_a(path: Path) -> list[str]:
         errors.append(
             f"{path.relative_to(REPO_ROOT)}: missing '## Phase Boundary (v3.9.2|v3.9.4)' "
             f"block (Bucket A agents MUST carry this block per "
-            f"docs/design/2026-05-18-ars-v3.9.2-agent-phase-classification.md)"
+            f"dev/design/2026-05-18-ars-v3.9.2-agent-phase-classification.md)"
         )
         return errors
 
@@ -232,7 +232,7 @@ def check_bucket_bcd(path: Path) -> list[str]:
             f"multi-phase (B), phase-orthogonal (C), or cross-phase meta (D) by "
             f"design — adding a single-phase fence would either falsely block "
             f"legitimate cross-phase work or defeat orchestration. See "
-            f"docs/design/2026-05-18-ars-v3.9.2-agent-phase-classification.md."
+            f"dev/design/2026-05-18-ars-v3.9.2-agent-phase-classification.md."
         )
     return errors
 

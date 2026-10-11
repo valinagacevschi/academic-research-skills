@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://github.com/Imbad0202/academic-research-skills/shared/contracts/submission/submission_verification_report.schema.json",
   "title": "Submission Verification Report",
-  "description": "#394 deterministic submission-package verifier report (spec docs/design/2026-06-10-394-submission-package-verifier-spec.md §7.3). Emitted by scripts/verify_submission_package.py as submission_verification_report.json inside the package directory. Detection is unconditional; terminality is decided by the policy evaluator (orchestrator) reading terminal_policies — the script never reads terminal_policies (§5.3). Slice 1 ships Family C (reference_integrity) only; the check-id/family vocabulary already covers Families A/B/D so later slices are additive, not schema-breaking.",
+  "description": "#394 deterministic submission-package verifier report (spec dev/design/2026-06-10-394-submission-package-verifier-spec.md §7.3). Emitted by scripts/verify_submission_package.py as submission_verification_report.json inside the package directory. Detection is unconditional; terminality is decided by the policy evaluator (orchestrator) reading terminal_policies — the script never reads terminal_policies (§5.3). Slice 1 ships Family C (reference_integrity) only; the check-id/family vocabulary already covers Families A/B/D so later slices are additive, not schema-breaking.",
   "type": "object",
   "additionalProperties": false,
   "required": [

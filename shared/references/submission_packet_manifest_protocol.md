@@ -14,7 +14,7 @@ Canonical artifacts:
 - `shared/contracts/human_subjects/resolved_authority_context.schema.json`
 - `shared/human_subjects_authority_registry.json`
 - `scripts/resolve_human_subjects_authority.py`
-- `docs/design/2026-08-09-667-submission-packet-manifest-spec.md`
+- `dev/design/2026-08-09-667-submission-packet-manifest-spec.md`
 
 The schemas govern local field shape. This protocol governs safe consumption.
 

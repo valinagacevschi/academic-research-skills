@@ -19,7 +19,7 @@ the same lower-layer resolvers and writes the unified summary schema (Delta 4).
 The returned dict validates against
 shared/contracts/passport/citation_verification_summary.schema.json.
 
-Spec: docs/design/2026-05-21-v3.10-182-promote-citation-gate-spec.md §2 Delta 5.
+Spec: dev/design/2026-05-21-v3.10-182-promote-citation-gate-spec.md §2 Delta 5.
 """
 from __future__ import annotations
 

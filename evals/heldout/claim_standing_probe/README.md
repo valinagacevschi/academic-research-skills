@@ -1,6 +1,6 @@
 # Claim-Standing Probe — Stance Seed Set (#655, v0.1)
 
-Authority: `docs/design/2026-08-13-655-search-bounded-claim-standing-probe-design.md`
+Authority: `dev/design/2026-08-13-655-search-bounded-claim-standing-probe-design.md`
 (§5.1 closed labels, §8 held-out stance set and baseline gate).
 
 ```text

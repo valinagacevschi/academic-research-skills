@@ -50,7 +50,7 @@ or reachable replacement SD fails CI.
 
 The architecture decision, arithmetic-receipt shape, undecidable boundaries,
 and cohort order are frozen in
-`docs/design/2026-08-02-610-statistical-recompute-baseline-spec.md`.
+`dev/design/2026-08-02-610-statistical-recompute-baseline-spec.md`.
 
 ## Measurement protocol
 
