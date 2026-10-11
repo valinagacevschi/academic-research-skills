@@ -1,0 +1,532 @@
+{
+  "collisions": [
+    {
+      "collision_key": "participant.information",
+      "requirement_ids": [
+        "eu.gdpr.article-13.direct-collection-information",
+        "eu.gdpr.article-14.indirect-collection-information",
+        "ro.ethics.article-14.consent-information"
+      ],
+      "requirements_removed": false,
+      "resolution": "parallel_authorities_require_human_resolution"
+    }
+  ],
+  "context_pointer": {
+    "context_digest": "89694b65fa0288f9e96a0c4a2bff18dc5b6fa8b790f98ad87385abfa7a36c7f5",
+    "context_record_id": "probe.ro-gdpr-observational",
+    "schema_version": "irb-context-record/1.0"
+  },
+  "downstream_gate": {
+    "all_applicability_resolved": true,
+    "both_axes_selected": true,
+    "exact_selection_resolved": true,
+    "profile_dependent_result_allowed": true
+  },
+  "registry_pointer": {
+    "as_of": "2026-08-09",
+    "registry_digest": "406bd1c6c8d6b657370c68eb2f3f6f736b131901161167e0c460a7b5feec32d8",
+    "registry_id": "human-subjects-authority-ro-respiratory-overlay",
+    "registry_version": "2026-08-09.1-ro.1"
+  },
+  "requirement_results": [
+    {
+      "applicability": "false",
+      "authority_anchor_pointer": "/profiles/2/requirements/2/authority_anchor",
+      "authority_digest": "53d4c3783d35d8f60c883b6254b8e43831f5d3fc87fa0e6e0304d24bc7cc5cbe",
+      "authority_id": "eu.gdpr.research-core-bounded",
+      "authority_kind": "profile",
+      "authority_version": "2018-05-25",
+      "axis": "data_protection",
+      "consumer_scopes": [
+        "data_governance",
+        "participant_information",
+        "pathway_trace"
+      ],
+      "obligated_actor": "controller",
+      "predicate_trace": [
+        {
+          "declared_state": "declared",
+          "expression_path": "/operands/0",
+          "fact_id": "scope.eu_gdpr",
+          "operator": "fact_equals",
+          "result": "true"
+        },
+        {
+          "declared_state": "declared",
+          "expression_path": "/operands/1",
+          "fact_id": "processing.personal_data",
+          "operator": "fact_equals",
+          "result": "true"
+        },
+        {
+          "declared_state": "declared",
+          "expression_path": "/operands/2",
+          "fact_id": "data.collected_from_subject",
+          "operator": "fact_equals",
+          "result": "false"
+        },
+        {
+          "declared_state": "compound",
+          "expression_path": "/",
+          "fact_id": null,
+          "operator": "all",
+          "result": "false"
+        }
+      ],
+      "requirement_digest": "9174d0e022ab5a2bfdc0c2e2f121452007622309c9d783319b130a73d9e40792",
+      "requirement_id": "eu.gdpr.article-13.direct-collection-information",
+      "requirement_pointer": "/profiles/2/requirements/2"
+    },
+    {
+      "applicability": "true",
+      "authority_anchor_pointer": "/profiles/2/requirements/3/authority_anchor",
+      "authority_digest": "53d4c3783d35d8f60c883b6254b8e43831f5d3fc87fa0e6e0304d24bc7cc5cbe",
+      "authority_id": "eu.gdpr.research-core-bounded",
+      "authority_kind": "profile",
+      "authority_version": "2018-05-25",
+      "axis": "data_protection",
+      "consumer_scopes": [
+        "data_governance",
+        "participant_information",
+        "pathway_trace"
+      ],
+      "obligated_actor": "controller",
+      "predicate_trace": [
+        {
+          "declared_state": "declared",
+          "expression_path": "/operands/0",
+          "fact_id": "scope.eu_gdpr",
+          "operator": "fact_equals",
+          "result": "true"
+        },
+        {
+          "declared_state": "declared",
+          "expression_path": "/operands/1",
+          "fact_id": "processing.personal_data",
+          "operator": "fact_equals",
+          "result": "true"
+        },
+        {
+          "declared_state": "declared",
+          "expression_path": "/operands/2/operand",
+          "fact_id": "data.collected_from_subject",
+          "operator": "fact_equals",
+          "result": "false"
+        },
+        {
+          "declared_state": "compound",
+          "expression_path": "/operands/2",
+          "fact_id": null,
+          "operator": "not",
+          "result": "true"
+        },
+        {
+          "declared_state": "compound",
+          "expression_path": "/",
+          "fact_id": null,
+          "operator": "all",
+          "result": "true"
+        }
+      ],
+      "requirement_digest": "1090b5a11d87702b179e2ece3c504035428f67c4bc01c528a262be2d798a9efa",
+      "requirement_id": "eu.gdpr.article-14.indirect-collection-information",
+      "requirement_pointer": "/profiles/2/requirements/3"
+    },
+    {
+      "applicability": "true",
+      "authority_anchor_pointer": "/profiles/2/requirements/0/authority_anchor",
+      "authority_digest": "53d4c3783d35d8f60c883b6254b8e43831f5d3fc87fa0e6e0304d24bc7cc5cbe",
+      "authority_id": "eu.gdpr.research-core-bounded",
+      "authority_kind": "profile",
+      "authority_version": "2018-05-25",
+      "axis": "data_protection",
+      "consumer_scopes": [
+        "data_governance",
+        "pathway_trace"
+      ],
+      "obligated_actor": "controller",
+      "predicate_trace": [
+        {
+          "declared_state": "declared",
+          "expression_path": "/operands/0",
+          "fact_id": "scope.eu_gdpr",
+          "operator": "fact_equals",
+          "result": "true"
+        },
+        {
+          "declared_state": "declared",
+          "expression_path": "/operands/1",
+          "fact_id": "processing.personal_data",
+          "operator": "fact_equals",
+          "result": "true"
+        },
+        {
+          "declared_state": "compound",
+          "expression_path": "/",
+          "fact_id": null,
+          "operator": "all",
+          "result": "true"
+        }
+      ],
+      "requirement_digest": "5a38088d4162ec4d683325db1f93d90d72147efffb7d6e134f33b40cedca80fb",
+      "requirement_id": "eu.gdpr.article-6.lawful-basis",
+      "requirement_pointer": "/profiles/2/requirements/0"
+    },
+    {
+      "applicability": "true",
+      "authority_anchor_pointer": "/profiles/2/requirements/4/authority_anchor",
+      "authority_digest": "53d4c3783d35d8f60c883b6254b8e43831f5d3fc87fa0e6e0304d24bc7cc5cbe",
+      "authority_id": "eu.gdpr.research-core-bounded",
+      "authority_kind": "profile",
+      "authority_version": "2018-05-25",
+      "axis": "data_protection",
+      "consumer_scopes": [
+        "data_governance",
+        "pathway_trace"
+      ],
+      "obligated_actor": "controller",
+      "predicate_trace": [
+        {
+          "declared_state": "declared",
+          "expression_path": "/operands/0",
+          "fact_id": "scope.eu_gdpr",
+          "operator": "fact_equals",
+          "result": "true"
+        },
+        {
+          "declared_state": "declared",
+          "expression_path": "/operands/1",
+          "fact_id": "processing.personal_data",
+          "operator": "fact_equals",
+          "result": "true"
+        },
+        {
+          "declared_state": "declared",
+          "expression_path": "/operands/2",
+          "fact_id": "purpose.scientific_research",
+          "operator": "fact_equals",
+          "result": "true"
+        },
+        {
+          "declared_state": "compound",
+          "expression_path": "/",
+          "fact_id": null,
+          "operator": "all",
+          "result": "true"
+        }
+      ],
+      "requirement_digest": "c6cf2bd131a4e9424fcb13dc8334c1893f116bebe9c929832851d353d38be497",
+      "requirement_id": "eu.gdpr.article-89.1.research-safeguards",
+      "requirement_pointer": "/profiles/2/requirements/4"
+    },
+    {
+      "applicability": "true",
+      "authority_anchor_pointer": "/profiles/2/requirements/5/authority_anchor",
+      "authority_digest": "53d4c3783d35d8f60c883b6254b8e43831f5d3fc87fa0e6e0304d24bc7cc5cbe",
+      "authority_id": "eu.gdpr.research-core-bounded",
+      "authority_kind": "profile",
+      "authority_version": "2018-05-25",
+      "axis": "data_protection",
+      "consumer_scopes": [
+        "data_governance",
+        "pathway_trace"
+      ],
+      "obligated_actor": "controller",
+      "predicate_trace": [
+        {
+          "declared_state": "declared",
+          "expression_path": "/operands/0",
+          "fact_id": "scope.eu_gdpr",
+          "operator": "fact_equals",
+          "result": "true"
+        },
+        {
+          "declared_state": "declared",
+          "expression_path": "/operands/1",
+          "fact_id": "processing.personal_data",
+          "operator": "fact_equals",
+          "result": "true"
+        },
+        {
+          "declared_state": "declared",
+          "expression_path": "/operands/2",
+          "fact_id": "purpose.scientific_research",
+          "operator": "fact_equals",
+          "result": "true"
+        },
+        {
+          "declared_state": "declared",
+          "expression_path": "/operands/3",
+          "fact_id": "gdpr.member_state_research_law_identified",
+          "operator": "fact_equals",
+          "result": "true"
+        },
+        {
+          "declared_state": "compound",
+          "expression_path": "/",
+          "fact_id": null,
+          "operator": "all",
+          "result": "true"
+        }
+      ],
+      "requirement_digest": "8aaf894a38ffd818ad8f0d521a91501e9412b153a6ddcfa6b03a8412ac6ac711",
+      "requirement_id": "eu.gdpr.article-89.2.member-state-derogation",
+      "requirement_pointer": "/profiles/2/requirements/5"
+    },
+    {
+      "applicability": "true",
+      "authority_anchor_pointer": "/profiles/2/requirements/1/authority_anchor",
+      "authority_digest": "53d4c3783d35d8f60c883b6254b8e43831f5d3fc87fa0e6e0304d24bc7cc5cbe",
+      "authority_id": "eu.gdpr.research-core-bounded",
+      "authority_kind": "profile",
+      "authority_version": "2018-05-25",
+      "axis": "data_protection",
+      "consumer_scopes": [
+        "data_governance",
+        "pathway_trace"
+      ],
+      "obligated_actor": "controller",
+      "predicate_trace": [
+        {
+          "declared_state": "declared",
+          "expression_path": "/operands/0",
+          "fact_id": "scope.eu_gdpr",
+          "operator": "fact_equals",
+          "result": "true"
+        },
+        {
+          "declared_state": "declared",
+          "expression_path": "/operands/1",
+          "fact_id": "processing.personal_data",
+          "operator": "fact_equals",
+          "result": "true"
+        },
+        {
+          "declared_state": "declared",
+          "expression_path": "/operands/2",
+          "fact_id": "data.special_category",
+          "operator": "fact_equals",
+          "result": "true"
+        },
+        {
+          "declared_state": "compound",
+          "expression_path": "/",
+          "fact_id": null,
+          "operator": "all",
+          "result": "true"
+        }
+      ],
+      "requirement_digest": "b5facf1520acd1e5b40d7fcfca6437a921c2295e030a8379fe391cb10aef4e7c",
+      "requirement_id": "eu.gdpr.article-9.special-category-research",
+      "requirement_pointer": "/profiles/2/requirements/1"
+    },
+    {
+      "applicability": "true",
+      "authority_anchor_pointer": "/profiles/3/requirements/1/authority_anchor",
+      "authority_digest": "0e2f0aded23e29858dd4a9738e5ee3e2071eb5d31027c5bc839285077dbe8b88",
+      "authority_id": "ro.placeholder.research-ethics",
+      "authority_kind": "profile",
+      "authority_version": "2026-10-10",
+      "axis": "review_ethics",
+      "consumer_scopes": [
+        "participant_information",
+        "pathway_trace",
+        "submission_packet"
+      ],
+      "obligated_actor": "principal_investigator",
+      "predicate_trace": [
+        {
+          "declared_state": "declared",
+          "expression_path": "/operands/0",
+          "fact_id": "activity.human_subjects",
+          "operator": "fact_equals",
+          "result": "true"
+        },
+        {
+          "declared_state": "declared",
+          "expression_path": "/operands/1",
+          "fact_id": "scope.ro_research_ethics",
+          "operator": "fact_equals",
+          "result": "true"
+        },
+        {
+          "declared_state": "compound",
+          "expression_path": "/",
+          "fact_id": null,
+          "operator": "all",
+          "result": "true"
+        }
+      ],
+      "requirement_digest": "7296e31e128d8a40499301350e4c112253ec767fe066863dee40c48c85ae0ab9",
+      "requirement_id": "ro.ethics.article-14.consent-information",
+      "requirement_pointer": "/profiles/3/requirements/1"
+    },
+    {
+      "applicability": "true",
+      "authority_anchor_pointer": "/profiles/3/requirements/0/authority_anchor",
+      "authority_digest": "0e2f0aded23e29858dd4a9738e5ee3e2071eb5d31027c5bc839285077dbe8b88",
+      "authority_id": "ro.placeholder.research-ethics",
+      "authority_kind": "profile",
+      "authority_version": "2026-10-10",
+      "axis": "review_ethics",
+      "consumer_scopes": [
+        "committee_governance",
+        "pathway_trace"
+      ],
+      "obligated_actor": "research_institution_or_review_committee",
+      "predicate_trace": [
+        {
+          "declared_state": "declared",
+          "expression_path": "/operands/0",
+          "fact_id": "activity.human_subjects",
+          "operator": "fact_equals",
+          "result": "true"
+        },
+        {
+          "declared_state": "declared",
+          "expression_path": "/operands/1",
+          "fact_id": "scope.ro_research_ethics",
+          "operator": "fact_equals",
+          "result": "true"
+        },
+        {
+          "declared_state": "compound",
+          "expression_path": "/",
+          "fact_id": null,
+          "operator": "all",
+          "result": "true"
+        }
+      ],
+      "requirement_digest": "d88ebc29c713cf64fc7e681f0b1ff4859ddb45723d2c3a1108743783fd4bf952",
+      "requirement_id": "ro.ethics.article-7.committee-composition",
+      "requirement_pointer": "/profiles/3/requirements/0"
+    }
+  ],
+  "resolution_state": "resolved",
+  "resolved_digest": "53a7f6dd5a9c1685f87306828c023fd34e81619cf6984ba80016995f648c9b6b",
+  "schema_version": "resolved-human-subjects-authority-context/1.0",
+  "selected_overlays": [],
+  "selected_profiles": [
+    {
+      "applicability": "true",
+      "authority_scope_ids": [
+        "eu.gdpr"
+      ],
+      "axis": "data_protection",
+      "predicate_trace": [
+        {
+          "declared_state": "declared",
+          "expression_path": "/operands/0",
+          "fact_id": "scope.eu_gdpr",
+          "operator": "fact_equals",
+          "result": "true"
+        },
+        {
+          "declared_state": "declared",
+          "expression_path": "/operands/1",
+          "fact_id": "processing.personal_data",
+          "operator": "fact_equals",
+          "result": "true"
+        },
+        {
+          "declared_state": "compound",
+          "expression_path": "/",
+          "fact_id": null,
+          "operator": "all",
+          "result": "true"
+        }
+      ],
+      "profile_digest": "53d4c3783d35d8f60c883b6254b8e43831f5d3fc87fa0e6e0304d24bc7cc5cbe",
+      "profile_id": "eu.gdpr.research-core-bounded",
+      "profile_pointer": "/profiles/2",
+      "profile_version": "2018-05-25",
+      "source_state": "current"
+    },
+    {
+      "applicability": "true",
+      "authority_scope_ids": [
+        "ro.ethics"
+      ],
+      "axis": "review_ethics",
+      "predicate_trace": [
+        {
+          "declared_state": "declared",
+          "expression_path": "/operands/0",
+          "fact_id": "activity.human_subjects",
+          "operator": "fact_equals",
+          "result": "true"
+        },
+        {
+          "declared_state": "declared",
+          "expression_path": "/operands/1",
+          "fact_id": "scope.ro_research_ethics",
+          "operator": "fact_equals",
+          "result": "true"
+        },
+        {
+          "declared_state": "compound",
+          "expression_path": "/",
+          "fact_id": null,
+          "operator": "all",
+          "result": "true"
+        }
+      ],
+      "profile_digest": "0e2f0aded23e29858dd4a9738e5ee3e2071eb5d31027c5bc839285077dbe8b88",
+      "profile_id": "ro.placeholder.research-ethics",
+      "profile_pointer": "/profiles/3",
+      "profile_version": "2026-10-10",
+      "source_state": "current"
+    }
+  ],
+  "trace_order": [
+    {
+      "authority_id": "ro.placeholder.research-ethics",
+      "position": 1,
+      "purpose": "display_only_no_suppression",
+      "requirement_id": "ro.ethics.article-7.committee-composition"
+    },
+    {
+      "authority_id": "ro.placeholder.research-ethics",
+      "position": 2,
+      "purpose": "display_only_no_suppression",
+      "requirement_id": "ro.ethics.article-14.consent-information"
+    },
+    {
+      "authority_id": "eu.gdpr.research-core-bounded",
+      "position": 3,
+      "purpose": "display_only_no_suppression",
+      "requirement_id": "eu.gdpr.article-6.lawful-basis"
+    },
+    {
+      "authority_id": "eu.gdpr.research-core-bounded",
+      "position": 4,
+      "purpose": "display_only_no_suppression",
+      "requirement_id": "eu.gdpr.article-9.special-category-research"
+    },
+    {
+      "authority_id": "eu.gdpr.research-core-bounded",
+      "position": 5,
+      "purpose": "display_only_no_suppression",
+      "requirement_id": "eu.gdpr.article-13.direct-collection-information"
+    },
+    {
+      "authority_id": "eu.gdpr.research-core-bounded",
+      "position": 6,
+      "purpose": "display_only_no_suppression",
+      "requirement_id": "eu.gdpr.article-14.indirect-collection-information"
+    },
+    {
+      "authority_id": "eu.gdpr.research-core-bounded",
+      "position": 7,
+      "purpose": "display_only_no_suppression",
+      "requirement_id": "eu.gdpr.article-89.1.research-safeguards"
+    },
+    {
+      "authority_id": "eu.gdpr.research-core-bounded",
+      "position": 8,
+      "purpose": "display_only_no_suppression",
+      "requirement_id": "eu.gdpr.article-89.2.member-state-derogation"
+    }
+  ],
+  "unresolved_reasons": []
+}
