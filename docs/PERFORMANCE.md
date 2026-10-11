@@ -2,7 +2,7 @@
 
 ARS uses the model configured for the current Codex session. It does not choose a model tier. For demanding synthesis, review, or adjudication work, raise Codex reasoning effort when available. Multi-agent steps use Codex subagents; the sequential fallback reduces role independence.
 
-The workload and cost figures below are historical estimates, not measurements of current Codex models. Optional cross-model verification uses a non-GPT API and stays off unless `ARS_CROSS_MODEL=1` is set.
+The workload and cost figures below are historical estimates, not measurements of current Codex models. Non-GPT cross-model request builders are provisional and unmeasured; a live verifier runtime is not available in this release.
 
 ## Citation verification
 

@@ -48,7 +48,18 @@ Markdown 不需額外軟體。DOCX 轉換需要 Pandoc；PDF 另需 Tectonic 等
 
 ## 跨模型驗證（選用）
 
-跨模型驗證預設關閉，需明確啟用並提供非 GPT 服務的 API key。Provider 與資料流詳見[跨模型驗證說明](../shared/cross_model_verification.md)。
+本版本尚未整合可執行的跨模型驗證 runtime。Provider request builder 仍屬暫定且未經實測；設定以下變數不會送出請求。runtime 完成前請繼續使用 Codex session model。跨模型契約詳見[說明文件](../shared/cross_model_verification.md)。
+
+以下範例僅記錄預定的 provider 選擇方式，目前不會啟用請求。
+
+```sh
+# 選一個 provider；未設定 ARS_CROSS_MODEL 即停用驗證。
+export ARS_CROSS_MODEL="claude-sonnet-4-6"
+export ANTHROPIC_API_KEY="<your-anthropic-api-key>"
+# 或：
+# export ARS_CROSS_MODEL="gemini-3.1-pro-preview"
+# export GEMINI_API_KEY="<your-gemini-api-key>"
+```
 
 ## 控制可用性
 

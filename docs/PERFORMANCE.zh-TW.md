@@ -2,7 +2,7 @@
 
 ARS 使用目前 Codex session 設定的模型，不會自行選擇模型等級。需要深入整合、審查或裁決時，可在 Codex 支援的情況下提高 reasoning effort。多角色工作使用 Codex subagent；依序執行的備援方式會降低角色獨立性。
 
-下方工作量與費用是歷史估算，不代表目前 Codex 模型的實測結果。跨模型驗證使用非 GPT API，預設關閉；只有設定 `ARS_CROSS_MODEL=1` 才會啟用。
+下方工作量與費用是歷史估算，不代表目前 Codex 模型的實測結果。非 GPT 跨模型 request builder 仍屬暫定且未經實測；本版本尚無可用的 verifier runtime。
 
 ## 引用查驗
 

@@ -233,14 +233,6 @@ id = "v3.10-182-verify-passport-cli"
 path = "scripts/test_verify_passport_cli.py"
 
 [[pytest]]
-id = "346-349-cross-model-grounding-guards"
-path = "scripts/test_cross_model_verification_guards.py"
-
-[[pytest]]
-id = "346-349-cross-model-sync-lint"
-path = "scripts/test_check_cross_model_verification_sync.py"
-
-[[pytest]]
 id = "453-compat-verdict-normalization"
 path = "scripts/test_normalize_compat_verdict.py"
 
@@ -609,12 +601,9 @@ id = "656-evidence-row-integration"
 path = "scripts/test_check_evidence_row_integration.py"
 
 [[pytest]]
-id = "630-codex-subscription-transport"
-path = "scripts/test_cross_model_codex_transport.py"
+id = "cross-model-provider-request-builders"
+path = "scripts/test_cross_model_request.py"
 
-[[pytest]]
-id = "630-codex-subscription-integration"
-path = "scripts/test_check_630_codex_subscription_transport.py"
 
 [[pytest]]
 id = "655-claim-standing-candidate-ledger"

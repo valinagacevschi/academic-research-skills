@@ -727,26 +727,11 @@ jobs:
           PYTHONPATH: .
         run: python3 -m unittest scripts.test_check_v3_8_annotation_literal_sync -v
 
-      - name: Check cross-model grounding-guard doc sync (#346 / #349)
-        # Drift guard: asserts shared/cross_model_verification.md references the canonical jq
-        # filters under scripts/cross_model_verification/ via `jq -f` and still carries the
-        # NOT_SEARCHED + CROSS-MODEL-ERROR safety branches — so a doc edit can't re-inline a
-        # weaker filter or drop a branch while the behavioral tests keep passing against the
-        # untouched .jq files. Behavior of the filters themselves is pinned by the manifest test
-        # 346-349-cross-model-grounding-guards.
-        run: python3 scripts/check_cross_model_verification_sync.py
-
       - name: Check sealed Promotion Bakeoff preregistrations (#789)
         # Requires checkout fetch-depth: 0 above. Verifies local byte binding,
         # immutable Git ordering, fixed composition, and detectable historical
         # non-reuse; remote publication/fleet timing stays a run-report witness.
         run: python3 scripts/check_promotion_bakeoff_preregistration.py verify-tree --repo-root .
-
-      - name: Check Codex subscription citation transport (#630)
-        # Pins the closed citation-only selector, auth-only containment,
-        # structured app-server result binding, Bash 3.2 wrappers, contributor
-        # credit, hermetic fixtures/tests, and explicit exclusion of live smoke.
-        run: python3 scripts/check_630_codex_subscription_transport.py
 
       - name: Run v3.8 claim_audit pipeline + schema + uncited-assertion + manifest + finalizer + e2e + calibration tests (#103)
         # The v3.8 #103 test suite covers the L3 claim-faithfulness audit

@@ -16,7 +16,7 @@ ARS is a Codex-only skill suite. Install it as a Codex plugin for normal use, or
 |---|---|---|---|
 | Five ARS skills | Active | Active | Active |
 | Codex subagents | Active when enabled; otherwise use the documented sequential fallback | Same | Same |
-| Cross-model verification | Opt-in with `ARS_CROSS_MODEL=1` and a supported non-GPT API key | Same | Same |
+| Cross-model verification | Runtime unavailable; provider request builders are provisional and unmeasured | Same | Same |
 | Write-scope guard | Unavailable on Codex: `PreToolUse` can block writes, but its documented payload has no subagent role field, which ARS needs for per-role scopes ([Codex Hooks](https://learn.chatgpt.com/docs/hooks)) | Same | Same |
 
 Codex plugins are installed in a local cache. Skill guidance must resolve its bundled `shared/` and `scripts/` paths from the installed plugin tree; it must not depend on the current project's root.

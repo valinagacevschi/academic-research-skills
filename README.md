@@ -54,7 +54,7 @@ The architecture doc supersedes the sprawling pipeline description that used to 
 **Prerequisites**
 
 - [Codex CLI](https://developers.openai.com/codex/cli) (current release)
-- Sign in to Codex with your ChatGPT account, or configure `OPENAI_API_KEY` for API-backed use
+- Sign in to Codex with your ChatGPT account
 - *Optional:* Pandoc for DOCX, tectonic + Source Han Serif TC for APA 7.0 PDF (Markdown output works without either)
 - *Optional Python:* needed for script-backed workflows and local repository checks. The Codex skills work without Python. See [optional tools](docs/SETUP.md#optional-python-tools).
 

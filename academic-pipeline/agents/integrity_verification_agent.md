@@ -870,45 +870,11 @@ To ensure the verification process is reproducible:
 
 ---
 
-## Cross-Model Verification (Optional, v3.0)
+## Cross-Model Verification (Optional)
 
-When the environment variable `ARS_CROSS_MODEL` is set, this agent enables cross-model verification as an additional layer. See `shared/cross_model_verification.md` for full protocol, setup guide, and API call patterns.
+Cross-model verification is strictly opt-in. The Codex session model is the primary model; a second verifier, when configured, must be a non-GPT Anthropic Claude or Google Gemini model. If `ARS_CROSS_MODEL` is unset, use single-model verification.
 
-**Consent gate (required before any upload):** When `ARS_CROSS_MODEL` is set, do not send the sampled references automatically. First ask for explicit user consent (if not already granted in this session) and identify the external provider, model, and content class (citation/reference metadata drawn from the user's manuscript) that would be sent. If consent is not granted, log `[CROSS-MODEL-SKIPPED]` and continue with single-model verification. The environment variable alone is not consent to upload user-derived material. See `shared/cross_model_verification.md` for the consent boundary.
-
-**Closed transport selector (#630):** For these one-reference integrity calls only,
-`ARS_CROSS_MODEL_TRANSPORT=codex` selects the contained ChatGPT-subscription
-adapter. Construct exactly one `ars-codex-citation-request/1.0` object from the
-already-selected reference (`request_id`, exact `reference_text`, exact
-`citation_context`), pipe it to `scripts/cross_model_codex_verify.sh`, and validate
-the input against
-`shared/contracts/cross_model/codex_citation_request.schema.json` and
-the returned one-line object against
-`shared/contracts/cross_model/codex_citation_receipt.schema.json` before consuming
-it. Never pass a file path, arbitrary prompt, Claude verdict, or unrelated paper
-content. A nonzero exit is `[CROSS-MODEL-ERROR]`; a valid `NOT_SEARCHED` receipt is
-recorded as ungrounded, not relabelled as a transport error. Unset or `api` retains
-the documented provider API route; any other selector is an explicit configuration
-error with no fallback. This adapter is not available to DA, reviewer, calibration,
-re-review, checkpoint-judgment, or handoff calls.
-
-**Summary of behavior when enabled (and consent granted):**
-- After Phase A completes, select references by **risk stratification** (#518; replaces the pre-#518 uniform random 30%). Four tiers; a reference qualifying for more than one gets the highest tier that applies (`HIGH-IMPACT` > `NEW-CHANGED` > `CONTROL`/`RANDOM`) and is verified once:
-  - **HIGH-IMPACT — verify 100%, no cap (both gates):** every reference supporting a headline conclusion, a numerical claim, a causal claim, a methods-critical claim, or a disputed claim (contradiction disclosure / reviewer split). Classify at selection time and record the tier per reference.
-  - **RANDOM (Stage 2.5 only) — the non-high-impact remainder:** 10% sample, rounded up (min 3, max 10; if the remainder < 3, sample all of it).
-  - **NEW-CHANGED (Stage 4.5 only) — verify 100%, no cap:** every reference supporting a claim that is new or changed since Stage 2.5, whatever its impact class.
-  - **CONTROL (Stage 4.5 only) — the unchanged, non-high-impact remainder:** 10% sample, rounded up (min 3, max 10; fewer than 3 → all) to catch silent drift. CONTROL replaces RANDOM at the final gate.
-- Send **one API call per reference** (not a batch) for a blind cross-model verification pass — the cross-model does NOT see the primary result, and the call patterns enable the provider's web-search/grounding tool so "search the web to confirm" is actually executable. Record model-family/provider/blinding provenance; do not label the pass an independent error process.
-- Each cross-model verdict is one of `VERIFIED` / `MISMATCH` / `NOT_FOUND` / `NOT_SEARCHED`. A `VERIFIED` with no supporting source URL/DOI, or a **successful (2xx)** response that carries no grounding evidence, is treated as `NOT_SEARCHED` (a non-2xx response is a transport error, not `NOT_SEARCHED` — see Graceful degradation)
-- Disagreements (Claude `VERIFIED` vs cross-model `NOT_FOUND` / `MISMATCH`) → `[CROSS-MODEL-DISAGREEMENT]` → prioritized for human review
-- `NOT_SEARCHED` / ungrounded results **never count as agreement** with a Claude `VERIFIED`: count them separately and surface them for re-run or human review — an ungrounded cross-model verdict carries no evidence and must not be laundered into a confirmation
-- Add "Cross-Model Verification Results" section to the integrity report (with the per-reference Tier and Source columns and a `NOT_SEARCHED` count)
-
-**When not enabled:** Standard single-model verification. No behavioral change.
-
-**Graceful degradation:** If cross-model verification fails **at the transport level** (API error, rate limit, key expired), log `[CROSS-MODEL-ERROR]` and continue single-model — never block the pipeline. A `NOT_SEARCHED` is **not** a transport failure: the call succeeded but produced no grounded evidence, so do not fall back to single-model on its account — record it as `NOT_SEARCHED` and surface it (see `shared/cross_model_verification.md` § Graceful Degradation).
-
----
+Before any external transfer, identify the provider, model, and content class and obtain explicit user consent. The environment variable is not consent. Follow the provider contract, handoff limits, and failure behavior in `shared/cross_model_verification.md`. Current provider request builders are provisional and unmeasured; no active verifier runtime is enabled.
 
 ## Quality Standards
 

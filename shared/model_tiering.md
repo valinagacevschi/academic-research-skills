@@ -4,4 +4,4 @@ ARS uses the GPT model configured for the current Codex session. Skills and suba
 
 For complex synthesis, high-stakes review, adjudication, or systematic screening, use high reasoning effort when Codex exposes that setting. Routine extraction and formatting can use the session's normal effort. The skill may recommend effort for a role, but it must not change the configured model.
 
-For independent cross-model verification, use the separately configured non-GPT verifier only when `ARS_CROSS_MODEL=1` is explicitly enabled. See [`cross_model_verification.md`](cross_model_verification.md).
+For independent cross-model verification, set `ARS_CROSS_MODEL` to a non-GPT verifier model ID and provide the matching API key. Leave it unset to disable verification. See [`cross_model_verification.md`](cross_model_verification.md).

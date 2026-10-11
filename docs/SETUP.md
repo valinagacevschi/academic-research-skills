@@ -49,7 +49,19 @@ Put project-specific standing preferences in that project's `AGENTS.md`. ARS doe
 
 ## Cross-model verification (optional)
 
-Cross-model verification is off by default. It requires explicit opt-in and a non-GPT provider API key. See [Cross-model verification](../shared/cross_model_verification.md) for provider and data-flow details.
+Cross-model verification has no active runtime integration in this release. Its provider request builders are provisional and unmeasured; setting these variables does not send a request. Keep using the Codex session model until the runtime path is completed. See [Cross-model verification](../shared/cross_model_verification.md) for the contract.
+
+The examples below show the planned provider configuration. The model IDs are
+provisional and unmeasured; no live API validation is claimed.
+
+```sh
+# Choose one provider; leave ARS_CROSS_MODEL unset to disable verification.
+export ARS_CROSS_MODEL="claude-sonnet-4-6"
+export ANTHROPIC_API_KEY="<your-anthropic-api-key>"
+# Or:
+# export ARS_CROSS_MODEL="gemini-3.1-pro-preview"
+# export GEMINI_API_KEY="<your-gemini-api-key>"
+```
 
 ## Control availability
 

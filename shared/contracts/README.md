@@ -44,7 +44,7 @@ The checker proves repository evidence only. Remote publication time and fleet
 start/end time cannot be derived from local Git, so its receipt explicitly
 requires the public permalink, passing CI witness, and fleet-time bounds in the
 run report before a result is gate-eligible. The full operator lifecycle and
-claims boundary live in `../cross_model_verification.md` § Promotion Bakeoff.
+consent boundary lives in `../cross_model_verification.md`.
 
 ## Research-family workflow profiles (#742)
 
@@ -201,18 +201,11 @@ truthfully carries the consented persistence/export/path state at the ledger roo
 and in each work family's sharing scope. Its separate rights basis remains
 `not_assessed`; local persistence consent is not a rights claim.
 
-## Codex subscription citation transport (#630)
+## Cross-model verifier requests
 
-- `cross_model/codex_citation_request.schema.json` — closed, bounded data-only
-  request for one citation; no path or caller-authored prompt is representable.
-- `cross_model/codex_citation_receipt.schema.json` — closed verdict plus exact
-  app-server search-result bindings and a fixed containment receipt.
-
-Runtime: `scripts/cross_model_codex_transport.py`. Protocol and limitations:
-`shared/cross_model_verification.md`. Frozen design:
-`docs/design/2026-08-11-630-codex-subscription-citation-transport-spec.md`.
-The adapter is scoped to Stage 2.5 / 4.5 citation-integrity calls and is not a
-general DA, reviewer, judgment, or handoff transport.
+`scripts/cross_model_request.py` builds provisional Anthropic Messages and
+Gemini `generateContent` requests. The provider integrations are not yet wired
+to a runtime verifier; see `shared/cross_model_verification.md`.
 
 ## Sprint contracts (v3.6.2+)
 

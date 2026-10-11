@@ -130,19 +130,18 @@ instructions that an agent follows as if they came from the user.
 A consented second-model call carries unpublished manuscript content to an external
 provider.
 
-- **Existing controls**: consent-gated transport with explicit per-call surfaces
-  (`shared/cross_model_verification.md`); the single user-facing network map
-  (`docs/DATA_FLOWS.md`); the contained, bounded subscription transport protocol.
+- **Existing controls**: consent contract with explicit per-call surfaces
+  (`shared/cross_model_verification.md`) and the user-facing network map
+  (`docs/DATA_FLOWS.md`). Provider request builders are provisional and are not
+  wired to an active verifier runtime.
 - **Evidence status**: `NOT_RUN` (asserted here; no capability-matrix row) — the
-  deterministic envelope pieces are CI-pinned; behavioral compliance with the
-  consent contract is unmeasured.
+  request-builder shapes have offline tests only; live provider behavior and
+  behavioral compliance with the consent contract are unmeasured.
 - **Residual gap**: consent surfaces are prompt-contract layers whose behavior
   varies with the session model; the no-autonomous-publication line is a scope
   boundary and review criterion, not a runtime guarantee (`POSITIONING.md`).
-  Provider-side safety monitoring may escalate a flagged conversation to human
-  review at the provider (`shared/cross_model_verification.md` § Provider-side
-  monitoring and safety interventions), so consent has to assume provider staff
-  may read what is sent.
+  Provider terms may allow retention or human review, so consent has to assume
+  provider staff may read what is sent.
 
 ### R5 — Upstream model-version behavior drift
 
@@ -159,13 +158,8 @@ described.
   measurement of cross-version drift itself exists.
 - **Residual gap**: measured rows are model- and time-specific by contract;
   re-running them on a model change is a manual maintainer action, not automated.
-  The session model can also change mid-run without a version change: a
-  classifier-triggered fallback moves a Claude Code session onto the fallback
-  model until the user runs `/model`, with a transcript notice the user sees and
-  the suite never reads (`shared/model_tiering.md`, the declared-model note under
-  Resolving a tier at dispatch time; vendor specifics in
-  `audits/harness-retirement-2026-09-opus-5-5.md` DM-005), so every "session
-  model" in a provenance record is the declared model, not a per-call attestation.
+  The Codex session model follows the user's current Codex configuration; ARS
+  does not independently attest which model handled each individual call.
 
 ### R6 — Correlated same-family model error
 
@@ -179,11 +173,8 @@ Generator and reviewer share a model family, so both miss the same failures.
 - **Residual gap**: first measured reviewer error profile pending
   ([#653](https://github.com/Imbad0202/academic-research-skills/issues/653)); a
   second model is an error-detection control, not organizational independence.
-  A second model is also only as observable as its outputs: the current OpenAI
-  verifier's vendor reports that covert underperformance by that model would
-  likely evade the vendor's own monitors (GPT-6 Astra system card §9.2.2.3), and
-  ARS's typed evidence anchors bound what a verifier can assert, not what it
-  withholds.
+  The provider verifier paths remain provisional and unmeasured; typed evidence
+  anchors bound what a verifier can assert, not what it withholds.
 
 ### R7 — User over-reliance / rubber-stamping
 

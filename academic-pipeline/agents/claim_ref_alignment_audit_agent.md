@@ -86,10 +86,9 @@ Configuration (`claim_audit_config` block in `academic-pipeline/SKILL.md` mode f
 | `cache_dir` | path or null | null | Filesystem cache directory. Null disables persistent cache (still uses in-memory dict per run). |
 
 The dispatcher supplies the judge's execution identity; this field never
-selects a model by itself or proves what a provider served. For a confirmed
-Astra/xhigh judge, for example, use `gpt-6-astra-xhigh`. On a provider fallback,
-update the identity before reusing any cache; if the actual judge cannot be
-established, retain `unknown` so no verdict is reused across runs. The callback resolves
+selects a model by itself or proves what a provider served. Use the judge identity and reasoning effort supplied by the Codex session. If
+the actual identity cannot be established, retain `unknown` so no verdict is
+reused across runs. The callback resolves
 its own runtime and must not send `unknown` as a provider model id.
 
 ### Sampling behavior
