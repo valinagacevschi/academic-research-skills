@@ -150,12 +150,15 @@ def test_symlink_to_wrong_target_fails(tmp_path: Path) -> None:
     _assert_single(_violations(tmp_path), "symlink resolves to")
 
 
-def test_real_directory_instead_of_symlink_fails(tmp_path: Path) -> None:
+def test_real_skill_copy_passes_and_drift_fails(tmp_path: Path) -> None:
+    import shutil
     _build_root(tmp_path)
     link = tmp_path / "skills" / NAMES[0]
     link.unlink()
-    link.mkdir()
-    _assert_single(_violations(tmp_path), "must be a symlink")
+    shutil.copytree(tmp_path / NAMES[0], link)
+    assert _violations(tmp_path) == []
+    (link / "SKILL.md").write_text("drift", encoding="utf-8")
+    _assert_single(_violations(tmp_path), "differs from source")
 
 
 def test_missing_skills_dir_fails(tmp_path: Path) -> None:

@@ -233,6 +233,10 @@ id = "809-skill-inventory-parity"
 path = "scripts/test_check_skill_inventory_parity.py"
 
 [[pytest]]
+id = "phase3-skill-asset-paths"
+path = "scripts/test_check_skill_asset_paths.py"
+
+[[pytest]]
 id = "v3.10-182-verification-cache"
 path = "scripts/test_verification_cache.py"
 

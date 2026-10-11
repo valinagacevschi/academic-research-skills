@@ -13,8 +13,8 @@ This lint takes the set of top-level `<name>/SKILL.md` directories as the
 authority (it is what exists) and requires set-equality against the surfaces
 that advertise or package the inventory:
 
-  B. `skills/<name>` — one symlink per skill, resolving to `<root>/<name>`
-     (plugin auto-discovery packages from here);
+  B. `skills/<name>` — a real bundled copy matching `<root>/<name>`
+     (plugin caches discard symlinks, so auto-discovery packages from here);
   C. `.agents/skills/<name>` — one Codex skill symlink per skill, resolving to
      `<root>/<name>`;
   D. `AGENTS.md` § "Skills Overview" table rows (the canonical
@@ -78,6 +78,7 @@ def _skills_on_disk(root: Path) -> set[str]:
 
 
 def _skills_dir_entries(root: Path, violations: list[str]) -> set[str]:
+    """Check real plugin-bundled skill copies or legacy links for exact parity."""
     skills_dir = root / SKILLS_DIR
     if not skills_dir.is_dir():
         violations.append(f"{skills_dir}: directory is missing")
@@ -86,21 +87,29 @@ def _skills_dir_entries(root: Path, violations: list[str]) -> set[str]:
     for entry in sorted(skills_dir.iterdir(), key=lambda p: p.name):
         names.add(entry.name)
         expected = root / entry.name
-        if not entry.is_symlink():
-            violations.append(
-                f"{entry}: must be a symlink to ../{entry.name}, "
-                f"found a real {'directory' if entry.is_dir() else 'file'}"
-            )
+        if entry.is_symlink():
+            try:
+                target = entry.resolve(strict=True)
+            except (FileNotFoundError, RuntimeError):
+                violations.append(f"{entry}: dangling symlink")
+                continue
+            if target != expected.resolve():
+                violations.append(f"{entry}: symlink resolves to {target}, expected {expected}")
             continue
-        try:
-            target = entry.resolve(strict=True)
-        except (FileNotFoundError, RuntimeError):
-            violations.append(f"{entry}: dangling symlink")
+        if not entry.is_dir():
+            violations.append(f"{entry}: must be a real skill directory copy or matching symlink")
             continue
-        if target != expected.resolve():
-            violations.append(
-                f"{entry}: symlink resolves to {target}, expected {expected}"
-            )
+        if not expected.is_dir():
+            continue
+        source_files = {p.relative_to(expected) for p in expected.rglob("*") if p.is_file()}
+        bundled_files = {p.relative_to(entry) for p in entry.rglob("*") if p.is_file()}
+        if source_files != bundled_files:
+            violations.append(f"{entry}: bundled file set differs from {expected}")
+            continue
+        for rel in sorted(source_files):
+            if (expected / rel).read_bytes() != (entry / rel).read_bytes():
+                violations.append(f"{entry / rel}: differs from source {expected / rel}")
+                break
     return names
 
 
@@ -323,7 +332,7 @@ def run_all_checks(root: Path) -> list[str]:
 
     codex_links = _codex_skills_dir_entries(root, violations)
     if (root / ".agents" / "skills").is_dir():
-        _report_set_diff(on_disk, codex_links, ".agents/skills/ symlinks", violations)
+        _report_set_diff(on_disk, codex_links, ".agents/skills/ bundled copies or symlinks", violations)
 
     table = _agents_table_rows(root, violations)
     _report_set_diff(
