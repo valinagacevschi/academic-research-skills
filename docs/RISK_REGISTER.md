@@ -274,9 +274,7 @@ differently: fabricating a decision is R11's risk; this row covers losing one.
   `shared/contracts/passport/run_ledger.schema.json`); the orchestrator's run-ledger
   and handoff-check rules (`academic-pipeline/agents/pipeline_orchestrator_agent.md`)
   and the state machine's run-ledger rule
-  (`academic-pipeline/references/pipeline_state_machine.md`); the SessionStart
-  reminder after a compaction or resume (`scripts/announce-ars-loaded.sh`); the opt-in
-  passport reset for MANDATORY decisions
+  (`academic-pipeline/references/pipeline_state_machine.md`); the opt-in passport reset for MANDATORY decisions
   (`academic-pipeline/references/passport_as_reset_boundary.md`); the user-confirmed
   `standing_constraints[]` passport list that later dispatches quote
   (`shared/contracts/passport/standing_constraint_entry.schema.json`, #927).

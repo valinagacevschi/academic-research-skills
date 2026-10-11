@@ -25,10 +25,6 @@
 #      locally before opening a PR.
 
 [[pytest]]
-id = "857-command-skill-dispatch"
-path = "scripts/test_check_command_skill_dispatch.py"
-
-[[pytest]]
 id = "864-skill-description-length"
 path = "scripts/test_check_skill_description_length.py"
 
@@ -445,10 +441,6 @@ id = "527-handoff-contract-lint"
 path = "scripts/test_check_cross_model_handoff_contract.py"
 
 [[pytest]]
-id = "544-update-reminder"
-path = "scripts/test_ars_update_check.py"
-
-[[pytest]]
 id = "570-revision-token-conservation"
 path = "scripts/test_check_revision_token_conservation.py"
 
@@ -523,10 +515,6 @@ path = "scripts/test_venue_disclosure_contract.py"
 [[pytest]]
 id = "595-chinese-literature-client"
 path = "scripts/test_chinese_literature_client.py"
-
-[[pytest]]
-id = "633-command-frontmatter-name"
-path = "scripts/test_check_command_frontmatter_name.py"
 
 [[pytest]]
 id = "654-heldout-measurement-contract"

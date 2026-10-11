@@ -19,7 +19,7 @@
 # for an optional layer). It stays SILENT on stderr on degraded paths: PreToolUse is a hot
 # path, so any per-call stderr IS the spam #454 is about.
 #
-# Bash 3.2 / POSIX sh compatible (same constraint as scripts/announce-ars-loaded.sh). On
+# Bash 3.2 / POSIX sh compatible (POSIX shell compatible). On
 # Windows this runs under Git Bash; with no Git Bash, CC falls back to PowerShell which can't
 # run this .sh — the guard is then inactive (accepted degradation, see spec §3.3).
 

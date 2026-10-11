@@ -391,7 +391,7 @@ class NormalizationRegressionTest(unittest.TestCase):
     def setUp(self):
         self._tmp = tempfile.TemporaryDirectory()
         self.ws = os.path.realpath(self._tmp.name)
-        for d in ("phase2_investigation", "phase3_analysis", "hooks", "scripts", ".claude-plugin"):
+        for d in ("phase2_investigation", "phase3_analysis", "hooks", "scripts", ".codex-plugin"):
             os.makedirs(os.path.join(self.ws, d), exist_ok=True)
 
     def tearDown(self):
@@ -425,7 +425,7 @@ class NormalizationRegressionTest(unittest.TestCase):
 
     def test_plugin_json_infra_protected(self):
         p = payload("Write",
-                    {"file_path": os.path.join(self.ws, ".claude-plugin/plugin.json"), "content": "x"},
+                    {"file_path": os.path.join(self.ws, ".codex-plugin/plugin.json"), "content": "x"},
                     cwd=self.ws, agent_type="broad_test_agent")
         d = self.decide(p)
         self.assertEqual(d["decision"], "deny")
@@ -587,7 +587,7 @@ class PluginRootInfraScopeTest(unittest.TestCase):
         self.assertEqual(self.decide_in_project(p)["decision"], "allow")
 
     def test_user_project_dotclaude_claude_md_allowed_main_session(self):
-        p = payload("Write", {"file_path": os.path.join(self.ws, ".claude/CLAUDE.md"), "content": "x"},
+        p = payload("Write", {"file_path": os.path.join(self.ws, "AGENTS.md"), "content": "x"},
                     cwd=self.ws)
         self.assertEqual(self.decide_in_project(p)["decision"], "allow")
 
@@ -619,9 +619,9 @@ class PluginRootInfraScopeTest(unittest.TestCase):
         self.assertEqual(self.decide_in_project(p)["decision"], "allow")
 
     def test_plugin_own_dotclaude_claude_md_allowed(self):
-        # Same for .claude/CLAUDE.md inside the plugin root (#459).
+        # Same for AGENTS.md inside the plugin root (#459).
         os.makedirs(os.path.join(self.plugin, ".claude"), exist_ok=True)
-        p = payload("Write", {"file_path": os.path.join(self.plugin, ".claude/CLAUDE.md"), "content": "x"},
+        p = payload("Write", {"file_path": os.path.join(self.plugin, "AGENTS.md"), "content": "x"},
                     cwd=self.ws)
         self.assertEqual(self.decide_in_project(p)["decision"], "allow")
 

@@ -51,7 +51,7 @@ def _write_claude_md(
     fixture CHANGELOG (invariants 10 + 11). `key_additions="derive"` writes a
     `## v<major>.<minor> Key Additions` heading derived from `suite_version`;
     pass an explicit token (e.g. "v3.4") to drift it, or None to omit."""
-    claude_dir = root / ".claude"
+    claude_dir = root
     claude_dir.mkdir(parents=True, exist_ok=True)
     rows = "\n".join(
         f"| `{name}` v{ver} | purpose | modes |" for name, ver in table_rows
@@ -84,7 +84,7 @@ def _write_claude_md(
         f"- **Suite version**: {suite_version} (per CHANGELOG.md)\n"
         f"{last_updated_line}"
     )
-    (claude_dir / "CLAUDE.md").write_text(text, encoding="utf-8")
+    (root / "AGENTS.md").write_text(text, encoding="utf-8")
 
 
 def _write_changelog(
@@ -117,11 +117,11 @@ def _write_changelog(
 def _write_plugin_manifests(
     root: Path, version: str, description: str | None = None
 ) -> None:
-    """Fixture .claude-plugin/{plugin,marketplace}.json at `version` (invariant 4).
+    """Fixture .codex-plugin/plugin.json at `version` (invariant 4).
     `description` (when given) lands in plugin.json for the invariant-8
     "N-agent" claim tests."""
     import json
-    plugin_dir = root / ".claude-plugin"
+    plugin_dir = root / ".codex-plugin"
     plugin_dir.mkdir(parents=True, exist_ok=True)
     plugin_obj: dict[str, str] = {"name": "fixture", "version": version}
     if description is not None:
@@ -129,10 +129,7 @@ def _write_plugin_manifests(
     (plugin_dir / "plugin.json").write_text(
         json.dumps(plugin_obj), encoding="utf-8"
     )
-    (plugin_dir / "marketplace.json").write_text(
-        json.dumps({"name": "fixture", "plugins": [{"name": "fixture", "version": version}]}),
-        encoding="utf-8",
-    )
+
 
 
 def _write_readme(root: Path, badge_version: str) -> None:
@@ -318,7 +315,7 @@ class TestVersionConsistency(unittest.TestCase):
             self.assertIn("CHANGELOG", result.stdout)
 
     def test_plugin_json_version_drift_fails(self) -> None:
-        """Invariant 4: .claude-plugin/plugin.json version != suite — must fail.
+        """Invariant 4: .codex-plugin/plugin.json version != suite — must fail.
         (Regression for the v3.10.0 release miss: plugin.json sat at the prior
         version because no lint covered it.)"""
         with TemporaryDirectory() as tmp:
@@ -330,24 +327,6 @@ class TestVersionConsistency(unittest.TestCase):
             self.assertIn("plugin.json", result.stdout)
             self.assertIn("3.4.0", result.stdout)
             self.assertIn("3.5.0", result.stdout)
-
-    def test_marketplace_version_drift_fails(self) -> None:
-        """Invariant 4: marketplace.json plugins[].version != suite — must fail.
-        (Regression for marketplace.json silently sitting at 3.7.0 for releases.)"""
-        import json
-        with TemporaryDirectory() as tmp:
-            root = Path(tmp)
-            _write_aligned_fixture(root)  # suite 3.5.0; plugin.json aligned at 3.5.0
-            # Drift ONLY marketplace, leaving plugin.json correct, to isolate it.
-            (root / ".claude-plugin" / "marketplace.json").write_text(
-                json.dumps({"name": "fixture",
-                            "plugins": [{"name": "fixture", "version": "3.7.0"}]}),
-                encoding="utf-8",
-            )
-            result = _run(root)
-            self.assertEqual(result.returncode, 1)
-            self.assertIn("marketplace.json", result.stdout)
-            self.assertIn("3.7.0", result.stdout)
 
     def test_pipeline_version_vs_suite_drift_fails(self) -> None:
         """academic-pipeline version in table must equal suite version."""
@@ -398,7 +377,7 @@ class TestVersionConsistency(unittest.TestCase):
         with TemporaryDirectory() as tmp:
             root = Path(tmp)
             _write_aligned_fixture(root)
-            (root / ".claude" / "CLAUDE.md").write_text(
+            (root / "AGENTS.md").write_text(
                 textwrap.dedent(
                     """\
                     # Academic Research Skills
@@ -1030,7 +1009,7 @@ class TestChangelogBodyLength(unittest.TestCase):
 
 
 class TestLastUpdatedFreshness(unittest.TestCase):
-    """Invariant 10 (#487): .claude/CLAUDE.md "Last Updated" must lie within
+    """Invariant 10 (#487): AGENTS.md "Last Updated" must lie within
     ±7 days of the latest CHANGELOG entry's date (deterministic baseline —
     re-running the lint later cannot flip the result)."""
 
@@ -1117,7 +1096,7 @@ class TestLastUpdatedFreshness(unittest.TestCase):
 
 class TestKeyAdditionsAlignment(unittest.TestCase):
     """Invariant 11 (#487): the newest "## vX.Y… Key Additions" heading in
-    .claude/CLAUDE.md must match the suite version (compared at the heading's
+    AGENTS.md must match the suite version (compared at the heading's
     own precision, so `## v3.5 Key Additions` matches suite 3.5.0)."""
 
     def test_key_additions_drift_fails(self) -> None:
@@ -1152,7 +1131,7 @@ class TestKeyAdditionsAlignment(unittest.TestCase):
         with TemporaryDirectory() as tmp:
             root = Path(tmp)
             _write_aligned_fixture(root)
-            claude_md = root / ".claude" / "CLAUDE.md"
+            claude_md = root / "AGENTS.md"
             text = claude_md.read_text(encoding="utf-8")
             text = text.replace(
                 "## Version Info\n",

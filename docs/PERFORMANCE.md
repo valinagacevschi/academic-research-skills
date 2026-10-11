@@ -1,60 +1,12 @@
 # ARS Performance Notes
 
-> **Codex is the primary runtime.** Use the current Codex session model and its supported reasoning controls; ARS does not pin a model or reasoning level. The model-specific Claude comparisons and cost figures later on this page are historical measurements for the Claude Code adapter and do not predict Codex usage or cost.
->
-> **For Claude Code users:** the Opus 5.5 and Fable 5.1 effort and benchmark recommendations below apply only to that adapter and model generation. They are retained as dated compatibility notes, not Codex guidance.
->
-> **Keep untrusted source text in files when practical.** This is a general instruction-boundary measure. The Opus 5.5 card findings and Claude Code paste behavior below are specific to that model and runtime.
->
-> The full academic pipeline (10 stages) consumes a **large amount of tokens** — a single end-to-end run can exceed 200K input + 100K output tokens depending on paper length and revision rounds. Budget accordingly.
->
-> Individual skills (e.g., `deep-research` alone, or `academic-paper-reviewer` alone) consume significantly less.
+ARS uses the model configured for the current Codex session. It does not choose a model tier. For demanding synthesis, review, or adjudication work, raise Codex reasoning effort when available. Multi-agent steps use Codex subagents; the sequential fallback reduces role independence.
 
-## Estimated token usage by mode
+The workload and cost figures below are historical estimates, not measurements of current Codex models. Optional cross-model verification uses a non-GPT API and stays off unless `ARS_CROSS_MODEL=1` is set.
 
-| Skill / Mode | Input Tokens | Output Tokens | Estimated Cost |
-|---|---|---|---|
-| `deep-research` socratic | ~30K | ~15K | ~$0.60 |
-| `deep-research` full | ~60K | ~30K | ~$1.20 |
-| `deep-research` systematic-review | ~100K | ~50K | ~$2.00 |
-| `academic-paper` plan | ~40K | ~20K | ~$0.80 |
-| `academic-paper` full | ~80K | ~50K | ~$1.80 |
-| `academic-paper-reviewer` full | ~50K | ~30K | ~$1.10 |
-| `academic-paper-reviewer` quick | ~15K | ~8K | ~$0.30 |
-| **Full pipeline (10 stages)** | **~200K+** | **~100K+** | **~$4-6** |
-| + Cross-model verification | +~10K (external) | +~5K (external) | +~$0.60-1.10 |
+## Citation verification
 
-*Estimates based on a ~15,000-word paper with ~60 references. Actual usage varies with paper length, revision rounds, and dialogue depth. Costs measured on Opus 4.x at Anthropic API pricing as of April 2026 — treat as order-of-magnitude anchors under newer models rather than exact quotes.*
-
-> **2026-09 list-price re-derivation.** At 2026-09 list prices, the full-pipeline token figures above (~200K in + ~100K out) come to roughly **~$7** per run on Claude Fable 5.1 (US$10 / US$50 per million input / output tokens) and **~$2.80** on Claude Opus 5.5 (US$4 / US$20, with cache reads at US$0.20 per million; Opus 5.5 system card p. 180), before any cache discount. This is arithmetic on the token columns, not a re-measurement: no pipeline run has been re-timed on either model. Both models always reason (thinking cannot be disabled), so dialogue-heavy modes may spend more output tokens than the Opus 4.x rows recorded, and a higher effort level spends more still.
-
-> **v3.11 citation verification (#182).** The deterministic citation-existence gate calls external bibliographic APIs (Semantic Scholar / OpenAlex / Crossref / arXiv), not the LLM, so it adds **no Claude token cost** to the figures above — only network latency on first lookup. The persistent SQLite cache (`~/.cache/ars/verification.db`, 90-day TTL) means each paper is verified once and reused across drafts; a re-run over an already-cached bibliography does no network work. See [SETUP](SETUP.md#citation-verification-cache-v3.11-182).
-
-## Claude Code adapter settings
-
-| Setting | What it does | How to enable | Docs |
-|---|---|---|---|
-| **Agent Team** (optional) | Enables `TeamCreate` / `SendMessage` tools for manual multi-agent coordination. **ARS's internal parallelization does not require this flag** — skills spawn subagents via the built-in `Agent` tool directly. Only useful if you want to manually orchestrate persistent team workflows across sessions. | Set `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1` (research preview) | Experimental feature — no stable docs yet |
-| **Auto mode** (recommended) | Auto-accepts most tool actions so long pipeline runs keep moving, while a server-side classifier still blocks actions that escalate beyond what you asked for (e.g. production deploys, force-pushes or direct pushes to main, data exfiltration). Explicit ask rules and classifier blocks can still prompt. The middle ground between manual approval and zero checks. | Launch with `claude --permission-mode auto` (when available), or set `"permissions": { "defaultMode": "auto" }` in `~/.claude/settings.json`; verify the active mode after startup (research preview) | [Permission modes](https://code.claude.com/docs/en/permission-modes) |
-| **Skip Permissions** | Skips routine tool-use confirmations with no safety checks. Faster than auto mode but removes all guardrails. Intended for ephemeral isolated sandboxes without internet access, not real development machines. | Launch with `claude --dangerously-skip-permissions` (equivalent to `--permission-mode bypassPermissions`) | [Permission modes](https://code.claude.com/docs/en/permission-modes) |
-
-> **⚠️ Choosing a mode**: For most unattended pipeline runs, auto mode is the recommended setting. It keeps most long runs moving while a classifier gates dangerous escalations, though ask rules and classifier blocks can still prompt. Auto mode is a research preview: it does not guarantee safety and is not a replacement for human review on sensitive operations, and its behavior may change. Skip Permissions removes that safety net entirely and should only be used in an isolated sandbox without internet access, where you are comfortable with Claude executing file reads, writes, and shell commands with no checks.
-
-### v3.7.0 Plugin agents and model routing
-
-When ARS is installed as a Claude Code plugin (`/plugin install academic-research-skills`), three downstream worker agents are exposed as plugin-shipped subagents: `synthesis_agent`, `research_architect_agent`, and `report_compiler_agent`. Each declares `model: inherit` in its frontmatter, which means they run under the **dispatching session's model** rather than a pinned floor:
-
-- An Opus session running the full pipeline gets Opus agents, preserving the integrative depth those agents were designed for.
-- A Sonnet session gets Sonnet agents, matching the cost/latency profile of the parent run.
-- The agents never silently fall back to Haiku — `inherit` resolves through the parent session's model, which is itself gated by the project policy of "no Haiku for ARS runs."
-
-Since #514 (shipped in #521), each of the three also carries a pinned tools allowlist in the same frontmatter — `tools: Read, Write, Edit, Grep, Glob`, no shell and no network fetch — so dispatch-time capability is least-privilege; the exact value is CI-locked by `scripts/check_tools_allowlist.py` (#524).
-
-This means **plugin-agent token costs track the per-mode estimates above unchanged** (with `ARS_MODEL_TIERING` unset); there is no separate plugin agent surcharge or discount, because dispatched agents inherit the same model the parent run already pays for. Under `ARS_MODEL_TIERING=economy`, plugin-exposed execution-type agents (e.g. `report_compiler_agent`) follow the tiering rule instead — one tier below the session model, floor Opus-class (see `shared/model_tiering.md`). If you change the main session model mid-pipeline (e.g., downshift to Sonnet for a long revision pass), the next agent dispatch picks up the new floor automatically.
-
-Other ARS agents (`bibliography_agent`, `literature_strategist_agent`, etc.) are not plugin-exposed in v3.7.0; they remain in-skill prompt templates that the main session executes inline, with no separate model routing layer **by default**. The opt-in `ARS_MODEL_TIERING` switch (#517) adds a dispatch-time routing rule on top: when a tiering direction applies to a role, the session dispatches it as a subagent pinned to the target tier (inline roles included — dispatch-as-subagent is the mechanism); with the flag unset, this paragraph describes behavior unchanged. See `shared/model_tiering.md`. Wider plugin-agent coverage is deferred to a future release.
-
-**Tiering with Fable 5.1 and Opus 5.5 (2026-09).** The tier ladder puts Fable 5.1 above Opus 5.5 because that is the vendor's lineup order, not because Fable 5.1 scores higher on every task (see the model note at the top of this page). On an Opus 5.5 session, `quality-boost` sends the checkpoint calls to Fable 5.1 at 2.5 times the per-token list price, for a benefit ARS has not measured; raising the session effort is the cheaper first step. On a Fable 5.1 session, `economy` sends execution-type agents to the Opus class, which Claude Code resolves to Opus 5.5 on the Anthropic API (some providers resolve the `opus` alias to an older Opus model); the quality cost of that trade is also unmeasured on ARS.
+The deterministic citation-existence gate calls external bibliographic APIs (Semantic Scholar / OpenAlex / Crossref / arXiv), not the session model. Its SQLite cache (`~/.cache/ars/verification.db`, 90-day TTL) reuses lookups across drafts. See [SETUP](SETUP.md).
 
 ## Long-running session management
 
@@ -93,7 +45,7 @@ When `ARS_PASSPORT_RESET=1` is set, every FULL and MANDATORY checkpoint becomes 
 
 1. Run a stage to FULL checkpoint in session A.
 2. Copy the `[PASSPORT-RESET: hash=<hash>, stage=<completed>, next=<next>]` tag from the checkpoint notification.
-3. Start a fresh Claude Code session (session B) and paste `resume_from_passport=<hash>`. Optional overrides: `resume_from_passport=<hash> stage=<n> mode=<m>`.
+3. Start a fresh Codex session (session B) and paste `resume_from_passport=<hash>`. Optional overrides: `resume_from_passport=<hash> stage=<n> mode=<m>`.
 4. Session B loads only the passport ledger; no replay of session A's turns. The orchestrator locates the matching `kind: boundary` entry, appends a `kind: resume` entry to consume it, and continues. The resumed stage is determined by: a `stage=` CLI override if supplied, else the matched option's `next_stage` when the boundary carries a `pending_decision` (the orchestrator re-prompts the user first), else the recorded `next` field. `next` MAY be `null` when all decision branches terminate.
 
 **When reset beats continuation:**
@@ -118,7 +70,7 @@ The resume command only defines the hash and optional stage/mode overrides:
 resume_from_passport=<hash> [stage=<n>] [mode=<m>]
 ```
 
-There is no path syntax on the resume command itself. Custom passport locations are configured in the project's `CLAUDE.md` or handled by the integrator's tooling before the orchestrator is invoked.
+There is no path syntax on the resume command itself. Custom passport locations are configured in the project's `AGENTS.md` or handled by the integrator's tooling before the orchestrator is invoked.
 
 **Empirical token savings:** measurement pending a real `systematic-review` run with instrumentation. This section will be updated with observed token deltas once available; until then, no numeric claim is made. See [`../academic-pipeline/references/passport_as_reset_boundary.md`](../academic-pipeline/references/passport_as_reset_boundary.md) for the full protocol.
 

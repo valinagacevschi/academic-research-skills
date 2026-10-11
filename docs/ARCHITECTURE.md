@@ -123,7 +123,7 @@ flowchart LR
 
     User --> Raw
     User -- standalone modes: ungated drafts,<br/>reviewer comments, search-fills-gap --> Red
-    User -- standalone /ars-reviewer:<br/>ungated pasted manuscript --> Ver1
+    User -- standalone `$academic-paper-reviewer full`:<br/>ungated pasted manuscript --> Ver1
     User -- Stage 1 request / mid-entry paper --> Orch
     Raw -- source_verification elevates artifacts --> Red
     Red -- Gate 2.5: 7-mode integrity --> Ver1
@@ -155,7 +155,7 @@ Rules (per `shared/ground_truth_isolation_pattern.md`):
   orchestrated pipeline path, where Stage 2 inputs arrive as Stage-1 sanitized
   artifacts (Gate 2.5 runs after Stage 2, not before it).
 - `academic-paper-reviewer` is `raw` (#773) because the standalone
-  `/ars-reviewer` entry legitimately consumes an ungated pasted manuscript —
+  `$academic-paper-reviewer full` entry legitimately consumes an ungated pasted manuscript —
   the former `verified_only` was at best true for the pipeline's initial
   Stage 3 dispatch (post-Gate-2.5; Stage 3' re-review consumes a freshly
   revised manuscript before Stage 4.5). That Stage 3 sequencing is unchanged.
@@ -361,7 +361,7 @@ timeline
            : two-phase orchestration in academic-paper full mode (Phase 4a/4b + 6a/6b)
            : SC-* mode-gating in check_sprint_contract.py
     v3.7.0 : Claude Code plugin packaging
-           : .claude-plugin/{plugin,marketplace}.json + skills/ symlinks
+           :  .codex-plugin/{plugin,marketplace}.json + skills/ symlinks
            : 10 slash commands (commands/ars-*.md, model pinned opus/sonnet, no haiku)
            : 3 plugin agents (agents/, byte-identical copies of v3.6.7-hardened
            :   source — mirror-sync lint since #413, model: inherit)

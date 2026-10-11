@@ -28,8 +28,8 @@ _MIRRORED_FILES = (
     "docs/SETUP.md",
     "docs/ARCHITECTURE.md",
     "README.md",
+    "docs/RISK_REGISTER.md",
     "audits/iso42001-spirit-gap-assessment-2026-08-17.md",
-    "pi/README.md",
     "shared/cross_model_verification.md",
     "shared/contracts/degradation_registry.json",
     "shared/references/routing_core.md",
@@ -69,8 +69,8 @@ def test_ca1_dead_file_link_fires(repo: Path) -> None:
     _mutate(
         repo,
         "docs/CONTROL_AVAILABILITY.md",
-        "../pi/README.md",
-        "../pi/NO_SUCH_FILE.md",
+        "SETUP.md#install-as-a-codex-plugin",
+        "MISSING.md#install-as-a-codex-plugin",
     )
     errors = run_all_checks(repo)
     assert any("CA-1" in e and "does not exist" in e for e in errors)
@@ -83,8 +83,8 @@ def test_ca1_renamed_setup_heading_fires(repo: Path) -> None:
     _mutate(
         repo,
         str(SETUP_RELPATH),
-        "### Method 5: Claude Science import (v3.14.0+)",
-        "### Method 5: Claude Science import (v9.99.0+)",
+        "## Install as a Codex plugin",
+        "## Install as a Codex plugin (renamed)",
     )
     errors = run_all_checks(repo)
     assert any("CA-1" in e and "anchor" in e for e in errors)
@@ -95,8 +95,8 @@ def test_ca1_broken_intra_doc_anchor_fires(repo: Path) -> None:
     _mutate(
         repo,
         "docs/CONTROL_AVAILABILITY.md",
-        "(#environment-degradations-within-a-channel)",
-        "(#environment-degradations-nope)",
+        "(SETUP.md#install-as-a-codex-plugin)",
+        "(#missing-anchor)",
     )
     errors = run_all_checks(repo)
     assert any("CA-1" in e and "intra-doc" in e for e in errors)
@@ -121,11 +121,11 @@ def test_ca2_new_setup_method_fires(repo: Path) -> None:
     setup = repo / SETUP_RELPATH
     setup.write_text(
         setup.read_text(encoding="utf-8")
-        + "\n### Method 6: Hypothetical Future Channel\n\nBody.\n",
+        + "\n## Install from a future marketplace\n\nBody.\n",
         encoding="utf-8",
     )
     errors = run_all_checks(repo)
-    assert any("CA-2" in e and "Method 6" in e for e in errors)
+    assert any("CA-2" in e and "Install from a future marketplace" in e for e in errors)
     assert not any("CA-1" in e for e in errors)
 
 
@@ -175,11 +175,11 @@ def test_ca2_same_slug_in_copied_file_does_not_satisfy(repo: Path) -> None:
     _mutate(
         repo,
         "docs/CONTROL_AVAILABILITY.md",
-        "SETUP.md#method-5-claude-science-import-v3140",
-        "SETUP_COPY.md#method-5-claude-science-import-v3140",
+        "SETUP.md#install-as-a-codex-plugin",
+        "SETUP_COPY.md#install-as-a-codex-plugin",
     )
     errors = run_all_checks(repo)
-    assert any("CA-2" in e and "Method 5" in e for e in errors)
+    assert any("CA-2" in e and "Install as a Codex plugin" in e for e in errors)
     assert not any("CA-1" in e for e in errors)
 
 
@@ -340,14 +340,8 @@ def test_ca3_link_inside_four_backtick_fence_fires(repo: Path) -> None:
 
 
 def test_slug_matches_github_for_punctuated_heading() -> None:
-    heading = (
-        "Method 0: Claude Code Plugin (v3.7.0+, recommended for "
-        "Claude Code CLI / IDE users)"
-    )
-    assert github_slug(heading) == (
-        "method-0-claude-code-plugin-v370-recommended-for-"
-        "claude-code-cli--ide-users"
-    )
+    heading = "Install as a Codex plugin (CLI / desktop)"
+    assert github_slug(heading) == "install-as-a-codex-plugin-cli--desktop"
 
 
 def test_image_form_of_inbound_link_does_not_satisfy_ca3(repo: Path) -> None:

@@ -23,7 +23,6 @@ from unittest.mock import patch
 import yaml
 
 from scripts import run_ledger
-from scripts.test_ars_update_check import _additional_context, run_announce
 from tests.test_helpers import build_schema_validator, load_json_schema, run_script
 
 SCRIPT = Path(__file__).parent / "run_ledger.py"
@@ -1075,24 +1074,6 @@ class CliTest(_LedgerCase):
         self.assertEqual(code, 2)
         self.assertIn("cannot read a file the ledger names", stderr.getvalue())
 
-
-
-class AnnounceHookTest(unittest.TestCase):
-    """The SessionStart compact/resume arm asks for the handoff check (design §4)."""
-
-    def _context(self, source: str) -> str:
-        result = run_announce(json.dumps({"source": source}), {})
-        self.assertEqual(result.returncode, 0, result.stderr)
-        return _additional_context(result.stdout)
-
-    def test_only_compact_and_resume_carry_the_reminder(self) -> None:
-        for source in ("compact", "resume"):
-            with self.subTest(source):
-                self.assertIn("If an ARS pipeline run is in progress, run its handoff check",
-                              self._context(source))
-        for source in ("startup", "clear"):
-            with self.subTest(source):
-                self.assertNotIn("handoff check", self._context(source))
 
 
 if __name__ == "__main__":

@@ -87,8 +87,8 @@ def check_mode_registry() -> None:
             fail(f"{rel_path}: missing mode heading {heading!r}")
 
 
-def check_claude_md() -> None:
-    rel_path = ".claude/CLAUDE.md"
+def check_agents_md() -> None:
+    rel_path = "AGENTS.md"
     expect_contains(rel_path, "integrity check (Stage 2.5)")
     expect_contains(rel_path, "final integrity check (Stage 4.5)")
     expect_contains(rel_path, "**Suite version**: 3.23.0")
@@ -231,8 +231,8 @@ _VERSION = r"\d+\.\d+\.\d+(?:\.\d+)*(?!\.?\d)"
 
 
 def _suite_version() -> str | None:
-    """Parse the canonical suite version from `.claude/CLAUDE.md` (`**Suite version**: X.Y.Z[.W]`)."""
-    match = re.search(rf"\*\*Suite version\*\*:\s*({_VERSION})", read(".claude/CLAUDE.md"))
+    """Parse the canonical suite version from `AGENTS.md` (`**Suite version**: X.Y.Z[.W]`)."""
+    match = re.search(rf"\*\*Suite version\*\*:\s*({_VERSION})", read("AGENTS.md"))
     return match.group(1) if match else None
 
 
@@ -257,7 +257,7 @@ def check_architecture_component_version() -> None:
     rel_path = "docs/ARCHITECTURE.md"
     version = _suite_version()
     if version is None:
-        fail(".claude/CLAUDE.md: could not parse '**Suite version**: X.Y.Z' for ARCHITECTURE check")
+        fail("AGENTS.md: could not parse '**Suite version**: X.Y.Z' for ARCHITECTURE check")
         return
     text = read(rel_path)
 
@@ -409,16 +409,10 @@ def check_readme_sections() -> None:
 
 
 def check_setup_docs() -> None:
-    expect_contains("docs/SETUP.md", "Direct `.docx` generation uses [Pandoc]")
-    expect_contains(
-        "docs/SETUP.md",
-        "Direct `.docx` generation requires Pandoc, and PDF generation requires `tectonic`",
-    )
-    expect_contains("docs/SETUP.zh-TW.md", "若要直接產出 `.docx`，需要安裝 [Pandoc]")
-    expect_contains(
-        "docs/SETUP.zh-TW.md",
-        "直接產出 `.docx` 需要 Pandoc，PDF 需要 `tectonic`",
-    )
+    expect_contains("docs/SETUP.md", "Install as a Codex plugin")
+    expect_contains("docs/SETUP.md", "Install Pandoc for DOCX conversion")
+    expect_contains("docs/SETUP.zh-TW.md", "安裝 Codex plugin")
+    expect_contains("docs/SETUP.zh-TW.md", "DOCX 轉換需要 Pandoc")
     check_relative_markdown_links("docs/SETUP.md")
     check_relative_markdown_links("docs/SETUP.zh-TW.md")
     for locale in ("zh-TW", "zh-CN", "ja-JP", "ko-KR", "es-ES"):
@@ -1638,7 +1632,6 @@ def check_output_language_pair_contract() -> None:
         ("academic-paper/references/workflow_phase_details.md", True),
         ("academic-paper/references/mode_selection_guide.md", False),  # "zh-TW + EN" prose, no token
         ("academic-paper/templates/bilingual_abstract_template.md", True),   # was False — the template now carries the token
-        ("commands/ars-abstract.md", True),
         ("shared/handoff_schemas.md", True),
     ):
         try:
@@ -1700,7 +1693,7 @@ def check_output_language_pair_contract() -> None:
 
 def main() -> int:
     check_mode_registry()
-    check_claude_md()
+    check_agents_md()
     check_skill_version_blocks()
     check_suite_skill_date_sanity()
     check_pipeline_docs()

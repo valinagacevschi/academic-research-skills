@@ -1,15 +1,14 @@
 #!/usr/bin/env python3
-"""Lint: version labels stay aligned across .claude/CLAUDE.md, SKILL.md frontmatter, and CHANGELOG.md.
+"""Lint: version labels stay aligned across AGENTS.md, SKILL.md frontmatter, and CHANGELOG.md.
 
 Invariants enforced:
-  1. Every skill listed in .claude/CLAUDE.md Skills Overview table has a version
+  1. Every skill listed in AGENTS.md Skills Overview table has a version
      equal to its own SKILL.md metadata.version.
-  2. .claude/CLAUDE.md "**Suite version**: X.Y.Z" equals the most recent
+  2. AGENTS.md "**Suite version**: X.Y.Z" equals the most recent
      "## [X.Y.Z]" entry in CHANGELOG.md.
   3. academic-pipeline version in the table equals the suite version (pipeline
      = orchestrator, by convention tracks the suite release).
-  4. The plugin manifests (.claude-plugin/plugin.json, the Claude marketplace,
-     and .codex-plugin/plugin.json when present) equal the suite version. These
+  4. The Codex plugin manifest version equals the suite version. This
      are the repo's OUTWARD-FACING package metadata; a user updating the plugin
      sees them.
   5. The README.md shields.io version badge (`badge/version-vX.Y.Z`) equals the
@@ -29,10 +28,10 @@ Invariants enforced:
   9. The latest CHANGELOG entry's body is >= 100 characters (#487) — a bare
      heading or one-line stub is not release notes. Only the LATEST entry is
      gated; historical entries may be terse.
- 10. .claude/CLAUDE.md "Last Updated" lies within ±7 days of the latest
+ 10. AGENTS.md "Last Updated" lies within ±7 days of the latest
      CHANGELOG entry's date (#487). The CHANGELOG date is the baseline (not
      "today") so re-running the lint later cannot flip the result.
- 11. The newest "## vX.Y… Key Additions" heading in .claude/CLAUDE.md matches
+ 11. The newest "## vX.Y… Key Additions" heading in AGENTS.md matches
      the suite version (#487), compared at the heading's own precision —
      `## v3.14 Key Additions` matches suite 3.14.0.
  12. The citation surfaces track the release (#754): CITATION.cff `version`
@@ -106,7 +105,7 @@ AGENT_CLAIM_RE = re.compile(r"(\d+)(?:-agent\b|\s+prompt\s+roles\b)")
 CHANGELOG_BODY_MIN_CHARS = 100
 # Invariant 10: the release date on a `## [X.Y.Z] - YYYY-MM-DD` heading (ARS
 # headings may append an em-dash summary after the date) and the
-# `- **Last Updated**: YYYY-MM-DD` line in .claude/CLAUDE.md. The trailing
+# `- **Last Updated**: YYYY-MM-DD` line in AGENTS.md. The trailing
 # `(?!\d)` blocks prefix-capturing a longer run (`2026-04-222` must not read
 # as `2026-04-22`, codex re-review P3); the day field then fails the strict
 # ISO gate downstream.
@@ -169,7 +168,7 @@ def _is_strict_semver(token: str) -> bool:
 
 
 def _parse_table_versions(
-    claude_md_text: str,
+    agents_md_text: str,
 ) -> tuple[dict[str, str], list[tuple[str, str]]]:
     """Return (valid_versions, invalid_rows) from the Skills Overview table.
 
@@ -181,7 +180,7 @@ def _parse_table_versions(
     """
     valid: dict[str, str] = {}
     invalid: list[tuple[str, str]] = []
-    for skill, raw in TABLE_TOKEN_RE.findall(claude_md_text):
+    for skill, raw in TABLE_TOKEN_RE.findall(agents_md_text):
         if _is_strict_semver(raw):
             valid[skill] = raw
         else:
@@ -189,13 +188,13 @@ def _parse_table_versions(
     return valid, invalid
 
 
-def _parse_suite_version(claude_md_text: str) -> tuple[str | None, str | None]:
+def _parse_suite_version(agents_md_text: str) -> tuple[str | None, str | None]:
     """Return (valid_version, invalid_raw_token).
 
     Exactly one of the two is non-None when a Suite version line is present.
     Both are None when the line is missing entirely.
     """
-    m = SUITE_TOKEN_RE.search(claude_md_text)
+    m = SUITE_TOKEN_RE.search(agents_md_text)
     if m is None:
         return None, None
     raw = m.group(1)
@@ -262,32 +261,32 @@ def _next_entry_offset(text: str, start: int) -> int:
 def check(root: Path) -> list[str]:
     errors: list[str] = []
 
-    claude_md = root / ".claude" / "CLAUDE.md"
-    if not claude_md.is_file():
-        errors.append(f"{claude_md}: not found")
+    agents_md = root / "AGENTS.md"
+    if not agents_md.is_file():
+        errors.append(f"{agents_md}: not found")
         return errors
-    claude_text = claude_md.read_text(encoding="utf-8")
+    agents_text = agents_md.read_text(encoding="utf-8")
 
-    table_versions, invalid_table_rows = _parse_table_versions(claude_text)
+    table_versions, invalid_table_rows = _parse_table_versions(agents_text)
     if not table_versions and not invalid_table_rows:
         errors.append(
-            f"{claude_md}: Skills Overview table has no parseable "
+            f"{agents_md}: Skills Overview table has no parseable "
             "`<skill>` vX.Y.Z rows"
         )
     for skill, raw in invalid_table_rows:
         errors.append(
-            f"{claude_md}: table row {skill!r} has invalid version "
+            f"{agents_md}: table row {skill!r} has invalid version "
             f"token v{raw!r} (expected canonical N.N.N or N.N.N.N)"
         )
 
-    suite_version, invalid_suite_token = _parse_suite_version(claude_text)
+    suite_version, invalid_suite_token = _parse_suite_version(agents_text)
     if suite_version is None and invalid_suite_token is None:
         errors.append(
-            f"{claude_md}: missing '**Suite version**: X.Y.Z' line"
+            f"{agents_md}: missing '**Suite version**: X.Y.Z' line"
         )
     elif invalid_suite_token is not None:
         errors.append(
-            f"{claude_md}: Suite version token {invalid_suite_token!r} is "
+            f"{agents_md}: Suite version token {invalid_suite_token!r} is "
             "not a canonical N.N.N or N.N.N.N version"
         )
 
@@ -309,7 +308,7 @@ def check(root: Path) -> list[str]:
             )
         elif suite_version is not None and latest != suite_version:
             errors.append(
-                f"{claude_md}: Suite version {suite_version!r} does not match "
+                f"{agents_md}: Suite version {suite_version!r} does not match "
                 f"CHANGELOG latest entry {latest!r}"
             )
         # Invariant 9: the latest entry must carry real release notes.
@@ -322,13 +321,13 @@ def check(root: Path) -> list[str]:
                     f"{CHANGELOG_BODY_MIN_CHARS} chars"
                 )
 
-    # Invariant 10: .claude/CLAUDE.md "Last Updated" within ±7 days of the
+    # Invariant 10: AGENTS.md "Last Updated" within ±7 days of the
     # latest CHANGELOG entry's date. Skipped while the CHANGELOG itself is
     # missing/malformed — those already errored above.
     if latest is not None:
         errors.extend(
             _check_last_updated_freshness(
-                claude_md, claude_text, changelog, latest_date
+                agents_md, agents_text, changelog, latest_date
             )
         )
 
@@ -336,7 +335,7 @@ def check(root: Path) -> list[str]:
         skill_md = root / skill_name / "SKILL.md"
         if not skill_md.is_file():
             errors.append(
-                f"{claude_md}: table lists {skill_name!r} v{table_version} "
+                f"{agents_md}: table lists {skill_name!r} v{table_version} "
                 f"but {skill_md} does not exist"
             )
             continue
@@ -356,7 +355,7 @@ def check(root: Path) -> list[str]:
         declared_str = str(declared)
         if declared_str != table_version:
             errors.append(
-                f"{claude_md}: {skill_name!r} listed as v{table_version} but "
+                f"{agents_md}: {skill_name!r} listed as v{table_version} but "
                 f"{skill_md} metadata.version is {declared_str!r}"
             )
 
@@ -364,7 +363,7 @@ def check(root: Path) -> list[str]:
         pipeline_in_table = table_versions.get(PIPELINE_SKILL_NAME)
         if pipeline_in_table is not None and pipeline_in_table != suite_version:
             errors.append(
-                f"{claude_md}: {PIPELINE_SKILL_NAME} listed as "
+                f"{agents_md}: {PIPELINE_SKILL_NAME} listed as "
                 f"v{pipeline_in_table} but suite version is {suite_version!r} "
                 "(pipeline tracks the suite release)"
             )
@@ -378,7 +377,7 @@ def check(root: Path) -> list[str]:
         # Invariant 6: docs/ must not cite a version above the suite version.
         errors.extend(_check_docs_versions(root, suite_version))
         # Invariant 11: newest Key Additions heading matches the suite version.
-        errors.extend(_check_key_additions(claude_md, claude_text, suite_version))
+        errors.extend(_check_key_additions(agents_md, agents_text, suite_version))
         # Invariant 12: citation surfaces (CITATION.cff / POSITIONING.md)
         # track the suite version + release date.
         errors.extend(_check_citation_surfaces(root, suite_version, latest_date))
@@ -397,13 +396,12 @@ def check(root: Path) -> list[str]:
 def _check_plugin_manifests(root: Path, suite_version: str) -> list[str]:
     """Invariant 4: plugin manifest versions equal the suite version.
 
-    The Claude plugin manifest and marketplace are required. The Codex
-    compatibility manifest is checked when present. Malformed JSON and
-    missing version keys are surfaced, never crash the release lint.
+    The Codex plugin manifest version equals the suite version. Malformed JSON
+    and missing version keys are surfaced, never crash the release lint.
     """
     errors: list[str] = []
 
-    plugin_json = root / ".claude-plugin" / "plugin.json"
+    plugin_json = root / ".codex-plugin" / "plugin.json"
     if not plugin_json.is_file():
         errors.append(f"{plugin_json}: not found")
     else:
@@ -420,31 +418,6 @@ def _check_plugin_manifests(root: Path, suite_version: str) -> list[str]:
                     f"{plugin_json}: version {str(v)!r} does not match suite "
                     f"version {suite_version!r}"
                 )
-
-    marketplace = root / ".claude-plugin" / "marketplace.json"
-    if not marketplace.is_file():
-        errors.append(f"{marketplace}: not found")
-    else:
-        try:
-            data = json.loads(marketplace.read_text(encoding="utf-8"))
-        except (json.JSONDecodeError, ValueError) as exc:
-            errors.append(f"{marketplace}: invalid JSON ({exc})")
-        else:
-            plugins = data.get("plugins")
-            if not isinstance(plugins, list) or not plugins:
-                errors.append(f"{marketplace}: 'plugins' is missing or empty")
-            else:
-                for i, entry in enumerate(plugins):
-                    v = (entry or {}).get("version") if isinstance(entry, dict) else None
-                    if v is None:
-                        errors.append(
-                            f"{marketplace}: plugins[{i}] missing 'version' key"
-                        )
-                    elif str(v) != suite_version:
-                        errors.append(
-                            f"{marketplace}: plugins[{i}] version {str(v)!r} does "
-                            f"not match suite version {suite_version!r}"
-                        )
 
     codex_plugin_json = root / ".codex-plugin" / "plugin.json"
     if codex_plugin_json.is_file():
@@ -571,25 +544,25 @@ def _check_zhtw_heading_parity(root: Path) -> list[str]:
 
 
 def _check_last_updated_freshness(
-    claude_md: Path,
-    claude_text: str,
+    agents_md: Path,
+    agents_text: str,
     changelog: Path,
     latest_date: str | None,
 ) -> list[str]:
-    """Invariant 10: the "Last Updated" date in .claude/CLAUDE.md lies within
+    """Invariant 10: the "Last Updated" date in AGENTS.md lies within
     ±7 days of the latest CHANGELOG entry's date. The CHANGELOG date is the
     baseline — never "today" — so the same commit checks identically whenever
     the lint re-runs."""
-    m = LAST_UPDATED_RE.search(claude_text)
+    m = LAST_UPDATED_RE.search(agents_text)
     if m is None:
         return [
-            f"{claude_md}: missing '- **Last Updated**: YYYY-MM-DD' line"
+            f"{agents_md}: missing '- **Last Updated**: YYYY-MM-DD' line"
         ]
     raw = m.group(1)
     last_updated = _parse_iso_date(raw)
     if last_updated is None:
         return [
-            f"{claude_md}: Last Updated {raw!r} is not a valid YYYY-MM-DD date"
+            f"{agents_md}: Last Updated {raw!r} is not a valid YYYY-MM-DD date"
         ]
     if latest_date is None:
         return [
@@ -605,7 +578,7 @@ def _check_last_updated_freshness(
     delta = abs((last_updated - changelog_date).days)
     if delta > LAST_UPDATED_MAX_DAYS:
         return [
-            f"{claude_md}: Last Updated {raw} is {delta} days from the "
+            f"{agents_md}: Last Updated {raw} is {delta} days from the "
             f"CHANGELOG latest entry date {latest_date} (must be within "
             f"±{LAST_UPDATED_MAX_DAYS} days)"
         ]
@@ -613,25 +586,25 @@ def _check_last_updated_freshness(
 
 
 def _check_key_additions(
-    claude_md: Path, claude_text: str, suite_version: str
+    agents_md: Path, agents_text: str, suite_version: str
 ) -> list[str]:
     """Invariant 11: the newest version-tagged "Key Additions" H2 in
-    .claude/CLAUDE.md matches the suite version. Newest = max by version
+    AGENTS.md matches the suite version. Newest = max by version
     tuple (the sections are not guaranteed document-ordered). Comparison is
     at the heading's own precision, so `## v3.14 Key Additions` matches suite
     3.14.0 while a stale `## v3.13 ...` as the maximum fails. Historical
     headings below the newest are untouched."""
-    versions = KEY_ADDITIONS_RE.findall(claude_text)
+    versions = KEY_ADDITIONS_RE.findall(agents_text)
     if not versions:
         return [
-            f"{claude_md}: no '## vX.Y… Key Additions' heading found — the "
+            f"{agents_md}: no '## vX.Y… Key Additions' heading found — the "
             "release's Key Additions section is missing"
         ]
     newest = max(versions, key=_version_tuple)
     newest_t = _version_tuple(newest)
     if _version_tuple(suite_version)[: len(newest_t)] != newest_t:
         return [
-            f"{claude_md}: newest Key Additions heading cites v{newest} but "
+            f"{agents_md}: newest Key Additions heading cites v{newest} but "
             f"the suite version is {suite_version!r}"
         ]
     return []
@@ -650,7 +623,7 @@ def _check_agent_count_claim(root: Path) -> list[str]:
     problems are invariant 4's to report, and here the claim is optional
     (only a stated number must be true; check_distribution_surface_claims
     D4 is where the presence of a bindable count fails closed)."""
-    plugin_json = root / ".claude-plugin" / "plugin.json"
+    plugin_json = root / ".codex-plugin" / "plugin.json"
     if not plugin_json.is_file():
         return []
     try:

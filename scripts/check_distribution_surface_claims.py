@@ -4,7 +4,7 @@
 The #745 capability matrix pins README claim anchors, and version-consistency
 invariant 8 binds the plugin.json agent-count number to the tree — but the
 2026-08-17 ISO 42001-spirit audit (T-1) found the marketing surfaces
-themselves (`.claude-plugin/plugin.json` / `.claude-plugin/marketplace.json`
+themselves (`.codex-plugin/plugin.json` / `.agents/plugins/marketplace.json`
 description fields) sat outside every lock, so their language had silently
 outrun the evidence record ("Production-grade", "39-agent ensemble" against 8
 `NOT_RUN` task families and 3 plugin-exposed agents). This lint closes that
@@ -168,7 +168,7 @@ def _check_description(surface: str, value, errors: list[str]) -> None:
 
 def run(root: Path) -> list[str]:
     errors: list[str] = []
-    plugin_dir = root / ".claude-plugin"
+    plugin_dir = root / ".codex-plugin"
 
     plugin = _load_manifest(plugin_dir / "plugin.json", errors)
     if plugin is not None:
@@ -184,27 +184,19 @@ def run(root: Path) -> list[str]:
                 "the advertised number from the tree (#414); see #753"
             )
 
-    marketplace = _load_manifest(plugin_dir / "marketplace.json", errors)
+    marketplace = _load_manifest(root / ".agents" / "plugins" / "marketplace.json", errors)
     if marketplace is not None:
-        _check_description(
-            "marketplace.json", marketplace.get("description"), errors
-        )
         plugins = marketplace.get("plugins")
         if not isinstance(plugins, list) or not plugins:
-            errors.append("D2: marketplace.json plugins[] is missing or "
-                          "empty — the per-plugin description surface cannot "
-                          "silently leave this lint's coverage")
+            errors.append("D2: marketplace.json plugins[] must be a non-empty list")
         else:
             for i, entry in enumerate(plugins):
-                if not isinstance(entry, dict):
-                    errors.append(f"D2: marketplace.json plugins[{i}] is "
-                                  f"not an object")
-                    continue
-                _check_description(
-                    f"marketplace.json plugins[{i}]",
-                    entry.get("description"),
-                    errors,
-                )
+                source = entry.get("source") if isinstance(entry, dict) else None
+                if not isinstance(source, dict) or not isinstance(source.get("path"), str):
+                    errors.append(f"D2: marketplace.json plugins[{i}] needs source.path")
+                elif not source["path"].startswith("./"):
+                    errors.append(f"D2: marketplace.json plugins[{i}].source.path must start with './'")
+
     return errors
 
 

@@ -1,6 +1,6 @@
-# Academic Research Skills
+# Academic Research Skills (ARS)
 
-A suite of Claude Code skills for rigorous academic research, paper writing, peer review, and pipeline orchestration.
+Codex-native skills for rigorous academic research, paper writing, peer review, and pipeline orchestration. Use the Codex session model and Codex subagents where available; see `shared/references/codex_subagent_dispatch.md` for dispatch guidance.
 
 ## Skills Overview
 
@@ -96,7 +96,6 @@ A suite of Claude Code skills for rigorous academic research, paper writing, pee
 - **Cross-model reviewer track (#540 → #558, #611 calibration branch).** The ordinary reviewer path remains `reviewer_full` only and consent-gated (the env var is configuration, not consent): Reviewer 2 runs on the second model family — a substrate swap inside the fixed five-seat panel, explicitly NOT the retired 6th reviewer; no synthesizer aggregation (cross-family splits visible in the panel matrix); the Editorial Decision Letter gains a Review Panel Provenance block (active / single-family correlated-error caveat / disclosed fallback, tiering-orthogonal). Calibration is the sole explicit exception and uses the canonical non-sprint single-call transport plus attempt-atomic fallback in `shared/cross_model_verification.md`; it never borrows the sprint payload or mixes substrates in one scored attempt.
 - **Re-review judge independence + Judge Record (#539 → #559).** Stage 3' Priority-1 verdicts get a judgment-specific cross-model pass (provider transport reused, no grounding gate, closed verdict set incl. MADE_WORSE; `agree` / `diverges` / `unavailable` / `not_configured` per row; run-level `partial — N/M`); the Editorial Decision Letter travels the Stage 4→3' handoff on all nine operative surfaces; Schema 6 optional `judge_record`.
 - **Pipeline behavior robustness evals (#550 → #555).** `evals/heldout/pipeline_behavior_robustness/` seed v0.1: 8 documented-ground-truth base scenarios × 3 perturbations (terse/verbose/padding, en + zh-TW), full-expectation scoring (behavior + skill + mode), per-item `rule_anchor`; also shipped the reviewer skill's missing zh-TW trigger aliases.
-- **SessionStart update-available reminder (#543 → #544, independent of the survey track).** Plugin installs compare the installed version against `main`'s `.claude-plugin/plugin.json` (24 h cache, 3 s network ceiling, `ARS_UPDATE_CHECK=0` kill switch) and announce `/plugin update academic-research-skills` when behind — third-party marketplaces default auto-update OFF with no behind-signal; v3.18.0 is the first release this reminder announces.
 - **Docs anchor (#542 → #551).** The survey joins The AI Scientist and Zhao et al. as the third human-in-the-loop literature anchor (README en/zh-TW motivation sections + calibration protocol §8.1.2 framing), cited as design rationale, not empirical proof.
 
 ## v3.17 Key Additions (pipeline boundary semantics + canonical cross-model handoff envelope + executable panel checker)
@@ -238,7 +237,7 @@ Spec: `docs/design/2026-05-17-ars-v3.9.0-cross-index-triangulation-measurement-s
 - **Claude Code plugin packaging**: ARS now installs in one line via `/plugin marketplace add Imbad0202/academic-research-skills` + `/plugin install academic-research-skills`. The traditional `git clone + symlink to ~/.claude/skills/` flow continues to work — both tracks are first-class. Repo gains four top-level directories: `.claude-plugin/`, `commands/`, `agents/`, `hooks/`, plus a `skills/` symlink dir; existing 4 skill directories untouched.
 - **10 slash commands** (`commands/ars-*.md`) mapping `MODE_REGISTRY.md` entries to `/ars-<mode>` triggers — `sonnet` pinned in frontmatter for the light modes (cost routing); the heavy modes (`full`, `reviewer`, `revision-coach`) inherit the session model (the original v3.7.0 `opus` floor was retired in the 2026-06 Fable 5 harness pass — under a stronger session model a floor becomes a downgrade ceiling), no Haiku.
 - **3 plugin-shipped agents** (`agents/*_agent.md`) as relative symlinks to the v3.6.7-hardened downstream agents in `deep-research/agents/` (materialized to real byte-identical copies in #413 — symlinks break Windows checkouts and zip installs; `scripts/check_agents_mirror_sync.py` now pins the byte-equality in CI). Source frontmatter gains `model: inherit` so an Opus session keeps Opus agents while the user's PreToolUse `warn-agent-no-model.sh` hook gates Haiku at dispatch.
-- **SessionStart announce hook** (`hooks/hooks.json` + `scripts/announce-ars-loaded.sh`) lists the 10 slash commands + 3 agents + token-budget pointer when the plugin loads. Bash 3.2 compatible.
+- **SessionStart announce hook** (removed in the Codex-only conversion) listed the suite commands and agents when the Claude plugin loaded.
 - **Phase 2.2 scope reduction note**: a `SubagentStop → run_codex_audit.sh` cross-model audit hook was scoped out for v3.7.0 (contract gap: hook payload carries no stage/deliverable; invoker boundary: same-session in-LLM Bash forbidden by the wrapper). Deferred to a future release.
 
 ## v3.6.8 Key Additions

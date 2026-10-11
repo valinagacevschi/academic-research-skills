@@ -187,7 +187,7 @@ REQUIRED = {
         "They are protocol calls, not agent-manifest identities",
         "Do not reuse Stage 3 `eic` or `editorial_synthesizer` workers for Stage 3'",
     ),
-    ".claude/CLAUDE.md": (
+    "AGENTS.md": (
         "a blind and separately executed Devil's Advocate critique",
         "These execution facts are not a binary independence claim",
     ),
@@ -387,7 +387,7 @@ FORBIDDEN_PANEL_LANGUAGE = {
 # Active cross-model documentation may state observed blinding and separate
 # execution, but those facts do not prove statistically independent errors.
 FORBIDDEN_BINARY_INDEPENDENCE = {
-    ".claude/CLAUDE.md": ("independent Devil's Advocate critique",),
+    "AGENTS.md": ("independent Devil's Advocate critique",),
     "docs/SETUP.md": ("Cross-model generates independent critique",),
     "deep-research/agents/devils_advocate_agent.md": ("needed for an independent critique",),
     "shared/handoff_schemas.md": ("the independent pass evaluates",),

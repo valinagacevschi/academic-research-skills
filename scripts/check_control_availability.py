@@ -49,7 +49,7 @@ DOC_RELPATH = Path("docs/CONTROL_AVAILABILITY.md")
 SETUP_RELPATH = Path("docs/SETUP.md")
 INBOUND_LINK_SURFACES = (Path("README.md"), SETUP_RELPATH)
 
-_METHOD_HEADING_RE = re.compile(r"^###\s+Method\b.*$", re.MULTILINE)
+_METHOD_HEADING_RE = re.compile(r"^##\s+(?:Install\b|Project skills\b|User skills\b).*$", re.MULTILINE)
 
 
 def check_links_resolve(root: Path) -> list[str]:

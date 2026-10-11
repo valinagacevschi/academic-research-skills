@@ -5,12 +5,12 @@
 ![License: CC BY-NC 4.0](https://img.shields.io/badge/license-CC%20BY--NC%204.0-lightgrey)  
 ![Sponsor](https://img.shields.io/badge/sponsor-Buy%20Me%20a%20Coffee-orange?logo=buy-me-a-coffee)
 
-A comprehensive suite of Codex skills for academic research, covering the full pipeline from research to publication. Claude Code and Pi adapters are also maintained in this repository.
+A comprehensive suite of Codex skills for academic research, covering the full pipeline from research to publication.
 
 **Install in 30 seconds** (Codex CLI):
 
 ```text
-git clone https://github.com/Imbad0202/academic-research-skills.git "$HOME/academic-research-skills"
+git clone https://github.com/valinagacevschi/academic-research-skills.git "$HOME/academic-research-skills"
 mkdir -p .agents/skills
 for skill in deep-research academic-paper academic-paper-reviewer academic-pipeline sr-screener; do
   ln -s "$HOME/academic-research-skills/$skill" ".agents/skills/$skill"
@@ -58,31 +58,25 @@ The architecture doc supersedes the sprawling pipeline description that used to 
 - *Optional:* Pandoc for DOCX, tectonic + Source Han Serif TC for APA 7.0 PDF (Markdown output works without either)
 - *Optional (real Python):* needed only for the write-scope guard and a few opt-in commands; the core skills are prompt-driven. Details, including the Windows notes on Git Bash and the Microsoft Store Python stub, are in [docs/SETUP.md § Python (optional)](docs/SETUP.md#python-optional).
 
-> **Which controls are active in *your* install channel?** Availability varies by install channel. See the per-channel map: [docs/CONTROL_AVAILABILITY.md](docs/CONTROL_AVAILABILITY.md).
-
-**Install the skills into a project:**
+**Install as a Codex plugin** (recommended for use across projects):
 
 ```bash
-git clone https://github.com/Imbad0202/academic-research-skills.git
-mkdir -p .agents/skills
-for skill in deep-research academic-paper academic-paper-reviewer academic-pipeline sr-screener; do
-  ln -s "$(pwd)/academic-research-skills/$skill" ".agents/skills/$skill"
-done
+codex plugin marketplace add valinagacevschi/academic-research-skills
+codex plugin add academic-research-skills@ars
 ```
 
-Start Codex in the project. Ask it to use `academic-paper` in plan mode, or `deep-research` in quick mode. The skills are discovered from `.agents/skills/`.
+The plugin is available in the Codex desktop app as well as the CLI. For a project-only install, link each skill into `.agents/skills/`; see [Codex setup](docs/SETUP.md). Start Codex in the project and ask it to use a skill by name, such as `academic-paper` in `plan` mode.
 
-**👉 [docs/SETUP.md](docs/SETUP.md#codex-cli)** — Codex skill setup, prerequisites, optional Pandoc/tectonic for DOCX/PDF, and cross-model verification (`ARS_CROSS_MODEL`). Claude Code plugin setup is documented below as a supported adapter.
+**👉 [docs/SETUP.md](docs/SETUP.md#install-as-a-codex-plugin)** — Codex plugin and project/user skills setup, prerequisites, optional Pandoc/tectonic, and cross-model verification (`ARS_CROSS_MODEL`).
+
+**👉 [docs/CONTROL_AVAILABILITY.md](docs/CONTROL_AVAILABILITY.md)** — which controls apply to each Codex install channel.
 
 **👉 [docs/DATA_FLOWS.md](docs/DATA_FLOWS.md)** — what leaves your machine (bibliographic resolvers, optional consent-gated cross-model calls, the plugin update check), what is cached locally, for how long, and how to turn each path off.
 
 **👉 [docs/RISK_REGISTER.md](docs/RISK_REGISTER.md)** — the standing risks the suite knows about, which existing controls address each one, the evidence status behind those controls, and what remains open.
 
-**Using Claude Science?** The five skills import directly: **Skills → Import from GitHub**, paste `https://github.com/Imbad0202/academic-research-skills`, **Preview**, then **Import** (requires v3.14.0+ of this repo — the importer reads the explicit skill paths in the marketplace manifest). Imports are point-in-time snapshots: re-import after ARS updates. Imported skills carry the ARS methodology (research / writing / review protocols); Claude Code-specific machinery — slash commands, hooks, subagent orchestration — does not transfer. See [docs/SETUP.md](docs/SETUP.md) Method 5 for details.
 
-**Using Pi?** Install the in-tree, community-maintained wrapper with `pi install git:github.com/Imbad0202/academic-research-skills`. It keeps the original ARS content authoritative and documents Pi-specific orchestration and hook limitations. See `[pi/README.md](pi/README.md)`.
 
-**Using Claude Code?** Install the maintained plugin with `/plugin marketplace add Imbad0202/academic-research-skills` followed by `/plugin install academic-research-skills`. See [docs/SETUP.md](docs/SETUP.md#claude-code-plugin) for other Claude Code installation methods.
 
 **Third-party platforms and integrations** that wrap or host ARS are listed in [THIRD_PARTY.md](THIRD_PARTY.md) — community-submitted and not reviewed or endorsed by the maintainer.
 
@@ -90,7 +84,7 @@ Start Codex in the project. Ask it to use `academic-paper` in plan mode, or `dee
 
 ## Performance & cost
 
-**👉 [docs/PERFORMANCE.md](docs/PERFORMANCE.md)** — per-mode token estimates and historical Claude Code adapter settings. Actual Codex usage and cost depend on your selected model and account or API plan.
+**👉 [docs/PERFORMANCE.md](docs/PERFORMANCE.md)** — historical workload estimates and Codex reasoning guidance. Actual Codex usage and cost depend on your selected model and account or API plan.
 
 ## Guides & articles
 
@@ -109,7 +103,7 @@ Start Codex in the project. Ask it to use `academic-paper` in plan mode, or `dee
 - **Task Type Annotation** (v3.3.2+) — every skill declares `task_type` (`open-ended` or `outcome-gradable`). All current ARS skills are `open-ended`.
 - **Benchmark Report Schema** (v3.3.5+) — JSON Schema + lint for honest benchmark comparisons. See `[shared/benchmark_report_pattern.md](shared/benchmark_report_pattern.md)`.
 - **Artifact Reproducibility Lockfile** (v3.3.5+) — optional `repro_lock` sub-block on Material Passport. **Configuration documentation, not replay guarantee** — LLM outputs are not byte-reproducible. See `[shared/artifact_reproducibility_pattern.md](shared/artifact_reproducibility_pattern.md)`.
-- **Model Tiering** (#517, v3.16+) — optional `ARS_MODEL_TIERING` switch with two directions: `economy` (execution-type agents dispatch one tier below the session model, floor Opus-class) and `quality-boost` (judgment-type agents at integrity gates and final review step up to the frontier tier). Default unset = byte-equivalent to pre-#517 behavior. See `[shared/model_tiering.md](shared/model_tiering.md)`.
+- **Codex subagents** — multi-agent roles use Codex subagents where available, with an explicit sequential fallback.
 - **Canonical Cross-Model Handoff Envelope** (#527, v3.17+) — the owner→dispatcher→owner blind-checkpoint transport path (#523) now has a machine-stable `[CROSS-MODEL-HANDOFF v1]` envelope with a normative Python grammar (`scripts/cross_model_handoff.py`) instead of prose-only enforcement, pinning agreement/divergence/malformed-result routing across all three checkpoint owners. See `[shared/cross_model_verification.md](shared/cross_model_verification.md)` §"Cross-model handoff envelope".
 - **Experiment Provenance Intake** (#260) — optional `experiment_provenance[]` on the Material Passport records experiments the scholar ran **externally** (ARS never runs experiments), and manuscript claims join to them via `claim_intent_manifest.planned_experiment_ids[]`. The integrity gate (Stage 2.5/4.5) audits each experiment-backed claim against declared provenance — `ALIGNED` / `OVERSTATED` / `NOT_SUPPORTED_BY_PROVENANCE` / `PROVENANCE_INSUFFICIENT` — **without judging whether the experiment itself was correct**. A fail-closed `experiment_intake_declaration` makes "did you run experiments?" an explicit decision the scholar answers after Stage 1, or on entry when a run starts later (even literature-only runs declare `no_experiments_declared`). See `[shared/handoff_schemas.md](shared/handoff_schemas.md)` §"Experiment Provenance Intake (#260)".
 

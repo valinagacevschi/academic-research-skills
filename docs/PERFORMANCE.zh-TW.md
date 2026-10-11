@@ -1,62 +1,12 @@
 # ARS 效能說明
 
-> **Codex 是主要執行環境。** 請使用目前 Codex session 的模型與推理設定；ARS 不會固定模型或推理強度。下方 Claude 模型比較和成本數字是 Claude Code adapter 的歷史資料，不能用來推估 Codex 的使用量或費用。
+ARS 使用目前 Codex session 設定的模型，不會自行選擇模型等級。需要深入整合、審查或裁決時，可在 Codex 支援的情況下提高 reasoning effort。多角色工作使用 Codex subagent；依序執行的備援方式會降低角色獨立性。
 
-> **建議模型：Claude Fable 5.1 或 Claude Opus 5.5**（以撰寫當下為準），搭配 **Max plan**（或同等配置）。Claude Code 預設使用 Opus 5.5；要用 Fable 5.1，請執行 `/model fable`（在 Claude apps gateway 裡，`fable` 指的是 Fable 5，請改用 `/model claude-fable-5-1`）。兩個模型沒有誰全面勝出：Opus 5.5 system card 的能力總表上，每一列 Opus 5.5 都高於 Fable 5.1；但在 DRACO 深度研究與 OfficeQA 文件推理兩項測驗，Opus 5.5 較低（card 第 174、187、208 頁）。現行 Claude 模型採用 adaptive thinking，不需要手動指定 thinking budget。
->
-> **用 Opus 5.5 時請調整推理強度（effort）。** Claude Code 讓 Opus 5.5 以 `medium` 起跑，Fable 5.1 則以 `high` 起跑。card 有兩項研究測驗：DRACO（深度研究）與 WANDR（廣域搜尋）。Fable 5.1 在預設的 `high` 分別得 86.5 與 66.7；Opus 5.5 在 `xhigh` 為 86.7／71.3，`medium` 為 83.9／62.8，`low` 為 72.5／31.2（card 第 187-188 頁）。在 Opus 5.5 上跑重度任務前（`/ars-full`、`/ars-reviewer`、`/ars-revision-coach`，或直接用文字啟動的 `deep-research`），請確認推理強度至少是 `high`：低於 `high` 時，用 `/effort high` 或 `/effort xhigh` 調高（在 `/effort` 後面直接打強度，也會存成這個模型之後的預設）；原本就用 `xhigh` 或 `max` 的話維持不變。避免用 `low`。ARS 刻意不在指令 frontmatter 固定推理強度：固定之後，自己選了 `xhigh` 或 `max` 的使用者也會被壓回來。
->
-> **第三方文字盡量存成檔案再交給 ARS。** 你貼進自己訊息裡的文字如果藏了指令，Opus 5.5 比先前的模型更容易照做（card §6.5.1）。在 card 的測試中，同一段文字若經由工具進來（例如讀檔），105 次中 0 次被照做。Claude Code 只在會抓取 feature flag 的 session 標記大段貼上文字；關閉遙測的 session、Claude apps gateway 的 session，以及多數第三方雲端平台的 session 都不會抓取（[貼上文字說明](https://code.claude.com/docs/en/terminal-config#how-claude-treats-pasted-text)）。
->
-> 完整學術 pipeline（10 階段）會消耗**大量 token** — 單次完整執行可能超過 200K 輸入 + 100K 輸出 token，視論文長度和修訂輪數而定。請依預算斟酌使用。
->
-> 單獨使用個別 skill（如只用 `deep-research` 或 `academic-paper-reviewer`）的消耗明顯較少。
+下方工作量與費用是歷史估算，不代表目前 Codex 模型的實測結果。跨模型驗證使用非 GPT API，預設關閉；只有設定 `ARS_CROSS_MODEL=1` 才會啟用。
 
-## 各模式 Token 消耗估算
+## 引用查驗
 
-| Skill / 模式 | 輸入 Token | 輸出 Token | 估算費用 |
-|---|---|---|---|
-| `deep-research` socratic | ~30K | ~15K | ~$0.60 |
-| `deep-research` full | ~60K | ~30K | ~$1.20 |
-| `deep-research` systematic-review | ~100K | ~50K | ~$2.00 |
-| `academic-paper` plan | ~40K | ~20K | ~$0.80 |
-| `academic-paper` full | ~80K | ~50K | ~$1.80 |
-| `academic-paper-reviewer` full | ~50K | ~30K | ~$1.10 |
-| `academic-paper-reviewer` quick | ~15K | ~8K | ~$0.30 |
-| **完整 pipeline（10 階段）** | **~200K+** | **~100K+** | **~$4-6** |
-| + 跨模型驗證 | +~10K（外部）| +~5K（外部）| +~$0.60-1.10 |
-
-*以 ~15,000 字論文、~60 篇引用為基準估算。實際消耗隨論文長度、修訂輪數、對話深度而異。費用以 Opus 4.x 實測、Anthropic API 2026 年 4 月定價計算；換用更新模型時請當成數量級參考，不是精確報價。*
-
-> **2026-09 牌價換算。**以 2026-09 的牌價換算，上表完整 pipeline 的 token 數（約 200K 輸入 + 100K 輸出）每次約為：Claude Fable 5.1 **~$7**（每百萬輸入／輸出 token 各 US$10／US$50）；Claude Opus 5.5 **~$2.80**（各 US$4／US$20，cache 讀取每百萬 US$0.20；Opus 5.5 system card 第 180 頁）。兩者都尚未計入 cache 折扣。這是用 token 欄位算出來的數字，不是重新實測：沒有任何 pipeline 在這兩個模型上重跑計時。兩個模型都一律會推理（thinking 無法關閉），所以對話密集的模式可能比 Opus 4.x 列多用一些輸出 token；推理強度越高，用得越多。
-
-> **v3.11 引用查驗（#182）。** 確定性引用存在性 gate 呼叫的是外部書目 API（Semantic Scholar / OpenAlex / Crossref / arXiv），不是 LLM，因此**不增加上表的 Claude token 成本**——只在首次查詢時有網路延遲。持久化 SQLite cache（`~/.cache/ars/verification.db`，90 天 TTL）讓每篇論文只查驗一次、跨草稿重用；對已 cache 的書目重跑不做任何網路請求。見 [SETUP](SETUP.zh-TW.md#引用查驗-cachev3.11182)。
-
-## 建議 Claude Code 設定
-
-| 設定 | 功能說明 | 啟用方式 | 官方文件 |
-|---|---|---|---|
-| **Agent Team**（選用） | 啟用 `TeamCreate` / `SendMessage` tools 做手動多 agent 協作。**ARS 內部平行化不需要這個 flag** — skills 透過內建 `Agent` tool 直接 spawn subagent。僅在你想手動跨 session 協作持久 team 時有用。 | 設定 `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1`（研究預覽） | 實驗性功能 — 尚無穩定文件 |
-| **Auto 模式**（建議） | 自動接受大多數工具動作，讓長時間 pipeline 大幅減少中斷；同時由伺服器端 classifier 擋下超出你請求範圍的危險動作（例如部署到 production、force-push 或直接 push main、資料外洩）。明確的 ask 規則與 classifier 攔截仍可能跳出確認。是「手動逐項確認」與「完全不檢查」之間的折衷。 | 啟動時加上 `claude --permission-mode auto`（若可用），或在 `~/.claude/settings.json` 設定 `"permissions": { "defaultMode": "auto" }`；啟動後確認當前模式（研究預覽） | [Permission modes](https://code.claude.com/docs/en/permission-modes) |
-| **Skip Permissions** | 跳過例行的工具使用確認，且不做任何安全檢查。比 auto 模式更快，但移除所有護欄。設計用途是用完即拋、無網路連線的隔離沙箱，不適合真實開發機器。 | 啟動時加上 `claude --dangerously-skip-permissions`（等同 `--permission-mode bypassPermissions`） | [Permission modes](https://code.claude.com/docs/en/permission-modes) |
-
-> **⚠️ 模式選擇**：大多數無人值守的 pipeline，建議使用 auto 模式。它讓長時間執行大幅減少中斷，同時由 classifier 擋下超出你請求範圍的危險動作，但 ask 規則與 classifier 攔截仍可能跳出確認。auto 模式是研究預覽：它不保證安全，也不能取代敏感操作的人工審查，且行為可能變動。Skip Permissions 則完全移除這層安全網，僅應在無網路連線的隔離沙箱中使用，且你要確定可以接受 Claude 在無檢查的情況下執行檔案讀寫與 shell 指令。
-
-### v3.7.0 Plugin agent 與模型路由
-
-當 ARS 以 Claude Code plugin 方式安裝（`/plugin install academic-research-skills`）時，會把三個下游 worker agent 暴露為 plugin-shipped subagent：`synthesis_agent`、`research_architect_agent`、`report_compiler_agent`。三個 agent frontmatter 都標 `model: inherit`，意思是它們**繼承派工 session 的模型**而非寫死特定 floor：
-
-- Opus session 跑完整 pipeline 時 agent 是 Opus，保留這三個 agent 設計的整合深度。
-- Sonnet session 取得 Sonnet agent，跟主 session cost / latency 對齊。
-- Agent 永遠不會默默掉到 Haiku — `inherit` 走的是主 session 模型，主 session 本身又被「ARS 全程不用 Haiku」政策守住。
-
-自 #514（於 #521 出貨）起，這三個 agent 的 frontmatter 同時帶固定的 tools 白名單——`tools: Read, Write, Edit, Grep, Glob`，無 shell、無網路抓取——派工當下即是最小權限；白名單內容由 `scripts/check_tools_allowlist.py`（#524）在 CI 鎖定。
-
-意涵：**plugin agent 的 token 成本完全跟著上表各模式估算走，沒有額外加減**（`ARS_MODEL_TIERING` 未設定時）。dispatched agent 跟主 session 同一個模型，主 session 已經付的成本沒有再多一層 plugin agent 收費。設定 `ARS_MODEL_TIERING=economy` 時，plugin 暴露的 execution 型 agent（如 `report_compiler_agent`）改走分層規則——比 session model 低一階、樓地板 Opus 級（見 `shared/model_tiering.md`）。如果 pipeline 中途換模型（例如 revision pass 改用 Sonnet 省成本），下一輪 agent 派工自動跟上。
-
-其他 ARS agent（`bibliography_agent`、`literature_strategist_agent` 等）在 v3.7.0 不暴露為 plugin agent；它們仍是 in-skill prompt template，由主 session 內聯執行，**預設**沒有獨立的模型路由層。Opt-in 的 `ARS_MODEL_TIERING`（#517）在其上加了一層 dispatch 時的路由規則：當分層方向適用於某角色時，session 會把該角色以子代理形式派發、鎖定目標層級（內聯角色也一樣——「派發為子代理」正是其機制）；flag 未設定時，本段描述的行為完全不變。見 `shared/model_tiering.md`。更廣的 plugin agent 覆蓋留到後續版本。
-
-**Fable 5.1 與 Opus 5.5 的分層（2026-09）。**分層階梯把 Fable 5.1 排在 Opus 5.5 之上，是因為原廠的產品排序如此，不是因為 Fable 5.1 每項任務都比較強（見本頁開頭的模型說明）。在 Opus 5.5 session 上，`quality-boost` 會把檢核點的呼叫送到 Fable 5.1，每個 token 的牌價是 2.5 倍，換來的效益 ARS 沒有量測過；先調高 session 的推理強度比較便宜。在 Fable 5.1 session 上，`economy` 會把執行型 agent 送到 Opus 級，Claude Code 在 Anthropic API 上會解析成 Opus 5.5（部分雲端平台會把 `opus` 別名解析成較舊的 Opus）；這筆取捨對品質的影響，ARS 同樣沒有量測過。
+確定性引用存在性 gate 會呼叫外部書目 API（Semantic Scholar / OpenAlex / Crossref / arXiv），不會呼叫 session 模型。SQLite cache（`~/.cache/ars/verification.db`，90 天 TTL）會跨草稿重用查驗結果。詳見 [SETUP](SETUP.zh-TW.md)。
 
 ## 長時間 session 管理
 
@@ -95,7 +45,7 @@ Schema 13 sprint contract 把每個 reviewer agent 切成 Phase 1（不見論文
 
 1. Session A 跑完一個 stage 到 FULL checkpoint。
 2. 從 checkpoint 通知抄下 `[PASSPORT-RESET: hash=<hash>, stage=<completed>, next=<next>]` tag。
-3. 開新的 Claude Code session（session B），貼入 `resume_from_passport=<hash>`。支援可選覆蓋：`resume_from_passport=<hash> stage=<n> mode=<m>`。
+3. 開新的 Codex session（session B），貼入 `resume_from_passport=<hash>`。支援可選覆蓋：`resume_from_passport=<hash> stage=<n> mode=<m>`。
 4. Session B 只讀 passport ledger，不重播 session A 的對話。Orchestrator 找到相符的 `kind: boundary` entry，append 一個 `kind: resume` entry 完成消費，然後繼續。繼續的 stage 由以下順序決定：使用者在 resume 指令附上 `stage=` 時以其為準，否則當 boundary 帶 `pending_decision` 時由 orchestrator 先重新詢問使用者再用對應選項的 `next_stage`，否則才採用記錄的 `next` 欄位。所有選項都終止時，`next` 可以是 `null`。
 
 **何時重置比延續划算：**
@@ -120,7 +70,7 @@ Resume 指令只定義 hash 與可選的 stage/mode 覆蓋：
 resume_from_passport=<hash> [stage=<n>] [mode=<m>]
 ```
 
-Resume 指令本身沒有路徑語法。客製 passport 位置在專案的 `CLAUDE.md` 設定，或由整合方的工具在呼叫 orchestrator 前處理。
+Resume 指令本身沒有路徑語法。客製 passport 位置在專案的 `AGENTS.md` 設定，或由整合方的工具在呼叫 orchestrator 前處理。
 
 **實測 token 節省：** 尚待真實 `systematic-review` 搭配儀器化測量。取得實測資料後會回填本節。目前不做任何數值宣稱。完整協議見 [`../academic-pipeline/references/passport_as_reset_boundary.md`](../academic-pipeline/references/passport_as_reset_boundary.md)。
 

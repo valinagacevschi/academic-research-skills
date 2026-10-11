@@ -18,24 +18,23 @@ CLEAN_PLUGIN = {
 }
 CLEAN_MARKETPLACE = {
     "name": "fixture",
-    "description": "Contract-audited research and writing skills.",
-    "plugins": [
-        {"name": "fixture", "description": "4 skills + 27 modes."},
-    ],
+    "plugins": [{"name": "fixture", "source": {"source": "local", "path": "./"}}],
 }
 
 
 def _write(root: Path, plugin=CLEAN_PLUGIN, marketplace=CLEAN_MARKETPLACE,
            plugin_raw: str | None = None) -> Path:
-    d = root / ".claude-plugin"
+    d = root / ".codex-plugin"
     d.mkdir(parents=True, exist_ok=True)
+    catalog = root / ".agents" / "plugins"
+    catalog.mkdir(parents=True, exist_ok=True)
     if plugin is not None or plugin_raw is not None:
         (d / "plugin.json").write_text(
             plugin_raw if plugin_raw is not None else json.dumps(plugin),
             encoding="utf-8",
         )
     if marketplace is not None:
-        (d / "marketplace.json").write_text(
+        (catalog / "marketplace.json").write_text(
             json.dumps(marketplace), encoding="utf-8"
         )
     return root
@@ -99,8 +98,7 @@ def test_empty_description_fires_d2(tmp_path):
 
 
 def test_empty_plugins_list_fires_d2(tmp_path):
-    _write(tmp_path, marketplace={"name": "f", "description": "ok",
-                                  "plugins": []})
+    _write(tmp_path, marketplace={"name": "f", "plugins": []})
     _fires(run(tmp_path), "D2")
 
 
@@ -143,13 +141,9 @@ def test_provenance_does_not_false_fire(tmp_path):
     })) == []
 
 
-def test_marketplace_plugin_entry_description_covered(tmp_path):
-    _write(tmp_path, marketplace={
-        "name": "f", "description": "ok",
-        "plugins": [{"name": "f",
-                     "description": "Production-grade skills."}],
-    })
-    _fires(run(tmp_path), "plugins[0]")
+def test_marketplace_entry_requires_source_path(tmp_path):
+    _write(tmp_path, marketplace={"name": "f", "plugins": [{"name": "f"}]})
+    _fires(run(tmp_path), "source.path")
 
 
 def test_percentage_figure_fires_d3(tmp_path):

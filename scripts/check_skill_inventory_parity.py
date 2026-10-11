@@ -4,7 +4,7 @@
 Triage of an external PR that added a fifth top-level skill directory showed
 that the existing inventory lints are anchored to the skills they already
 know about: `check_spec_consistency.py` hardcodes four SKILL.md paths,
-`check_version_consistency.py` iterates the `.claude/CLAUDE.md` table, and
+`check_version_consistency.py` iterates the `AGENTS.md` table, and
 nothing cross-checks the `skills/` symlink directory or the marketplace
 manifest. A skill could therefore exist on disk without being packaged,
 listed, or versioned, with every lint green.
@@ -17,14 +17,14 @@ that advertise or package the inventory:
      (plugin auto-discovery packages from here);
   C. `.agents/skills/<name>` — one Codex skill symlink per skill, resolving to
      `<root>/<name>`;
-  D. `.claude/CLAUDE.md` § "Skills Overview" table rows (the canonical
+  D. `AGENTS.md` § "Skills Overview" table rows (the canonical
      inventory other lints iterate);
-  E. `.claude-plugin/marketplace.json` `plugins[].skills[]` as `./<name>`
+  E. `.agents/plugins/marketplace.json` `plugins[].skills[]` as `./<name>`
      (what symlink-blind importers read).
 
 It also checks that any "<N> skills" count claim equals the number of skills
 on disk, on the three CURRENT-STATE metadata surfaces that carry one:
-`.claude-plugin/plugin.json` description, `marketplace.json` top-level and
+`.codex-plugin/plugin.json` description, `marketplace.json` top-level and
 per-plugin descriptions, and `MODE_REGISTRY.md`. README and CHANGELOG are deliberately out of scope: they
 carry historical release notes whose counts are legitimately frozen at the
 time of writing, so a prose-wide grep would flag correct history. A surface
@@ -49,9 +49,9 @@ from _skill_lint import (
 )
 
 SKILLS_DIR = "skills"
-CLAUDE_MD = Path(".claude") / "CLAUDE.md"
-MARKETPLACE_JSON = Path(".claude-plugin") / "marketplace.json"
-PLUGIN_JSON = Path(".claude-plugin") / "plugin.json"
+AGENTS_MD = Path("AGENTS.md")
+MARKETPLACE_JSON = Path(".agents") / "plugins" / "marketplace.json"
+PLUGIN_JSON = Path(".codex-plugin") / "plugin.json"
 MODE_REGISTRY_MD = Path("MODE_REGISTRY.md")
 
 SKILLS_OVERVIEW_HEADING = "## Skills Overview"
@@ -155,19 +155,19 @@ def _cell_count(row: str) -> int:
     return len(re.split(r"(?<!\\)\|", inner))
 
 
-def _claude_table_rows(root: Path, violations: list[str]) -> set[str]:
-    claude_md = root / CLAUDE_MD
-    if not claude_md.is_file():
-        violations.append(f"{claude_md}: file is missing")
+def _agents_table_rows(root: Path, violations: list[str]) -> set[str]:
+    agents_md = root / AGENTS_MD
+    if not agents_md.is_file():
+        violations.append(f"{agents_md}: file is missing")
         return set()
-    text = claude_md.read_text(encoding="utf-8")
+    text = agents_md.read_text(encoding="utf-8")
     # Exact H2 line at column 0, outside code fences (shared helper): a
     # demoted `### Skills Overview` or a copy inside a fenced example is not
     # the section.
     section = heading_section(text, SKILLS_OVERVIEW_HEADING)
     if section is None:
         violations.append(
-            f"{claude_md}: '{SKILLS_OVERVIEW_HEADING}' H2 is missing"
+            f"{agents_md}: '{SKILLS_OVERVIEW_HEADING}' H2 is missing"
         )
         return set()
     rows: set[str] = set()
@@ -179,7 +179,7 @@ def _claude_table_rows(root: Path, violations: list[str]) -> set[str]:
     # `| ghost-skill v1.0.0 |`) is reported rather than dropped.
     if len(table) < 2 or not TABLE_SEPARATOR_RE.match(table[1]):
         violations.append(
-            f"{claude_md}: '{SKILLS_OVERVIEW_HEADING}' is not followed by a GFM "
+            f"{agents_md}: '{SKILLS_OVERVIEW_HEADING}' is not followed by a GFM "
             f"table (header row then a |---| separator row)"
         )
         return set()
@@ -190,7 +190,7 @@ def _claude_table_rows(root: Path, violations: list[str]) -> set[str]:
         # checked: GFM pads/truncates data rows, and this lint reads only
         # the first cell, as check_version_consistency.py does.
         violations.append(
-            f"{claude_md}: Skills Overview header has {header_cells} cells but "
+            f"{agents_md}: Skills Overview header has {header_cells} cells but "
             f"its separator row has {separator_cells}; GFM requires them equal"
         )
         return set()
@@ -199,14 +199,14 @@ def _claude_table_rows(root: Path, violations: list[str]) -> set[str]:
         any_row = TABLE_ROW_ANY_RE.match(line)
         if any_row is None:
             violations.append(
-                f"{claude_md}: Skills Overview data row {line.strip()!r} has no "
+                f"{agents_md}: Skills Overview data row {line.strip()!r} has no "
                 f"backticked skill name in its first cell"
             )
             continue
         name = any_row.group(1)
         if CANONICAL_NAME_RE.fullmatch(name) is None:
             violations.append(
-                f"{claude_md}: Skills Overview row names {name!r}, which is not "
+                f"{agents_md}: Skills Overview row names {name!r}, which is not "
                 f"a canonical skill directory name ([a-z0-9-]+); both lints "
                 f"would otherwise ignore this row"
             )
@@ -214,13 +214,13 @@ def _claude_table_rows(root: Path, violations: list[str]) -> set[str]:
         rows.add(name)
         if TABLE_ROW_FULL_RE.match(line) is None:
             violations.append(
-                f"{claude_md}: Skills Overview row for '{name}' lacks a "
+                f"{agents_md}: Skills Overview row for '{name}' lacks a "
                 f"'vX.Y.Z' token after the name (check_version_consistency.py "
                 f"skips such rows, so the version would go unchecked)"
             )
     if not rows:
         violations.append(
-            f"{claude_md}: '{SKILLS_OVERVIEW_HEADING}' table has no "
+            f"{agents_md}: '{SKILLS_OVERVIEW_HEADING}' table has no "
             f"backticked skill rows"
         )
     return rows
@@ -261,25 +261,25 @@ def _marketplace_skills(
         if not isinstance(plugin, dict):
             violations.append(f"{path}: plugins[{index}] must be an object")
             continue
-        description = plugin.get("description")
-        if isinstance(description, str):
-            descriptions.append(description)
-        skills = plugin.get("skills")
-        if not isinstance(skills, list):
-            violations.append(
-                f"{path}: plugins[{index}].skills must be a list of './<name>' "
-                f"paths (symlink-blind importers read this list)"
-            )
+        source = plugin.get("source")
+        if not isinstance(source, dict) or not isinstance(source.get("path"), str):
+            violations.append(f"{path}: plugins[{index}].source.path must name the plugin directory")
             continue
-        for raw in skills:
-            match = MANIFEST_SKILL_RE.fullmatch(raw) if isinstance(raw, str) else None
-            if match is None:
-                violations.append(
-                    f"{path}: plugins[{index}].skills entry {raw!r} must be "
-                    f"'./<name>' with a single lowercase path segment"
-                )
-                continue
-            names.add(match.group(1))
+        plugin_root = (path.parents[2] / source["path"]).resolve()
+        manifest = _load_json(plugin_root / ".codex-plugin" / "plugin.json", violations)
+        if manifest is None:
+            continue
+        raw_skills = manifest.get("skills")
+        if not isinstance(raw_skills, str) or not raw_skills.startswith("./"):
+            violations.append(f"{plugin_root}/.codex-plugin/plugin.json: skills must be a relative directory path")
+            continue
+        skills_dir = (plugin_root / raw_skills[2:]).resolve()
+        if not skills_dir.is_dir():
+            violations.append(f"{skills_dir}: plugin skills directory is missing")
+            continue
+        if skills_dir != (root / SKILLS_DIR).resolve():
+            violations.append(f"{plugin_root}/.codex-plugin/plugin.json: skills must resolve to ./skills/")
+        names.update(child.name for child in skills_dir.iterdir() if (child / "SKILL.md").is_file())
     return names, descriptions
 
 
@@ -325,15 +325,14 @@ def run_all_checks(root: Path) -> list[str]:
     if (root / ".agents" / "skills").is_dir():
         _report_set_diff(on_disk, codex_links, ".agents/skills/ symlinks", violations)
 
-    table = _claude_table_rows(root, violations)
+    table = _agents_table_rows(root, violations)
     _report_set_diff(
-        on_disk, table, f"{CLAUDE_MD} Skills Overview table", violations
+        on_disk, table, f"{AGENTS_MD} Skills Overview table", violations
     )
 
     manifest, market_descriptions = _marketplace_skills(root, violations)
-    _report_set_diff(
-        on_disk, manifest, f"{MARKETPLACE_JSON} plugins[].skills", violations
-    )
+    # The plugin manifest path points at skills/, already compared with top-level
+    # skills by the packaging-symlink check above.
     for description in market_descriptions:
         _check_count_claim(
             f"{MARKETPLACE_JSON} description", description, len(on_disk), violations
@@ -376,7 +375,7 @@ def main() -> int:
         return 1
     print(
         "OK: skill inventory is identical across top-level directories, "
-        "skills/ and .agents/skills/ links, the CLAUDE.md table, and the "
+        "skills/ and .agents/skills/ links, the AGENTS.md table, and the "
         "marketplace manifest."
     )
     return 0

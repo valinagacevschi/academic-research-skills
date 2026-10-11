@@ -1,27 +1,11 @@
 {
   "name": "academic-research-skills",
   "private": true,
-  "description": "Codex-first academic research workflow skills with Claude Code and Pi adapters",
+  "description": "Codex-exclusive academic research workflow skills",
   "keywords": [
     "codex-plugin",
     "agent-skills",
-    "academic-research",
-    "claude-code",
-    "pi-package"
+    "academic-research"
   ],
-  "license": "CC-BY-NC-4.0",
-  "pi": {
-    "extensions": [
-      "./pi/wrapper.js"
-    ],
-    "skills": [
-      "./deep-research",
-      "./academic-paper",
-      "./academic-paper-reviewer",
-      "./academic-pipeline"
-    ],
-    "prompts": [
-      "./commands"
-    ]
-  }
+  "license": "CC-BY-NC-4.0"
 }

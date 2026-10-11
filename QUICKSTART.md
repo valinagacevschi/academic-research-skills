@@ -2,21 +2,16 @@
 
 Get from zero to your first AI-assisted research in 3 steps.
 
-## Step 1: Install Codex and expose the skills
+## Step 1: Install ARS
 
-```bash
-# Clone this repo somewhere stable
-git clone https://github.com/Imbad0202/academic-research-skills.git ~/academic-research-skills
+Install the plugin for use across projects:
 
-# Link each skill into your project's Codex skill directory
-cd /path/to/your/project
-mkdir -p .agents/skills
-for skill in deep-research academic-paper academic-paper-reviewer academic-pipeline sr-screener; do
-  ln -s ~/academic-research-skills/$skill .agents/skills/$skill
-done
+```sh
+codex plugin marketplace add valinagacevschi/academic-research-skills
+codex plugin add academic-research-skills@ars
 ```
 
-Codex discovers project skills under `.agents/skills/<skill-name>/SKILL.md`. The screening reviewer is already part of the skill bundle and does not need a separate agent install. See [docs/SETUP.md](docs/SETUP.md#codex-cli) for the copy-based and user-wide alternatives.
+For a project-only setup, link the five skill directories into `.agents/skills/`. See [setup options](docs/SETUP.md).
 
 ## Step 2: Launch
 

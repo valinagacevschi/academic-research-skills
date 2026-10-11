@@ -6,7 +6,7 @@
 
 ## Honest framing
 
-These fixtures are **behavioral smoke tests + cross-model spot-check**, not deterministic green/red unit tests. The unit-under-test is a Large Language Model (Claude / GPT / Gemini) following the routing rules in `.claude/CLAUDE.md` "Routing Discipline (v3.9.2)" + `shared/references/intent_clarification_protocol.md`.
+These fixtures are **behavioral smoke tests + cross-model spot-check**, not deterministic green/red unit tests. The unit-under-test is a Large Language Model (Claude / GPT / Gemini) following the routing rules in `AGENTS.md` "Routing Discipline (v3.9.2)" + `shared/references/intent_clarification_protocol.md`.
 
 LLM-behavior assertions are flaky in the way model-behavior tests always are:
 
@@ -88,7 +88,7 @@ Scoring the #921 fields (added after the 2026-09-24 pass; the rules in `CALIBRAT
 Until v3.10 conductor brings deterministic dispatch, these fixtures are run **manually against a live ARS session**:
 
 1. Start a fresh Claude Code session for each fixture in a standalone clone of this repository, outside your home directory, with ARS loaded from that clone through `--plugin-dir`, no user-level configuration (an empty `CLAUDE_CONFIG_DIR` and an environment allowlist), and the write and network tools disallowed; `CALIBRATION_LOG.md` (the 2026-09-23 Condition section) lists each setting and why it is needed
-   - For the plugin-install condition, start the session in an empty folder outside the clone instead, so `.claude/CLAUDE.md` does not load (the 2026-09-24 Condition section)
+   - For the plugin-install condition, start the session in an empty folder outside the clone instead, so `AGENTS.md` does not load (the 2026-09-24 Condition section)
 2. Paste the `input.md` content as the first message
 3. Score every field of `expected.yaml`: routing class, destination, escape-hatch behavior, and the stripped message where one is expected (scoring rules in `CALIBRATION_LOG.md`)
 4. Record the model id, effort, date, the deciding part of each response, and pass or fail per field in `CALIBRATION_LOG.md`

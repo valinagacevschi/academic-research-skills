@@ -65,7 +65,7 @@ REVIEW_DISPATCH_SURFACES = {
     ),
 }
 PROVENANCE_LANGUAGE_SURFACES = {
-    ".claude/CLAUDE.md": (
+    "AGENTS.md": (
         "a blind and separately executed Devil's Advocate critique",
         "independent Devil's Advocate critique",
     ),

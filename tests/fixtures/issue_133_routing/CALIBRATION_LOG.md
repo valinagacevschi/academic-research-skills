@@ -18,14 +18,14 @@ A pass is a smoke-test observation on one session per fixture, not a measured ra
   each session reported the operator's user-level `CLAUDE.md` and ran under the
   operator's output style, although `CLAUDE_CONFIG_DIR` was empty. Two leak paths were
   found on Claude Code 2.1.280. The upward walk from the session's working directory
-  reached `~/.claude/CLAUDE.md` in an ancestor directory, and a git worktree resolved
+  reached `~/AGENTS.md` in an ancestor directory, and a git worktree resolved
   project-local settings from the main checkout's untracked
   `.claude/settings.local.json`. Every pass below therefore runs on a standalone clone
   at the stated commit, outside the home directory, and each pass's probes on both
-  models reported only the project `.claude/CLAUDE.md`, the `v3.9.2` heading, no
+  models reported only the project `AGENTS.md`, the `v3.9.2` heading, no
   output style, and no user-level instruction.
 - **Install condition: repo clone.** Each session's working directory is that checkout,
-  so the project `.claude/CLAUDE.md` (Routing Discipline) loads; ARS is loaded from the
+  so the project `AGENTS.md` (Routing Discipline) loads; ARS is loaded from the
   same checkout with `--plugin-dir`. This pass says nothing about plugin or skills-copy
   installs, where the routing prose does not load by the Claude Code documentation
   (#892).
@@ -87,7 +87,7 @@ A fixture passes only when every field below passes.
   `issue_133_routing`, `expected.yaml`, `rationale.md`, or `CALIBRATION_LOG` (checked
   over the full stream-json of every session).
 - **Probes.** Before each pass, the probe on each model ran in that pass's clone and
-  reported the project `.claude/CLAUDE.md` as the only instruction file, the routing
+  reported the project `AGENTS.md` as the only instruction file, the routing
   heading's version (3.9.2), no output style, and no user-level instruction; its init
   event showed the requested model, output style `default`, and no API key source.
 - **Cost.** The CLI reported 19.27 USD (pass 1), 19.19 USD (pass 2), and 19.02 USD
@@ -122,7 +122,7 @@ and no Skill argument carried the `[direct-mode]` token.
 ### Change after pass 1 (`46a563a9`)
 
 Neither model passed every fixture, so the routing prose was tightened, not the fixtures
-(`.claude/CLAUDE.md` § Routing Discipline and
+(`AGENTS.md` § Routing Discipline and
 `shared/references/intent_clarification_protocol.md`). Step 1 now says a request stays
 explicit when the mode's usual input is absent or a word has other everyday senses,
 with the two observed cases as examples: a revision request without reviewer comments
@@ -207,11 +207,11 @@ still fails goes to a follow-up issue with the deciding quote.
 ### Condition
 
 - **Question.** Does the routing core reach a session when ARS is loaded as a plugin and
-  the session starts outside the checkout, where `.claude/CLAUDE.md` does not load?
+  the session starts outside the checkout, where `AGENTS.md` does not load?
 - **Subjects.** Baseline: a standalone clone at `bff05339` (`main` before #892).
   Post-fix: a standalone clone at `271e45f2` (this change). Both sit outside the home
   directory. Later commits in the same change left the measured text unchanged: the
-  startup announce output, the copies, and the `.claude/CLAUDE.md` lead-in are
+  startup announce output, the copies, and the `AGENTS.md` lead-in are
   byte-identical. They changed the compaction, resume, and fork lead-in, how the announce
   reads the file, and the lint.
 - **Conditions.** *Plugin install*: the session's working directory is an empty folder
@@ -237,7 +237,7 @@ still fails goes to a follow-up issue with the deciding quote.
 ### Probes and checks
 
 - Plugin install, both subjects: no instruction file, no routing heading, no output
-  style, no user-level instruction. Repo clone: the project `.claude/CLAUDE.md` only,
+  style, no user-level instruction. Repo clone: the project `AGENTS.md` only,
   routing heading version 3.9.2. Every init event showed the requested model, output
   style `default`, and no API key source.
 - The post-fix SessionStart output carried the routing core byte for byte in all 48

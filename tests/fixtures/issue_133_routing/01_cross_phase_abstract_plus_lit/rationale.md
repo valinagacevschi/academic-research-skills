@@ -6,7 +6,7 @@ Materials provided:
 - **Abstract draft** → Phase 4 artifact (academic-paper Phase 5b or deep-research Phase 4 equivalent)
 - **Literature collection (25 PDFs)** → Phase 2 artifact (deep-research Phase 2 / academic-paper Phase 1)
 
-This is cross-phase: materials span Phase 2 + Phase 4 (≥ 2 phases). Per `.claude/CLAUDE.md` "Routing Discipline (v3.9.2)" Step 2, the main session must clarify.
+This is cross-phase: materials span Phase 2 + Phase 4 (≥ 2 phases). Per `AGENTS.md` "Routing Discipline (v3.9.2)" Step 2, the main session must clarify.
 
 ## Why this is the #133 root case
 

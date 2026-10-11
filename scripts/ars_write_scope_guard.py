@@ -66,7 +66,7 @@ INSPECTED_TOOLS = STRUCTURED_WRITE_TOOLS | {"Bash"}
 INFRA_PROTECTED_GLOBS = [
     "hooks/hooks.json",
     "hooks/*.sh",
-    ".claude-plugin/plugin.json",  # declares the hook routing — disabling it neuters the guard
+    ".codex-plugin/plugin.json",  # declares the hook routing — disabling it neuters the guard
     # The hook script, its manifest, and the cross-check lint, protected by filename both
     # in any SUBDIR (`**/name`) AND at the workspace root (bare `name`). A deny-list
     # widening only protects MORE paths, so it is safe — unlike a per-agent allow-glob
@@ -92,7 +92,7 @@ INFRA_PROTECTED_GLOBS = [
     "academic-pipeline/agents/*.md",
     "shared/agents/*.md",
     "agents/*.md",
-    # CLAUDE.md / .claude/CLAUDE.md are DELIBERATELY NOT protected (#459). They were
+    # CLAUDE.md / AGENTS.md are DELIBERATELY NOT protected (#459). They were
     # added to guard ARS's own repo CLAUDE.md, but two generic doc filenames collide
     # with the user's own project under the clone+symlink install layout: there
     # CLAUDE_PLUGIN_ROOT is unset, the plugin_root fallback resolves to the cloned repo
@@ -473,7 +473,7 @@ def main():
     # Plugin root (#448): anchors infra self-protection (Step 2) to the ARS plugin's OWN
     # files, NOT the user's project. CLAUDE_PLUGIN_ROOT is set on a plugin install; the
     # git-clone+symlink track has no such env var, so fall back to this script's repo root
-    # (scripts/ -> repo root, where .claude-plugin/plugin.json lives). Use resolve() (NOT
+    # (scripts/ -> repo root, where .codex-plugin/plugin.json lives). Use resolve() (NOT
     # abspath) so a symlinked script / scripts dir — the norm for the ~/.claude/skills
     # symlink install track — resolves to the REAL plugin tree, not the symlink's location
     # (abspath would not follow the symlink and compute the wrong root).

@@ -34,7 +34,7 @@ from pathlib import Path
 
 import yaml
 
-# One row of the `.claude/CLAUDE.md` § "Skills Overview" table. The first cell is
+# One row of the `AGENTS.md` § "Skills Overview" table. The first cell is
 # the backticked skill directory name followed by its `vX.Y.Z` token. Two forms
 # are shared so the lints agree on what a row is:
 #   PREFIX — name only. check_skill_inventory_parity.py uses it to find every
@@ -48,7 +48,7 @@ SKILLS_TABLE_ROW_PREFIX = r"^\|\s*`([a-z0-9-]+)`"
 SKILLS_TABLE_ROW_FULL = SKILLS_TABLE_ROW_PREFIX + r"\s+v([A-Za-z0-9.\-_+]+)\s*\|"
 
 SKIP_DIRS = frozenset(
-    {"shared", "scripts", "docs", ".git", ".github", "examples", ".local-plans", ".claude"}
+    {"shared", "scripts", "docs", ".git", ".github", "examples", ".local-plans"}
 )
 
 

@@ -3,9 +3,7 @@
 
 `shared/references/routing_core.md` holds the cross-skill routing core and
 says which files carry it and why. This lint keeps the verbatim copies in
-`.claude/CLAUDE.md` and in every top-level `SKILL.md` byte-identical to it.
-The SessionStart announce reads the canonical file at runtime;
-`test_check_routing_core_sync.py` runs the announce to check the block arrives.
+`AGENTS.md` and in every top-level `SKILL.md` byte-identical to it.
 
 Checks:
   RC-1  The canonical file holds exactly one begin marker and one end marker,
@@ -33,7 +31,7 @@ from _skill_lint import (  # noqa: E402
 )
 
 CANONICAL = Path("shared/references/routing_core.md")
-CLAUDE_MD = Path(".claude/CLAUDE.md")
+AGENTS_MD = Path("AGENTS.md")
 BEGIN = "<!-- routing-core:begin -->"
 END = "<!-- routing-core:end -->"
 
@@ -44,8 +42,8 @@ def extract_block(text: str, label: str) -> tuple[str | None, list[str]]:
 
 
 def copies(root: Path) -> list[Path]:
-    """`.claude/CLAUDE.md` and every top-level SKILL.md, relative to `root`."""
-    return [CLAUDE_MD, *(path.relative_to(root) for path in iter_skill_files(root))]
+    """`AGENTS.md` and every top-level SKILL.md, relative to `root`."""
+    return [AGENTS_MD, *(path.relative_to(root) for path in iter_skill_files(root))]
 
 
 def check(root: Path) -> list[str]:

@@ -93,13 +93,13 @@ timeline
 def _write_architecture_fixture(
     root: Path, *, suite: str, comp: str, hist: str, prose: str | None = None
 ) -> None:
-    """Write `.claude/CLAUDE.md` (suite version source) + a docs/ARCHITECTURE.md fixture.
+    """Write `AGENTS.md` (suite version source) + a docs/ARCHITECTURE.md fixture.
 
     `prose` defaults to the suite version so the narrative line is innocuous unless a test
     deliberately sets it to a stale version to assert the prose mention is not policed.
     """
-    (root / ".claude").mkdir(parents=True, exist_ok=True)
-    (root / ".claude" / "CLAUDE.md").write_text(
+    (root).mkdir(parents=True, exist_ok=True)
+    (root / "AGENTS.md").write_text(
         f"# ARS\n\n- **Suite version**: {suite} (per CHANGELOG.md)\n", encoding="utf-8"
     )
     (root / "docs").mkdir(parents=True, exist_ok=True)
@@ -174,8 +174,8 @@ class TestArchitectureComponentVersion(unittest.TestCase):
         with TemporaryDirectory() as tmp:
             root = Path(tmp)
             csc.ROOT = root
-            (root / ".claude").mkdir(parents=True, exist_ok=True)
-            (root / ".claude" / "CLAUDE.md").write_text(
+            (root).mkdir(parents=True, exist_ok=True)
+            (root / "AGENTS.md").write_text(
                 "- **Suite version**: 3.11.1 (per CHANGELOG.md)\n", encoding="utf-8"
             )
             (root / "docs").mkdir(parents=True, exist_ok=True)
@@ -701,7 +701,6 @@ An unrelated marker, with an up-to-date checklist line.
         "academic-paper/references/mode_selection_guide.md": (
             "Bilingual = zh-TW + EN prose; no pair token here.\n"
         ),
-        "commands/ars-abstract.md": "The command honours `zh-tw-en`.\n",
     }
 
     def setUp(self) -> None:

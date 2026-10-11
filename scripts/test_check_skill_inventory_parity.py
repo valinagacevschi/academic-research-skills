@@ -23,8 +23,8 @@ NAMES = ("alpha-skill", "beta-skill")
 
 def _write_table(root: Path, names: tuple[str, ...]) -> None:
     rows = "\n".join(f"| `{n}` v1.0.0 | purpose | full |" for n in names)
-    (root / ".claude").mkdir(exist_ok=True)
-    (root / ".claude" / "CLAUDE.md").write_text(
+    (root).mkdir(exist_ok=True)
+    (root / "AGENTS.md").write_text(
         "# Test\n\n## Skills Overview\n\n"
         "| Skill | Purpose | Key Modes |\n|-------|---------|-----------|\n"
         f"{rows}\n\n## Routing Rules\n\n"
@@ -42,29 +42,20 @@ def _write_manifests(
     market_top_desc: str | None = None,
     plugin_desc: str | None = None,
 ) -> None:
-    (root / ".claude-plugin").mkdir(exist_ok=True)
-    entries = market_entries if market_entries is not None else [f"./{n}" for n in names]
-    market = {
+    plugin_dir = root / ".codex-plugin"
+    plugin_dir.mkdir(exist_ok=True)
+    catalog = root / ".agents" / "plugins"
+    catalog.mkdir(parents=True, exist_ok=True)
+    (catalog / "marketplace.json").write_text(json.dumps({
         "name": "test",
-        "description": market_top_desc if market_top_desc is not None else "test marketplace",
-        "plugins": [
-            {
-                "name": "test",
-                "description": market_desc if market_desc is not None else f"{len(names)} skills + modes",
-                "skills": entries,
-            }
-        ],
-    }
-    (root / ".claude-plugin" / "marketplace.json").write_text(
-        json.dumps(market, indent=2), encoding="utf-8"
-    )
+        "plugins": [{"name": "test", "source": {"source": "local", "path": "./"}}],
+    }, indent=2), encoding="utf-8")
     plugin = {
         "name": "test",
         "description": plugin_desc if plugin_desc is not None else f"pipeline: {len(names)} skills, 9 modes",
+        "skills": "./skills/",
     }
-    (root / ".claude-plugin" / "plugin.json").write_text(
-        json.dumps(plugin, indent=2), encoding="utf-8"
-    )
+    (plugin_dir / "plugin.json").write_text(json.dumps(plugin, indent=2), encoding="utf-8")
 
 
 def _write_symlinks(root: Path, names: tuple[str, ...]) -> None:
@@ -126,15 +117,14 @@ def test_unpackaged_skill_dir_fails(tmp_path: Path) -> None:
     _build_root(tmp_path)
     write_skill(tmp_path, "gamma-skill", "name: gamma-skill\n")
     v = _violations(tmp_path)
-    assert len(v) == 6, v
+    assert len(v) == 4, v
     missing = [line for line in v if "'gamma-skill' exists on disk" in line]
-    assert len(missing) == 3, v
+    assert len(missing) == 2, v
     assert any("skills/ symlinks" in line for line in missing)
     assert any("Skills Overview table" in line for line in missing)
-    assert any("marketplace.json plugins[].skills" in line for line in missing)
     # the "2 skills" claims are now stale on every count surface
     counts = [line for line in v if "claims '2 skills' but 3" in line]
-    assert len(counts) == 3, v  # marketplace, plugin.json, MODE_REGISTRY.md
+    assert len(counts) == 2, v  # plugin.json and MODE_REGISTRY.md
 
 
 def test_missing_symlink_fails(tmp_path: Path) -> None:
@@ -199,7 +189,7 @@ def test_rows_outside_section_are_ignored(tmp_path: Path) -> None:
 
 
 def _replace_alpha_row(root: Path, row: str) -> None:
-    md = root / ".claude" / "CLAUDE.md"
+    md = root / "AGENTS.md"
     text = md.read_text(encoding="utf-8")
     md.write_text(text.replace("| `alpha-skill` v1.0.0 | purpose | full |", row), encoding="utf-8")
 
@@ -219,7 +209,7 @@ def test_row_without_version_token_fails(tmp_path: Path, row: str) -> None:
 def test_non_canonical_row_name_is_reported(tmp_path: Path, name: str) -> None:
     """A stale advertised row with a non-canonical name must not be invisible."""
     _build_root(tmp_path)
-    md = tmp_path / ".claude" / "CLAUDE.md"
+    md = tmp_path / "AGENTS.md"
     text = md.read_text(encoding="utf-8").replace(
         "| `beta-skill` v1.0.0 | purpose | full |",
         f"| `beta-skill` v1.0.0 | purpose | full |\n| `{name}` v1.0.0 | stale | x |",
@@ -235,7 +225,7 @@ def test_non_canonical_row_name_is_reported(tmp_path: Path, name: str) -> None:
 ])
 def test_data_row_without_backticked_name_is_reported(tmp_path: Path, row: str) -> None:
     _build_root(tmp_path)
-    md = tmp_path / ".claude" / "CLAUDE.md"
+    md = tmp_path / "AGENTS.md"
     text = md.read_text(encoding="utf-8").replace(
         "| `beta-skill` v1.0.0 | purpose | full |\n",
         f"| `beta-skill` v1.0.0 | purpose | full |\n{row}\n", 1)
@@ -246,7 +236,7 @@ def test_data_row_without_backticked_name_is_reported(tmp_path: Path, row: str) 
 @pytest.mark.parametrize("separator", ["|-------|---------|-----------|", "|:--|:-:|--:|", "| --- | --- | --- |"])
 def test_header_and_separator_rows_are_not_data_rows(tmp_path: Path, separator: str) -> None:
     _build_root(tmp_path)
-    md = tmp_path / ".claude" / "CLAUDE.md"
+    md = tmp_path / "AGENTS.md"
     md.write_text(md.read_text(encoding="utf-8").replace("|-------|---------|-----------|", separator), encoding="utf-8")
     assert _violations(tmp_path) == []
 
@@ -254,7 +244,7 @@ def test_header_and_separator_rows_are_not_data_rows(tmp_path: Path, separator: 
 @pytest.mark.parametrize("mutation", ["drop_separator", "drop_header_and_separator"])
 def test_table_without_separator_is_not_a_table(tmp_path: Path, mutation: str) -> None:
     _build_root(tmp_path)
-    md = tmp_path / ".claude" / "CLAUDE.md"
+    md = tmp_path / "AGENTS.md"
     text = md.read_text(encoding="utf-8").replace("|-------|---------|-----------|\n", "", 1)
     if mutation == "drop_header_and_separator":
         text = text.replace("| Skill | Purpose | Key Modes |\n", "", 1)
@@ -266,7 +256,7 @@ def test_table_without_separator_is_not_a_table(tmp_path: Path, mutation: str) -
 @pytest.mark.parametrize("separator", ["|---|", "|---|---|", "|---|---|---|---|"])
 def test_separator_width_must_match_header(tmp_path: Path, separator: str) -> None:
     _build_root(tmp_path)
-    md = tmp_path / ".claude" / "CLAUDE.md"
+    md = tmp_path / "AGENTS.md"
     md.write_text(md.read_text(encoding="utf-8").replace("|-------|---------|-----------|", separator), encoding="utf-8")
     v = _violations(tmp_path)
     assert any("GFM requires them equal" in line for line in v), v
@@ -274,7 +264,7 @@ def test_separator_width_must_match_header(tmp_path: Path, separator: str) -> No
 
 def test_escaped_pipe_in_header_is_one_cell(tmp_path: Path) -> None:
     _build_root(tmp_path)
-    md = tmp_path / ".claude" / "CLAUDE.md"
+    md = tmp_path / "AGENTS.md"
     md.write_text(md.read_text(encoding="utf-8").replace("| Skill | Purpose | Key Modes |", "| Skill | Purpose \\| Role | Key Modes |"), encoding="utf-8")
     assert _violations(tmp_path) == []
 
@@ -289,14 +279,14 @@ def test_non_semver_version_token_is_left_to_the_version_lint(tmp_path: Path) ->
 
 def test_missing_section_fails(tmp_path: Path) -> None:
     _build_root(tmp_path)
-    (tmp_path / ".claude" / "CLAUDE.md").write_text("# nothing\n", encoding="utf-8")
+    (tmp_path / "AGENTS.md").write_text("# nothing\n", encoding="utf-8")
     v = _violations(tmp_path)
     assert any("H2 is missing" in line for line in v)
 
 
 def test_demoted_heading_is_not_the_section(tmp_path: Path) -> None:
     _build_root(tmp_path)
-    md = tmp_path / ".claude" / "CLAUDE.md"
+    md = tmp_path / "AGENTS.md"
     md.write_text(md.read_text(encoding="utf-8").replace("## Skills Overview", "### Skills Overview"), encoding="utf-8")
     v = _violations(tmp_path)
     assert any("H2 is missing" in line for line in v), v
@@ -306,7 +296,7 @@ def test_fenced_heading_copy_does_not_bind(tmp_path: Path) -> None:
     """A fenced example carrying the heading + a ghost row sits BEFORE the real
     section; parity must bind to the real H2 and ignore the ghost."""
     _build_root(tmp_path)
-    md = tmp_path / ".claude" / "CLAUDE.md"
+    md = tmp_path / "AGENTS.md"
     fenced = "```markdown\n## Skills Overview\n\n| `ghost` v9.9.9 | x | y |\n```\n\n"
     md.write_text(md.read_text(encoding="utf-8").replace("## Skills Overview", fenced + "## Skills Overview", 1), encoding="utf-8")
     assert _violations(tmp_path) == []
@@ -319,7 +309,7 @@ def test_fenced_heading_copy_does_not_bind(tmp_path: Path) -> None:
 ])
 def test_only_the_first_table_after_the_heading_counts(tmp_path: Path, trailer: str) -> None:
     _build_root(tmp_path)
-    md = tmp_path / ".claude" / "CLAUDE.md"
+    md = tmp_path / "AGENTS.md"
     text = md.read_text(encoding="utf-8").replace("| `beta-skill` v1.0.0 | purpose | full |\n",
                                                    "| `beta-skill` v1.0.0 | purpose | full |\n" + trailer, 1)
     md.write_text(text, encoding="utf-8")
@@ -328,7 +318,7 @@ def test_only_the_first_table_after_the_heading_counts(tmp_path: Path, trailer: 
 
 def test_skill_only_in_a_second_table_is_not_listed(tmp_path: Path) -> None:
     _build_root(tmp_path)
-    md = tmp_path / ".claude" / "CLAUDE.md"
+    md = tmp_path / "AGENTS.md"
     text = md.read_text(encoding="utf-8").replace(
         "| `beta-skill` v1.0.0 | purpose | full |\n",
         "\n| Other | Table |\n|---|---|\n| `beta-skill` v1.0.0 | moved here |\n", 1)
@@ -338,62 +328,33 @@ def test_skill_only_in_a_second_table_is_not_listed(tmp_path: Path) -> None:
 
 def test_missing_claude_md_fails(tmp_path: Path) -> None:
     _build_root(tmp_path)
-    (tmp_path / ".claude" / "CLAUDE.md").unlink()
+    (tmp_path / "AGENTS.md").unlink()
     v = _violations(tmp_path)
-    assert any("CLAUDE.md: file is missing" in line for line in v)
+    assert any("AGENTS.md: file is missing" in line for line in v)
 
 
-# ---- surface D: marketplace.json -------------------------------------------
+# ---- Codex marketplace and plugin manifest ----------------------------------
 
-def test_missing_manifest_entry_fails(tmp_path: Path) -> None:
+def test_invalid_marketplace_json_fails(tmp_path: Path) -> None:
     _build_root(tmp_path)
-    _write_manifests(tmp_path, NAMES, market_entries=[f"./{NAMES[0]}"])
-    _assert_single(_violations(tmp_path), f"'{NAMES[1]}' exists on disk")
-
-
-def test_extra_manifest_entry_fails(tmp_path: Path) -> None:
-    _build_root(tmp_path)
-    _write_manifests(tmp_path, NAMES, market_entries=[f"./{n}" for n in NAMES] + ["./stale"])
-    _assert_single(_violations(tmp_path), "lists skill 'stale' but no top-level")
-
-
-@pytest.mark.parametrize("bad", ["alpha-skill", "skills/alpha-skill", "./Alpha", "./a/b", 7, "./alpha-skill\n", "./alpha-skill "])
-def test_malformed_manifest_entry_fails(tmp_path: Path, bad) -> None:
-    _build_root(tmp_path)
-    _write_manifests(tmp_path, NAMES, market_entries=[bad, f"./{NAMES[1]}"])
-    v = _violations(tmp_path)
-    assert any("must be './<name>'" in line for line in v), v
-    # the malformed entry does not count as listing alpha-skill
-    assert any(f"'{NAMES[0]}' exists on disk" in line for line in v), v
-
-
-def test_invalid_manifest_json_fails(tmp_path: Path) -> None:
-    _build_root(tmp_path)
-    (tmp_path / ".claude-plugin" / "marketplace.json").write_text("{", encoding="utf-8")
-    v = _violations(tmp_path)
-    assert any("invalid JSON" in line for line in v)
-
+    (tmp_path / ".agents/plugins/marketplace.json").write_text("{", encoding="utf-8")
+    assert any("invalid JSON" in line for line in _violations(tmp_path))
 
 def test_missing_marketplace_fails(tmp_path: Path) -> None:
     _build_root(tmp_path)
-    (tmp_path / ".claude-plugin" / "marketplace.json").unlink()
-    v = _violations(tmp_path)
-    assert any("marketplace.json: file is missing" in line for line in v)
+    (tmp_path / ".agents/plugins/marketplace.json").unlink()
+    assert any("marketplace.json: file is missing" in line for line in _violations(tmp_path))
+
+def test_plugin_manifest_skill_directory_is_required(tmp_path: Path) -> None:
+    _build_root(tmp_path)
+    path = tmp_path / ".codex-plugin/plugin.json"
+    data = json.loads(path.read_text())
+    data["skills"] = "../skills/"
+    path.write_text(json.dumps(data))
+    assert any("skills must be a relative directory path" in line for line in _violations(tmp_path))
 
 
 # ---- count claims -----------------------------------------------------------
-
-def test_stale_marketplace_count_fails(tmp_path: Path) -> None:
-    _build_root(tmp_path)
-    _write_manifests(tmp_path, NAMES, market_desc="4 skills + 27 modes")
-    _assert_single(_violations(tmp_path), "marketplace.json description: claims '4 skills'")
-
-
-def test_stale_marketplace_top_level_count_fails(tmp_path: Path) -> None:
-    _build_root(tmp_path)
-    _write_manifests(tmp_path, NAMES, market_top_desc="A marketplace of 3 skills")
-    _assert_single(_violations(tmp_path), "marketplace.json description: claims '3 skills'")
-
 
 def test_stale_plugin_count_fails(tmp_path: Path) -> None:
     _build_root(tmp_path)
@@ -410,7 +371,7 @@ def test_count_claim_is_case_insensitive(tmp_path: Path, desc: str) -> None:
 
 def test_description_without_count_makes_no_claim(tmp_path: Path) -> None:
     _build_root(tmp_path)
-    _write_manifests(tmp_path, NAMES, market_desc="research skills for Claude Code", plugin_desc="40 skillsets")
+    _write_manifests(tmp_path, NAMES, plugin_desc="research skills for Codex")
     assert _violations(tmp_path) == []
 
 
@@ -428,8 +389,8 @@ def test_missing_mode_registry_fails(tmp_path: Path) -> None:
 
 def test_missing_plugin_json_fails(tmp_path: Path) -> None:
     _build_root(tmp_path)
-    (tmp_path / ".claude-plugin" / "plugin.json").unlink()
-    _assert_single(_violations(tmp_path), "plugin.json: file is missing")
+    (tmp_path / ".codex-plugin" / "plugin.json").unlink()
+    assert any("plugin.json: file is missing" in line for line in _violations(tmp_path))
 
 
 # ---- real tree --------------------------------------------------------------
