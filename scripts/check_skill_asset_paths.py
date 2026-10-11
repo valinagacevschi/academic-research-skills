@@ -27,7 +27,7 @@ def _exists(path: Path) -> bool:
 def check(root: Path) -> list[str]:
     errors: list[str] = []
     for name in SKILL_NAMES:
-        candidates = (root / name / "SKILL.md", root / "skills" / name / "SKILL.md")
+        candidates = (root / "skills" / name / "SKILL.md", root / name / "SKILL.md")
         skill_file = next((path for path in candidates if path.is_file()), candidates[0])
         if not skill_file.is_file():
             errors.append(f"{skill_file}: missing")

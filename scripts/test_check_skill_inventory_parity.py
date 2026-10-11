@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import json
 import os
+import shutil
 from pathlib import Path
 
 import pytest
@@ -62,7 +63,12 @@ def _write_symlinks(root: Path, names: tuple[str, ...]) -> None:
     skills = root / "skills"
     skills.mkdir(exist_ok=True)
     for n in names:
-        os.symlink(f"../{n}", skills / n)
+        (root / n).rename(skills / n)
+        os.symlink(f"skills/{n}", root / n)
+    agents_skills = root / ".agents" / "skills"
+    agents_skills.mkdir(parents=True)
+    for n in names:
+        os.symlink(f"../../skills/{n}", agents_skills / n)
 
 
 def _write_registry(root: Path, text: str) -> None:
@@ -99,11 +105,12 @@ def test_cli_exit_codes(tmp_path: Path) -> None:
     ok = run_skill_linter(SCRIPT, tmp_path)
     assert ok.returncode == 0, ok.stdout + ok.stderr
     assert "OK:" in ok.stdout
-    (tmp_path / "skills" / NAMES[0]).unlink()
+    (tmp_path / NAMES[0]).unlink()
+    (tmp_path / ".agents" / "skills" / NAMES[0]).unlink()
     bad = run_skill_linter(SCRIPT, tmp_path)
     assert bad.returncode == 1
     assert "ERROR:" in bad.stdout
-    assert "1 violation(s) found." in bad.stderr
+    assert "violation(s) found." in bad.stderr
 
 
 def test_empty_root_is_a_violation(tmp_path: Path) -> None:
@@ -117,58 +124,49 @@ def test_unpackaged_skill_dir_fails(tmp_path: Path) -> None:
     _build_root(tmp_path)
     write_skill(tmp_path, "gamma-skill", "name: gamma-skill\n")
     v = _violations(tmp_path)
-    assert len(v) == 4, v
+    assert any("gamma-skill" in line for line in v), v
     missing = [line for line in v if "'gamma-skill' exists on disk" in line]
-    assert len(missing) == 2, v
-    assert any("skills/ symlinks" in line for line in missing)
-    assert any("Skills Overview table" in line for line in missing)
-    # the "2 skills" claims are now stale on every count surface
-    counts = [line for line in v if "claims '2 skills' but 3" in line]
-    assert len(counts) == 2, v  # plugin.json and MODE_REGISTRY.md
+    assert len(missing) == 0, v
+    assert any("unexpected top-level skill path" in line for line in v)
 
 
 def test_missing_symlink_fails(tmp_path: Path) -> None:
     _build_root(tmp_path)
-    (tmp_path / "skills" / NAMES[1]).unlink()
-    _assert_single(_violations(tmp_path), f"'{NAMES[1]}' exists on disk")
+    (tmp_path / NAMES[1]).unlink()
+    _assert_single(_violations(tmp_path), "must be a relative symlink")
 
 
 def test_extra_symlink_without_dir_fails(tmp_path: Path) -> None:
     _build_root(tmp_path)
-    os.symlink("../ghost", tmp_path / "skills" / "ghost")
+    os.symlink("skills/ghost", tmp_path / "ghost")
     v = _violations(tmp_path)
-    assert len(v) == 2, v
-    assert any("dangling symlink" in line for line in v)
-    assert any("lists skill 'ghost' but no top-level" in line for line in v)
+    assert len(v) == 1, v
+    assert any("unexpected top-level skill path" in line for line in v)
 
 
 def test_symlink_to_wrong_target_fails(tmp_path: Path) -> None:
     _build_root(tmp_path)
-    link = tmp_path / "skills" / NAMES[0]
+    link = tmp_path / NAMES[0]
     link.unlink()
-    os.symlink(f"../{NAMES[1]}", link)
+    os.symlink(f"skills/{NAMES[1]}", link)
     _assert_single(_violations(tmp_path), "symlink resolves to")
 
 
-def test_real_skill_copy_passes_and_drift_fails(tmp_path: Path) -> None:
-    import shutil
+def test_canonical_skill_must_be_real_directory(tmp_path: Path) -> None:
     _build_root(tmp_path)
     link = tmp_path / "skills" / NAMES[0]
-    link.unlink()
-    shutil.copytree(tmp_path / NAMES[0], link)
-    assert _violations(tmp_path) == []
-    (link / "SKILL.md").write_text("drift", encoding="utf-8")
-    _assert_single(_violations(tmp_path), "differs from source")
+    shutil.rmtree(link)
+    os.symlink(NAMES[1], link)
+    _assert_single(_violations(tmp_path), "canonical skill directory must be real")
 
 
 def test_missing_skills_dir_fails(tmp_path: Path) -> None:
     _build_root(tmp_path)
     for n in NAMES:
-        (tmp_path / "skills" / n).unlink()
+        shutil.rmtree(tmp_path / "skills" / n)
     (tmp_path / "skills").rmdir()
     v = _violations(tmp_path)
-    assert any("directory is missing" in line for line in v)
-    assert sum("not listed in skills/ symlinks" in line for line in v) == len(NAMES)
+    assert any("no top-level <name>/SKILL.md found" in line for line in v)
 
 
 # ---- surface C: CLAUDE.md table --------------------------------------------

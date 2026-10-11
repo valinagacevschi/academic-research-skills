@@ -74,11 +74,14 @@ COUNT_CLAIM_RE = re.compile(r"\b(\d+) skills\b", re.IGNORECASE)
 
 
 def _skills_on_disk(root: Path) -> set[str]:
-    return {p.parent.name for p in iter_skill_files(root)}
+    skills_dir = root / SKILLS_DIR
+    if not skills_dir.is_dir():
+        return set()
+    return {p.name for p in skills_dir.iterdir() if p.is_dir() and (p / "SKILL.md").is_file()}
 
 
 def _skills_dir_entries(root: Path, violations: list[str]) -> set[str]:
-    """Check real plugin-bundled skill copies or legacy links for exact parity."""
+    """Check the canonical real skill directories under skills/."""
     skills_dir = root / SKILLS_DIR
     if not skills_dir.is_dir():
         violations.append(f"{skills_dir}: directory is missing")
@@ -86,31 +89,31 @@ def _skills_dir_entries(root: Path, violations: list[str]) -> set[str]:
     names: set[str] = set()
     for entry in sorted(skills_dir.iterdir(), key=lambda p: p.name):
         names.add(entry.name)
-        expected = root / entry.name
-        if entry.is_symlink():
-            try:
-                target = entry.resolve(strict=True)
-            except (FileNotFoundError, RuntimeError):
-                violations.append(f"{entry}: dangling symlink")
-                continue
-            if target != expected.resolve():
-                violations.append(f"{entry}: symlink resolves to {target}, expected {expected}")
-            continue
-        if not entry.is_dir():
-            violations.append(f"{entry}: must be a real skill directory copy or matching symlink")
-            continue
-        if not expected.is_dir():
-            continue
-        source_files = {p.relative_to(expected) for p in expected.rglob("*") if p.is_file()}
-        bundled_files = {p.relative_to(entry) for p in entry.rglob("*") if p.is_file()}
-        if source_files != bundled_files:
-            violations.append(f"{entry}: bundled file set differs from {expected}")
-            continue
-        for rel in sorted(source_files):
-            if (expected / rel).read_bytes() != (entry / rel).read_bytes():
-                violations.append(f"{entry / rel}: differs from source {expected / rel}")
-                break
+        if entry.is_symlink() or not entry.is_dir():
+            violations.append(f"{entry}: canonical skill directory must be real, not a symlink")
+        elif not (entry / "SKILL.md").is_file():
+            violations.append(f"{entry}: canonical skill directory is missing SKILL.md")
     return names
+
+
+def _top_level_links(root: Path, expected_names: set[str], violations: list[str]) -> set[str]:
+    for child in root.iterdir():
+        if child.name not in expected_names and CANONICAL_NAME_RE.fullmatch(child.name):
+            if child.is_symlink() or (child.is_dir() and (child / "SKILL.md").is_file()):
+                violations.append(f"{child}: unexpected top-level skill path; skills/ is canonical")
+    for name in sorted(expected_names):
+        link, expected = root / name, root / SKILLS_DIR / name
+        if not link.is_symlink():
+            violations.append(f"{link}: must be a relative symlink to skills/{name}")
+            continue
+        try:
+            target = link.resolve(strict=True)
+        except (FileNotFoundError, RuntimeError):
+            violations.append(f"{link}: dangling symlink")
+            continue
+        if target != expected.resolve():
+            violations.append(f"{link}: symlink resolves to {target}, expected {expected}")
+    return set(expected_names)
 
 
 def _codex_skills_dir_entries(root: Path, violations: list[str]) -> set[str]:
@@ -121,9 +124,9 @@ def _codex_skills_dir_entries(root: Path, violations: list[str]) -> set[str]:
     names: set[str] = set()
     for entry in sorted(skills_dir.iterdir(), key=lambda p: p.name):
         names.add(entry.name)
-        expected = root / entry.name
+        expected = root / "skills" / entry.name
         if not entry.is_symlink():
-            violations.append(f"{entry}: must be a symlink to ../../{entry.name}")
+            violations.append(f"{entry}: must be a symlink to ../../skills/{entry.name}")
             continue
         try:
             target = entry.resolve(strict=True)
@@ -327,8 +330,9 @@ def run_all_checks(root: Path) -> list[str]:
         )
         return violations
 
-    symlinked = _skills_dir_entries(root, violations)
-    _report_set_diff(on_disk, symlinked, f"{SKILLS_DIR}/ symlinks", violations)
+    canonical = _skills_dir_entries(root, violations)
+    _report_set_diff(on_disk, canonical, f"{SKILLS_DIR}/ canonical directories", violations)
+    _top_level_links(root, on_disk, violations)
 
     codex_links = _codex_skills_dir_entries(root, violations)
     if (root / ".agents" / "skills").is_dir():
