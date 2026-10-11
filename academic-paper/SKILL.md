@@ -230,7 +230,7 @@ Multi-phase agents (Bucket B: `argument_builder` P3+Plan, `visualization` P4+P7)
 
 Routing into Mode B requires explicit user signal — `$skill-name <mode>` or `[direct-mode]` prefix. Ambiguous cross-phase input defaults to clarification per the routing core near the top of this file (Step 2) + `shared/references/intent_clarification_protocol.md`.
 
-**Enforcement (v3.9.2):** Phase Boundary blocks on Bucket A agents + advisory verifier (`scripts/check_pipeline_integrity.py`) + a deterministic PreToolUse write-scope guard in hook-enabled runtimes (#134 rescope, PR #294). Multi-phase envelope remains forward-scope (#134 Slices 3-5).
+**Enforcement (v3.9.2):** Phase Boundary blocks on Bucket A agents + advisory verifier (`scripts/check_pipeline_integrity.py`) + a prompt-level phase boundary; the Codex hook payload does not identify subagent roles. Multi-phase envelope remains forward-scope (#134 Slices 3-5).
 
 ## v3.6.6 Generator-Evaluator Contract Protocol
 

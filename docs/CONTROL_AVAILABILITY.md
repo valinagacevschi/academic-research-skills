@@ -6,9 +6,9 @@ ARS is a Codex-only skill suite. Install it as a Codex plugin for normal use, or
 
 | Channel | Setup | Scope |
 |---|---|---|
-| Codex plugin | [Plugin setup](SETUP.md#install-as-a-codex-plugin) | User-level install, available across Codex projects |
-| Project skills | [Project skills setup](SETUP.md#project-skills-symlink) | One project |
-| User skills | [User skills setup](SETUP.md#user-skills-symlink) | All projects for one user |
+| Codex plugin | [Plugin setup](SETUP.md#method-install-as-a-codex-plugin) | User-level install, available across Codex projects |
+| Project skills | [Project skills setup](SETUP.md#method-project-skills) | One project |
+| User skills | [User skills setup](SETUP.md#method-user-skills) | All projects for one user |
 
 ## Availability matrix
 
@@ -17,6 +17,6 @@ ARS is a Codex-only skill suite. Install it as a Codex plugin for normal use, or
 | Five ARS skills | Active | Active | Active |
 | Codex subagents | Active when enabled; otherwise use the documented sequential fallback | Same | Same |
 | Cross-model verification | Opt-in with `ARS_CROSS_MODEL=1` and a supported non-GPT API key | Same | Same |
-| Write-scope guard | See [Risk Register](RISK_REGISTER.md) | See [Risk Register](RISK_REGISTER.md) | See [Risk Register](RISK_REGISTER.md) |
+| Write-scope guard | Unavailable on Codex: `PreToolUse` can block writes, but its documented payload has no subagent role field, which ARS needs for per-role scopes ([Codex Hooks](https://learn.chatgpt.com/docs/hooks)) | Same | Same |
 
 Codex plugins are installed in a local cache. Skill guidance must resolve its bundled `shared/` and `scripts/` paths from the installed plugin tree; it must not depend on the current project's root.

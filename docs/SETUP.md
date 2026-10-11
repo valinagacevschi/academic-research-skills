@@ -4,6 +4,8 @@ Use the Codex plugin to make the five ARS skills available across projects. Link
 
 ## Install the Codex plugin
 
+### Method: Install as a Codex plugin
+
 From the CLI, add the marketplace and install the plugin:
 
 ```sh
@@ -15,6 +17,8 @@ In the Codex desktop app, open the plugin manager, add the `ars` marketplace, an
 
 ## Project skills
 
+### Method: Project skills
+
 Clone the repository, set `ARS_REPO` to its path, then add symlinks to the project:
 
 ```sh
@@ -25,7 +29,11 @@ for skill in deep-research academic-paper academic-paper-reviewer academic-pipel
 done
 ```
 
-For user-wide access, put the same symlinks in `~/.agents/skills/`. Keep the repository clone available: each skill resolves `shared/...` and root `scripts/...` by walking up to the ARS root; its own `scripts/...` paths resolve from the skill directory.
+## User skills
+
+### Method: User skills
+
+Put the same symlinks in `~/.agents/skills/` for user-wide access. Keep the repository clone available: each skill resolves `shared/...` and root `scripts/...` by walking up to the ARS root; its own `scripts/...` paths resolve from the skill directory.
 
 ## Optional Python tools
 

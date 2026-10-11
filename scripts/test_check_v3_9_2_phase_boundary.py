@@ -130,7 +130,7 @@ class CanonicalEnforcementDefriftTests(unittest.TestCase):
         self.assertEqual(set(module.CANONICAL_ENFORCEMENT), {"2", "4"})
         self.assertIn("Enforcement (v3.9.2)", module.CANONICAL_ENFORCEMENT["2"])
         self.assertIn("Enforcement (v3.9.4)", module.CANONICAL_ENFORCEMENT["4"])
-        self.assertIn("PR #294", module.CANONICAL_ENFORCEMENT["2"])
+        self.assertIn("no role-aware write-scope hook", module.CANONICAL_ENFORCEMENT["2"])
 
     def test_canonical_sentence_passes(self) -> None:
         module = self._load_module()
@@ -157,7 +157,7 @@ class CanonicalEnforcementDefriftTests(unittest.TestCase):
     def test_single_word_mutation_fails(self) -> None:
         module = self._load_module()
         mutated = module.CANONICAL_ENFORCEMENT["2"].replace(
-            "write-scope guard", "write scope guard"
+            "prompt-level boundary", "prompt-level boundaries"
         )
         self.assertNotEqual(mutated, module.CANONICAL_ENFORCEMENT["2"])
         errors = self._check(module, self._block(mutated))

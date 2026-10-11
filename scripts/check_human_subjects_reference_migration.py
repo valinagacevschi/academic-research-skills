@@ -76,8 +76,8 @@ ARCHITECT_REPLAY_CONTRACT = (
     "`scripts/resolve_human_subjects_authority.py`."
 )
 ARCHITECT_NO_SIMULATION = (
-    "This role has no shell authority and must not claim to have run replay "
-    "validation."
+    "This role must not claim to have run replay validation unless the "
+    "dispatching session supplies validated evidence."
 )
 AGENT_GATE_CONTRACTS = {
     ETHICS_AGENT: (ETHICS_GATE_CONTRACT, ETHICS_CLOSED_GATE),

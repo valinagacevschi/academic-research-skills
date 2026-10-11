@@ -364,7 +364,7 @@ timeline
            : 10 slash commands (commands/ars-*.md, model pinned opus/sonnet, no haiku)
            : 3 plugin agents (agents/, byte-identical copies of v3.6.7-hardened
            :   source — mirror-sync lint since #413, model: inherit)
-           : SessionStart announce hook (hooks/hooks.json + announce-ars-loaded.sh)
+           : per-skill routing instructions carried in each SKILL.md
     v3.7.3 : L3 locator infrastructure (claim faithfulness — first half)
            : Three-Layer Citation Emission (synthesis / draft_writer / report_compiler)
            : <!--anchor:kind:value--> on every <!--ref:slug--> (quote / page / section / paragraph / none)
@@ -404,7 +404,7 @@ timeline
     v3.10.0 : triangulation terminal policy layer (#127 PR-B, opt-in strict)
             : Kong et al. survey adoptions (commitment ledger #256/#266/#268/#269; domain profiles #259)
             : generalized eval gold set + ranking-lift CI gate (#184)
-            : scoped-write guard MVP — PreToolUse fence on 23 single-phase agents (#134)
+            : prompt-level phase boundaries; no role-aware Codex write-scope hook
     v3.11.0 : deterministic citation verification gate (#182)
             : arXiv resolver + four-index contamination matrix k=0..4 (Delta 1)
             : persistent SQLite verification cache + /ars-cache-invalidate (Delta 2)

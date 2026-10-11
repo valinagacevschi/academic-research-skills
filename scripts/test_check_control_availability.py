@@ -69,8 +69,8 @@ def test_ca1_dead_file_link_fires(repo: Path) -> None:
     _mutate(
         repo,
         "docs/CONTROL_AVAILABILITY.md",
-        "SETUP.md#install-as-a-codex-plugin",
-        "MISSING.md#install-as-a-codex-plugin",
+        "SETUP.md#method-install-as-a-codex-plugin",
+        "MISSING.md#method-install-as-a-codex-plugin",
     )
     errors = run_all_checks(repo)
     assert any("CA-1" in e and "does not exist" in e for e in errors)
@@ -83,8 +83,8 @@ def test_ca1_renamed_setup_heading_fires(repo: Path) -> None:
     _mutate(
         repo,
         str(SETUP_RELPATH),
-        "## Install as a Codex plugin",
-        "## Install as a Codex plugin (renamed)",
+        "### Method: Install as a Codex plugin",
+        "### Method: Install as a Codex plugin (renamed)",
     )
     errors = run_all_checks(repo)
     assert any("CA-1" in e and "anchor" in e for e in errors)
@@ -95,7 +95,7 @@ def test_ca1_broken_intra_doc_anchor_fires(repo: Path) -> None:
     _mutate(
         repo,
         "docs/CONTROL_AVAILABILITY.md",
-        "(SETUP.md#install-as-a-codex-plugin)",
+        "(SETUP.md#method-install-as-a-codex-plugin)",
         "(#missing-anchor)",
     )
     errors = run_all_checks(repo)
@@ -121,11 +121,11 @@ def test_ca2_new_setup_method_fires(repo: Path) -> None:
     setup = repo / SETUP_RELPATH
     setup.write_text(
         setup.read_text(encoding="utf-8")
-        + "\n## Install from a future marketplace\n\nBody.\n",
+        + "\n### Method: Install from a future marketplace\n\nBody.\n",
         encoding="utf-8",
     )
     errors = run_all_checks(repo)
-    assert any("CA-2" in e and "Install from a future marketplace" in e for e in errors)
+    assert any("CA-2" in e and "Method: Install from a future marketplace" in e for e in errors)
     assert not any("CA-1" in e for e in errors)
 
 
@@ -175,11 +175,11 @@ def test_ca2_same_slug_in_copied_file_does_not_satisfy(repo: Path) -> None:
     _mutate(
         repo,
         "docs/CONTROL_AVAILABILITY.md",
-        "SETUP.md#install-as-a-codex-plugin",
-        "SETUP_COPY.md#install-as-a-codex-plugin",
+        "SETUP.md#method-install-as-a-codex-plugin",
+        "SETUP_COPY.md#method-install-as-a-codex-plugin",
     )
     errors = run_all_checks(repo)
-    assert any("CA-2" in e and "Install as a Codex plugin" in e for e in errors)
+    assert any("CA-2" in e and "Method: Install as a Codex plugin" in e for e in errors)
     assert not any("CA-1" in e for e in errors)
 
 

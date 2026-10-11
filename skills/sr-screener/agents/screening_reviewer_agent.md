@@ -2,7 +2,6 @@
 name: screening_reviewer_agent
 description: "Blinded screening reviewer for sr-screener: applies a confirmed protocol to one batch of records or one full-text report and returns one decision per record"
 model: inherit
-tools: Read, Grep
 ---
 
 # Screening Reviewer Agent — Blinded Eligibility Decisions (Phases 2-5)

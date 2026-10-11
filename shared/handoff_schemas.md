@@ -869,9 +869,9 @@ named artifact. This keeps the raw sidecar bytes available for finalizer replay
 without changing the legacy passport roster.
 
 The research architect supplies only the caller declaration and, for a completed
-provided preregistration, an explicitly named companion handle. Because that
-agent has no shell, it does not compute a digest or build/update the sidecar. A
-shell-capable orchestrator is the sole caller of
+provided preregistration, an explicitly named companion handle. The role prompt requires the research architect to provide only declarations; the
+main Codex session computes any required digest and builds/updates the sidecar. The
+main session is the sole caller of
 `scripts/build_cross_document_consistency_advisory.py
 build-preregistration-artifact`, including for an explicit unavailable receipt,
 and supplies the caller-held RFC3339 `declared_at`.

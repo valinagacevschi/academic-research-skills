@@ -175,18 +175,6 @@ id = "184-render-eval-comment"
 path = "scripts/test_render_eval_comment.py"
 
 [[pytest]]
-id = "v3.10-134-write-scope-guard"
-path = "scripts/test_ars_write_scope_guard.py"
-
-[[pytest]]
-id = "454-write-scope-guard-launcher"
-path = "scripts/test_run_guard_launcher.py"
-
-[[pytest]]
-id = "v3.10-134-write-scope-lint-mutation"
-path = "scripts/test_check_v3_10_134_write_scope.py"
-
-[[pytest]]
 id = "v3.11-citation-existence-policy"
 path = "scripts/test_citation_existence_policy.py"
 
@@ -403,12 +391,6 @@ path = "scripts/test_check_v3_9_4_temporal_verification.py"
 [[pytest]]
 id = "491-setup-cross-model-parity"
 path = "scripts/test_check_setup_cross_model_parity.py"
-
-[[pytest]]
-
-[[pytest]]
-id = "524-tools-allowlist-lock"
-path = "scripts/test_check_tools_allowlist.py"
 
 [[pytest]]
 id = "510-panel-synthesis-checker"

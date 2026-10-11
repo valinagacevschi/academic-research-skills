@@ -215,7 +215,7 @@ A compromised or drifting third-party dependency alters suite behavior.
 
 - **Existing controls**: stdlib-first runtime scripts; a small declared
   dev-dependency manifest (`requirements-dev.txt`, lower-bound pins only, no
-  lockfile); the plugin-agent tools allowlist (`scripts/check_tools_allowlist.py`);
+  lockfile); the Codex project permission model and prompt-level role boundaries;
   CI lints running repo-side in GitHub Actions.
 - **Evidence status**: `NOT_RUN` (asserted here; no capability-matrix row).
 - **Residual gap**: no SBOM or supplier-review program — assessed and rejected as
@@ -224,21 +224,11 @@ A compromised or drifting third-party dependency alters suite behavior.
 
 ### R10 — Install-channel enforcement loss
 
-A user installs through a channel where documented enforcement never runs.
+ARS relies on prompt-level phase boundaries. Codex `PreToolUse` hooks can block file writes, but their documented payload does not expose the subagent role name needed to apply ARS's per-role write scopes.
 
-- **Existing controls**: the per-channel availability matrix
-  (`docs/CONTROL_AVAILABILITY.md`); the write-scope guard's disclosed degrade posture
-  (`hooks/run_guard.sh`), indexed as five `write_scope_guard_*` rows in the
-  degradation registry (`shared/contracts/degradation_registry.json`,
-  [#769](https://github.com/Imbad0202/academic-research-skills/issues/769));
-  per-channel notes in `docs/SETUP.md`.
-- **Evidence status**: `NOT_RUN` (asserted here; no capability-matrix row) —
-  availability is documented; loss-of-enforcement behavior is not separately
-  measured.
-- **Residual gap**: what each channel loses is per-mechanism (see the availability
-  matrix): prompt-level protocols survive in most non-plugin channels but are absent
-  in claude.ai Projects, and hook enforcement is absent outside the plugin channel
-  unless the user wires the hook into their own settings manually (matrix note 3).
+- **Existing controls**: the per-channel availability matrix (`docs/CONTROL_AVAILABILITY.md`), Codex workspace permissions, and the phase-boundary instructions in each skill.
+- **Evidence status**: `NOT_RUN` (asserted here; no capability-matrix row) — Codex has no role-aware runtime write-scope control.
+- **Residual gap**: write-scope guard unavailable on Codex; prompt-level instructions do not provide deterministic path enforcement.
 
 ### R11 — Fabricated or distorted checkpoint authority
 

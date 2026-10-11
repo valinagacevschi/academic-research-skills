@@ -1,6 +1,6 @@
 # Session model and reasoning effort
 
-ARS uses the GPT model configured for the current Codex session. Skills and subagents do not select another session model or apply Sonnet/Opus/Haiku-style tiers.
+ARS uses the GPT model configured for the current Codex session. Skills and subagents do not select another session model or apply provider-specific tiers.
 
 For complex synthesis, high-stakes review, adjudication, or systematic screening, use high reasoning effort when Codex exposes that setting. Routine extraction and formatting can use the session's normal effort. The skill may recommend effort for a role, but it must not change the configured model.
 

@@ -206,8 +206,8 @@ def test_ethics_replay_evidence_and_no_simulation_are_pinned(
 
 def test_architect_replay_evidence_is_pinned_across_both_mirrors(tmp_path: Path) -> None:
     root = mirror(tmp_path)
-    old = "evidence that the permitted dispatching layer successfully called"
-    new = "no evidence that the permitted dispatching layer called"
+    old = "must not claim to have run replay validation unless the dispatching session supplies validated evidence"
+    new = "may claim to have run replay validation without evidence"
     for rel in (migration.ARCHITECT_AGENT, migration.ARCHITECT_MIRROR):
         replace_once(root, rel, old, new)
     errors = migration.run_checks(root)

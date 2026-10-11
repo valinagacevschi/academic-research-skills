@@ -24,7 +24,7 @@ Invariants:
      (`cp <source> <mirror>`). Never edit the mirror.
 
 Related: check_version_consistency.py invariant 8 excludes agents/ from the
-unique-agent count, and check_v3_10_134_write_scope.py I5 maps agents/ files
+unique-agent count, and the role inventory lints map agents/ files
 back to their deep-research sources — both rely on THIS lint pinning the
 mirror set to byte-identical aliases.
 """
