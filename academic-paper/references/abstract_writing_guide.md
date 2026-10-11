@@ -7,7 +7,7 @@ Used by `abstract_bilingual_agent`.
 The table below is the **single source** for abstract length and keyword counts. The ten Phase-1
 consumer surfaces reference it rather than restating a figure: `academic-paper/SKILL.md`, the intake
 agent, the abstract agent, the structure architect, the draft writer, this guide, the workflow
-reference, the mode-selection guide, the bilingual template, and `commands/ars-abstract.md`. Three
+reference, the mode-selection guide, the bilingual template, and `commands$academic-paper abstract-only.md`. Three
 surfaces outside that set still carry a copy of the figures — `apa7_extended_guide.md`,
 `latex_template_reference.md`, and `journal_submission_guide.md` — and
 `academic-paper/agents/formatter_agent.md:790` carries a generic limit of its own; all four are

@@ -11,7 +11,7 @@ into two files the rest of the pipeline can apply mechanically:
 - `screening_protocol.md`: the text every reviewer receives verbatim (template:
   `references/protocol_template.md`);
 - `screening_config.json`: codes and their order, core criteria, personas, seeds, QC keyword
-  groups, models (template: `templates/screening_config.template.json`).
+  groups, personas (template: `templates/screening_config.template.json`).
 
 Runs in the main session, in conversation with the user. Nothing is screened until the user
 confirms both files.
@@ -100,6 +100,6 @@ confirms both files.
 - [ ] Exclusion codes listed in checking order, each with examples
 - [ ] Unclear situations and the no-abstract rule written out
 - [ ] Limits placed (criterion, full-text criterion, or flag only)
-- [ ] Seeds, near-miss groups, personas and models in the config
+- [ ] Seeds, near-miss groups and personas in the config
 - [ ] Boundary cases agreed with the user
 - [ ] User confirmation recorded (version, date)

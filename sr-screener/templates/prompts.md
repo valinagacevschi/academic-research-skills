@@ -2,7 +2,7 @@
 
 These blocks are the only reviewer instructions the pipeline uses. `scripts/build_workflow.py`
 reads this file, fills the `{{PLACEHOLDERS}}`, and embeds the result in the generated workflow
-script; `--emit-prompts` writes the same text to files for runs without the Workflow tool.
+script; `--emit-prompts` writes the same text to files for runs without the Codex subagent dispatch.
 Edit the wording here, never inside a generated script, so every run of a review uses one text.
 
 Prompt order is fixed on purpose: persona, decision rules and protocol come first and are

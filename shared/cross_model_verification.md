@@ -42,7 +42,7 @@ A stress test of 68 AI-generated citations found 31% had problems — and all pa
 | Model | API ID | Provider | Best For |
 |-------|--------|----------|----------|
 | Codex (session model) | _(inherited Codex session model)_ | OpenAI | Primary model (default for this reference distribution) |
-| Claude (session model) | _(inherited Claude Code session model)_ | Anthropic | Supported by the Claude Code adapter |
+| Claude (session model) | _(inherited Codex session model)_ | Anthropic | Supported by the Codex adapter |
 | GPT-6 Astra | `gpt-6-astra` | OpenAI | Cross-verification — current OpenAI flagship (released 2026-09-03), recommended OpenAI verifier under the recommendation policy below; **provisional pending ARS validation** on both the first-party API route and the ChatGPT-subscription citation transport (no recorded bakeoff run; entry-gate smoke PASS on the citation transport 2026-09-05, codex-cli 0.153.4 — see the GPT-6 Astra note below) |
 | GPT-5.6 Sol | `gpt-5.6-sol` | OpenAI | Cross-verification — previous generation, superseded by GPT-6 Astra (2026-09-03); **validated for the ChatGPT-subscription citation transport** (2026-08-19/20 bakeoff, superiority on recall + latency — `audits/bakeoff-gpt-5-6-sol-codex-2026-08-19.md`), the only id with a measured ARS run on any transport; **provisional pending ARS validation** on the first-party API route (same standard rates as GPT-5.5) |
 | Gemini 3.1 Pro | `gemini-3.1-pro-preview` | Google | Cross-verification — current Google flagship (validated); strong at factual verification |
@@ -59,7 +59,7 @@ A stress test of 68 AI-generated citations found 31% had problems — and all pa
 
 > **Compatible providers are ungrounded.** They expose no hosted web-search tool, so there is no grounding evidence behind a verdict. A positive `VERIFIED` is downgraded to `NOT_SEARCHED` and never counts as agreement in citation verification; a `NOT_FOUND`/`MISMATCH` survives as a disagreement. They ARE first-class for Devil's Advocate critique (which needs no grounding) — but a DA finding from any provider is an adversarial hypothesis, not standalone evidence, unless independently sourced.
 
-**Recommended cross-verification pair:** the inherited Claude session model (primary) + a current-generation second-family verifier — Gemini 3.1 Pro (validated) or GPT-6 Astra (provisional; see the note below). Users who want a measured OpenAI id can stay on GPT-5.6 Sol for the ChatGPT-subscription citation transport (validated there) or on GPT-5.5 for the API route.
+**Recommended cross-verification pair:** the inherited Codex session model (primary) + a current-generation second-family verifier — Gemini 3.1 Pro (validated) or GPT-6 Astra (provisional; see the note below). Users who want a measured OpenAI id can stay on GPT-5.6 Sol for the ChatGPT-subscription citation transport (validated there) or on GPT-5.5 for the API route.
 
 > The primary row deliberately names no version: the primary is always the session model, so the row cannot go stale on the next Anthropic release. Verifier IDs stay concrete because they are literal API strings the user must export. (`gpt-5.4` / `gpt-5.4-pro` remain accepted for existing setups.)
 
@@ -178,7 +178,7 @@ fake Codex app-server and checked-in event fixtures exclusively.
 
 ### Step 3: Verify Setup
 
-In Claude Code, you can test by asking:
+In Codex, you can test by asking:
 ```
 Check if cross-model verification is available for ARS
 ```

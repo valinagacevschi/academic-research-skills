@@ -126,8 +126,6 @@ def screening_config(cfg, stage):
         "codes_text": codes_text(cfg, stage),
         "core_criteria": cfg["core_criteria"],
         "personas": {r: cfg["personas"][r] for r in ("A", "B")},
-        "models": {r: cfg["models"].get(r) or "" for r in roles},
-        "agent_type": cfg.get("agent_type") or "",
     }
     if stage == "ta":
         qc = cfg["qc"]
@@ -336,10 +334,6 @@ DEFAULT_CONFIG = {
     "qc": {"near_miss": {}, "random_exclusion_sample": 100, "random_seed": 2026, "policy": "advance"},
     "seeds": [],
     "languages_allowed": [],
-    "models": {"A": "sonnet", "B": "sonnet", "ADJ": "sonnet", "QC": "sonnet",
-               "FTA": "sonnet", "FTB": "sonnet", "FTADJ": "sonnet"},
-    "model_labels": {},
-    "agent_type": "",
     "batching": {"max_records": 50, "max_chars": 90000, "wrap": 150},
     "dedup": {"doi_title_guard": True},
     "read_limit": 900,
@@ -373,10 +367,6 @@ def load_config(path):
             "(all joint exclusions are rechecked when there are fewer)")
     return cfg
 
-
-def model_overrides(cfg):
-    """Roles whose model differs from the shipped default, for the cost check."""
-    return {r: m for r, m in cfg["models"].items() if m != DEFAULT_CONFIG["models"].get(r)}
 
 
 def exclusion_codes(cfg, stage="ta"):

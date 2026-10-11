@@ -82,7 +82,7 @@ for the single producer/state authority.
 
 ## Collaboration Quality Evaluation (Final Chapter, Mandatory)
 
-The final chapter of the process record is a "Collaboration Quality Evaluation" that honestly and constructively assesses the user's performance in the human-AI collaboration. Format follows the Claude Code CLI `/insight` feature.
+The final chapter of the process record is a "Collaboration Quality Evaluation" that honestly and constructively assesses the user's performance in the human-AI collaboration. Format follows the Codex CLI `/insight` feature.
 
 ### Scoring Dimensions (each 1-100, weighted average for overall score)
 

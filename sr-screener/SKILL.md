@@ -15,7 +15,6 @@ metadata:
 
 # SR-Screener v1.0.0 — Protocol-Driven Screening Decisions
 
-**Codex use:** invoke `$sr-screener` or name this skill and its mode. `/ars-*` forms below are Claude Code command aliases; in Codex, treat them as mode names, not executable slash commands. See [control availability](../docs/CONTROL_AVAILABILITY.md) for runtime-specific limits.
 
 Screening is where a systematic review quietly loses studies: criteria drift, tired reviewers,
 records that fall between two batches. This skill makes each screening decision explicit and
@@ -25,19 +24,21 @@ number in the PRISMA flow can be traced to a file. The AI reviewers support the 
 people sign off on the final screening.
 
 The skill sits between `deep-research` (question, protocol, search) and `academic-paper`
-(writing the review). Dual review at scale uses the Workflow tool (or one Agent call per batch);
+(writing the review). Dual review at scale uses the Codex subagents (or the documented sequential fallback);
 small sets work in a single session. The deterministic steps are Python scripts in this skill's
 `scripts/` folder (Python 3.9+, standard library only; `openpyxl` is optional and gives an Excel
 log instead of CSV files).
 
-> **Routing discipline (v3.9.2):** plugin and skills-copy installs do not load this repository's `.claude/CLAUDE.md`, so its routing core is repeated below, identical to `shared/references/routing_core.md` (#892). If routing has not settled when this skill loads, apply the core before dispatching any agent.
+> **Routing discipline (v3.9.2):** plugin installs may not load the repository `AGENTS.md`; this routing core is carried in the skill and kept in sync with `shared/references/routing_core.md` (#892). If routing has not settled when this skill loads, apply the core before dispatching any agent.
+
+For multi-agent roles, follow [Codex subagent dispatch](../shared/references/codex_subagent_dispatch.md).
 
 <!-- routing-core:begin -->
 **Step 0 — Escape hatch check (before any classification):** If the user's first message begins with `[direct-mode]` (case-insensitive byte-0 token, optionally preceded by whitespace/newlines that are stripped on parse), record this fact, strip the prefix and surrounding whitespace from the message, and skip directly to **Step 1 explicit-intent handling** on the stripped content. The literal `[direct-mode]` is NOT passed through to the dispatched agent. If the stripped message itself has no clear skill named, Step 1 falls through to Step 3 clarification (the escape hatch bypasses cross-phase clarification (Step 2), not all routing). When the token is honored and the named agent or skill needs inputs the message does not supply, read that agent's or skill's file and ask for what it requires, in its terms. Without the byte-0 token, naming an agent is not explicit intent: such a message goes through Steps 1-3 like any other, so cross-phase materials still get Step 2 clarification.
 
 Otherwise, classify the user's input:
 
-1. **Explicit clear intent** — user invokes a specific skill via `/ars-*` slash command, or uses an unambiguous trigger keyword that maps to a single skill (e.g., "lit-review this", "review my paper", "draft an abstract"):
+1. **Explicit clear intent** — user invokes a specific skill by name with its mode (for example `$academic-paper lit-review`), or uses an unambiguous trigger keyword that maps to a single skill (e.g., "lit-review this", "review my paper", "draft an abstract"):
    → Route directly; no clarification, no orchestrator detour.
    → The request stays explicit when the mode's usual input is absent or a word in it has other everyday senses. A revision request with no reviewer comments is revision mode's "feel certain sections need improvement" case, and "revisar artículo" is the reviewer's trigger. Route to that mode and let the mode handle what is missing; do not reopen the choice of workflow.
 
@@ -146,7 +147,7 @@ Seven roles run on four agent files and two deterministic scripts:
 Roles 3-5 and the QC rechecks run as the lean `screening_reviewer_agent` subagent (Read and Grep
 only, no memory of other reviewers). Plugin installs ship it in the plugin's `agents/` folder as
 `academic-research-skills:screening_reviewer_agent`; for a skills-copy install, copy
-`agents/screening_reviewer_agent.md` into `.claude/agents/`. A lean agent keeps hundreds of calls
+give `agents/screening_reviewer_agent.md` to each Codex subagent as its role instructions. A lean prompt keeps repeated context small
 cheap, and the missing tools keep reviewers independent: they cannot browse, write files or see
 each other's work. What each role sees, and why: `references/reviewer_roles.md`.
 
@@ -175,7 +176,7 @@ Mode recipes: `references/orchestration.md` § 5. The mode registry entry is in 
 Phase 0 PROTOCOL   protocol_architect_agent -> screening_protocol.md + screening_config.json [user confirms]
 Phase 1 RECORDS    prepare_records.py -> records, batches, identification counts, seed lookup
 Phase 2 PILOT      reviewers A+B on pilot batches -> qc_auditor_agent calibration report  [user approves]
-Phase 3 SCREEN     reviewers A+B, blinded, every batch                    (build_workflow.py -> Workflow)
+Phase 3 SCREEN     reviewers A+B, blinded, every batch                    (build_workflow.py --emit-prompts -> Codex subagents)
 Phase 4 ADJUDICATE third reviewer on advance-vs-exclude conflicts          (same run, or --jobs pending)
 Phase 5 QC         merge_decisions.py -> seeds, agreement, near-miss + random rechecks, human overrides
 Phase 6 REPORT     build_outputs.py + reporter_agent -> Excel log, RIS groups, PRISMA, methods, handoff
@@ -196,7 +197,7 @@ Full-text stage    prepare_fulltext.py, then phases 3-6 again with --stage ft
    starts outside-pilot jobs anyway only when the user decides so; the reason is recorded and
    appears in the methods text.
 3. ⚠️ **IRON RULE: cost check before any fan-out.** Show the estimate printed by
-   `build_workflow.py` (batches, agent calls, models) and wait for a clear yes. A full run
+   `build_workflow.py` (batches and prompt calls) and wait for a clear yes. A full run
    can mean hundreds of agent calls.
 4. ⚠️ **IRON RULE: no silent defaults.** A record without a valid decision from each required
    reviewer stays pending. Never fill in "exclude" or any other label for a failed call,
@@ -257,24 +258,22 @@ Scripts live in this skill's `scripts/` folder (next to this file). Typical sequ
 ```bash
 S=<this skill's folder>/scripts
 python $S/prepare_records.py --inputs exports/ --work sr_work --config screening_config.json
-python $S/build_workflow.py ta --work sr_work --protocol screening_protocol.md --config screening_config.json --jobs pilot
-#   -> Workflow({scriptPath: "<printed path>"}) after the user approves the cost
+python $S/build_workflow.py ta --work sr_work --protocol screening_protocol.md --config screening_config.json --jobs pilot --emit-prompts sr_work/prompts
+#   -> Codex subagent dispatch using generated role prompts after the user approves the cost
 python $S/merge_decisions.py --work sr_work --from <run folder or journal.jsonl> --config screening_config.json
 python $S/merge_decisions.py --work sr_work --from <runs> --config screening_config.json --pilot-labels pilot_labels.csv
-python $S/build_workflow.py ta ... --jobs all        # full run (needs the passing pilot check); later: --jobs pending, --jobs recheck
+python $S/build_workflow.py ta ... --jobs all --emit-prompts sr_work/prompts        # full run (needs the passing pilot check); later: --jobs pending, --jobs recheck
 python $S/build_outputs.py --work sr_work --out Screening_TA --config screening_config.json
 ```
 
 - `build_workflow.py` embeds the protocol verbatim and the reviewer wording from
-  `templates/prompts.md` into a ready-to-run script. Never paste or retype the protocol yourself:
+  `templates/prompts.md` into role prompt files when `--emit-prompts` is set. Never paste or retype the protocol yourself:
   a paraphrase would give the reviewers different criteria from the ones the user confirmed.
-- The Workflow tool runs only when the user has opted into multi-agent orchestration (for
-  example by asking for a workflow). Without it, use `--emit-prompts DIR` and one Agent call
-  per prompt file, saving each returned JSON as `{"label": ..., "decisions": [...]}` in a
+- Use the generated prompt files with Codex subagents after the user approves the call estimate (for
+  example by asking for a workflow). If subagents are unavailable, use the sequential fallback in the canonical dispatch reference, saving each returned JSON as `{"label": ..., "decisions": [...]}` in a
   folder that `merge_decisions.py --from` can read. Without any subagents, only `quick` mode
   is honest: a single model reading twice is not two independent reviewers, so say so.
-- The run journal is at `<session folder>/subagents/workflows/<runId>/journal.jsonl`; pass
-  that folder (or the whole `workflows` folder) to `merge_decisions.py --from`.
+- Save subagent JSON results with the labels in `index.json`, then pass their folder to `merge_decisions.py --from`.
 - If a run stops (usage limit, closed session), merge what exists, then run
   `build_workflow.py --jobs pending`: only missing decisions and open conflicts are scheduled.
 - The first pilot fixes its batch scope in `pilot_batches.json`. Re-piloting cannot widen it
@@ -392,7 +391,7 @@ More cases and exact recovery steps: `references/failure_paths.md`.
 4. Agreement is reported as counts, observed agreement, kappa and PABAK.
 5. Every final decision names who made it: `A+B`, `ADJ`, `LIBERAL`, `QC` or a human.
 6. Raw reviewer outputs (journals or decision files) are kept with the review.
-7. The methods text names the models, the tool version and the human verification.
+7. The methods text records the Codex configured model, tool version and human verification.
 
 ---
 
@@ -419,35 +418,9 @@ deep-research (systematic-review: question, protocol, search)
 
 ---
 
-## Model Tiering
+## Session model
 
-Reviewer models are set per role in `screening_config.json` (`models`), and the exact model
-names for the methods text in `model_labels`. The cost check shows them before every fan-out.
-
-| Profile | Reviewers A/B | Adjudicator / QC | Full text | When |
-|---------|---------------|------------------|-----------|------|
-| standard (default) | sonnet | sonnet | sonnet | most reviews |
-| quality | sonnet | opus | opus | small searches, high-stakes reviews |
-
-For the `quality` profile, put these explicit per-role models in `screening_config.json`:
-
-```json
-{"models": {"A": "sonnet", "B": "sonnet", "ADJ": "opus", "QC": "opus", "FTA": "opus", "FTB": "opus", "FTADJ": "opus"}}
-```
-
-Both named profiles pin every screening role; neither inherits the session model.
-
-The costly screening error is a wrong exclusion, and it is rarely caught later, so the shipped
-defaults use Sonnet for every screening role and no profile offers a smaller model. A per-role
-override in `models` remains possible; the cost check prints any role that differs from the
-default, so the user confirms the model that will run.
-
-`ARS_MODEL_TIERING` (`shared/model_tiering.md`) does not change these per-role choices: this
-skill's four agents are listed in the suite's classification table, but the screening calls take
-their model from the config, which the user confirms at the cost check. The main-session agents
-(Protocol Architect, QC Auditor, Reporter) run on the session model.
-
----
+All screening roles use the GPT model configured for the Codex session. Use high reasoning effort for adjudication, QC, and full-text decisions when available. The cost check reports planned calls; it does not select alternate models.
 
 ## Agent File References
 
@@ -465,7 +438,7 @@ their model from the config, which the user confirms at the cost check. The main
 | `references/protocol_template.md` | `screening_protocol.md` skeleton, boundary cases, config fields |
 | `references/decision_rules.md` | labels, codes, conflicts, edge cases, full-text rules |
 | `references/reviewer_roles.md` | who sees what, decision procedure, quick-mode table |
-| `references/orchestration.md` | setup, Workflow / Agent / single-session paths, cost, resume, mode recipes |
+| `references/orchestration.md` | Codex subagent dispatch, sequential fallback, cost, and resume, cost, resume, mode recipes |
 | `references/quality_control.md` | agreement statistics, seeds, rechecks, human verification, sources |
 | `references/reporting_and_handoff.md` | PRISMA numbers, methods text, reference-manager import, ARS handoff |
 | `references/failure_paths.md` | failure cases F1-F15 with recovery steps |
@@ -476,14 +449,13 @@ their model from the config, which the user confirms at the cost check. The main
 |------|---------|
 | `templates/prompts.md` | the only reviewer wording; `build_workflow.py` fills and embeds it |
 | `templates/screening_config.template.json` | starting config for `protocol` mode |
-| `templates/workflows/ta_screening.template.js`, `ft_screening.template.js` | Workflow scripts filled by `build_workflow.py` |
 
 ## Examples
 
 | File | Shows |
 |------|-------|
 | `examples/example_protocol_dta.md` | a confirmed title/abstract protocol for a diagnostic accuracy review |
-| `examples/example_config_dta.json` | its config (codes, core criteria, near-miss groups, models) |
+| `examples/example_config_dta.json` | its config (codes, core criteria, near-miss groups) |
 | `examples/quick_screen_example.md` | `quick` mode on six synthetic records |
 
 ## Scripts
@@ -492,7 +464,7 @@ their model from the config, which the user confirms at the cost check. The main
 |------|---------|
 | `scripts/srlib.py` | shared helpers: export parsers, normalisation, de-duplication, batching, agreement, RIS |
 | `scripts/prepare_records.py` | parse exports, de-duplicate, batch, identification counts, seed lookup |
-| `scripts/build_workflow.py` | generate the Workflow script or per-call prompt files, with the cost estimate |
+| `scripts/build_workflow.py` | generate per-call prompt files for Codex subagent dispatch, with the cost estimate |
 | `scripts/merge_decisions.py` | merge reviewer outputs, settle conflicts, QC candidates, overrides |
 | `scripts/build_outputs.py` | Excel log, RIS groups, PRISMA counts, methods draft, corpus file |
 | `scripts/prepare_fulltext.py` | match PDFs to advanced records for the full-text stage |

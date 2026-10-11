@@ -142,7 +142,7 @@ If a deploying operator brings a gold set that is itself biased (all tuples from
 |---|---|
 | Stage 4 → 5 audit dispatch | Calibration runs offline; results inform the `ARS_CLAIM_AUDIT` ramp-on decision. |
 | Cite-Time Provenance Finalizer | No direct coupling — calibration evaluates the judge in isolation; the finalizer's matrix is downstream. |
-| `/ars-mark-read` clearance | Calibration does not interact with mark-read state; HIGH-WARN-CLAIM-NOT-SUPPORTED stays non-clearable regardless of calibration outcome. |
+| `scripts/ars_mark_read.py` clearance | Calibration does not interact with mark-read state; HIGH-WARN-CLAIM-NOT-SUPPORTED stays non-clearable regardless of calibration outcome. |
 | Reviewer `calibration` mode | Sibling, not coupled. Both compute FNR/FPR but on different units (papers vs claim-tuples); both can run in the same session. |
 
 ---

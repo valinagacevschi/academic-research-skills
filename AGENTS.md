@@ -341,7 +341,7 @@ The routing core below is the same block as `shared/references/routing_core.md`,
 
 Otherwise, classify the user's input:
 
-1. **Explicit clear intent** — user invokes a specific skill via `/ars-*` slash command, or uses an unambiguous trigger keyword that maps to a single skill (e.g., "lit-review this", "review my paper", "draft an abstract"):
+1. **Explicit clear intent** — user invokes a specific skill by name with its mode (for example `$academic-paper lit-review`), or uses an unambiguous trigger keyword that maps to a single skill (e.g., "lit-review this", "review my paper", "draft an abstract"):
    → Route directly; no clarification, no orchestrator detour.
    → The request stays explicit when the mode's usual input is absent or a word in it has other everyday senses. A revision request with no reviewer comments is revision mode's "feel certain sections need improvement" case, and "revisar artículo" is the reviewer's trigger. Route to that mode and let the mode handle what is missing; do not reopen the choice of workflow.
 

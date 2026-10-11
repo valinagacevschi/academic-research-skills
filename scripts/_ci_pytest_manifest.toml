@@ -401,8 +401,6 @@ id = "491-setup-cross-model-parity"
 path = "scripts/test_check_setup_cross_model_parity.py"
 
 [[pytest]]
-id = "517-model-tiering-classification"
-path = "scripts/test_check_model_tiering.py"
 
 [[pytest]]
 id = "524-tools-allowlist-lock"

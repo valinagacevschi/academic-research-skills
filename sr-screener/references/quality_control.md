@@ -67,7 +67,7 @@ Seeds test sensitivity only for studies like them. They do not prove that nothin
   senior reviewer has decided them, so no methods text or final number is produced before,
   including at the full-text stage. Full-text preparation waits for these decisions because a
   QC advance changes which PDFs must be screened.
-- A senior reviewer (default model `sonnet`) screens these records afresh without seeing the
+- A senior reviewer (session model at high reasoning effort) screens these records afresh without seeing the
   earlier decision. With `qc.policy: advance`, an exclusion it would advance becomes an advance
   marked `QC`; with `flag`, it is only listed.
 - Many advances among random rechecks mean the exclusions are not reliable: find the pattern

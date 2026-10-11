@@ -49,7 +49,7 @@ repro_lock:
 
   model:
     family: claude                          # provider family
-    id: "<model-id-at-run-time>"           # model identifier at run time, e.g. the inherited Claude Code session model (not weight hash)
+    id: "<model-id-at-run-time>"           # model identifier at run time, e.g. the inherited Codex session model (not weight hash)
     weight_stable: false                    # always false until signed attestation exists
 
   prompts:

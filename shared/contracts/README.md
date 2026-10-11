@@ -378,7 +378,7 @@ The one evidence-state vocabulary is:
 These states describe excerpt provenance/availability only. They never compute
 or change the independent Phase E `verdict`, issue severity/count, or PASS/FAIL
 decision. Viewing a row is not reading the source: the runtime never reads or
-writes `human_read_log`, never invokes `/ars-mark-read`, and never affects
+writes `human_read_log`, never invokes `scripts/ars_mark_read.py`, and never affects
 LOW-WARN/read-scope promotion.
 
 `scripts/evidence_rows.py` is the standard-library-only normative runtime:

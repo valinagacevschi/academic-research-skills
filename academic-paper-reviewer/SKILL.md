@@ -14,7 +14,6 @@ metadata:
 
 # Academic Paper Reviewer v1.11.1 — Multi-Perspective Academic Paper Review Agent Team
 
-**Codex use:** invoke `$academic-paper-reviewer` or name this skill and its mode. `/ars-*` forms below are Claude Code command aliases; in Codex, treat them as mode names, not executable slash commands. See [control availability](../docs/CONTROL_AVAILABILITY.md) for runtime-specific limits.
 
 Simulates a complete international journal peer review process: automatically identifies the paper's field, dynamically configures 4 card-backed identities (Journal-Fit Reviewer + 3 peer reviewers), and adds the fixed Devil's Advocate as the fifth execution seat. The five role-separated perspectives cover journal fit, methodology, domain expertise, cross-disciplinary viewpoints, and core argument challenges; a separate editorial synthesizer produces the structured Editorial Decision and Revision Roadmap.
 
@@ -23,14 +22,16 @@ Simulates a complete international journal peer review process: automatically id
 2. Added `re-review` mode — verification review, focused on checking whether revisions address the review comments
 3. Expanded review team from 4 to 5 members
 
-> **Routing discipline (v3.9.2):** plugin and skills-copy installs do not load this repository's `.claude/CLAUDE.md`, so its routing core is repeated below, identical to `shared/references/routing_core.md` (#892). If routing has not settled when this skill loads, apply the core before dispatching any agent.
+> **Routing discipline (v3.9.2):** plugin installs may not load the repository `AGENTS.md`; this routing core is carried in the skill and kept in sync with `shared/references/routing_core.md` (#892). If routing has not settled when this skill loads, apply the core before dispatching any agent.
+
+For multi-agent roles, follow [Codex subagent dispatch](../shared/references/codex_subagent_dispatch.md).
 
 <!-- routing-core:begin -->
 **Step 0 — Escape hatch check (before any classification):** If the user's first message begins with `[direct-mode]` (case-insensitive byte-0 token, optionally preceded by whitespace/newlines that are stripped on parse), record this fact, strip the prefix and surrounding whitespace from the message, and skip directly to **Step 1 explicit-intent handling** on the stripped content. The literal `[direct-mode]` is NOT passed through to the dispatched agent. If the stripped message itself has no clear skill named, Step 1 falls through to Step 3 clarification (the escape hatch bypasses cross-phase clarification (Step 2), not all routing). When the token is honored and the named agent or skill needs inputs the message does not supply, read that agent's or skill's file and ask for what it requires, in its terms. Without the byte-0 token, naming an agent is not explicit intent: such a message goes through Steps 1-3 like any other, so cross-phase materials still get Step 2 clarification.
 
 Otherwise, classify the user's input:
 
-1. **Explicit clear intent** — user invokes a specific skill via `/ars-*` slash command, or uses an unambiguous trigger keyword that maps to a single skill (e.g., "lit-review this", "review my paper", "draft an abstract"):
+1. **Explicit clear intent** — user invokes a specific skill by name with its mode (for example `$academic-paper lit-review`), or uses an unambiguous trigger keyword that maps to a single skill (e.g., "lit-review this", "review my paper", "draft an abstract"):
    → Route directly; no clarification, no orchestrator detour.
    → The request stays explicit when the mode's usual input is absent or a word in it has other everyday senses. A revision request with no reviewer comments is revision mode's "feel certain sections need improvement" case, and "revisar artículo" is the reviewer's trigger. Route to that mode and let the mode handle what is missing; do not reopen the choice of workflow.
 
@@ -274,7 +275,7 @@ Two invocation modes:
 
 **Mode A — orchestrator-driven (default):** `pipeline_orchestrator_agent` (in `academic-pipeline` skill) dispatches `academic-paper-reviewer` as part of the full ARS pipeline Stage 3 (Review).
 
-**Mode B — phase-by-phase (cross-session resume):** User invokes one reviewer agent per phase across sessions, or runs the full reviewer panel standalone via `/ars-review` equivalent.
+**Mode B — phase-by-phase (cross-session resume):** User invokes one reviewer agent per phase across sessions, or runs the full reviewer panel standalone via `$academic-paper-reviewer full` equivalent.
 
 In Mode B, **single-phase agents (Bucket A per `docs/design/2026-05-18-ars-v3.9.2-agent-phase-classification.md`) stay strictly within their assigned phase for writes**. The 6 Bucket A agents in academic-paper-reviewer are: `eic_agent`, `methodology_reviewer`, `domain_reviewer`, `perspective_reviewer`, `devils_advocate_reviewer` (all Phase 1 panel) + `editorial_synthesizer` (Phase 2 synthesis). Reading the full paper draft is **expected** for all reviewers — without context they cannot evaluate.
 
@@ -282,7 +283,7 @@ The 1 Bucket D agent (`field_analyst` at Phase 0) is meta — it configures the 
 
 The v3.6.2 Sprint Contract Protocol (paper-blind Phase 1 + paper-visible Phase 2 + data delimiter) additionally constrains all reviewer agents' within-phase discipline. Phase Boundary (phase scope) and Sprint Contract (within-phase paper-blind/paper-visible discipline) both apply — neither overrides the other.
 
-Routing into Mode B requires explicit user signal — `/ars-<mode>` slash command or `[direct-mode]` prefix. Ambiguous cross-phase input defaults to clarification per the routing core near the top of this file (Step 2) + `shared/references/intent_clarification_protocol.md`.
+Routing into Mode B requires explicit user signal — `$skill-name <mode>` or `[direct-mode]` prefix. Ambiguous cross-phase input defaults to clarification per the routing core near the top of this file (Step 2) + `shared/references/intent_clarification_protocol.md`.
 
 **Enforcement (v3.9.2):** Phase Boundary blocks on Bucket A agents + advisory verifier (`scripts/check_pipeline_integrity.py`) + a deterministic PreToolUse write-scope guard in hook-enabled runtimes (#134 rescope, PR #294). Multi-phase envelope remains forward-scope (#134 Slices 3-5).
 
@@ -509,17 +510,6 @@ Follows the paper's language. Academic terms remain in English. User can overrid
 - **Synthesizer three-step mechanical protocol.** Build per-dimension eligible-seat matrix → apply each condition's quantifier per dimension, then its dimension quantifier → resolve precedence by severity. Majority with one assessed eligible seat means that seat decides. Forbidden operations are explicit in `agents/editorial_synthesizer_agent.md`.
 - **methodology_focus reduced panel.** `reviewer_methodology_focus` mode runs a 2-reviewer panel (Journal-Fit Reviewer, internal role `eic`, + methodology only) instead of the default 5.
 - **Templates:** `shared/contracts/reviewer/full.json` (panel 5) and `shared/contracts/reviewer/methodology_focus.json` (panel 2). Reserved modes (`reviewer_calibration`, `reviewer_guided`) keep pre-v3.6.2 behaviour until follow-up patch templates land; `reviewer_re_review` left the Schema 13 enum with #576 Spec B and is governed by the dedicated contract family `shared/contracts/re_review/`.
-
----
-
-## Model Tiering (#517, optional)
-
-When `ARS_MODEL_TIERING` is set, the dispatching session routes this skill's agents per `shared/model_tiering.md` (canonical: the full 43-agent judgment/execution table + rules). Compact rule:
-
-- **Unset (default):** every agent inherits the session model — byte-equivalent pre-#517 behavior.
-- **`economy`** (frontier-tier session): execution-type agents dispatch ONE tier below the session model — floor Opus-class, never lower; judgment-type agents stay on the session model. No-op at or below the floor (announce once).
-- **`quality-boost`** (below-frontier session): judgment-type agents at the checkpoint surfaces (Stage 2.5/4.5 gates; the opt-in Stage 4→5 claim–ref audit; final review) jump UP to the frontier tier (however many tiers away — not a single increment); nothing is ever downgraded. No-op at the frontier (announce once).
-- Unknown values → warn once, behave as unset. Tiers are relative positions, never hard-pinned model ids. When a direction is active, route repeated same-stage calls to the SAME worker so its prompt cache accumulates; unset means dispatch shapes stay byte-equivalent too.
 
 ---
 

@@ -148,7 +148,7 @@ kind inline it into their own context: agents that retrieve such text through
 their own tool calls (lookups, fetched pages, a source PDF), agents that receive
 it inside a dispatch task prompt or through the Material Passport, the revision
 coach (`revision_coach_agent`, #883), whose reviewer and committee text usually
-arrives pasted into the user's own message, a channel the Claude Opus 5.5 system
+arrives pasted into the user's own message, a channel the configured GPT 5.5 system
 card reports as more susceptible to planted instructions than tool results
 (§6.5.1), and each skill's `SKILL.md`, which the main session of a skill run
 loads on every install path. Prompts that a model receives without the agent

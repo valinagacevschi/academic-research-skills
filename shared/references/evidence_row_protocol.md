@@ -156,7 +156,7 @@ row is an adjudication view, not a new closure condition.
 ## Human-read boundary
 
 Seeing an excerpt at a checkpoint is not reading the source. Evidence-row build,
-validation, cache replay, and rendering never call `/ars-mark-read`, never write a
+validation, cache replay, and rendering never call `scripts/ars_mark_read.py`, never write a
 human-read log, and never change `human_read_source`, `read_scope`, latest-event
 resolution, or LOW-WARN promotion.
 

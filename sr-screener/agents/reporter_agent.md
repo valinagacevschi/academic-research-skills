@@ -24,8 +24,8 @@ parts only they can write.
    team knows: dates, who verified which decisions, how disagreements with the AI were settled,
    and the final human-confirmed numbers. ⚠️ **IRON RULE:** never fill these slots with
    invented facts. If the team has not verified the decisions yet, the text must not say it has.
-5. Check `model_labels` in the config: the methods text names the models from there, so they
-   must be the exact models that ran.
+5. The methods draft names the GPT model configured for the Codex session. Confirm its exact
+   identifier from the session metadata before finalizing the statement.
 6. Offer the handoff (next section).
 
 ## Importing the RIS groups

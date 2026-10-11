@@ -1,30 +1,26 @@
 #!/usr/bin/env python3
-"""Generate a ready-to-run Workflow script (or plain prompt files) for a screening run.
+"""Generate one role prompt file per Codex subagent call for a screening run.
 
 Usage:
   python build_workflow.py ta --work W --protocol screening_protocol.md --config screening_config.json \
-         --jobs all|pilot|pending|recheck|recheck-all [--batches b001,b007] [--pilot-n 4]
-  python build_workflow.py ft --work W --protocol ft_protocol.md --config screening_config.json --jobs all|pending
+         --jobs all|pilot|pending|recheck|recheck-all --emit-prompts W/prompts [--batches b001,b007] [--pilot-n 4]
+  python build_workflow.py ft --work W --protocol ft_protocol.md --config screening_config.json --jobs all|pending --emit-prompts W/prompts
 
 Options:
-  --out FILE           where to write the script (default: W/runs/<stage>_<jobs>_NN.workflow.js)
-  --emit-prompts DIR   also write one prompt file per agent call (for runs with the Agent tool
-                       or by hand); an index.json lists label, prompt file and model
-  --return-decisions   make the workflow also return every decision (small runs only)
+  --emit-prompts DIR   required output folder; index.json lists labels and prompt paths
   --pilot-override R   screen outside the pilot without a passing human-labelled pilot; the reason
                        is recorded in W/pilot_override.json and reported in the methods text
 
 The full title/abstract run and pending jobs outside the recorded pilot batches need
 W/pilot_check.json from merge_decisions.py --pilot-labels: every labelled pilot record must
 have been compared and the AI must not have excluded any record the team advanced.
-Pilot-only retries remain available before the check passes. Generate a pilot workflow first
+Pilot-only retries remain available before the check passes. Generate pilot role prompts first
 to record its batches in W/pilot_batches.json.
 
 The protocol text is embedded verbatim; the reviewer wording comes from templates/prompts.md.
-Run the result with the Workflow tool: Workflow({scriptPath: "<printed path>"}).
+Use --emit-prompts and dispatch each generated role prompt with a Codex subagent.
 """
 import argparse
-import glob
 import json
 import os
 import re
@@ -51,13 +47,6 @@ def fill(tpl, vars_):
 
 def codes_text(cfg, stage):
     return srlib.codes_text(cfg, stage)
-
-
-def next_out(work, stage, jobs):
-    d = os.path.join(work, "runs")
-    os.makedirs(d, exist_ok=True)
-    n = len(glob.glob(os.path.join(d, f"{stage}_*.workflow.js"))) + 1
-    return os.path.join(d, f"{stage}_{jobs}_{n:02d}.workflow.js")
 
 
 def batch_job(entry, width):
@@ -166,7 +155,7 @@ def ft_jobs(a, work):
 
 
 def emit_prompts(a, conf, prompts, out_dir):
-    """Python mirror of the template's prompt assembly, for runs without the Workflow tool."""
+    """Python mirror of the template's prompt assembly, for runs without the Codex subagent dispatch."""
     os.makedirs(out_dir, exist_ok=True)
     index = []
     stage_name = "title/abstract" if a.stage == "ta" else "full-text"
@@ -188,8 +177,7 @@ def emit_prompts(a, conf, prompts, out_dir):
         with open(fn, "w", encoding="utf-8") as f:
             f.write(text)
         index.append({"label": label + "@" + conf["context"]["context_id"],
-                      "context": conf["context"], "prompt_file": fn.replace("\\", "/"),
-                      "model": conf["models"].get(role, "")})
+                      "context": conf["context"], "prompt_file": fn.replace("\\", "/")})
 
     if a.stage == "ta":
         half = -(-conf["readLimit"] // 2)
@@ -258,10 +246,8 @@ def main():
     ap.add_argument("--jobs", required=True, choices=["all", "pilot", "pending", "recheck", "recheck-all"])
     ap.add_argument("--batches", default="")
     ap.add_argument("--pilot-n", type=int, default=4)
-    ap.add_argument("--out")
-    ap.add_argument("--emit-prompts")
-    ap.add_argument("--return-decisions", action="store_true")
     ap.add_argument("--pilot-override", default="", help="reason for starting the full run without a passing pilot")
+    ap.add_argument("--emit-prompts", required=True)
     a = ap.parse_args()
 
     work = os.path.abspath(a.work)
@@ -329,43 +315,24 @@ def main():
         "codes": srlib.exclusion_codes(cfg, a.stage),
         "codesText": codes_text(cfg, a.stage),
         "personas": cfg["personas"],
-        "models": cfg["models"],
-        "agentType": cfg.get("agent_type") or "",
         "conflictPolicy": cfg["conflict_policy"] if a.stage == "ta" else "adjudicate",
         "dir": os.path.join(work, "batches").replace("\\", "/"),
         "idWidth": width,
         "readLimit": int(cfg.get("read_limit", 900)),
         "grepAfter": max(int(cfg.get("grep_after", 60)),
                          (srlib.load_json(os.path.join(work, "identification.json"), {}) or {}).get("max_record_lines", 0) + 2),
-        "returnDecisions": bool(a.return_decisions),
         "jobs": jobs,
         "context": context,
         "batchIds": by_batch if a.stage == "ta" else {},
         "authorizedIds": authorized_ids,
     }
-    tpl_name = "ta_screening.template.js" if a.stage == "ta" else "ft_screening.template.js"
-    tpl = open(os.path.join(srlib.skill_dir(), "templates", "workflows", tpl_name), encoding="utf-8").read()
-    if "__SR_CONFIG__" not in tpl:
-        raise SystemExit(f"template {tpl_name} lacks the __SR_CONFIG__ marker")
-    script = tpl.replace("__SR_CONFIG__", json.dumps(conf, ensure_ascii=True, indent=1))
-    out = os.path.abspath(a.out) if a.out else next_out(work, a.stage, a.jobs)
-    os.makedirs(os.path.dirname(out), exist_ok=True)
-    with open(out, "w", encoding="utf-8", newline="\n") as f:
-        f.write(script)
-
-    print(f"workflow script: {out}")
+    n = emit_prompts(a, conf, prompts, os.path.abspath(a.emit_prompts))
+    print(f"prompt files: {n} written to {os.path.abspath(a.emit_prompts)} (see index.json)")
     print(f"jobs: {size}")
     print(f"planned agent calls: about {n_calls} (+ retries for missing decisions"
           + (", + one adjudication call per batch with conflicts)" if a.stage == "ta" and jobs["screen"] else ")"))
-    shown_models = {r: m or "session model (explicit override)" for r, m in cfg["models"].items()}
-    print(f"models: {json.dumps(shown_models)}  agentType: {conf['agentType'] or '(default workflow subagent)'}")
-    over = srlib.model_overrides(cfg)
-    if over:
-        print(f"model overrides from screening_config.json (shipped default is sonnet): {json.dumps(over)}")
-    print(f'next: Workflow({{scriptPath: "{out.replace(chr(92), "/")}"}})  - only after the user approves the cost')
-    if a.emit_prompts:
-        n = emit_prompts(a, conf, prompts, os.path.abspath(a.emit_prompts))
-        print(f"prompt files: {n} written to {os.path.abspath(a.emit_prompts)} (see index.json)")
+    print("session model: Codex-configured GPT model")
+    print("dispatch the role prompts with Codex subagents; see shared/references/codex_subagent_dispatch.md")
 
 
 if __name__ == "__main__":

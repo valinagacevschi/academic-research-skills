@@ -19,7 +19,7 @@ This protocol defines:
 
 | Condition | Routing class | Action |
 |---|---|---|
-| User invokes `/ars-*` slash command | Explicit | Route directly to named skill; no clarification |
+| User invokes `$skill-name + mode` slash command | Explicit | Route directly to named skill; no clarification |
 | User uses unambiguous trigger keyword (e.g., "lit-review this", "review my paper") | Explicit | Route directly to matching skill; no clarification. The request stays explicit when the mode's usual input is absent (a revision request with no reviewer comments) or a word in it has other everyday senses ("revisar artículo" is the reviewer's trigger); the mode handles what is missing |
 | User provides materials spanning ≥ 2 pipeline phases (e.g., abstract + literature, draft + reviewer comments + bibliography) | Cross-phase ambiguous | **Clarify** with a-d options |
 | User provides no materials and no clear request | No materials ambiguous | **Clarify** with a-d options |
@@ -51,9 +51,9 @@ When clarification fires, the main session emits a message in this shape (markdo
 ```markdown
 I see you've provided <summary of materials>. To route correctly, could you confirm which workflow you want?
 
-(a) **Full pipeline** — go from materials through to a complete deliverable (research + write + review + revise). Use `academic-pipeline` orchestrator (`/ars-full`).
-(b) **<phase-specific workflow 1>** — <one-line description>. Use `<skill>` (`/ars-<mode>`).
-(c) **<phase-specific workflow 2>** — <one-line description>. Use `<skill>` (`/ars-<mode>`).
+(a) **Full pipeline** — go from materials through to a complete deliverable (research + write + review + revise). Use `academic-pipeline` orchestrator (`$academic-pipeline full`).
+(b) **<phase-specific workflow 1>** — <one-line description>. Use `<skill>` (`$skill-name <mode>`).
+(c) **<phase-specific workflow 2>** — <one-line description>. Use `<skill>` (`$skill-name <mode>`).
 (d) **Something else** — let me know what you're trying to do.
 
 Pick a-d, or describe the target deliverable. If you want me to dispatch a specific agent directly without this clarification, prefix your message with `[direct-mode]`.
@@ -81,7 +81,7 @@ Pick a-d, or describe the target deliverable. If you want me to dispatch a speci
 
 **Examples:**
 
-- `[direct-mode] /ars-lit-review on these papers` → dispatches academic-paper lit-review mode on the provided papers, no clarification
+- `[direct-mode] $academic-paper lit-review on these papers` → dispatches academic-paper lit-review mode on the provided papers, no clarification
 - `[direct-mode] run bibliography_agent` → dispatches bibliography_agent directly
 - `[DIRECT-MODE] write me an abstract` → case-insensitive accepted; routes to abstract workflow without clarification
 
@@ -103,9 +103,9 @@ Pick a-d, or describe the target deliverable. If you want me to dispatch a speci
 **Main session response:**
 > I see you've provided an abstract and a literature collection. To route correctly, could you confirm which workflow you want?
 >
-> (a) **Full paper from existing scaffolding** — use your abstract as paper seed, expand literature into bibliography, draft full paper, then review/revise. Use `academic-pipeline` (`/ars-full`).
-> (b) **Lit-review only** — produce an annotated bibliography matrix from the literature; don't touch your abstract. Use `academic-paper` (`/ars-lit-review`).
-> (c) **Quality-check the abstract against the literature** — verify abstract claims are supported by the cited sources. Use `academic-paper-reviewer` (`/ars-citation-check`).
+> (a) **Full paper from existing scaffolding** — use your abstract as paper seed, expand literature into bibliography, draft full paper, then review/revise. Use `academic-pipeline` (`$academic-pipeline full`).
+> (b) **Lit-review only** — produce an annotated bibliography matrix from the literature; don't touch your abstract. Use `academic-paper` (`$academic-paper lit-review`).
+> (c) **Quality-check the abstract against the literature** — verify abstract claims are supported by the cited sources. Use `academic-paper-reviewer` (`$academic-paper citation-check`).
 > (d) **Something else** — let me know what you're trying to do.
 >
 > Pick a-d, or describe the target deliverable. If you want me to dispatch a specific agent directly without this clarification, prefix your message with `[direct-mode]`.
@@ -117,7 +117,7 @@ Pick a-d, or describe the target deliverable. If you want me to dispatch a speci
 
 **Materials detected:** Literature only (Phase 2). Explicit intent: lit-review.
 
-**Main session response:** Routes directly to `academic-paper /ars-lit-review` on the provided PDFs. No clarification fires (explicit intent overrides materials check).
+**Main session response:** Routes directly to `academic-paper $academic-paper lit-review` on the provided PDFs. No clarification fires (explicit intent overrides materials check).
 
 ### Example 3: no materials + ambiguous → clarify
 
@@ -129,10 +129,10 @@ Pick a-d, or describe the target deliverable. If you want me to dispatch a speci
 **Main session response:**
 > Of course. To route correctly, could you tell me what stage you're at?
 >
-> (a) **I have an idea but no clear research question** — Socratic mode to clarify direction. Use `deep-research` (`/ars-plan`).
-> (b) **I have a question and need to do the research** — full research pipeline. Use `academic-pipeline` (`/ars-full`).
+> (a) **I have an idea but no clear research question** — Socratic mode to clarify direction. Use `deep-research` (`$deep-research socratic`).
+> (b) **I have a question and need to do the research** — full research pipeline. Use `academic-pipeline` (`$academic-pipeline full`).
 > (c) **I have research notes and need to write the paper** — drafting pipeline. Use `academic-paper`.
-> (d) **I have a draft and want feedback** — peer-review simulation. Use `academic-paper-reviewer` (`/ars-review` equivalent).
+> (d) **I have a draft and want feedback** — peer-review simulation. Use `academic-paper-reviewer` (`$academic-paper-reviewer full` equivalent).
 >
 > Pick a-d, or paste what you have so I can suggest a path.
 

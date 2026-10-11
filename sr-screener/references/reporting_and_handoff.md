@@ -47,7 +47,7 @@ completes:
 - the final human-confirmed numbers.
 
 Before submission, check the target journal's AI policy and current guidance on AI in evidence
-synthesis (for example the RAISE recommendations). Name the exact models (`model_labels` in the
+synthesis (for example the RAISE recommendations). Name the configured Codex session model in the
 config), the tool and its version, and keep the screening log as a supplementary file.
 
 ## 3. Reference-manager import

@@ -35,7 +35,7 @@
         "marked_at": { "$ref": "#/$defs/rfc3339_utc" },
         "rescinded_at": {
           "$ref": "#/$defs/rfc3339_utc",
-          "description": "Appended in place by /ars-unmark-read; presence means this mark no longer counts. Most-recent-timestamp-wins per v3.6.8 §3.6."
+          "description": "Appended in place by scripts/ars_mark_read.py --unmark; presence means this mark no longer counts. Most-recent-timestamp-wins per v3.6.8 §3.6."
         },
         "read_scope": { "$ref": "#/$defs/read_scope" }
       },

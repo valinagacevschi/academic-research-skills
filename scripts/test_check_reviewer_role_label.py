@@ -56,10 +56,6 @@ REVIEW_DISPATCH_SURFACES = {
         "**Contract-governed re-review dispatch**: orchestrating layer + three "
         "sequential fenced calls",
     ),
-    "shared/model_tiering.md": (
-        "Stage 3' uses three dedicated contract judgment calls",
-        "Do not reuse Stage 3 `eic` or `editorial_synthesizer` workers for Stage 3'",
-    ),
     "README.md": (
         "First-round review panel vs. contract-governed re-review dispatch boundary",
     ),
@@ -68,10 +64,6 @@ PROVENANCE_LANGUAGE_SURFACES = {
     "AGENTS.md": (
         "a blind and separately executed Devil's Advocate critique",
         "independent Devil's Advocate critique",
-    ),
-    "docs/SETUP.md": (
-        "Cross-model generates a blind, separately executed critique",
-        "Cross-model generates independent critique",
     ),
     "deep-research/agents/devils_advocate_agent.md": (
         "needed for a blind, separately executed critique",

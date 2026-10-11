@@ -303,11 +303,11 @@ def merge_ta(a, cfg, work):
     n_pq = sum(len(p["ids"]) for p in pend_qc)
     if n_ps or n_pa:
         print(f"PENDING: {n_ps} records still need a reviewer decision in {len(pend_screen)} batches; "
-              f"{n_pa} conflicts need adjudication -> build_workflow.py ta --jobs pending")
+              f"{n_pa} conflicts need adjudication -> build_workflow.py ta --jobs pending --emit-prompts <work>/prompts")
         print("the required QC recheck of joint exclusions is drawn once screening is complete")
     elif n_pq:
         print(f"PENDING QC: {n_pq} exclusions (joint-exclusion sample and near-miss) await the required senior "
-              "recheck -> build_workflow.py ta --jobs recheck")
+              "recheck -> build_workflow.py ta --jobs recheck --emit-prompts <work>/prompts")
     else:
         print("complete: every record has a final decision and the required QC recheck is done")
 
@@ -507,7 +507,7 @@ def merge_ft(a, cfg, work):
           f"kappa={agree['kappa']} PABAK={agree['pabak']}")
     if pend_items or pend_adj:
         print(f"PENDING: {len(pend_items)} reports need a reviewer decision, {len(pend_adj)} need adjudication "
-              "-> build_workflow.py ft --jobs pending")
+              "-> build_workflow.py ft --jobs pending --emit-prompts <work>/prompts")
     ta_ids, qc_ids, problems, uncovered, stale = srlib.fulltext_status(work, cfg)
     if ta_ids or problems or stale:
         print("INCOMPLETE: title/abstract screening or required title/abstract QC is still pending; "

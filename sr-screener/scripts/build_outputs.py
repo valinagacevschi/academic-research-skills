@@ -186,8 +186,7 @@ def main():
     by = {}
     for r in rows:
         by[r["f"]["by"]] = by.get(r["f"]["by"], 0) + 1
-    models = cfg["models"]
-    mlab = lambda k: cfg.get("model_labels", {}).get(k) or f"[model for {k}: {models.get(k) or 'session model'}]"
+    mlab = lambda k: "Codex-configured session model"
 
     def pair(k1, k2):
         if mlab(k1) == mlab(k2):
@@ -449,9 +448,8 @@ def main():
             qc_n = sum(1 for r in rows if r["Q"])
             qc_adv = sum(1 for r in rows if r["pre_qc"])
             tool = (f"the sr-screener skill (version {srlib.VERSION}) of the open-source Academic Research Skills suite "
-                    f"({REPO_URL}), running in Claude Code")
-            access = ("The reviewer agents could only read the record file they were given (no web access). "
-                      if (cfg.get("agent_type") or "").split(":")[-1] == "screening_reviewer_agent" else "")
+                    f"({REPO_URL}), running in Codex")
+            access = ""
             if a.stage == "ta":
                 conflict = (f"Disagreements between advancing (include or unclear) and excluding a record "
                             f"({n_conf} records) were resolved by a third AI reviewer ({mlab('ADJ')}) that re-read the record. "

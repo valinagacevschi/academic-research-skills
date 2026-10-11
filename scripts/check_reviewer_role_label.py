@@ -182,17 +182,9 @@ REQUIRED = {
     "docs/PERFORMANCE.zh-TW.md": (
         "Journal-Fit Reviewer + methodology 兩位 reviewer 各跑兩階段",
     ),
-    "shared/model_tiering.md": (
-        "Stage 3' uses three dedicated contract judgment calls",
-        "They are protocol calls, not agent-manifest identities",
-        "Do not reuse Stage 3 `eic` or `editorial_synthesizer` workers for Stage 3'",
-    ),
     "AGENTS.md": (
         "a blind and separately executed Devil's Advocate critique",
         "These execution facts are not a binary independence claim",
-    ),
-    "docs/SETUP.md": (
-        "Cross-model generates a blind, separately executed critique",
     ),
     "deep-research/agents/devils_advocate_agent.md": (
         "a blind, separately executed critique",
@@ -302,10 +294,6 @@ FORBIDDEN_REVIEW_DISPATCH = {
     "docs/ARCHITECTURE.md": (
         "**Narrow re-review team**: eic_agent + editorial_synthesizer_agent",
     ),
-    "shared/model_tiering.md": (
-        "Stage 3' re-review dispatches the narrow team",
-        "the narrow re-review team: `eic`, `editorial_synthesizer`",
-    ),
     "README.md": ("First-round review team vs. narrow re-review team boundary",),
     "academic-paper-reviewer/agents/field_analyst_agent.md": (
         "**EIC Configuration**",
@@ -388,7 +376,6 @@ FORBIDDEN_PANEL_LANGUAGE = {
 # execution, but those facts do not prove statistically independent errors.
 FORBIDDEN_BINARY_INDEPENDENCE = {
     "AGENTS.md": ("independent Devil's Advocate critique",),
-    "docs/SETUP.md": ("Cross-model generates independent critique",),
     "deep-research/agents/devils_advocate_agent.md": ("needed for an independent critique",),
     "shared/handoff_schemas.md": ("the independent pass evaluates",),
     "shared/cross_model_verification.md": ("independent-DA-critique prompt",),

@@ -14,7 +14,6 @@ metadata:
 
 # Deep Research — Universal Academic Research Agent Team
 
-**Codex use:** invoke `$deep-research` or name this skill and its mode. `/ars-*` forms below are Claude Code command aliases; in Codex, treat them as mode names, not executable slash commands. See [control availability](../docs/CONTROL_AVAILABILITY.md) for runtime-specific limits.
 
 Universal deep research tool — a domain-agnostic 13-agent team for rigorous academic research on any topic.
 
@@ -22,14 +21,16 @@ Universal deep research tool — a domain-agnostic 13-agent team for rigorous ac
 - **Style Profile consumption** (optional) — If a Style Profile is available from academic-paper intake, the report compiler applies it as a soft guide for the Executive Summary and Synthesis sections. Discipline conventions and report objectivity take priority.
 - **Writing Quality Check** — The report compiler uses `academic-paper/references/writing_quality_check.md` as a diagnostic guide before finalizing (prompts for judgment subordinate to author and venue requirements, not quotas), and flags claims the cited sources do not support as `[MATERIAL GAP]` rather than hedging them (#825).
 
-> **Routing discipline (v3.9.2):** plugin and skills-copy installs do not load this repository's `.claude/CLAUDE.md`, so its routing core is repeated below, identical to `shared/references/routing_core.md` (#892). If routing has not settled when this skill loads, apply the core before dispatching any agent.
+> **Routing discipline (v3.9.2):** plugin installs may not load the repository `AGENTS.md`; this routing core is carried in the skill and kept in sync with `shared/references/routing_core.md` (#892). If routing has not settled when this skill loads, apply the core before dispatching any agent.
+
+For multi-agent roles, follow [Codex subagent dispatch](../shared/references/codex_subagent_dispatch.md).
 
 <!-- routing-core:begin -->
 **Step 0 — Escape hatch check (before any classification):** If the user's first message begins with `[direct-mode]` (case-insensitive byte-0 token, optionally preceded by whitespace/newlines that are stripped on parse), record this fact, strip the prefix and surrounding whitespace from the message, and skip directly to **Step 1 explicit-intent handling** on the stripped content. The literal `[direct-mode]` is NOT passed through to the dispatched agent. If the stripped message itself has no clear skill named, Step 1 falls through to Step 3 clarification (the escape hatch bypasses cross-phase clarification (Step 2), not all routing). When the token is honored and the named agent or skill needs inputs the message does not supply, read that agent's or skill's file and ask for what it requires, in its terms. Without the byte-0 token, naming an agent is not explicit intent: such a message goes through Steps 1-3 like any other, so cross-phase materials still get Step 2 clarification.
 
 Otherwise, classify the user's input:
 
-1. **Explicit clear intent** — user invokes a specific skill via `/ars-*` slash command, or uses an unambiguous trigger keyword that maps to a single skill (e.g., "lit-review this", "review my paper", "draft an abstract"):
+1. **Explicit clear intent** — user invokes a specific skill by name with its mode (for example `$academic-paper lit-review`), or uses an unambiguous trigger keyword that maps to a single skill (e.g., "lit-review this", "review my paper", "draft an abstract"):
    → Route directly; no clarification, no orchestrator detour.
    → The request stays explicit when the mode's usual input is absent or a word in it has other everyday senses. A revision request with no reviewer comments is revision mode's "feel certain sections need improvement" case, and "revisar artículo" is the reviewer's trigger. Route to that mode and let the mode handle what is missing; do not reopen the choice of workflow.
 
@@ -382,7 +383,7 @@ ARS pipeline runs in 6 phases. Two invocation modes:
 
 In Mode B, **single-phase agents (Bucket A per `docs/design/2026-05-18-ars-v3.9.2-agent-phase-classification.md`) stay strictly within their assigned phase for writes**. Reads from upstream phases are allowed. Multi-phase agents (Bucket B: `devils_advocate_agent`, `report_compiler_agent`) do exactly the work specified by the caller's invocation for that phase — no extension to other phases in the same call.
 
-Routing into Mode B requires explicit user signal — `/ars-<mode>` slash command or `[direct-mode]` prefix. Ambiguous cross-phase input defaults to clarification per the routing core near the top of this file (Step 2) + `shared/references/intent_clarification_protocol.md`.
+Routing into Mode B requires explicit user signal — `$skill-name <mode>` or `[direct-mode]` prefix. Ambiguous cross-phase input defaults to clarification per the routing core near the top of this file (Step 2) + `shared/references/intent_clarification_protocol.md`.
 
 **Enforcement (v3.9.2):** Phase Boundary blocks on Bucket A agents + advisory verifier (`scripts/check_pipeline_integrity.py`) + a deterministic PreToolUse write-scope guard in hook-enabled runtimes (#134 rescope, PR #294). Multi-phase envelope remains forward-scope (#134 Slices 3-5).
 
@@ -473,7 +474,7 @@ The WHAT field's method weaknesses follow these rules:
 2. **Provenance label on every item.** Mark each item `author-acknowledged` or `reader-inferred`. An `author-acknowledged` item carries a locator in one of the v3.7.3 anchor kinds (`quote`, `page`, `section`, `paragraph`). A `reader-inferred` item is an untested inference and says so.
 3. **Bounded absence claims.** A statement that the authors do not address X names the sections that were checked (the #548 search-bounded pattern). If those sections cannot be named, do not make the absence claim.
 4. **Fixed aspect checklist.** Use the source's paper-type table in `academic-paper-reviewer/references/review_criteria_framework.md` §2 (empirical, theoretical, review / meta-analysis, case study, policy). Mark each criterion in that table `checked: found`, `checked: none found`, or `not checked`. Stop at the end of the table; do not keep adding items until the list feels complete.
-5. **No method-level weakness without the text.** When only the abstract or table of contents is available, or the recorded read scope (`/ars-mark-read --scope`) is `abstract_only`, `toc_only`, or `unknown`, write `not assessed (read scope: <scope>)` and no inferred weaknesses. For `sections`, stay within the declared sections.
+5. **No method-level weakness without the text.** When only the abstract or table of contents is available, or the recorded read scope (`scripts/ars_mark_read.py --scope`) is `abstract_only`, `toc_only`, or `unknown`, write `not assessed (read scope: <scope>)` and no inferred weaknesses. For `sections`, stay within the declared sections.
 
 Do not turn a weakness into an improvement suggestion or research direction; that step stays with the scholar. Keep the entry short:
 
@@ -701,17 +702,6 @@ deep-research + academic-paper          -> Full research-to-publication pipeline
 deep-research (socratic) + academic-paper (plan) -> Guided research + paper planning
 deep-research (systematic-review) + academic-paper -> PRISMA systematic review paper
 ```
-
----
-
-## Model Tiering (#517, optional)
-
-When `ARS_MODEL_TIERING` is set, the dispatching session routes this skill's agents per `shared/model_tiering.md` (canonical: the full 43-agent judgment/execution table + rules). Compact rule:
-
-- **Unset (default):** every agent inherits the session model — byte-equivalent pre-#517 behavior.
-- **`economy`** (frontier-tier session): execution-type agents dispatch ONE tier below the session model — floor Opus-class, never lower; judgment-type agents stay on the session model. No-op at or below the floor (announce once).
-- **`quality-boost`** (below-frontier session): judgment-type agents at the checkpoint surfaces (Stage 2.5/4.5 gates; the opt-in Stage 4→5 claim–ref audit; final review) jump UP to the frontier tier (however many tiers away — not a single increment); nothing is ever downgraded. No-op at the frontier (announce once).
-- Unknown values → warn once, behave as unset. Tiers are relative positions, never hard-pinned model ids. When a direction is active, route repeated same-stage calls to the SAME worker so its prompt cache accumulates; unset means dispatch shapes stay byte-equivalent too.
 
 ---
 
