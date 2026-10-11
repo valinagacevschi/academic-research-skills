@@ -108,7 +108,7 @@
       "authority": [
         {
           "file": "shared/cross_model_verification.md",
-          "anchor": "Treat provider errors, malformed responses, and missing verdicts as unavailable"
+          "anchor": "When a future configured verifier is unavailable, malformed, or returns no usable result"
         },
         {
           "file": "shared/cross_model_verification.md",
@@ -116,7 +116,7 @@
         },
         {
           "file": "shared/cross_model_verification.md",
-          "anchor": "A verifier disagreement is a prompt for"
+          "anchor": "A disagreement triggers human review"
         }
       ],
       "pinned_by": [

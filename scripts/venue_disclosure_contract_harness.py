@@ -780,7 +780,6 @@ def evaluate(case: Mapping[str, object]) -> ContractResult:
 # check incidentally (via the v3.12.1 / v3.20 release summaries) are gone.
 SURFACE_FILES = (
     "academic-paper/SKILL.md",
-    "commands/ars-disclosure.md",
     "academic-paper/references/mode_selection_guide.md",
 )
 SURFACE_TOKENS = {

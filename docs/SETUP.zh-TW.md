@@ -46,6 +46,8 @@ Markdown 不需額外軟體。DOCX 轉換需要 Pandoc；PDF 另需 Tectonic 等
 
 將專案特定的常設偏好放在該專案的 `AGENTS.md`。ARS 不讀取全域偏好檔；把搜尋與納入條件放在專案中，審查時較容易確認。
 
+deep-research 的選用閱讀探測預設關閉；設定 `ARS_SOCRATIC_READING_PROBE=1` 可啟用。詳細規則請見 deep-research skill。
+
 ## 跨模型驗證（選用）
 
 本版本尚未整合可執行的跨模型驗證 runtime。Provider request builder 仍屬暫定且未經實測；設定以下變數不會送出請求。runtime 完成前請繼續使用 Codex session model。跨模型契約詳見[說明文件](../shared/cross_model_verification.md)。

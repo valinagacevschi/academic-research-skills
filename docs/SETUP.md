@@ -47,6 +47,10 @@ Markdown needs no extra software. Install Pandoc for DOCX conversion. PDF output
 
 Put project-specific standing preferences in that project's `AGENTS.md`. ARS does not load preferences from a global ARS configuration file; keeping search and inclusion criteria with the project makes them visible during review.
 
+The optional deep-research reading probe is enabled with
+`ARS_SOCRATIC_READING_PROBE=1`; it is off by default. See the
+deep-research skill's reading-probe instructions.
+
 ## Cross-model verification (optional)
 
 Cross-model verification has no active runtime integration in this release. Its provider request builders are provisional and unmeasured; setting these variables does not send a request. Keep using the Codex session model until the runtime path is completed. See [Cross-model verification](../shared/cross_model_verification.md) for the contract.

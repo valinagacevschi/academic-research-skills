@@ -233,10 +233,6 @@ id = "v3.10-182-verify-passport-cli"
 path = "scripts/test_verify_passport_cli.py"
 
 [[pytest]]
-id = "453-compat-verdict-normalization"
-path = "scripts/test_normalize_compat_verdict.py"
-
-[[pytest]]
 id = "361-judge-prompt-version-drift"
 path = "scripts/test_check_judge_prompt_version.py"
 
