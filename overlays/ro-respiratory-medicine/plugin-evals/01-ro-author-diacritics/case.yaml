@@ -1,12 +1,8 @@
 schema_version: '1'
 name: 01-ro-author-diacritics
-context:
-  scaffold_script: scaffold.sh
 execution:
   prompt: |
-    The project has the Romanian respiratory-medicine overlay installed. Before answering, read `overlays/ro-respiratory-medicine/ACTIVATE.md`; treat `{OVERLAY_ROOT}` as `overlays/ro-respiratory-medicine`.
-
-    Please format these as a Vancouver reference list and tell me what spelling to use in the manuscript prose. Reply to me in English, please. Totul de mai jos este fictiv și datele editorului sunt copiate exact.
+    $academic-paper Please format these as a Vancouver reference list and tell me what spelling to use in the manuscript prose. Reply to me in English, please. Totul de mai jos este fictiv și datele editorului sunt copiate exact.
 
     Publisher data (preserve exactly when quoting the reference entries):
 

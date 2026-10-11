@@ -1,12 +1,15 @@
 #!/usr/bin/env python3
 """Run the overlay plugin evals with the Codex CLI.
 
-Each case's scaffold.sh stages the overlay into a fresh workspace, then
-`codex exec` answers the case prompt in a read-only sandbox. Graders:
+Each case runs in an empty workspace with the ARS plugin installed from this
+repository (local marketplace), exactly as a user installs it. The respiratory
+layer is on by default, so the prompts do not mention it. `codex exec` answers
+the case prompt in a read-only sandbox. Graders:
 
 - regex: evaluated in code against the final reply;
-- tool_used (activation): a shell command in the agent run touched
-  ACTIVATE.md and its output contains the file's first heading;
+- tool_used (activation): a shell command in the agent run read the
+  installed plugin's ACTIVATE.md and its output contains the file's first
+  heading;
 - llm: majority of independent `codex exec` judge votes (default 3).
 
 Every Codex call runs with an isolated CODEX_HOME holding only a symlink to
@@ -32,6 +35,7 @@ import tempfile
 import yaml
 
 SUITE = os.path.dirname(os.path.abspath(__file__))
+REPO = os.path.abspath(os.path.join(SUITE, "..", "..", ".."))
 ACTIVATE_HEADING = "# Romanian respiratory-medicine overlay instructions"
 JUDGE = """You are grading an AI assistant's reply against one criterion. You have no tools; judge only the text below.
 
@@ -65,9 +69,18 @@ class Runner:
         if not os.path.exists(self.auth):
             raise SystemExit(f"Codex is not logged in: {self.auth} not found")
 
-    def codex(self, prompt, cwd, tag):
+    def install_plugin(self, home):
+        env = {**os.environ, "CODEX_HOME": home}
+        for cmd in (["codex", "plugin", "marketplace", "add", REPO],
+                    ["codex", "plugin", "add", "academic-research-skills@ars"]):
+            subprocess.run(cmd, check=True, capture_output=True, text=True, env=env,
+                           stdin=subprocess.DEVNULL, timeout=120)
+
+    def codex(self, prompt, cwd, tag, plugin=False):
         home = tempfile.mkdtemp(prefix="codex-home-")
         os.symlink(self.auth, os.path.join(home, "auth.json"))
+        if plugin:
+            self.install_plugin(home)
         last = os.path.join(self.out, f"{tag}.last.md")
         try:
             p = subprocess.run(
@@ -101,11 +114,7 @@ class Runner:
         prompt = case["execution"]["prompt"]
         ws = tempfile.mkdtemp(prefix=f"ws-{name}-")
         try:
-            staged = subprocess.run(["bash", os.path.join(case_dir, "scaffold.sh")],
-                                    cwd=ws, capture_output=True, text=True)
-            if staged.returncode:
-                return {"case": name, "passed": False, "score": 0.0, "error": "scaffold failed: " + staged.stderr}
-            code, reply, events = self.codex(prompt, ws, f"{name}.agent")
+            code, reply, events = self.codex(prompt, ws, f"{name}.agent", plugin=True)
         finally:
             shutil.rmtree(ws, ignore_errors=True)
         graders, pending = [], []
@@ -144,7 +153,7 @@ def activation_read(events):
             continue
         item = e.get("item") or {}
         if (e.get("type") == "item.completed" and item.get("type") == "command_execution"
-                and "ACTIVATE.md" in item.get("command", "")
+                and "ro-respiratory-medicine/ACTIVATE.md" in item.get("command", "")
                 and ACTIVATE_HEADING in item.get("aggregated_output", "")):
             return True
     return False

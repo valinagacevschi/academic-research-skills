@@ -61,7 +61,7 @@ flowchart TD
 
 ## What the Romanian respiratory layer adds
 
-When the layer is installed in a project, Codex reads extra instructions before answering. They change four things:
+The layer is **on by default**: each tool reads its instructions before the first reply. They change four things:
 
 ```mermaid
 flowchart LR

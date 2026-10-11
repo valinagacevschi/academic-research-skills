@@ -45,11 +45,11 @@ If a value is not in the table, the AI must answer **"not verified"** rather tha
 
 ## 3 · Doctor-scenario tests: does the AI behave correctly?
 
-Six realistic requests, each with fictional patients and studies. Codex answers them in a clean sandbox, then the replies are graded.
+Six realistic requests, each with fictional patients and studies. For every case the plugin is installed fresh, exactly as a doctor installs it, and the request starts with a tool name (`$academic-paper` or `$deep-research`) without mentioning the respiratory layer. Codex answers in a clean sandbox, then the replies are graded.
 
 ```mermaid
 flowchart LR
-    C[Test case<br/>fictional request] --> A[Codex answers<br/>isolated · no web · read-only]
+    C[Test case<br/>fictional request] --> I[Fresh plugin install<br/>layer on by default] --> A[Codex answers<br/>isolated · no web · read-only]
     A --> G1[Rule graders<br/>e.g. CNP never repeated]
     A --> G2[AI judges<br/>3 independent votes, majority wins]
     G1 & G2 --> P{Pass?}
@@ -64,7 +64,7 @@ flowchart LR
 | 5 | Abstract for ERS Congress | Show venue notes and ask before using them; explain the 1,810-character limit |
 | 6 | An RCT protocol | Use CONSORT; cite the ERS 2022 COPD-exacerbation core outcome set; mark MCIDs "verify" |
 
-**Result:** 6 of 6 passed (10 Oct 2026, Codex CLI 0.162.1, model gpt-6-luna). One vote was split 2–1.
+**Result:** 6 of 6 passed (11 Oct 2026, through the installed plugin, Codex CLI 0.162.1, model gpt-6-luna). Every case loaded the respiratory layer on its own. Three judge votes were split 2–1.
 
 Run it yourself:
 
@@ -72,7 +72,7 @@ Run it yourself:
 uv run --no-project --python 3.12 --with pyyaml python overlays/ro-respiratory-medicine/plugin-evals/run_codex.py
 ```
 
-Earlier runs found three real gaps: no ethics-committee question, advice withheld until routing was answered, and no code-to-data offer. The instructions were fixed, and the run above confirmed the fixes.
+Earlier runs found four real gaps: no ethics-committee question, advice withheld until routing was answered, no code-to-data offer, and a code-to-data offer without an actual script. The instructions were fixed, and the run above confirmed the fixes.
 
 ## 4 · Checks inside every run
 

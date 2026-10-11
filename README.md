@@ -38,23 +38,16 @@ flowchart LR
 
 You can start at any box. Already have a draft? Start at the integrity check. Got reviewer comments? Start at Revise. → [How it works, in detail](docs/HOW_IT_WORKS.md)
 
-## Install (5 minutes, once)
+## Install (1 minute, once)
 
 You need the **Codex** app or CLI, signed in with your ChatGPT account.
 
 ```bash
-git clone https://github.com/valinagacevschi/academic-research-skills.git ~/academic-research-skills
-codex plugin marketplace add ~/academic-research-skills
+codex plugin marketplace add valinagacevschi/academic-research-skills
 codex plugin add academic-research-skills@ars
 ```
 
-Turn on the Romanian respiratory layer in your project folder:
-
-```bash
-python3 ~/academic-research-skills/overlays/ro-respiratory-medicine/install.py ~/path/to/my-study
-```
-
-Open that folder as a project in Codex and type what you need. → [Setup details](docs/SETUP.md)
+That's it. The Romanian respiratory layer is **on by default** in every project. Open any folder as a project in Codex and type what you need. → [Setup details](docs/SETUP.md)
 
 ## What to type
 
@@ -84,7 +77,7 @@ Every change is checked automatically, and the respiratory layer is tested with 
 |---|---|
 | Automated test suite | 9,796 tests passing |
 | Respiratory facts (thresholds, MCIDs, legal provisions) | 112 values verified against primary sources, each with URL, quote and date |
-| Doctor-scenario tests (ethics routing, pasted CNP, GOLD edition, venue limits…) | 6 of 6 passed (Codex, 10 Oct 2026) |
+| Doctor-scenario tests (ethics routing, pasted CNP, GOLD edition, venue limits…) | 6 of 6 passed through the installed plugin (11 Oct 2026) |
 | Peer-review quality vs. real reviewers | **Not yet measured** |
 
 What it **cannot** do: confirm your data are real, that procedures happened, or that results replicate. A well-written fabrication can pass. It reduces errors; it does not certify a paper.

@@ -1,33 +1,26 @@
 # Setup
 
-## 1 · Install the plugin (once per computer)
+## 1 · Install (once per computer)
 
 You need the **Codex** desktop app or CLI, signed in with your ChatGPT account.
 
 ```bash
-git clone https://github.com/valinagacevschi/academic-research-skills.git ~/academic-research-skills
-codex plugin marketplace add ~/academic-research-skills
+codex plugin marketplace add valinagacevschi/academic-research-skills
 codex plugin add academic-research-skills@ars
 ```
 
-The five tools (`$deep-research`, `$sr-screener`, `$academic-paper`, `$academic-paper-reviewer`, `$academic-pipeline`) are now available in every Codex project.
+The five tools (`$deep-research`, `$sr-screener`, `$academic-paper`, `$academic-paper-reviewer`, `$academic-pipeline`) are now available in every Codex project, and the **Romanian respiratory layer is on by default**. Nothing to install per project.
 
 **Update later:**
 
 ```bash
-cd ~/academic-research-skills && git pull
 codex plugin marketplace upgrade ars
+codex plugin add academic-research-skills@ars
 ```
 
-## 2 · Turn on the Romanian respiratory layer (once per project)
+## 2 · Optional: hard CNP block
 
-```bash
-python3 ~/academic-research-skills/overlays/ro-respiratory-medicine/install.py ~/path/to/my-study
-```
-
-This adds a short instruction block to the project's `AGENTS.md`, which Codex reads automatically. Remove it with `--uninstall`.
-
-Then open `~/path/to/my-study` as a project in the Codex app, and start a new chat.
+The respiratory layer already stops when a CNP is pasted. Research IT can also add a Codex hook that blocks prompts and file reads containing a valid CNP. See [the layer's README](../overlays/ro-respiratory-medicine/README.md#optional-hard-cnp-block).
 
 ## 3 · Optional extras
 
@@ -65,5 +58,5 @@ Patient identifiers should never be pasted. The respiratory layer stops if you d
 | Problem | Fix |
 |---|---|
 | `$deep-research` not recognised | Run `codex plugin list` and check `academic-research-skills` is installed, then restart Codex |
-| Respiratory rules not applied | Check the project's `AGENTS.md` contains the overlay block; re-run `install.py` |
+| Respiratory rules not applied | Start the request with a tool name (e.g. `$deep-research`), so the skill and its respiratory layer load |
 | No DOCX or PDF | Install Pandoc (and Tectonic for PDF) |
