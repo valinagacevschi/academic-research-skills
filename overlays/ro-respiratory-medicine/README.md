@@ -39,5 +39,5 @@ python3 overlays/ro-respiratory-medicine/install.py /path/to/project --uninstall
 | S7 — Venue notes and extras | Done |
 | S8 — Patient-data guidance and CNP hook | Done |
 | S9 — Activation preamble and installer | Done |
-| S10 — Model-behaviour evals | Pending |
+| S10 — Model-behaviour evals | Done (Codex run of record, 6/6) |
 | S11 — Upstream asks | Done |
