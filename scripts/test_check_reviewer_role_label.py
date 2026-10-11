@@ -63,10 +63,6 @@ REVIEW_DISPATCH_SURFACES = {
     "README.md": (
         "First-round review panel vs. contract-governed re-review dispatch boundary",
     ),
-    "README.zh-TW.md": ("第一輪審查面板 vs. 契約治理再審派送的分界",),
-    "README.zh-CN.md": ("第一轮审查面板 vs. 契约治理再审调度的分界",),
-    "README.ja-JP.md": ("初回レビューパネル vs. 契約管理された再レビューディスパッチの境界",),
-    "README.ko-KR.md": ("1차 심사 패널 대 계약 기반 re-review 디스패치 경계",),
 }
 PROVENANCE_LANGUAGE_SURFACES = {
     ".claude/CLAUDE.md": (

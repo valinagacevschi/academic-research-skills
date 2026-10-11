@@ -293,39 +293,17 @@ The files under `.github/workflows/` are often described collectively as CI gate
 they enforce at four different strengths (origin: ISO/IEC 42001-spirit gap assessment,
 finding T-5).
 
-Classes: **Blocking** — a failure on the guarded event must be fixed (or explicitly
-bypassed) before proceeding · **Advisory** — the audited condition warns, never fails ·
-**Administrative** — produces work items, audits nothing · **Post-push detection** —
-triggered by a tag push that has already happened; nothing in GitHub Actions can
-reject a push after the fact, so a failure is a remediation signal, not prevention
-(the three tag-only workflows are conventionally *called* release gates; their
-stop-power is the maintainer acting on the failure).
-
-One GitHub Actions subtlety the Trigger column accounts for: an unfiltered or
-paths-only `push:` trigger ALSO matches tag pushes — GitHub does not evaluate `paths`
-filters for tags — so `spec-consistency`, `command-invariants`, and `freshness-check`
-additionally run on every `v*` tag push, where their failures are post-push detection
-exactly like the three tag-only workflows.
+Classes: **Blocking** — a failure on the guarded event must be fixed before proceeding · **Advisory** — the audited condition warns, never fails.
 
 | Workflow | Trigger | What it checks | Class | Bypass |
 |---|---|---|---|---|
-| `spec-consistency.yml` | push (all branches **and tags**) + PR | the full lint/pytest battery: spec surfaces, contracts, content locks, the pytest manifest | Blocking | none |
+| `spec-consistency.yml` | push (all branches) + PR | the full lint/pytest battery: spec surfaces, contracts, content locks, the pytest manifest | Blocking | none |
 | `pytest.yml` | PR + push to main, both path-filtered (scripts/tests/contracts/config, adapter references, `bibliography_agent`) | adapter + script test suite | Blocking | none |
-| `command-invariants.yml` | push (path-filtered for branch pushes; **also every tag push**) + PR (all) | SessionStart announce list matches the command inventory; plugin-version ↔ CHANGELOG lockstep; command frontmatter `name` validation | Blocking | none |
+| `ro-overlay.yml` | PR + push (overlay and shared registry paths) | opt-in Romanian overlay lint + overlay tests | Blocking | none |
 | `repository-hygiene.yml` | PR targeting main + push to main | gitleaks secret scan | Blocking | none |
 | `eval-harness.yml` | PR + push to main, both path-filtered (scoring/generation surfaces + gold sets) | eval gold-set thresholds (aggregate + per-class) | Blocking on `pull_request` events only; report-only on push | `[eval-regression-acknowledged]` in the PR body + ≥1 open tracking-issue URL in this repo |
-| `test-count-monotonic.yml` | PR targeting main | collected test count must not drop | Blocking | `[skip-test-count]` in the PR body (justification requested, not machine-validated) |
-| `pr-closes-issue.yml` | PR targeting main | PR body references an issue via an auto-close keyword | Blocking | `[skip-closes-check]` in the PR body (justification requested, not machine-validated) |
-| `changelog-covers-merges.yml` | PR targeting main; the job runs only when the head branch is `release/**` | every release-worthy merge since the last tag is documented in CHANGELOG | Blocking (ordinary merges rely on the manual CONTRIBUTING fallback) | none |
-| `platform-port-reminder.yml` | PR targeting main | new top-level directory → platform-ports policy reminder | Advisory (one `::warning::`, always exits 0; the merge decision stays with the maintainer) | none |
-| `freshness-check.yml` | weekly schedule + push (two-file path filter for branch pushes; **also every tag push**) + manual dispatch | PRISMA-trAIce snapshot staleness | Advisory for staleness (warns on stderr, exits 0); malformed protocol metadata is a hard failure | none |
-| `harness-retirement-monthly.yml` | monthly schedule + manual dispatch | opens the monthly prompt-debt audit issue | Administrative | none |
-| `defer-label-gate.yml` | tag push `v*` | open `defer:<tag>` issues must be closed or relabelled | Post-push detection | `[skip-defer-check]` in the tagged commit message |
-| `release-cooldown.yml` | tag push `v*` | paces consecutive release tags | Post-push detection | `[skip-cooldown]` in the commit/tag message |
-| `tag-version-match.yml` | tag push `v*` | re-runs the full version-consistency lint at the tag | Post-push detection | none |
 
-Count, honestly stated: **14 workflows — 8 blocking on at least one event class, 2
-advisory, 1 administrative, 3 post-push detection.**
+Count: **5 workflows — 5 blocking, 0 advisory, 0 administrative, 0 post-push detection.**
 
 Inventory sync, the count line, and the bypass tokens are pinned by
 `scripts/check_workflow_classification.py`; the class *semantics* — whether a row
@@ -423,11 +401,7 @@ timeline
              : P4 binds direct-date captures (not only ref markers)
              : citation_provenance.schema.json confidence:high requires presence
     v3.9.4.2 : CI discipline hardening (PR #149 + #153 + #157; codex post-ship 3 of 4 P2)
-             : F1 harness-retirement-monthly adds GH_REPO for scheduled runs
-             : F2 release-cooldown filters PREV_TAG lookup to v* tags only
-             : F3 release-cooldown reads annotated tag subject + accepts hot-fix spelling
              : [skip-cooldown] override now read from both commit message and tag message
-             : F4 test-count-monotonic harden reverted (surfaced #154; re-attempt #155)
     v3.10.0 : triangulation terminal policy layer (#127 PR-B, opt-in strict)
             : Kong et al. survey adoptions (commitment ledger #256/#266/#268/#269; domain profiles #259)
             : generalized eval gold set + ranking-lift CI gate (#184)

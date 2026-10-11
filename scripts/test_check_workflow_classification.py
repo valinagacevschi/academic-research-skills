@@ -72,10 +72,10 @@ def test_new_workflow_without_row_fires(repo: Path) -> None:
 
 
 def test_row_for_removed_workflow_fires(repo: Path) -> None:
-    (repo / WORKFLOWS_DIR / "freshness-check.yml").unlink()
+    (repo / WORKFLOWS_DIR / "pytest.yml").unlink()
     errors = run_all_checks(repo)
     assert any(
-        "WC-1" in e and "freshness-check.yml" in e and "names no file" in e
+        "WC-1" in e and "pytest.yml" in e and "names no file" in e
         for e in errors
     )
 
@@ -95,22 +95,21 @@ def test_duplicate_row_fires(repo: Path) -> None:
 
 
 def test_off_vocabulary_class_fires(repo: Path) -> None:
-    _mutate_doc(repo, "| Administrative |", "| Mandatory |")
+    _mutate_doc(repo, "| Blocking |", "| Mandatory |")
     errors = run_all_checks(repo)
     assert any(
         "WC-2" in e and "Mandatory" in e for e in errors
     )
-    # The count line still says 1 administrative; the reclassified table
-    # has 0 — WC-3 must fire alongside.
+    # Reclassifying the only blocking row also changes the category tally.
     assert any("WC-3" in e for e in errors)
 
 
 def test_typo_suffix_class_fires(repo: Path) -> None:
     # `Blockingg` must not pass on a prefix match — the vocabulary term is
     # matched as a whole word (codex R1 finding).
-    _mutate_doc(repo, "| Administrative |", "| Administrativee |")
+    _mutate_doc(repo, "| Blocking |", "| Blockingg |")
     errors = run_all_checks(repo)
-    assert any("WC-2" in e and "Administrativee" in e for e in errors)
+    assert any("WC-2" in e and "Blockingg" in e for e in errors)
 
 
 def test_class_with_qualifier_still_passes(repo: Path) -> None:
@@ -118,8 +117,8 @@ def test_class_with_qualifier_still_passes(repo: Path) -> None:
     # so WC-3 stays quiet too.
     _mutate_doc(
         repo,
-        "| Administrative |",
-        "| Administrative (opens an issue) |",
+        "| Blocking |",
+        "| Blocking (runs required checks) |",
     )
     assert run_all_checks(repo) == []
 
@@ -137,60 +136,60 @@ def test_yaml_extension_workflow_fires(repo: Path) -> None:
 
 
 def test_count_line_drift_fires(repo: Path) -> None:
-    _mutate_doc(repo, "8 blocking", "9 blocking")
+    _mutate_doc(repo, "5 blocking", "6 blocking")
     errors = run_all_checks(repo)
     assert any("WC-3" in e and "count line" in e for e in errors)
 
 
 def test_renamed_bypass_token_fires(repo: Path) -> None:
-    # The table's `[skip-cooldown]` must exist verbatim in the workflow —
+    # The table's eval bypass must exist verbatim in the workflow —
     # renaming it there cannot leave the table stale with CI green.
-    wf = repo / WORKFLOWS_DIR / "release-cooldown.yml"
+    wf = repo / WORKFLOWS_DIR / "eval-harness.yml"
     wf.write_text(
         wf.read_text(encoding="utf-8").replace(
-            "[skip-cooldown]", "[cooldown-override]"
+            "[eval-regression-acknowledged]", "[eval-override]"
         ),
         encoding="utf-8",
     )
     errors = run_all_checks(repo)
     assert any(
-        "WC-4" in e and "[skip-cooldown]" in e for e in errors
+        "WC-4" in e and "[eval-regression-acknowledged]" in e for e in errors
     )
 
 
 def test_token_surviving_only_in_comment_fires(repo: Path) -> None:
     # Renaming the executable token while an old comment still mentions it
     # must not satisfy WC-4 (codex R2 finding).
-    wf = repo / WORKFLOWS_DIR / "release-cooldown.yml"
+    wf = repo / WORKFLOWS_DIR / "eval-harness.yml"
     text = wf.read_text(encoding="utf-8")
-    text = text.replace("[skip-cooldown]", "[cooldown-override]")
+    text = text.replace("[eval-regression-acknowledged]", "[eval-override]")
     wf.write_text(
-        text + "\n# legacy note: the old token was [skip-cooldown]\n",
+        text + "\n# legacy note: the old token was [eval-regression-acknowledged]\n",
         encoding="utf-8",
     )
     errors = run_all_checks(repo)
     assert any(
-        "WC-4" in e and "[skip-cooldown]" in e for e in errors
+        "WC-4" in e and "[eval-regression-acknowledged]" in e for e in errors
     )
 
 
 def test_malformed_token_spelling_fires(repo: Path) -> None:
-    # `[skip_cooldown]` (underscore typo) must fail loudly, not silently
+    # `[eval_regression_acknowledged]` (underscore typo) must fail loudly, not silently
     # fall out of the token grammar (codex R4 finding).
-    _mutate_doc(repo, "[skip-cooldown]", "[skip_cooldown]")
+    _mutate_doc(repo, "[eval-regression-acknowledged]", "[eval_regression_acknowledged]")
     errors = run_all_checks(repo)
     assert any(
-        "WC-4" in e and "skip_cooldown" in e and "not a well-formed" in e
+        "WC-4" in e and "eval_regression_acknowledged" in e and "not a well-formed" in e
         for e in errors
     )
 
 
 def test_whitespace_token_spelling_fires(repo: Path) -> None:
-    # `[skip cooldown]` (space typo) must also fail loudly (codex R5).
-    _mutate_doc(repo, "[skip-cooldown]", "[skip cooldown]")
+    # `[eval regression acknowledged]` (space typo) must also fail loudly (codex R5).
+    _mutate_doc(repo, "[eval-regression-acknowledged]", "[eval regression acknowledged]")
     errors = run_all_checks(repo)
     assert any(
-        "WC-4" in e and "skip cooldown" in e and "not a well-formed" in e
+        "WC-4" in e and "eval regression acknowledged" in e and "not a well-formed" in e
         for e in errors
     )
 
@@ -201,9 +200,9 @@ def test_bogus_unbackticked_row_fires(repo: Path) -> None:
     # (codex R6 finding).
     _mutate_doc(
         repo,
-        "| `tag-version-match.yml` |",
+        "| `pytest.yml` |",
         "| not-a-workflow | bogus | bogus | Advisory | none |\n"
-        "| `tag-version-match.yml` |",
+        "| `pytest.yml` |",
     )
     errors = run_all_checks(repo)
     assert any(
@@ -215,11 +214,11 @@ def test_bogus_unbackticked_row_fires(repo: Path) -> None:
 def test_malformed_row_arity_fires(repo: Path) -> None:
     _mutate_doc(
         repo,
-        "| `tag-version-match.yml` | tag push `v*` | re-runs the full version-consistency lint at the tag | Post-push detection | none |",
-        "| `tag-version-match.yml` | tag push `v*` | Post-push detection | none |",
+        "| `pytest.yml` | PR + push to main, both path-filtered (scripts/tests/contracts/config, adapter references, `bibliography_agent`) | adapter + script test suite | Blocking | none |",
+        "| `pytest.yml` | PR + push | Blocking | none |",
     )
     errors = run_all_checks(repo)
     assert any(
-        "WC-1" in e and "tag-version-match.yml" in e and "expected 5" in e
+        "WC-1" in e and "pytest.yml" in e and "expected 5" in e
         for e in errors
     )

@@ -193,10 +193,6 @@ def _copy_contract_tree(tmp_path: Path) -> Path:
         "commands/ars-disclosure.md",
         "academic-paper/references/mode_selection_guide.md",
         "README.md",
-        "README.ja-JP.md",
-        "README.ko-KR.md",
-        "README.zh-CN.md",
-        "README.zh-TW.md",
     )
     for rel in rels:
         dst = tmp_path / rel

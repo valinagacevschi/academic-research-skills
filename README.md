@@ -1,6 +1,6 @@
 # Academic Research Skills for Codex
 
-![Version](https://img.shields.io/badge/version-v3.23.0-blue)  
+[![Version](https://img.shields.io/badge/version-v3.23.0-blue)](https://github.com/Imbad0202/academic-research-skills/releases/tag/v3.23.0)  
 ![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.20696614-blue)  
 ![License: CC BY-NC 4.0](https://img.shields.io/badge/license-CC%20BY--NC%204.0-lightgrey)  
 ![Sponsor](https://img.shields.io/badge/sponsor-Buy%20Me%20a%20Coffee-orange?logo=buy-me-a-coffee)
@@ -377,17 +377,17 @@ https://github.com/Imbad0202/academic-research-skills
 
 **[cloudenochcsis](https://github.com/cloudenochcsis)** — Contributor. Extended the IS section from the *Basket of 8* to the full *Senior Scholars' Basket of 11* — adding *Decision Support Systems*, *Information & Management*, and *Information and Organization* ([Issue #7](https://github.com/Imbad0202/academic-research-skills/issues/7), [PR #8](https://github.com/Imbad0202/academic-research-skills/pull/8)). Sourced from the [AIS Senior Scholars' List of Premier Journals](https://aisnet.org/research/seniorscholarsbasket/).
 
-**[eltociear](https://github.com/eltociear)** (Ikko Eltociear Ashimine) — Contributor. Translated the Japanese README (`[README.ja-JP.md](README.ja-JP.md)`) ([PR #161](https://github.com/Imbad0202/academic-research-skills/pull/161)).
+**[eltociear](https://github.com/eltociear)** (Ikko Eltociear Ashimine) — Contributor. Translated the Japanese README ([PR #161](https://github.com/Imbad0202/academic-research-skills/pull/161)).
 
-**[xpfo-go](https://github.com/xpfo-go)** (xpfo) — Contributor. Translated the Simplified Chinese README (`[README.zh-CN.md](README.zh-CN.md)`) ([PR #181](https://github.com/Imbad0202/academic-research-skills/pull/181)).
+**[xpfo-go](https://github.com/xpfo-go)** (xpfo) — Contributor. Translated the Simplified Chinese README ([PR #181](https://github.com/Imbad0202/academic-research-skills/pull/181)).
 
-**[devCharlotte](https://github.com/devCharlotte)** — Contributor. Translated the Korean README (`[README.ko-KR.md](README.ko-KR.md)`) ([PR #469](https://github.com/Imbad0202/academic-research-skills/pull/469)).
+**[devCharlotte](https://github.com/devCharlotte)** — Contributor. Translated the Korean README ([PR #469](https://github.com/Imbad0202/academic-research-skills/pull/469)).
 
 **[Yaobin29](https://github.com/Yaobin29)** — Contributor. Proposed reviewer-response tooling in [PR #433](https://github.com/Imbad0202/academic-research-skills/pull/433); the `deep-research three-way-scan` mode and the `academic-paper rebuttal-audit` mode (rescued from the PR's `audit` concept) were integrated from that contribution in v3.12.1.
 
 **[ktao732084-arch](https://github.com/ktao732084-arch)** — Contributor. Expanded the `academic-paper` disclosure system with nine medical-publishing policy targets, target-specific required-fact intake, and fail-closed standalone rendering ([Issue #596](https://github.com/Imbad0202/academic-research-skills/issues/596), [PR #599](https://github.com/Imbad0202/academic-research-skills/pull/599)); expanded the EQUATOR clinical-reporting reference with condensed CARE, STARD and TRIPOD+AI guidance plus a fail-closed study-design routing sequence ([Issue #594](https://github.com/Imbad0202/academic-research-skills/issues/594), [PR #601](https://github.com/Imbad0202/academic-research-skills/pull/601)); and designed and contributed the standalone Chinese-literature resolver, API protocol, and synthetic transport-fixture suite ([Issue #595](https://github.com/Imbad0202/academic-research-skills/issues/595), [PR #600](https://github.com/Imbad0202/academic-research-skills/pull/600)).
 
-**[didacrios](https://github.com/didacrios)** — Contributor. Translated the Spanish README (`[README.es-ES.md](README.es-ES.md)`).
+**[didacrios](https://github.com/didacrios)** — Contributor. Translated the Spanish README.
 
 ---
 

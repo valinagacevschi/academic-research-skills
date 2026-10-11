@@ -40,10 +40,6 @@ Invariants enforced:
      the latest CHANGELOG entry's date; every `(Version X.Y.Z)` token in
      POSITIONING.md equals the suite version.
 
-Tag gate (#487): `--tag <ref>` additionally requires the given git tag
-(leading `v` optional) to equal the suite version — the one comparison
-nothing else performs at tag time. Wired via tag-version-match.yml.
-
 Runs from repo root by default; `--path` lets tests point at a fake tree.
 """
 from __future__ import annotations
@@ -263,7 +259,7 @@ def _next_entry_offset(text: str, start: int) -> int:
     return n
 
 
-def check(root: Path, tag: str | None = None) -> list[str]:
+def check(root: Path) -> list[str]:
     errors: list[str] = []
 
     claude_md = root / ".claude" / "CLAUDE.md"
@@ -386,27 +382,6 @@ def check(root: Path, tag: str | None = None) -> list[str]:
         # Invariant 12: citation surfaces (CITATION.cff / POSITIONING.md)
         # track the suite version + release date.
         errors.extend(_check_citation_surfaces(root, suite_version, latest_date))
-
-    # Tag gate: the pushed tag (when given) must equal the suite version. This
-    # runs OUTSIDE the `suite_version is not None` block on purpose: `--tag`
-    # promises the tag is verified at tag time, so a missing/malformed suite
-    # version must surface as "tag uncheckable" (a hard error naming the tag),
-    # never a silent pass — otherwise a garbage tag co-occurring with a broken
-    # CLAUDE.md would slip through the one gate meant to catch it.
-    if tag is not None:
-        tag_version = tag[1:] if tag.startswith("v") else tag
-        if suite_version is None:
-            errors.append(
-                f"tag {tag!r} cannot be verified: .claude/CLAUDE.md has no "
-                "usable Suite version to compare against (fix the suite "
-                "version before tagging)"
-            )
-        elif tag_version != suite_version:
-            errors.append(
-                f"tag {tag!r} does not match suite version "
-                f"{suite_version!r} (CHANGELOG latest entry / "
-                ".claude/CLAUDE.md must be promoted before tagging)"
-            )
 
     # Invariant 7: en<->zh-TW version-bearing-heading parity (independent of
     # suite version; pairs each docs/*.md with its docs/*.zh-TW.md sibling).
@@ -820,14 +795,9 @@ def main() -> int:
         type=Path,
         default=Path(__file__).resolve().parent.parent,
     )
-    parser.add_argument(
-        "--tag",
-        help="git tag ref (e.g. v3.14.0, leading 'v' optional); must equal "
-        "the suite version — used by the tag-version-match workflow",
-    )
     args = parser.parse_args()
 
-    errors = check(args.path, tag=args.tag)
+    errors = check(args.path)
     if errors:
         print("Version consistency check failed:")
         for err in errors:

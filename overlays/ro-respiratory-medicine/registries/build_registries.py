@@ -31,7 +31,7 @@ def build_review_criteria(core_path: Path=REVIEW_CORE, delta_path: Path=REVIEW_D
  result['criteria'].extend(copy.deepcopy(delta['criteria']))
  return result
 def validate(path: Path) -> None:
- cmd=['uv','run','--no-project','--python','3.12','--with','pyyaml','--with','jsonschema[format]','python',str(REPO/'scripts/resolve_human_subjects_authority.py'),'--registry',str(path),'--check-registry']
+ cmd=[sys.executable,str(REPO/'scripts/resolve_human_subjects_authority.py'),'--registry',str(path),'--check-registry']
  subprocess.run(cmd,check=True,cwd=REPO)
 def main(argv=None) -> int:
  parser=argparse.ArgumentParser(description=__doc__); parser.add_argument('--check',action='store_true'); args=parser.parse_args(argv)

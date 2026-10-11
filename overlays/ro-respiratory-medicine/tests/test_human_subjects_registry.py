@@ -6,7 +6,7 @@ from registries import build_registries
 
 ROOT=Path(__file__).resolve().parents[1]
 REPO=ROOT.parents[1]
-PYTHON=['uv','run','--no-project','--python','3.12','--with','pyyaml','--with','jsonschema[format]','--with','pytest','python']
+PYTHON=[sys.executable]
 REG=ROOT/'registries/generated/human_subjects_authority_registry.json'
 
 def test_build_is_deterministic_and_validates():

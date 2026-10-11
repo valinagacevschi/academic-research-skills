@@ -20,31 +20,6 @@ REQUIRED = {
         "full mode (Journal-Fit Reviewer + R1/R2/R3 + Devil's Advocate)",
         "First-round review panel vs. contract-governed re-review dispatch boundary",
     ),
-    "README.zh-TW.md": (
-        "（Journal-Fit Reviewer + 3 位動態審查者 + 魔鬼代言人）",
-        "full mode（Journal-Fit Reviewer + R1/R2/R3 + 魔鬼代言人）",
-        "第一輪審查面板 vs. 契約治理再審派送的分界",
-    ),
-    "README.zh-CN.md": (
-        "（Journal-Fit Reviewer + 3 位动态审查者 + 魔鬼代言人）",
-        "full mode（Journal-Fit Reviewer + R1/R2/R3 + 魔鬼代言人）",
-        "第一轮审查面板 vs. 契约治理再审调度的分界",
-    ),
-    "README.ja-JP.md": (
-        "（Journal-Fit Reviewer + 3 動的レビュアー + Devil's Advocate）",
-        "full モード（Journal-Fit Reviewer + R1/R2/R3 + Devil's Advocate）",
-        "初回レビューパネル vs. 契約管理された再レビューディスパッチの境界",
-    ),
-    "README.ko-KR.md": (
-        "(Journal-Fit Reviewer + 동적 리뷰어 3명 + Devil's Advocate)",
-        "full 모드 (Journal-Fit Reviewer + R1/R2/R3 + Devil's Advocate)",
-        "1차 심사 패널 대 계약 기반 re-review 디스패치 경계",
-    ),
-    "README.es-ES.md": (
-        "(Journal-Fit Reviewer + 3 revisores din\u00e1micos + Devil's Advocate)",
-        "full mode (Journal-Fit Reviewer + R1/R2/R3 + Devil's Advocate)",
-        "La frontera entre el panel de la primera ronda y el despacho de re-review regido por contrato",
-    ),
     "MODE_REGISTRY.md": (
         "Journal-Fit Reviewer quick assessment + key issues list",
     ),
@@ -260,6 +235,62 @@ REVIEW_DISPATCH_NEEDLES = {
     "1차 심사 패널 대 계약 기반 re-review 디스패치 경계",
 }
 
+FORBIDDEN_DISPLAY = {
+    "README.md": ("(EIC + 3 dynamic reviewers",),
+    "academic-paper-reviewer/agents/eic_agent.md": (
+        "# EIC Agent",
+        'description: "Editor-in-Chief seat;',
+        "## EIC Review Report",
+    ),
+    "academic-paper-reviewer/agents/field_analyst_agent.md": (
+        "**EIC Configuration**",
+        "[Card #1: EIC]",
+    ),
+    "academic-paper-reviewer/agents/methodology_reviewer_agent.md": ("EIC verdict",),
+    "academic-paper-reviewer/agents/domain_reviewer_agent.md": ("EIC verdict",),
+    "academic-paper-reviewer/agents/perspective_reviewer_agent.md": ("EIC verdict",),
+    "academic-paper-reviewer/agents/devils_advocate_reviewer_agent.md": (
+        "The EIC and R1/R2/R3",
+        "EIC verdict",
+        "EIC's role",
+    ),
+    "academic-paper-reviewer/agents/editorial_synthesizer_agent.md": (
+        "| Dimension | EIC | R1 (Methodology)",
+        "### EIC Report Summary",
+    ),
+    "academic-paper-reviewer/templates/editorial_decision_template.md": (
+        "| EIC | [Journal editor identity]",
+    ),
+    "academic-paper-reviewer/references/guided_mode_protocol.md": ("**EIC opens**",),
+    "academic-paper-reviewer/references/top_journals_by_field.md": (
+        "calibrating EIC identity",
+        "Selecting Journals for EIC",
+    ),
+    "academic-paper-reviewer/references/editorial_decision_standards.md": (
+        "EIC assessment only; advisory",
+        "| EIC | R1 | R2 | R3 | -> Recommended Decision |",
+        "EIC (or synthesizer) needs to deeply analyze",
+    ),
+    "academic-paper-reviewer/templates/revision_response_template.md": (
+        "## Response to Editor (EIC)",
+        "### Editor Comment ",
+        "EIC's comment",
+        "each EIC comment",
+    ),
+    "academic-paper-reviewer/examples/hei_paper_review_example.md": (
+        "### EIC Review Report",
+        "within EIC's core remit",
+    ),
+    "academic-paper-reviewer/examples/interdisciplinary_review_example.md": (
+        "### EIC Review Report",
+        "within EIC's core remit",
+    ),
+    "academic-paper-reviewer/examples/subclaim_decomposition_example.md": (
+        "EIC arbitration",
+    ),
+}
+
+
 FORBIDDEN_REVIEW_DISPATCH = {
     "academic-paper-reviewer/SKILL.md": (
         "+ eic/editorial_synthesizer (integration + Phase 2B + decision derivation",
@@ -276,25 +307,6 @@ FORBIDDEN_REVIEW_DISPATCH = {
         "the narrow re-review team: `eic`, `editorial_synthesizer`",
     ),
     "README.md": ("First-round review team vs. narrow re-review team boundary",),
-    "README.zh-TW.md": ("第一輪審查團隊 vs. 精簡再審團隊的分界",),
-    "README.zh-CN.md": ("第一轮审查团队 vs. 精简再审团队的分界",),
-    "README.ja-JP.md": ("初回レビューチーム vs. 限定的な再レビューチームの境界",),
-    "README.ko-KR.md": ("1차 심사팀 대 좁은 re-review 팀 경계",),
-}
-
-# These are display contexts, not a repo-wide ban on EIC. Serialized source IDs,
-# `contract_role: eic`, frozen evidence, and real-journal EIC roles remain valid.
-FORBIDDEN_DISPLAY = {
-    "README.md": ("(EIC + 3 dynamic reviewers",),
-    "README.zh-TW.md": ("（主編 +",),
-    "README.zh-CN.md": ("（主编 +",),
-    "README.ja-JP.md": ("（EIC +",),
-    "README.ko-KR.md": ("(EIC +",),
-    "academic-paper-reviewer/agents/eic_agent.md": (
-        "# EIC Agent",
-        'description: "Editor-in-Chief seat;',
-        "## EIC Review Report",
-    ),
     "academic-paper-reviewer/agents/field_analyst_agent.md": (
         "**EIC Configuration**",
         "[Card #1: EIC]",

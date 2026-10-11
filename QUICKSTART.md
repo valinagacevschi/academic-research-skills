@@ -74,5 +74,4 @@ This triggers the full 10-stage pipeline, which stops at every stage for your co
 ## What's next?
 
 - [Full README](README.md) — all features, modes, installation options, and changelog
-- [中文版](README.zh-TW.md) — Traditional Chinese version
 - [Pipeline showcase](examples/showcase/) — real artifacts from a complete pipeline run

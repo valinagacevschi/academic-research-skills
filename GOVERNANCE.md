@@ -14,7 +14,7 @@ ISO/IEC 42001), not the standard's own principle list and not a certification cl
 ## Decision authority
 
 - The maintainer (Cheng-I Wu, [@Imbad0202](https://github.com/Imbad0202)) is the
-  final decision authority for scope, design, merges, releases, deprecations, and
+  final decision authority for scope, design, merges, deprecations, and
   security response. There is no committee, no co-maintainer, and no organizational
   review body behind this repository.
 - External contributions are welcome through issues and pull requests; the
@@ -49,12 +49,8 @@ organizational independence.
 
 ## Release authority and change control
 
-Releases are tagged by the maintainer after the pre-tag gates pass
-(version-consistency lint, changelog-covers-merges; see
-[CONTRIBUTING.md](CONTRIBUTING.md)), with a post-tag re-check of the same lint
-([docs/ARCHITECTURE.md §7.1](docs/ARCHITECTURE.md#71-ci-workflow-enforcement-classes-755)).
-Between releases, changes land on `main` through pull requests, with CI workflows
-enforcing at the strengths classified in §7.1.
+This fork has no release or tag process. Changes land on `main` through pull
+requests, with CI workflows enforcing the checks classified in §7.1.
 
 ## Continuity and end of life
 
@@ -107,10 +103,9 @@ conformance claims:
 
 The check-act half of the loop is carried by the standing artifacts these issues
 leave behind: the capability matrix and the risk register (#759, PR #777) record
-what is unverified, the open issues the assessment §5 links (#746, #675, #676,
-#653 at the time of writing) are the improvement queue, and a scheduled monthly
-workflow opens a harness-retirement audit issue so prompt-debt review is scheduled
-rather than forgotten. That is the whole loop, sized to one maintainer.
+what is unverified, and the open issues the assessment §5 links (#746, #675, #676,
+#653 at the time of writing) are the improvement queue. That is the whole loop,
+sized to one maintainer.
 
 ### Annex C objectives assessed as not applicable
 

@@ -764,10 +764,12 @@ threading.Event().wait()
         while time.monotonic() < reap_deadline:
             try:
                 os.killpg(proc.pid, 0)
-            except ProcessLookupError:
+            except (ProcessLookupError, PermissionError):
+                # Darwin may immediately reuse the numeric process-group ID for
+                # a process we cannot signal after the original group is reaped.
                 break
             time.sleep(0.01)
-        with pytest.raises(ProcessLookupError):
+        with pytest.raises((ProcessLookupError, PermissionError)):
             os.killpg(proc.pid, 0)
     finally:
         runtime._stop_process(proc)

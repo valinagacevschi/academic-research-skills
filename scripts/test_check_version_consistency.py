@@ -1166,62 +1166,6 @@ class TestKeyAdditionsAlignment(unittest.TestCase):
             )
 
 
-class TestTagMatch(unittest.TestCase):
-    """Tag gate (#487, invariant 1c): `--tag <ref>` must equal the suite
-    version — the one comparison nothing else performs at tag time."""
-
-    def test_matching_tag_passes(self) -> None:
-        with TemporaryDirectory() as tmp:
-            root = Path(tmp)
-            _write_aligned_fixture(root)
-            result = run_script(SCRIPT, "--path", str(root), "--tag", "v3.5.0")
-            self.assertEqual(
-                result.returncode, 0,
-                msg=f"stdout={result.stdout!r} stderr={result.stderr!r}",
-            )
-
-    def test_mismatched_tag_fails(self) -> None:
-        with TemporaryDirectory() as tmp:
-            root = Path(tmp)
-            _write_aligned_fixture(root)
-            result = run_script(SCRIPT, "--path", str(root), "--tag", "v3.6.0")
-            self.assertEqual(result.returncode, 1, msg=f"stdout={result.stdout!r}")
-            self.assertIn("v3.6.0", result.stdout)
-            self.assertIn("3.5.0", result.stdout)
-
-    def test_tag_without_v_prefix_matches(self) -> None:
-        """A bare `3.5.0` ref compares equal — the leading `v` is cosmetic."""
-        with TemporaryDirectory() as tmp:
-            root = Path(tmp)
-            _write_aligned_fixture(root)
-            result = run_script(SCRIPT, "--path", str(root), "--tag", "3.5.0")
-            self.assertEqual(
-                result.returncode, 0,
-                msg=f"stdout={result.stdout!r} stderr={result.stderr!r}",
-            )
-
-    def test_tag_supplied_but_suite_version_missing_fails(self) -> None:
-        """The tag gate must NOT silently no-op when .claude/CLAUDE.md has no
-        Suite-version line: the whole point of `--tag` is to guarantee the tag
-        is right at tag time, so a garbage tag co-occurring with a broken
-        CLAUDE.md has to be a non-zero exit (both the suite-missing error AND
-        the tag-uncheckable error surface), never a pass."""
-        with TemporaryDirectory() as tmp:
-            root = Path(tmp)
-            _write_aligned_fixture(root)
-            claude_md = root / ".claude" / "CLAUDE.md"
-            text = claude_md.read_text(encoding="utf-8")
-            text = text.replace(
-                "- **Suite version**: 3.5.0 (per CHANGELOG.md)\n", ""
-            )
-            claude_md.write_text(text, encoding="utf-8")
-            result = run_script(SCRIPT, "--path", str(root), "--tag", "v9.9.9")
-            self.assertEqual(result.returncode, 1, msg=f"stdout={result.stdout!r}")
-            # The tag itself must be named as uncheckable — not just the
-            # generic suite-missing error that would fire even without --tag.
-            self.assertIn("v9.9.9", result.stdout)
-
-
 class TestCitationSurfaces(unittest.TestCase):
     """Invariant 12: CITATION.cff (YAML-parsed, absence errors) and
     POSITIONING.md citation prose (optional) track the release. The aligned

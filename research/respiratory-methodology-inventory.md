@@ -167,7 +167,7 @@ Any study built on INSP, PNPSCT, DRG or CNAS data is "routinely collected", so R
 
 ## Implications for the profile
 
-- **Overlay reference file (`respiratory_medicine` methodology pack).** Ship a single reference listing sections B–E above with full citations and an `edition`/`last_verified` field per entry. GOLD and GINA editions need a freshness check like the existing PRISMA-trAIce freshness pattern (`scripts/check_prisma_trAIce_freshness.py`).
+- **Overlay reference file (`respiratory_medicine` methodology pack).** Ship a single reference listing sections B–E above with full citations and an `edition`/`last_verified` field per entry. GOLD and GINA editions should include a `last_verified` date in the inventory.
 - **Routing add-ons, not new routes.** Reuse the core §10 routing (`equator_reporting_guidelines.md:400-455`) unchanged. The overlay should only add *secondary-component prompts*: RECORD/RECORD-PE when data are routinely collected (Romanian registers, DRG, CNAS), STROME-ID for TB molecular epidemiology, and TB-triage guidance alongside STARD. This matches the extension clause at `:435` and needs no core edit.
 - **Reviewer prompts.** Add a respiratory checklist for `domain_reviewer_agent`. It should cover the measurement standard cited and met (2019 spirometry, 2017 DLCO, 2005/2011 FeNO, 2014 field walking tests), the reference-equation set named, GOLD or GINA definitions with their edition stated, WHO TB definitions with the outcome-definition version stated, and MCIDs cited with their source rather than as bare numbers.
 - **Data-source registry.** Add a Romania/EU respiratory data-source list (table above) to the `ro` locale pack or the profile, with access notes. Mark INSP pages as "verify reachability".

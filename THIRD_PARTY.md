@@ -45,7 +45,7 @@ Listing on this page is *not* the same as ARS officially supporting or bundling 
 integration. If you are building a platform port or a first-class integration and want
 it recognized in the main README or shipped with the suite, that goes through the
 **platform-ports policy** (community-maintained ports), which sets a higher bar than a
-directory listing. See the Platform Port Reminder policy and open an issue to discuss.
+directory listing. See the platform-ports policy and open an issue to discuss.
 
 ## Listed projects
 
