@@ -268,9 +268,13 @@ def main(argv: list[str] | None = None) -> int:
         return 2
     text = target.read_text(encoding="utf-8")
     violations = lint_text(text)
-    # Derive repo root from the anchor table path so tests using temp
-    # subtree mirrors also exercise the canonical-source existence check.
-    derived_repo_root = target.resolve().parent.parent.parent
+    # Resolve the canonical source by walking ancestors. Compatibility skill
+    # symlinks resolve under skills/<name>, while shared/ remains at ARS root.
+    resolved = target.resolve()
+    derived_repo_root = next(
+        (parent for parent in resolved.parents if (parent / NATURE_POLICY_POINTER).is_file()),
+        resolved.parent.parent.parent,
+    )
     dedup_violations = verify_nature_dedup_with_venue(
         target, venue_path, anchor_text=text, repo_root=derived_repo_root
     )

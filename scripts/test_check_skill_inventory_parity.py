@@ -169,7 +169,7 @@ def test_missing_skills_dir_fails(tmp_path: Path) -> None:
     assert any("no top-level <name>/SKILL.md found" in line for line in v)
 
 
-# ---- surface C: CLAUDE.md table --------------------------------------------
+# ---- surface C: AGENTS.md table --------------------------------------------
 
 def test_missing_table_row_fails(tmp_path: Path) -> None:
     _build_root(tmp_path)

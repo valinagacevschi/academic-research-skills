@@ -71,15 +71,15 @@ RUNTIME_HASHES = {
 # live-model comparison.
 DETECTION_HASHES = {
     Path("academic-paper-reviewer/agents/eic_agent.md"):
-        "c5ec3150c7e7cc4c89358853d13af0bde8f211e0a735bcd8c72330d1f931943d",
+        "a04383ea869c1fc7913d23fdd08b46b07cc1f5a17fec981cff3b36d52790ac64",
     Path("academic-paper-reviewer/agents/methodology_reviewer_agent.md"):
-        "91e462ee104cc253a44d387570ea95a49a4efffcc2b4765617baf292431de6cb",
+        "d03be171cf8a00584fa86970329ee52b3decf90abceec9804cc41033c396b654",
     Path("academic-paper-reviewer/agents/domain_reviewer_agent.md"):
-        "eb6660aafadc851e3fc4545111b5113d467c9eb263ef069394db62c944ece1e5",
+        "b6157f2463947c8e552487c5981fd758d503b0a4399c36a241fabf2603c198df",
     Path("academic-paper-reviewer/agents/perspective_reviewer_agent.md"):
-        "49bb946547593a918bd60faee88555d46a2a10b39f2857ef94163eef65920d81",
+        "eacfff8e91fef2ba51fd6fd62e9301a0389e0eeb23c64cb149d978076119ce30",
     Path("academic-paper-reviewer/agents/devils_advocate_reviewer_agent.md"):
-        "b42eb5559bf91c8767f85e532dfa240e5e30feb92ae3fc0be96f20058acfcf6a",
+        "033906625c323f8cc76ed8c43922276766f7ed4487d93c107282c401626210f8",
     Path("academic-paper-reviewer/templates/peer_review_report_template.md"):
         "5da1f9d24d6e321cec5f38c13fa03fe23b9363b1842cb0d8111c5e39a810c7d1",
 }

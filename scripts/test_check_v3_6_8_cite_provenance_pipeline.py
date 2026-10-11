@@ -334,18 +334,19 @@ def test_ok_matrix_row_canonical_clause_drift_caught() -> None:
 
 
 def test_rescind_affordance_clause_missing_fails() -> None:
-    """R3 P2-2 closure: the canonical block must mention `/ars-unmark-read`
+    """R3 P2-2 closure: the canonical block must mention `--unmark`
     so the bidirectional rescind contract survives prose edits.
     """
     with _Snapshot(TARGET):
         text = TARGET.read_text(encoding="utf-8")
-        marker = "/ars-unmark-read"
-        assert marker in text, "fixture missing /ars-unmark-read mention"
-        mutated = text.replace(marker, "/ars-rescind")
+    marker = "scripts/ars_mark_read.py --unmark"
+    assert marker in text, "fixture missing scripts/ars_mark_read.py --unmark mention"
+    mutated = text.replace(marker, "scripts/ars_mark_read.py --rescind")
+    with _Snapshot(TARGET):
         TARGET.write_text(mutated, encoding="utf-8")
         result = _run_lint()
         assert result.returncode == 1, (
-            "R3 P2-2: removing /ars-unmark-read must fail the lint"
+            "R3 P2-2: removing --unmark must fail the lint"
         )
 
 

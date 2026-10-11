@@ -153,15 +153,15 @@ _REQUIRED_CLAUSES: list[tuple[str, str, str]] = [
         "bare `<!--ref:slug-->` comments; resolved markers do not "
         "invalidate (spec §3.3 line 181 + Step 3b acceptance line 457)",
     ),
-    # R3 P2-2 closure: R2 closed a P1 specifically about /ars-unmark-read
+    # R3 P2-2 closure: R2 closed a P1 specifically about scripts/ars_mark_read.py --unmark
     # rescind semantics (`ok` is NOT a fixed point; can be demoted). The
     # bidirectional contract MUST stay in the prose; lint must enforce
     # both the rescind affordance and demotion-language so future edits
     # cannot silently drop them.
     (
         "rescind affordance clause",
-        "/ars-unmark-read",
-        "Spec §3.6 line 302 defines /ars-unmark-read as the rescind "
+        "scripts/ars_mark_read.py --unmark",
+        "scripts/ars_mark_read.py --unmark rescinds a prior mark; the "
         "affordance; the canonical block must mention it so demotion "
         "semantics survive prose edits (R2 P1 closure)",
     ),
@@ -171,7 +171,7 @@ _REQUIRED_CLAUSES: list[tuple[str, str, str]] = [
         "bidirectional matrix re-evaluation clause",
         "demot",
         "R2 P1 closure: the canonical block must explicitly describe "
-        "demotion (e.g. `ok` → `LOW-WARN` after /ars-unmark-read) so "
+        "demotion (e.g. `ok` → `LOW-WARN` after scripts/ars_mark_read.py --unmark) so "
         "the bidirectional contract survives prose edits",
     ),
 ]

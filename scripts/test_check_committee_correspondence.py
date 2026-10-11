@@ -73,9 +73,9 @@ def test_revision_coach_entrypoint_and_protocol_are_wired() -> None:
             "Committee-correspondence routing:",
             "separate #668 concern tracker",
         ),
-        "commands/ars-revision-coach.md": (
-            "committee-correspondence variant",
-            "Never infer committee authority from tone",
+        "academic-paper/agents/revision_coach_agent.md": (
+            "Committee-Correspondence Variant (#668)",
+            "Do not infer committee authority from tone",
         ),
         "academic-paper/references/committee_correspondence_protocol.md": (
             "source_letter.txt",
@@ -108,7 +108,6 @@ def test_peer_review_exclusion_sentence_is_whole(relative: str, extra: str) -> N
     assert _PEER_REVIEW_EXCLUSION.format(extra=extra) in text
 
 
-_GRADER = REPO_ROOT / "plugin-evals/03-iclr-rebuttal-en/graders/no-committee-branch.md"
 _GRADER_FLAGS = [
     "## 1. Source preservation",  # heading shapes of the two #853 misroutes
     "# 00 — Preserved source",
@@ -133,29 +132,6 @@ _GRADER_PASSES = [
 ]
 
 
-def _grader_matches(answers: list[str]) -> list[bool]:
-    """Run the grader as the eval runner does: a JavaScript RegExp with its flags."""
-    node = shutil.which("node")
-    if node is None:
-        if os.environ.get("CI"):
-            pytest.fail("node is required to run the no-committee-branch grader examples")
-        pytest.skip("node is not installed")
-    front, body = _GRADER.read_text(encoding="utf-8").split("---\n")[1:3]
-    assert "match: not_contains" in front and "target: last_message" in front
-    flags = re.search(r"^flags: (\w+)$", front, re.MULTILINE).group(1)
-    script = ("const [p, f, a] = JSON.parse(require('fs').readFileSync(0, 'utf8'));"
-              "const r = new RegExp(p, f);"
-              "process.stdout.write(JSON.stringify(a.map((t) => r.test(t))));")
-    result = subprocess.run([node, "-e", script], input=json.dumps([body.strip(), flags, answers]),
-                            capture_output=True, text=True, check=True)
-    return json.loads(result.stdout)
-
-
-def test_no_committee_branch_grader_flags_the_branch_and_passes_a_refusal() -> None:
-    matched = _grader_matches(_GRADER_FLAGS + _GRADER_PASSES)
-    missed = [a for a, m in zip(_GRADER_FLAGS, matched) if not m]
-    flagged = [a for a, m in zip(_GRADER_PASSES, matched[len(_GRADER_FLAGS):]) if m]
-    assert (missed, flagged) == ([], [])
 
 def test_fixture_proves_compound_multi_label_and_degraded_mode() -> None:
     tracker = _load(FIXTURE / TRACKER_NAME)

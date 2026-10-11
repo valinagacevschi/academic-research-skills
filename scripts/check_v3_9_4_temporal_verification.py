@@ -39,7 +39,7 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 SCHEMAS = REPO_ROOT / "shared/contracts/passport"
 
 BIBLIOGRAPHY_AGENT_PATH = REPO_ROOT / "deep-research/agents/bibliography_agent.md"
-BIBLIOGRAPHY_AGENT_SHA256 = "1b43694808fbd99a5b99590796d5b3112fa0b3d8c4d82b0aa886462ef8dc344b"  # #916 baseline: Step 5 and the output template gain the per-source method-weaknesses field and its canonical block; NO temporal/M6/M5 logic touched, ownership invariant intact. Previous accepted #738/#660/#651/#548/#511 additions remain covered by the same rule.
+BIBLIOGRAPHY_AGENT_SHA256 = "9215237296cec0ed113ee738522aa50d8dc8ccff58afe100a83600186745c766"  # Codex-only skill migration baseline: no temporal/M6/M5 ownership logic changed.
 
 
 def _validate(yaml_path: Path, schema_path: Path) -> list[str]:
