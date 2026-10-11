@@ -53,10 +53,10 @@ deep-research skill's reading-probe instructions.
 
 ## Cross-model verification (optional)
 
-Cross-model verification has no active runtime integration in this release. Its provider request builders are provisional and unmeasured; setting these variables does not send a request. Keep using the Codex session model until the runtime path is completed. See [Cross-model verification](../shared/cross_model_verification.md) for the contract.
+Cross-model verification is implemented as an opt-in stdlib API call. It is provisional and unmeasured; no live API validation is claimed. The session model remains the configured Codex GPT model. A verifier call sends the selected reference and context to the external provider, so obtain explicit per-session user consent before sending unpublished content. Leave `ARS_CROSS_MODEL` unset to disable it. See [Cross-model verification](../shared/cross_model_verification.md) for the contract.
 
-The examples below show the planned provider configuration. The model IDs are
-provisional and unmeasured; no live API validation is claimed.
+The model IDs and provider behavior remain provisional and unmeasured. Invoke
+the CLI only after consent, with one reference per call:
 
 ```sh
 # Choose one provider; leave ARS_CROSS_MODEL unset to disable verification.
@@ -67,6 +67,14 @@ export ANTHROPIC_API_KEY="<your-anthropic-api-key>"
 # export GEMINI_API_KEY="<your-gemini-api-key>"
 ```
 
+```sh
+printf '%s' '{"reference":"Doe, J. (2024). Example. doi:10.1234/example","context":"supports claim X"}' | python scripts/cross_model_verify.py --consent
+```
+
+The JSON output records the actual provider and model. Transport failures,
+malformed responses, and safety blocks return `unavailable` without a verdict.
+
 ## Control availability
 
 Plugin, project-skill, and user-skill installs have different boundaries. See [Control availability](CONTROL_AVAILABILITY.md) before relying on a control.
+For external API endpoints and data sent, see [Data flows](DATA_FLOWS.md).

@@ -50,9 +50,9 @@ deep-research 的選用閱讀探測預設關閉；設定 `ARS_SOCRATIC_READING_P
 
 ## 跨模型驗證（選用）
 
-本版本尚未整合可執行的跨模型驗證 runtime。Provider request builder 仍屬暫定且未經實測；設定以下變數不會送出請求。runtime 完成前請繼續使用 Codex session model。跨模型契約詳見[說明文件](../shared/cross_model_verification.md)。
+跨模型驗證已實作為選用的標準函式庫 API 呼叫，但仍屬暫定且未經實測；目前沒有任何 live API 驗證聲明。Session model 仍是 Codex 設定的 GPT model。傳送未發表內容前，須取得本次 session 的明確同意。未設定 `ARS_CROSS_MODEL` 即停用。跨模型契約詳見[說明文件](../shared/cross_model_verification.md)。
 
-以下範例僅記錄預定的 provider 選擇方式，目前不會啟用請求。
+以下範例設定 provider；取得同意後，每次只驗證一筆文獻：
 
 ```sh
 # 選一個 provider；未設定 ARS_CROSS_MODEL 即停用驗證。
@@ -62,6 +62,8 @@ export ANTHROPIC_API_KEY="<your-anthropic-api-key>"
 # export ARS_CROSS_MODEL="gemini-3.1-pro-preview"
 # export GEMINI_API_KEY="<your-gemini-api-key>"
 ```
+
+CLI 從 stdin 讀取一筆 JSON 文獻與情境，輸出 verdict 和實際 provider/model provenance。傳輸失敗、格式錯誤或安全封鎖會回傳 `unavailable`，不會偽造 verdict。
 
 ## 控制可用性
 

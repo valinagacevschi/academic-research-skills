@@ -2,7 +2,7 @@
 
 ## Overview
 
-The session model is the GPT model configured in Codex. Cross-model verification is a future opt-in path for a non-GPT Anthropic Claude or Google Gemini verifier. `ARS_CROSS_MODEL` unset means disabled. This release has no active verifier runtime; the request builders are provisional and unmeasured.
+The session model is the GPT model configured in Codex. Cross-model verification is an opt-in, non-GPT Anthropic Claude or Google Gemini API call. `ARS_CROSS_MODEL` unset means disabled. The stdlib runtime is implemented, but its provider behavior is provisional and unmeasured; no live API validation is claimed.
 
 Before sending unpublished material to an external provider, name the provider, model, and content class and obtain explicit user consent. An environment variable is not consent. Preserve the typed handoff envelope and workflow-specific input bounds described below.
 
@@ -21,7 +21,7 @@ A stress test of 68 AI-generated citations found 31% had problems — and all pa
 | Anthropic Claude | `claude-sonnet-4-6` | `ANTHROPIC_API_KEY` | Provisional, unmeasured |
 | Google Gemini | `gemini-3.1-pro-preview` | `GEMINI_API_KEY` | Provisional, unmeasured |
 
-There is no active runtime integration in this release. Setting `ARS_CROSS_MODEL` and a provider key does not send a request. Leave it unset to retain single-model behavior.
+`scripts/cross_model_verify.py` sends one reference per request when explicitly invoked with `ARS_CROSS_MODEL` and the matching API key. It records provider and model provenance. Leave the variable unset to retain single-model behavior. Transport errors, malformed responses, refusal/safety blocks, and failed provider searches return `unavailable`, never a citation verdict.
 
 ## Request Builders
 
@@ -29,7 +29,7 @@ There is no active runtime integration in this release. Setting `ARS_CROSS_MODEL
 
 ## Setup
 
-Choose exactly one provider model ID and its matching key when the runtime becomes available:
+Choose one provider model ID and matching key; the configured Codex session model remains the primary model:
 
 ```sh
 export ARS_CROSS_MODEL="claude-sonnet-4-6"
@@ -86,7 +86,7 @@ When the integrity_verification_agent detects `ARS_CROSS_MODEL` in the environme
    Reference: [full reference text] — Context: [sentence where cited]
    ```
    A `VERIFIED` verdict with no accompanying source URL/DOI is treated as `NOT_SEARCHED` (the model claimed a result it cannot evidence).
-4. Send to the cross-model via the appropriate API (see API Call Patterns below). **A future grounded provider path must enable the provider search/grounding tool and reject responses as `NOT_SEARCHED` without grounding evidence** — a model that ignores the "search the web" instruction cannot fake an absent grounding trace, so this is the real safety boundary, not the prompt wording. **The current request builders do not implement a grounded lookup or verdict path; no provider result is consumed in this release.**
+4. Invoke the stdlib API CLI (`scripts/cross_model_verify.py`) with one reference JSON object on stdin. Anthropic's Messages API enables its web-search tool; Gemini enables Google Search grounding. A verdict is accepted only from a valid response with provider search evidence; a `VERIFIED` verdict without a valid source URL/DOI is downgraded to `NOT_SEARCHED`. Transport errors, refusals, malformed responses, and provider search errors remain `unavailable`.
 5. Compare results: if the primary/session model said VERIFIED but the cross-model said NOT_FOUND or MISMATCH, flag as `[CROSS-MODEL-DISAGREEMENT]`. Treat `NOT_SEARCHED` / ungrounded exactly as **not verified** — it never counts as agreement with the primary/session model, and a sample that returns `NOT_SEARCHED` is surfaced for re-run or human review, never silently passed.
 6. Include disagreements in the integrity report under a new section:
    ```markdown
@@ -250,15 +250,17 @@ Checkpoint decisions are judgment, not lookup — an ungrounded/compatible provi
 
 ## API Request Patterns
 
-A future runtime must use the provider request builders above, enforce the per-session consent gate, and validate a workflow-appropriate structured response before use. Provider responses must not be treated as evidence merely because the HTTP request succeeded. The old OpenAI, OpenAI-compatible, and Codex-subscription verifier transports have been retired.
+The runtime uses the stdlib `urllib` HTTP client with a 35-second timeout, at most three attempts, and retries limited to timeouts/connection errors, HTTP 429, and HTTP 5xx. HTTP 4xx, malformed provider data, provider refusals/safety blocks, and search-tool errors produce `unavailable` with no verdict. Secrets come only from `ANTHROPIC_API_KEY` or `GEMINI_API_KEY` in the process environment and are never written to audit output. `scripts/cross_model_verify.py --consent` reads one reference/context JSON object from stdin and emits the existing citation verdict enum plus `{provider, model}` provenance; without the explicit consent flag it performs no request. The Python API `dispatch_handoff(..., consent=True)` sends only the parsed handoff payload (never `owner_decision`) and routes provider output through `cross_model_handoff.route_result`, retaining its closed checkpoint enums and unavailable behavior. `NOT_SEARCHED` is not confirmation; `unavailable` is a transport/provider failure, not a verdict. The old OpenAI, OpenAI-compatible, and Codex-subscription verifier transports have been retired.
 
 ### Runtime availability
 
-No provider dispatch, response parsing, or grounding validation is enabled in this release. Keep cross-model behavior disabled and use the Codex session model alone until those paths are implemented and tested.
+Provider dispatch, response parsing, source validation, and audit provenance are implemented in `scripts/cross_model_request.py` and `scripts/cross_model_verify.py`. Unit tests use mocked HTTP only; provider behavior remains provisional and unmeasured.
 
 ## Cost Considerations
 
-No live verifier path is enabled, so current provider cost and latency are not measured. Re-estimate these only after runtime integration and opt-in live validation.
+The verifier is implemented but provisional and unmeasured. No live provider call, accuracy, cost, or latency result is claimed. Re-estimate cost and latency only after explicit opt-in live validation.
+
+For sealed Promotion Bakeoff provenance, `reveal_copy_git_commits` records every listed reveal-copy commit; each listed reveal-copy commit must carry its timing witness in the run report. Local Git history alone does not establish remote publication timing.
 
 ## Limitations
 

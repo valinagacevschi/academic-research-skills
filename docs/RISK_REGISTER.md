@@ -131,12 +131,14 @@ A consented second-model call carries unpublished manuscript content to an exter
 provider.
 
 - **Existing controls**: consent contract with explicit per-call surfaces
-  (`shared/cross_model_verification.md`) and the user-facing network map
-  (`docs/DATA_FLOWS.md`). Provider request builders are provisional and are not
-  wired to an active verifier runtime.
-- **Evidence status**: `NOT_RUN` (asserted here; no capability-matrix row) — the
-  request-builder shapes have offline tests only; live provider behavior and
-  behavioral compliance with the consent contract are unmeasured.
+  (`shared/cross_model_verification.md`), one-reference-per-call provider search
+  grounding, bounded HTTP retries, closed verdict/source validation, and the
+  user-facing network map (`docs/DATA_FLOWS.md`). The stdlib runtime records
+  actual provider/model provenance; it remains provisional and unmeasured.
+- **Evidence status**: `NOT_RUN` (asserted here; no capability-matrix row) —
+  mocked HTTP tests cover request/response handling; live provider behavior,
+  verifier accuracy, and behavioral compliance with the consent contract are
+  unmeasured.
 - **Residual gap**: consent surfaces are prompt-contract layers whose behavior
   varies with the session model; the no-autonomous-publication line is a scope
   boundary and review criterion, not a runtime guarantee (`POSITIONING.md`).
