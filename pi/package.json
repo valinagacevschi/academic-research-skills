@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "version": "0.1.0",
-  "description": "Thin Pi wrapper for the upstream Claude Code Academic Research Skills",
+  "description": "Thin Pi wrapper for the Codex-first Academic Research Skills",
   "keywords": [
     "pi-package",
     "academic-research"

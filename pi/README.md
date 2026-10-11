@@ -1,6 +1,6 @@
 # Pi wrapper
 
-Thin, community-maintained compatibility wrapper for running the original Claude Code Academic Research Skills (ARS) in [Pi](https://pi.dev/).
+Thin, community-maintained compatibility wrapper for running the Codex-first Academic Research Skills (ARS) in [Pi](https://pi.dev/).
 
 The wrapper does not copy or modify ARS skill, agent, reference, schema, script, or command content. Pi loads the four original `SKILL.md` trees and exposes the original `commands/ars-*.md` files as prompt templates. A small input adapter reads the selected original command at invocation time and preserves trailing user arguments.
 

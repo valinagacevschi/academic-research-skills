@@ -4,7 +4,7 @@
 
 This protocol enables optional blind cross-model checks for high-stakes AI judgments. When enabled, another model family can inspect bounded inputs without seeing the primary result. That adds typed substrate diversity and may expose shared-frame blind spots; it does not by itself establish independent error processes or higher accuracy.
 
-**This is entirely optional.** All ARS skills work with the primary Claude model alone. Cross-model verification is an additional layer for users who want higher confidence in integrity checks, devil's advocate challenges, and review judgments.
+**This is entirely optional.** All ARS skills work with the active session model alone. Cross-model verification is an additional layer for users who want a second model to check integrity, challenge arguments, or review judgments.
 
 **Consent boundary:** Before unpublished manuscripts, private notes, corpus text,
 reviewer comments, decision letters, response letters, or other review material
@@ -41,7 +41,8 @@ A stress test of 68 AI-generated citations found 31% had problems — and all pa
 
 | Model | API ID | Provider | Best For |
 |-------|--------|----------|----------|
-| Claude (session model) | _(inherited Claude Code session model)_ | Anthropic | Primary model (default for all ARS skills) |
+| Codex (session model) | _(inherited Codex session model)_ | OpenAI | Primary model (default for this reference distribution) |
+| Claude (session model) | _(inherited Claude Code session model)_ | Anthropic | Supported by the Claude Code adapter |
 | GPT-6 Astra | `gpt-6-astra` | OpenAI | Cross-verification — current OpenAI flagship (released 2026-09-03), recommended OpenAI verifier under the recommendation policy below; **provisional pending ARS validation** on both the first-party API route and the ChatGPT-subscription citation transport (no recorded bakeoff run; entry-gate smoke PASS on the citation transport 2026-09-05, codex-cli 0.153.4 — see the GPT-6 Astra note below) |
 | GPT-5.6 Sol | `gpt-5.6-sol` | OpenAI | Cross-verification — previous generation, superseded by GPT-6 Astra (2026-09-03); **validated for the ChatGPT-subscription citation transport** (2026-08-19/20 bakeoff, superiority on recall + latency — `audits/bakeoff-gpt-5-6-sol-codex-2026-08-19.md`), the only id with a measured ARS run on any transport; **provisional pending ARS validation** on the first-party API route (same standard rates as GPT-5.5) |
 | Gemini 3.1 Pro | `gemini-3.1-pro-preview` | Google | Cross-verification — current Google flagship (validated); strong at factual verification |
@@ -66,13 +67,13 @@ A stress test of 68 AI-generated citations found 31% had problems — and all pa
 
 > **GPT-5.6 Sol status (listed 2026-07-11, three days after release; superseded by GPT-6 Astra on 2026-09-03).** Its endpoint support (Responses API), hosted `web_search` tool, and reasoning-effort values are confirmed against OpenAI's model documentation, but its ARS-specific behavior — grounded-search completion rate, citation-mismatch recall, false-disagreement rate, response-shape stability against the jq grounding guards, p95 latency — is unvalidated. **Recommendation policy (2026-08-19):** GPT-5.5 was superseded by the GPT-5.6 family on 2026-07-09, so the recommendation names the current generation rather than a superseded id — a lifecycle decision, not a measurement claim. `validated` is earned only there — and on 2026-08-19 a codex-transport bakeoff run earned it for the **ChatGPT-subscription citation transport**, with a measured superiority case from the counterbalanced gate fleet (fabrication recall 0.90 vs 0.80, p95 latency 25.0 s vs 49.6 s nearest-rank, grounded completion tied, no inferiority on any measure; recall and latency led in all five paired fleets — `audits/bakeoff-gpt-5-6-sol-codex-2026-08-19.md`). On the **first-party API route** `gpt-5.6-sol` stays **provisional** — that run did not exercise the API route's jq grounding guards, and no parity or superiority is claimed there. For the API route, run `scripts/cross_model_smoke_test.sh` against your key before adopting it; users who prefer an API-route-validated id can stay on `gpt-5.5` or `gemini-3.1-pro-preview` (validated = the id-status allowlist below; the API route has no recorded bakeoff run). Two facts that differ from the GPT-5.5 lineup: GPT-5.6 ships **no `-pro` model ID** — premium operation is standard `gpt-5.6-sol` plus `reasoning: {mode: "pro"}` in the request, billed at standard token rates with more model work per request (the old fixed ~6× unit-price split does not carry over); and its reasoning effort accepts `none|low|medium|high|xhigh|max` (GPT-5.5 tops out at `xhigh`), defaulting to `medium` in both standard and pro modes.
 
-Using two non-Anthropic models as primary+verifier is possible but not tested with ARS prompts.
+Using a second OpenAI model as verifier for a Codex session model is possible, but the ARS prompt path has not been broadly validated.
 
 ## Setup Guide
 
 ### Prerequisites
 
-You need API keys from at least one additional provider. ARS itself runs inside Claude Code, so Claude is always available as the primary model.
+You need an API key for at least one additional provider. In this reference distribution, the Codex session model is primary; cross-model verification uses a separately configured provider and key.
 
 ### Step 1: Get API Keys
 
@@ -201,9 +202,9 @@ unset ARS_CROSS_MODEL
 ### Integrity Verification (academic-pipeline, Stage 2.5 / 4.5)
 
 **When `ARS_CROSS_MODEL` is set:**
-- Primary model (Claude) runs full Phase A-E verification as normal
+- Primary Codex session model runs full Phase A-E verification as normal
 - After Phase A completes, a **risk-stratified** selection of references is sent for a blind cross-model verification pass (see step 2 below; replaces the pre-#518 uniform random 30%)
-- Cross-model receives only the reference text and paper context — not Claude's verification result (to prevent anchoring)
+- Cross-model receives only the reference text and paper context — not the primary model's verification result (to prevent anchoring)
 - Disagreements are flagged as `[CROSS-MODEL-DISAGREEMENT]` and prioritized for human review
 
 **When `ARS_CROSS_MODEL` is not set:**

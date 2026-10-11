@@ -15,6 +15,8 @@ metadata:
 
 # Academic Paper — Academic Paper Writing Agent Team
 
+**Codex use:** invoke `$academic-paper` or name this skill and its mode. `/ars-*` forms below are Claude Code command aliases; in Codex, treat them as mode names, not executable slash commands. See [control availability](../docs/CONTROL_AVAILABILITY.md) for runtime-specific limits.
+
 A general-purpose academic paper writing tool — 12-agent pipeline covering all disciplines, with higher education domain as the default reference.
 
 **v2.5** adds two writing quality features:

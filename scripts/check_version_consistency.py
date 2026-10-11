@@ -8,11 +8,10 @@ Invariants enforced:
      "## [X.Y.Z]" entry in CHANGELOG.md.
   3. academic-pipeline version in the table equals the suite version (pipeline
      = orchestrator, by convention tracks the suite release).
-  4. The plugin manifests (.claude-plugin/plugin.json "version" and
-     .claude-plugin/marketplace.json plugins[].version) equal the suite version.
-     These are the repo's OUTWARD-FACING package metadata — a user updating the
-     plugin sees them — and were the one surface a v3.10.0 release-doc pass missed
-     because no lint covered them (marketplace had silently sat at 3.7.0).
+  4. The plugin manifests (.claude-plugin/plugin.json, the Claude marketplace,
+     and .codex-plugin/plugin.json when present) equal the suite version. These
+     are the repo's OUTWARD-FACING package metadata; a user updating the plugin
+     sees them.
   5. The README.md shields.io version badge (`badge/version-vX.Y.Z`) equals the
      suite version — the most outward-facing surface of all.
   6. No docs/*.md cites a `vX.Y.Z` ABOVE the suite version (a forward/unknown
@@ -421,10 +420,12 @@ def check(root: Path, tag: str | None = None) -> list[str]:
 
 
 def _check_plugin_manifests(root: Path, suite_version: str) -> list[str]:
-    """Invariant 4: .claude-plugin/plugin.json "version" and every
-    .claude-plugin/marketplace.json plugins[].version equal the suite version.
-    Missing files / malformed JSON / missing version keys are surfaced, never
-    crash (a release lint must report drift, not blow up on it)."""
+    """Invariant 4: plugin manifest versions equal the suite version.
+
+    The Claude plugin manifest and marketplace are required. The Codex
+    compatibility manifest is checked when present. Malformed JSON and
+    missing version keys are surfaced, never crash the release lint.
+    """
     errors: list[str] = []
 
     plugin_json = root / ".claude-plugin" / "plugin.json"
@@ -469,6 +470,22 @@ def _check_plugin_manifests(root: Path, suite_version: str) -> list[str]:
                             f"{marketplace}: plugins[{i}] version {str(v)!r} does "
                             f"not match suite version {suite_version!r}"
                         )
+
+    codex_plugin_json = root / ".codex-plugin" / "plugin.json"
+    if codex_plugin_json.is_file():
+        try:
+            data = json.loads(codex_plugin_json.read_text(encoding="utf-8"))
+        except (json.JSONDecodeError, ValueError) as exc:
+            errors.append(f"{codex_plugin_json}: invalid JSON ({exc})")
+        else:
+            v = data.get("version")
+            if v is None:
+                errors.append(f"{codex_plugin_json}: missing 'version' key")
+            elif str(v) != suite_version:
+                errors.append(
+                    f"{codex_plugin_json}: version {str(v)!r} does not match "
+                    f"suite version {suite_version!r}"
+                )
 
     return errors
 

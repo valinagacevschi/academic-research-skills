@@ -4,7 +4,8 @@
 citation-verification gate, mandatory checkpoints, the tools allowlist. Which of those
 actually operate depends on *how you installed ARS*. This page maps mechanism ×
 channel in one place, so a user evaluating an integrity claim can see whether it holds
-in their channel. The linked source documents remain authoritative for each fact.
+in their channel. Codex is the primary runtime; Claude Code and Pi are maintained adapters.
+The linked source documents remain authoritative for each fact.
 
 **Origin.** ISO/IEC 42001-spirit gap assessment
 ([`audits/iso42001-spirit-gap-assessment-2026-08-17.md`](../audits/iso42001-spirit-gap-assessment-2026-08-17.md),
@@ -16,7 +17,8 @@ anchors to ISO/IEC 42001) — not an ISO-mandated artifact.
 
 | Channel | Documented in | Channel-wide limitation |
 |---|---|---|
-| **Plugin** — Claude Code plugin install | [SETUP Method 0](SETUP.md#method-0-claude-code-plugin-v370-recommended-for-claude-code-cli--ide-users) | None — the reference channel. |
+| **Codex skills** — skill folders in `.agents/skills/` | [SETUP: Codex CLI](SETUP.md#codex-cli) | Prompt-level workflows operate; Claude Code plugin commands, hooks, and subagent manifests are not loaded. |
+| **Plugin** — Claude Code plugin install | [SETUP Method 0](SETUP.md#method-0-claude-code-plugin-v370-recommended-for-claude-code-cli--ide-users) | Adapter channel; Codex skills are the reference channel. |
 | **Skills copy** — skill folders copied into a project's `.claude/skills/` or the global `~/.claude/skills/` | [SETUP Method 1](SETUP.md#method-1-as-project-skills-recommended) | Nothing wired by the plugin manifest runs (note 3). |
 | **Repo clone** — Claude Code run inside a clone of this repository | [SETUP Method 2](SETUP.md#method-2-as-a-standalone-project) | Nothing wired by the plugin manifest runs (note 3). |
 | **Cowork** — skills uploaded to Claude Cowork (desktop) | [SETUP Method 3](SETUP.md#method-3-claude-cowork-desktop) | Each skill runs standalone: no Task-tool subagent dispatch, so the coordinated pipeline — and its staged checkpoints — does not run as designed. |
@@ -32,20 +34,20 @@ in this channel. Read down your channel's column: a claim about a mechanism hold
 where its row says Active — or Conditional with the linked note's conditions met — after
 applying your channel's channel-wide limitation above.
 
-| Mechanism | Plugin | Skills copy | Repo clone | Cowork | claude.ai Project | Claude Science | Pi port |
-|---|---|---|---|---|---|---|---|
-| Methodology layer (the five skills' `SKILL.md` protocols) | Active | Active | Active | Active | Conditional | Active | Active ⁽¹⁰⁾ |
-| Skill auto-routing (trigger keywords → skill activation) | Active | Active | Active | Active | Absent | Conditional | Conditional |
-| Cross-skill routing discipline (routing core: route directly or ask which workflow, #133 / #892) | Conditional ⁽⁸⁾ ⁽⁹⁾ | Conditional ⁽⁹⁾ | Active ⁽⁹⁾ | Conditional ⁽⁹⁾ | Absent | Conditional ⁽⁹⁾ | Conditional ⁽⁹⁾ |
-| `/ars-*` slash commands | Active ⁽¹⁾ | Absent | Absent | Absent | Absent | Absent | Conditional |
-| SessionStart announce, update reminder, and compaction handoff reminder | Conditional ⁽⁸⁾ | Absent ⁽³⁾ | Absent ⁽³⁾ | Absent | Absent | Absent | Absent |
-| Write-scope guard (`PreToolUse` hook) | Conditional ⁽²⁾ | Absent ⁽³⁾ | Absent ⁽³⁾ | Absent | Absent | Absent | Absent |
-| Plugin agents with tools allowlist (#514) ⁽⁴⁾ | Active | Absent ⁽³⁾ | Absent ⁽³⁾ | Absent | Absent | Absent | Absent |
-| Subagent orchestration (Task-tool multi-agent dispatch) | Active | Active | Active | Absent | Absent | Absent | Conditional |
-| Python-backed opt-in features (repo `scripts/`) | Conditional ⁽⁵⁾ | Conditional ⁽⁵⁾ | Conditional ⁽⁵⁾ | Absent | Absent | Absent | Conditional ⁽⁵⁾ |
-| Cross-model verification (consent-gated second model) | Conditional ⁽⁶⁾ | Conditional ⁽⁶⁾ | Conditional ⁽⁶⁾ | Absent | Absent | Absent | Absent |
-| Prompt-level checkpoints and integrity gates | Active ⁽⁷⁾ | Active ⁽⁷⁾ | Active ⁽⁷⁾ | Conditional | Absent | Conditional | Conditional |
-| sr-screener dual blinded screening (two reviewer subagents + adjudicator) | Active ⁽¹⁰⁾ | Conditional ⁽¹⁰⁾ | Conditional ⁽¹⁰⁾ | Absent ⁽¹⁰⁾ | Absent | Absent ⁽¹⁰⁾ | Absent ⁽¹⁰⁾ |
+| Mechanism | Codex skills | Claude plugin | Skills copy | Repo clone | Cowork | claude.ai Project | Claude Science | Pi port |
+|---|---|---|---|---|---|---|---|---|
+| Methodology layer (the five skills' `SKILL.md` protocols) | Active | Active | Active | Active | Active | Conditional | Active | Active ⁽¹⁰⁾ |
+| Skill auto-routing (trigger keywords → skill activation) | Conditional | Active | Active | Active | Active | Absent | Conditional | Conditional |
+| Cross-skill routing discipline (routing core: route directly or ask which workflow, #133 / #892) | Conditional ⁽⁹⁾ | Conditional ⁽⁸⁾ ⁽⁹⁾ | Conditional ⁽⁹⁾ | Active ⁽⁹⁾ | Conditional ⁽⁹⁾ | Absent | Conditional ⁽⁹⁾ | Conditional ⁽⁹⁾ |
+| `/ars-*` slash commands | Absent | Active ⁽¹⁾ | Absent | Absent | Absent | Absent | Absent | Conditional |
+| SessionStart announce, update reminder, and compaction handoff reminder | Absent | Conditional ⁽⁸⁾ | Absent ⁽³⁾ | Absent ⁽³⁾ | Absent | Absent | Absent | Absent |
+| Write-scope guard (`PreToolUse` hook) | Absent | Conditional ⁽²⁾ | Absent ⁽³⁾ | Absent ⁽³⁾ | Absent | Absent | Absent | Absent |
+| Plugin agents with tools allowlist (#514) ⁽⁴⁾ | Absent | Active | Absent ⁽³⁾ | Absent ⁽³⁾ | Absent | Absent | Absent | Absent |
+| Subagent orchestration (Task-tool multi-agent dispatch) | Conditional | Active | Active | Active | Absent | Absent | Absent | Conditional |
+| Python-backed opt-in features (repo `scripts/`) | Conditional ⁽⁵⁾ | Conditional ⁽⁵⁾ | Conditional ⁽⁵⁾ | Conditional ⁽⁵⁾ | Absent | Absent | Absent | Conditional ⁽⁵⁾ |
+| Cross-model verification (consent-gated second model) | Conditional ⁽⁶⁾ | Conditional ⁽⁶⁾ | Conditional ⁽⁶⁾ | Conditional ⁽⁶⁾ | Absent | Absent | Absent | Absent |
+| Prompt-level checkpoints and integrity gates | Active ⁽⁷⁾ | Active ⁽⁷⁾ | Active ⁽⁷⁾ | Active ⁽⁷⁾ | Conditional | Absent | Conditional | Conditional |
+| sr-screener dual blinded screening (two reviewer subagents + adjudicator) | Conditional ⁽¹⁰⁾ | Active ⁽¹⁰⁾ | Conditional ⁽¹⁰⁾ | Conditional ⁽¹⁰⁾ | Absent ⁽¹⁰⁾ | Absent | Absent ⁽¹⁰⁾ | Absent ⁽¹⁰⁾ |
 
 CI-side checks (mutation-tested lints, content locks, changelog gates) are deliberately
 not a matrix row: they run in this repository's GitHub Actions, protecting the

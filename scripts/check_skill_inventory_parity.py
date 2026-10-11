@@ -10,14 +10,16 @@ manifest. A skill could therefore exist on disk without being packaged,
 listed, or versioned, with every lint green.
 
 This lint takes the set of top-level `<name>/SKILL.md` directories as the
-authority (it is what exists) and requires set-equality against the three
-surfaces that advertise or package the inventory:
+authority (it is what exists) and requires set-equality against the surfaces
+that advertise or package the inventory:
 
   B. `skills/<name>` — one symlink per skill, resolving to `<root>/<name>`
      (plugin auto-discovery packages from here);
-  C. `.claude/CLAUDE.md` § "Skills Overview" table rows (the canonical
+  C. `.agents/skills/<name>` — one Codex skill symlink per skill, resolving to
+     `<root>/<name>`;
+  D. `.claude/CLAUDE.md` § "Skills Overview" table rows (the canonical
      inventory other lints iterate);
-  D. `.claude-plugin/marketplace.json` `plugins[].skills[]` as `./<name>`
+  E. `.claude-plugin/marketplace.json` `plugins[].skills[]` as `./<name>`
      (what symlink-blind importers read).
 
 It also checks that any "<N> skills" count claim equals the number of skills
@@ -89,6 +91,30 @@ def _skills_dir_entries(root: Path, violations: list[str]) -> set[str]:
                 f"{entry}: must be a symlink to ../{entry.name}, "
                 f"found a real {'directory' if entry.is_dir() else 'file'}"
             )
+            continue
+        try:
+            target = entry.resolve(strict=True)
+        except (FileNotFoundError, RuntimeError):
+            violations.append(f"{entry}: dangling symlink")
+            continue
+        if target != expected.resolve():
+            violations.append(
+                f"{entry}: symlink resolves to {target}, expected {expected}"
+            )
+    return names
+
+
+def _codex_skills_dir_entries(root: Path, violations: list[str]) -> set[str]:
+    """Check the repo-local Codex discovery links when the surface exists."""
+    skills_dir = root / ".agents" / "skills"
+    if not skills_dir.is_dir():
+        return set()
+    names: set[str] = set()
+    for entry in sorted(skills_dir.iterdir(), key=lambda p: p.name):
+        names.add(entry.name)
+        expected = root / entry.name
+        if not entry.is_symlink():
+            violations.append(f"{entry}: must be a symlink to ../../{entry.name}")
             continue
         try:
             target = entry.resolve(strict=True)
@@ -295,6 +321,10 @@ def run_all_checks(root: Path) -> list[str]:
     symlinked = _skills_dir_entries(root, violations)
     _report_set_diff(on_disk, symlinked, f"{SKILLS_DIR}/ symlinks", violations)
 
+    codex_links = _codex_skills_dir_entries(root, violations)
+    if (root / ".agents" / "skills").is_dir():
+        _report_set_diff(on_disk, codex_links, ".agents/skills/ symlinks", violations)
+
     table = _claude_table_rows(root, violations)
     _report_set_diff(
         on_disk, table, f"{CLAUDE_MD} Skills Overview table", violations
@@ -346,7 +376,8 @@ def main() -> int:
         return 1
     print(
         "OK: skill inventory is identical across top-level directories, "
-        "skills/ symlinks, the CLAUDE.md table, and the marketplace manifest."
+        "skills/ and .agents/skills/ links, the CLAUDE.md table, and the "
+        "marketplace manifest."
     )
     return 0
 

@@ -1,5 +1,7 @@
 # ARS 效能說明
 
+> **Codex 是主要執行環境。** 請使用目前 Codex session 的模型與推理設定；ARS 不會固定模型或推理強度。下方 Claude 模型比較和成本數字是 Claude Code adapter 的歷史資料，不能用來推估 Codex 的使用量或費用。
+
 > **建議模型：Claude Fable 5.1 或 Claude Opus 5.5**（以撰寫當下為準），搭配 **Max plan**（或同等配置）。Claude Code 預設使用 Opus 5.5；要用 Fable 5.1，請執行 `/model fable`（在 Claude apps gateway 裡，`fable` 指的是 Fable 5，請改用 `/model claude-fable-5-1`）。兩個模型沒有誰全面勝出：Opus 5.5 system card 的能力總表上，每一列 Opus 5.5 都高於 Fable 5.1；但在 DRACO 深度研究與 OfficeQA 文件推理兩項測驗，Opus 5.5 較低（card 第 174、187、208 頁）。現行 Claude 模型採用 adaptive thinking，不需要手動指定 thinking budget。
 >
 > **用 Opus 5.5 時請調整推理強度（effort）。** Claude Code 讓 Opus 5.5 以 `medium` 起跑，Fable 5.1 則以 `high` 起跑。card 有兩項研究測驗：DRACO（深度研究）與 WANDR（廣域搜尋）。Fable 5.1 在預設的 `high` 分別得 86.5 與 66.7；Opus 5.5 在 `xhigh` 為 86.7／71.3，`medium` 為 83.9／62.8，`low` 為 72.5／31.2（card 第 187-188 頁）。在 Opus 5.5 上跑重度任務前（`/ars-full`、`/ars-reviewer`、`/ars-revision-coach`，或直接用文字啟動的 `deep-research`），請確認推理強度至少是 `high`：低於 `high` 時，用 `/effort high` 或 `/effort xhigh` 調高（在 `/effort` 後面直接打強度，也會存成這個模型之後的預設）；原本就用 `xhigh` 或 `max` 的話維持不變。避免用 `low`。ARS 刻意不在指令 frontmatter 固定推理強度：固定之後，自己選了 `xhigh` 或 `max` 的使用者也會被壓回來。

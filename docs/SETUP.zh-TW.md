@@ -1,16 +1,32 @@
 # ARS 安裝設定
 
-Academic Research Skills 的前置需求與選用設定。只需要 Markdown 輸出與預設 Claude pipeline（繼承 session 模型）的人，大部分內容可以略過。請見下方「最小可行設定」。
+Academic Research Skills 的前置需求與選用設定。Codex CLI 是主要執行環境；Claude Code 則透過維護中的 adapter 支援。只需要 Markdown 輸出與繼承 session 模型的人，大部分內容可以略過。請見下方「最小可行設定」。
 
 ---
 
 ## 最小可行設定
 
-1. 安裝 Claude Code（見下方）。
-2. 設定 `ANTHROPIC_API_KEY`。
-3. 在這個 repo（或任何把 ARS 放在 `.claude/skills/` 下的專案）執行 `claude`。
+1. 安裝 Codex CLI 並登入，或設定 `OPENAI_API_KEY` 以使用 API。
+2. 依照下方說明，將 ARS skills 放在專案的 `.agents/skills/`。
+3. 在專案中執行 `codex`，並指定要使用的 ARS skill。
 
-這樣就夠了。可得到 Markdown 輸出與 DOCX 轉換說明。以下其他內容都是選用。
+這樣就能取得 Markdown 輸出與 DOCX 轉換說明。以下其他內容都是選用。
+
+## Codex CLI
+
+Codex 會從 `.agents/skills/` 尋找專案 skills，並從 `$CODEX_HOME/skills/`（通常是 `~/.codex/skills/`）尋找個人 skills。請確保每個 skill 資料夾內直接有 `SKILL.md`：
+
+```bash
+git clone https://github.com/Imbad0202/academic-research-skills.git ~/academic-research-skills
+mkdir -p .agents/skills
+for skill in deep-research academic-paper academic-paper-reviewer academic-pipeline sr-screener; do
+  ln -s ~/academic-research-skills/$skill .agents/skills/$skill
+done
+```
+
+若要安裝到個人環境，將 `.agents/skills` 改成 `${CODEX_HOME:-$HOME/.codex}/skills`。也可以逐一複製 skill 資料夾。新增 skills 後請重新啟動 Codex，再以名稱和模式呼叫，例如「使用 `academic-paper` 的 plan 模式」。
+
+Codex 會執行提示中的工作流程；可用工具及 agent dispatch 依 Codex 執行環境而異。Claude Code 的 hooks、slash commands 與 subagent 設定不會自動載入，詳見[控制可用性](CONTROL_AVAILABILITY.md)。
 
 ## Python（選用）
 
@@ -22,7 +38,7 @@ Windows 使用者請注意：`python3` 常常是 Microsoft Store 的無功能占
 
 ---
 
-## 安裝 Claude Code
+## Claude Code 設定（相容 adapter）
 
 **建議：原生安裝程式**（不需要 Node.js，自動更新）：
 
@@ -294,7 +310,7 @@ Claude 會在 `<install-root>/<skill-name>/SKILL.md` 尋找 skills。這個 repo
 **Plugin 平台支援範圍：**
 - ✅ Claude Code CLI / VS Code extension / JetBrains extension — 完整支援
 - ❌ claude.ai 網頁版 / Claude for Work / Anthropic API 直呼 — 不支援 plugin，請改用方法一 / 二 / 三
-- ➡️ Codex CLI — 改裝姊妹版 [`Imbad0202/academic-research-skills-codex`](https://github.com/Imbad0202/academic-research-skills-codex)（同一套 workflow 內容、Codex 原生包裝）
+- ✅ Codex CLI — 將共用 skills 安裝到 `.agents/skills/`（見上方 Codex CLI 設定）
 
 ### 方法一：作為專案 Skills（推薦）
 
@@ -464,7 +480,7 @@ Anthropic 目前的 [Project file limits](https://support.claude.com/en/articles
 方法 4a 是 claude.ai 標準的 Custom Skill 安裝路徑：把每個 skill 資料夾壓成 zip、透過 Settings → Capabilities → Skills 上傳，Claude 會把它當成已安裝的 Skill，提供自動載入與 routing。claude.ai Custom Skills 確實支援多檔 skill 套件，包含 `scripts/`（請見 Anthropic 的 [How to create custom Skills](https://support.claude.com/en/articles/12512198-how-to-create-custom-skills) 對 supporting files 與 code execution 的說明），所以方法 4a 在機制上是可以 host 帶可執行檔的 skill 的。但**不推薦給本 suite 使用**，原因如下，且兩者疊加：
 
 1. **ARS 仰賴 Claude Code 專屬的編排功能**。每個 ARS skill 透過 Claude Code 的 Task / subagent 工具驅動 12-13 個專責 agent，並透過 Material Passport 在跨 session 之間交接檔案。Anthropic 文件描述的 claude.ai Custom Skill runtime（每個 session 一個 containerised code-execution 環境，[Use Skills in Claude](https://support.claude.com/en/articles/12512180-use-skills-in-claude) 說明 skill 啟動，但沒提到 multi-agent dispatch）並不包含 Claude Code 的 Task / subagent 控制面。可預期方法 4a 會把 ARS 呈現為 SKILL.md body 的 instructions，但缺少實際產出 suite 結果的 multi-agent dispatch。我們未實際 live upload 量測這項；本建議是基於 ARS agent 編排對 Claude Code 的依賴推論而成，並非實測失敗。
-2. **會降低 Claude Code 與 Cowork 的 routing 精度**。claude.ai 在 [Custom Skills 文件](https://claude.com/docs/skills/how-to) 把每個 skill 的 `description` 限制在 200 字元，但 [Agent Skills specification](https://agentskills.io/specification) 與 [Claude Code Skills 文件](https://code.claude.com/docs/en/skills) 都允許到 1,024 字元。本 suite 五個 description 都超過 claude.ai 的 200 字元上限、但仍在 Claude Code 允許的 1,024 字元內，前段 front-load 了 Claude Code 與 Cowork 用來區分研究、寫作、審查、orchestration 的 routing 關鍵字。為了 fit 方法 4a 而砍 description，會削弱 ARS 實際運作平台（Claude Code 與 Cowork）上的 routing，換到的只是 claude.ai 上未經實測的部分相容。
+2. **可能削弱 skill routing**。claude.ai 在 [Custom Skills 文件](https://claude.com/docs/skills/how-to) 把每個 skill 的 `description` 限制在 200 字元，但 [Agent Skills specification](https://agentskills.io/specification) 與 Claude Code skills 都允許到 1,024 字元。本 suite 五個 description 超過 claude.ai 的上限，但符合 Codex 與 Claude Code 使用的 Agent Skills 長度。若為了方法 4a 而縮短，會減少主要 skill channels 中區分研究、寫作、審查與流程管理的 routing 線索，換取尚未驗證的 claude.ai 相容性。
 
 **建議的替代路徑：**
 

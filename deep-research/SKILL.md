@@ -14,6 +14,8 @@ metadata:
 
 # Deep Research — Universal Academic Research Agent Team
 
+**Codex use:** invoke `$deep-research` or name this skill and its mode. `/ars-*` forms below are Claude Code command aliases; in Codex, treat them as mode names, not executable slash commands. See [control availability](../docs/CONTROL_AVAILABILITY.md) for runtime-specific limits.
+
 Universal deep research tool — a domain-agnostic 13-agent team for rigorous academic research on any topic.
 
 **v2.4** adds writing quality improvements to the report compiler:

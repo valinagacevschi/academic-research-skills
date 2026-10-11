@@ -44,7 +44,7 @@ Open an issue first before submitting a PR for these:
 
 ### Platform ports (community-maintained only)
 
-This repository is the reference distribution of ARS, built for Claude Code. Ports to other agent platforms (Opencode, Cursor, Continue, Aider, etc.) are accepted as community-maintained contributions. Two structural shapes are acceptable — both keep core ARS content as the source of truth:
+This repository is the reference distribution of ARS, built for Codex, with Claude Code and Pi adapters. Ports to other agent platforms (OpenCode, Cursor, Continue, Aider, etc.) are accepted as community-maintained contributions. Two structural shapes are acceptable — both keep core ARS content as the source of truth:
 
 - **In-tree wrapper.** Add a top-level `<platform>/` directory in this repo (e.g. `opencode/`) containing the manifest, plugin entry, and dispatch shims. Core ARS files (`skills/*/SKILL.md`, `agents/*.md`, `shared/`, `scripts/`) remain unmodified.
 - **Sibling distribution.** A separate repository that vendors ARS workflow content with: (1) upstream commit hash pinned (e.g. in a `manifest.json`); (2) a written update / sync policy; (3) vendored content unmodified — only the outer routing / adapter layer is platform-specific.
@@ -54,7 +54,7 @@ Either shape is accepted under the same maintainer-facing conditions:
 - **Named maintainer.** The PR description (in-tree) or repo README (sibling) must identify who will keep the port in sync with ARS minor releases (~6-week cadence) and triage platform-specific bug reports. Platform-specific issues will be redirected to that maintainer.
 - **End-to-end evidence.** Include at least one full `academic-pipeline` run on the target platform, committed under `examples/<platform>/` (in-tree) or under an `examples/` path in the sibling repo, so regressions are detectable.
 - **Claims-evidence alignment.** Every load-bearing, verifiable claim a port makes about its own behavior (in its README, docs, or evidence bundle — e.g. "does not add X to ordinary prompts", "prevents automatic invocation") must ship with contributor-run evidence covering the claim's stated scope; a claim whose evidence covers less is narrowed to what the evidence covers. Maintainer review checks that alignment and conformance with ARS principles (human-in-the-loop, degraded-mode disclosure) — it does not re-derive the target platform's runtime behavior. Platform expertise and post-merge maintenance stay with the port maintainer.
-- **Model-portability note.** ARS prompts are calibrated against Claude (Opus for architecture/review, Sonnet for execution; never Haiku). The PR must document which providers/models were tested and where downstream-agent behavior diverged from the Claude baseline.
+- **Runtime-portability note.** The PR must document which providers/models and agent runtimes were tested and where downstream behavior diverges from the Codex baseline.
 - **Open a design issue first** before submitting the PR (for in-tree) or before requesting sibling-distribution recognition in this repo's README.
 
 ### Locale packs (community-maintained)

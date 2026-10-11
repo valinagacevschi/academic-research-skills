@@ -1,10 +1,10 @@
 # ARS Performance Notes
 
-> **Recommended models: Claude Fable 5.1 or Claude Opus 5.5** (at the time of writing) with **Max plan** (or equivalent configuration). Claude Code starts on Opus 5.5 by default; select Fable 5.1 with `/model fable` (in Claude apps gateway sessions, where `fable` means Fable 5, use `/model claude-fable-5-1`). Neither model is better at everything: the Opus 5.5 system card puts Opus 5.5 ahead of Fable 5.1 on every row of its capability summary table, but behind it on DRACO deep research and OfficeQA document reasoning (pp. 174, 187, 208). Current Claude models use adaptive thinking; you no longer set a fixed thinking budget.
+> **Codex is the primary runtime.** Use the current Codex session model and its supported reasoning controls; ARS does not pin a model or reasoning level. The model-specific Claude comparisons and cost figures later on this page are historical measurements for the Claude Code adapter and do not predict Codex usage or cost.
 >
-> **Set the effort level on Opus 5.5.** Claude Code starts Opus 5.5 at `medium` effort and Fable 5.1 at `high`. On the card's two research benchmarks, DRACO deep research and WANDR wide search, Fable 5.1 at its `high` default scores 86.5 and 66.7; Opus 5.5 scores 86.7 / 71.3 at `xhigh`, 83.9 / 62.8 at `medium`, and 72.5 / 31.2 at `low` (card pp. 187-188). Before a heavy run on an Opus 5.5 session (`/ars-full`, `/ars-reviewer`, `/ars-revision-coach`, or a `deep-research` run started in plain language), make sure effort is at least `high`: if it is lower, raise it with `/effort high` or `/effort xhigh` (a level typed after `/effort` also becomes your saved default for that model), and keep `xhigh` or `max` if you already use them. Avoid `low`. ARS deliberately does not pin effort in command frontmatter: a pin would also lower a user who chose `xhigh` or `max`.
+> **For Claude Code users:** the Opus 5.5 and Fable 5.1 effort and benchmark recommendations below apply only to that adapter and model generation. They are retained as dated compatibility notes, not Codex guidance.
 >
-> **Give third-party text to ARS as a file when you can.** Opus 5.5 is more likely than earlier models to act on instructions hidden in text you paste into your own message (card §6.5.1). In the card's test, the same text arriving through a tool, such as a file read, was never acted on (0 of 105). Claude Code marks large pastes for the model only in sessions that fetch feature flags; sessions with telemetry disabled, Claude apps gateway sessions, and most third-party-provider sessions do not fetch them ([pasted text](https://code.claude.com/docs/en/terminal-config#how-claude-treats-pasted-text)).
+> **Keep untrusted source text in files when practical.** This is a general instruction-boundary measure. The Opus 5.5 card findings and Claude Code paste behavior below are specific to that model and runtime.
 >
 > The full academic pipeline (10 stages) consumes a **large amount of tokens** — a single end-to-end run can exceed 200K input + 100K output tokens depending on paper length and revision rounds. Budget accordingly.
 >
@@ -30,7 +30,7 @@
 
 > **v3.11 citation verification (#182).** The deterministic citation-existence gate calls external bibliographic APIs (Semantic Scholar / OpenAlex / Crossref / arXiv), not the LLM, so it adds **no Claude token cost** to the figures above — only network latency on first lookup. The persistent SQLite cache (`~/.cache/ars/verification.db`, 90-day TTL) means each paper is verified once and reused across drafts; a re-run over an already-cached bibliography does no network work. See [SETUP](SETUP.md#citation-verification-cache-v3.11-182).
 
-## Recommended Claude Code settings
+## Claude Code adapter settings
 
 | Setting | What it does | How to enable | Docs |
 |---|---|---|---|

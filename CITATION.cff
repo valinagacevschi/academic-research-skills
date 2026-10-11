@@ -3,7 +3,7 @@
 # project-wide commitment — future versions may carry different terms.
 # See https://citation-file-format.github.io/ for the schema.
 cff-version: 1.2.0
-title: Academic Research Skills for Claude Code
+title: Academic Research Skills for Codex
 message: >-
   If you use this software in your research, please cite it
   using the metadata from this file.
@@ -15,12 +15,12 @@ repository-code: https://github.com/Imbad0202/academic-research-skills
 url: https://github.com/Imbad0202/academic-research-skills
 abstract: >-
   A source-available academic research copilot framework for
-  noncommercial scholarly use. A suite of Claude Code skills that
+  noncommercial scholarly use. A Codex-first suite of agent skills that
   assists human researchers through the full research-to-publication
   pipeline: research, write, integrity-check, review, revise, finalize.
 keywords:
   - academic-research
-  - claude-code
+  - codex
   - research-workflow
   - literature-review
   - citation-verification

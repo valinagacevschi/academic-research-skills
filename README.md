@@ -1,22 +1,23 @@
-# Academic Research Skills for Claude Code
+# Academic Research Skills for Codex
 
-[![Version](https://img.shields.io/badge/version-v3.23.0-blue)](https://github.com/Imbad0202/academic-research-skills/releases/tag/v3.23.0)
-[![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.20696614-blue)](https://doi.org/10.5281/zenodo.20696614)
-[![License: CC BY-NC 4.0](https://img.shields.io/badge/license-CC%20BY--NC%204.0-lightgrey)](https://creativecommons.org/licenses/by-nc/4.0/)
-[![Sponsor](https://img.shields.io/badge/sponsor-Buy%20Me%20a%20Coffee-orange?logo=buy-me-a-coffee)](https://buymeacoffee.com/crucify020v)
+![Version](https://img.shields.io/badge/version-v3.23.0-blue)  
+![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.20696614-blue)  
+![License: CC BY-NC 4.0](https://img.shields.io/badge/license-CC%20BY--NC%204.0-lightgrey)  
+![Sponsor](https://img.shields.io/badge/sponsor-Buy%20Me%20a%20Coffee-orange?logo=buy-me-a-coffee)
 
-[简体中文版](README.zh-CN.md) | [繁體中文版](README.zh-TW.md) | [日本語版](README.ja-JP.md) | [한국어](README.ko-KR.md) | [Español](README.es-ES.md)
+A comprehensive suite of Codex skills for academic research, covering the full pipeline from research to publication. Claude Code and Pi adapters are also maintained in this repository.
 
-A comprehensive suite of Claude Code skills for academic research, covering the full pipeline from research to publication.
-
-**Install in 30 seconds** (Claude Code CLI / VS Code / JetBrains, v3.7.0+):
+**Install in 30 seconds** (Codex CLI):
 
 ```text
-/plugin marketplace add Imbad0202/academic-research-skills
-/plugin install academic-research-skills
+git clone https://github.com/Imbad0202/academic-research-skills.git "$HOME/academic-research-skills"
+mkdir -p .agents/skills
+for skill in deep-research academic-paper academic-paper-reviewer academic-pipeline sr-screener; do
+  ln -s "$HOME/academic-research-skills/$skill" ".agents/skills/$skill"
+done
 ```
 
-Then try `/ars-plan` to walk through your paper structure via Socratic dialogue, or jump to [Quick install](#quick-install) for prerequisites and the traditional symlink flow.
+Start Codex in your project and invoke a skill by name, such as `academic-paper` in plan mode. See [Quick install](#quick-install) and [Codex setup](docs/SETUP.md#codex-cli) for details.
 
 > **AI is your copilot, not the pilot.** It can draft text, including a whole paper in full mode, but the decisions stay yours, and the pipeline stops for your confirmation at every stage. It handles the grunt work (hunting down references, formatting citations, verifying data, checking logical consistency) so you can focus on the parts that actually require your brain: defining the question, choosing the method, interpreting what the data means, and deciding what comes after "I argue that." You remain the author, and you answer for every claim you submit.
 >
@@ -26,19 +27,19 @@ Then try `/ars-plan` to walk through your paper structure via Socratic dialogue,
 
 Lu et al. (2026, *Nature* 651:914-919) built **The AI Scientist** — the first fully autonomous AI research system to publish a paper through blind peer review at a top-tier ML venue (ICLR 2025 workshop, score 6.33/10 vs workshop average 4.87). Their Limitations section enumerates the failure modes that any fully-autonomous AI research pipeline inherits: implementation bugs, hallucinated results, shortcut reliance, bug-as-insight reframing, methodology fabrication, frame-lock, citation hallucinations.
 
-ARS is built on the premise that **a human researcher augmented by AI avoids these failure modes better than either alone**. Stage 2.5 and Stage 4.5 integrity gates run a 7-mode blocking checklist (see [`academic-pipeline/references/ai_research_failure_modes.md`](academic-pipeline/references/ai_research_failure_modes.md)); the reviewer offers an opt-in calibration mode that measures its own FNR/FPR against a user-supplied gold set.
+ARS is built on the premise that **a human researcher augmented by AI avoids these failure modes better than either alone**. Stage 2.5 and Stage 4.5 integrity gates run a 7-mode blocking checklist (see `[academic-pipeline/references/ai_research_failure_modes.md](academic-pipeline/references/ai_research_failure_modes.md)`); the reviewer offers an opt-in calibration mode that measures its own FNR/FPR against a user-supplied gold set.
 
-[**Zhao et al.**](https://arxiv.org/abs/2605.07723) (2026-05) audited 111M references across 2.5M papers on arXiv, bioRxiv, SSRN, and PMC. Their conservative estimate is 146,932 hallucinated citations for 2025 alone, with an observed mid-2024 inflection; for the bioRxiv-to-PMC pairing they report 85.3% preprint-to-published persistence. The paper describes "real citations deployed to support claims the cited references do not actually make" as an open challenge. ARS v3.7.1 added trust-chain frontmatter for source provenance; v3.7.3 added locator infrastructure (three-layer citation anchors) for future claim-level audits and surfaces advisory risk signals at cite time (ARS labels the claim-faithfulness gap internally as "L3"; this is ARS terminology, not the paper's). v3.7.x is motivated by Zhao et al.'s corpus-scale findings; corpus-scale evaluation of ARS itself remains future work.
+**[Zhao et al.](https://arxiv.org/abs/2605.07723)** (2026-05) audited 111M references across 2.5M papers on arXiv, bioRxiv, SSRN, and PMC. Their conservative estimate is 146,932 hallucinated citations for 2025 alone, with an observed mid-2024 inflection; for the bioRxiv-to-PMC pairing they report 85.3% preprint-to-published persistence. The paper describes "real citations deployed to support claims the cited references do not actually make" as an open challenge. ARS v3.7.1 added trust-chain frontmatter for source provenance; v3.7.3 added locator infrastructure (three-layer citation anchors) for future claim-level audits and surfaces advisory risk signals at cite time (ARS labels the claim-faithfulness gap internally as "L3"; this is ARS terminology, not the paper's). v3.7.x is motivated by Zhao et al.'s corpus-scale findings; corpus-scale evaluation of ARS itself remains future work.
 
 v3.8 closes the second half of the L3 gap. v3.7.3 made every citation carry a locator anchor; v3.8 adds an opt-in audit pass (`ARS_CLAIM_AUDIT=1`) that fetches the cited source against each anchor and judges whether the claim is actually supported. Five new HIGH-WARN classes (claim-not-supported, negative-constraint-violation, fabricated-reference, anchorless, constraint-violation-uncited) gate-refuse output through the formatter terminal hard gate. A calibration runner ships with a 25-tuple synthetic gold set and FNR<0.15 + FPR<0.10 acceptance thresholds. Its shipped test drives the runner with a stub judge that returns the gold labels, so it checks the tooling, not a live judge; no live-judge calibration result is recorded yet, and the ramp-on plan waits for one (v3.8 spec §5).
 
-[**Ren et al.**](https://arxiv.org/abs/2607.13104) (2026, *Self-Improvements in Modern Agentic Systems: A Survey*) supplies a third, survey-level anchor. Its scientific-discovery synthesis (§7.4) concludes that discovery agents cannot easily verify novelty, correctness, or reproducibility on their own and may exploit weak proxies instead, must manage evidence across heterogeneous tools and literature, and raise governance issues — "scientific writing can also amplify misinformation when the evidence is weak." Its generation-loop chapters (§5.1–§5.2) list human auditing and retained human anchors among the practical safeguards for self-generated evaluation loops, and its historical chapter (§2.2) records the oldest form of the same lesson: the practical success of Lenat's EURISKO depended heavily on the user serving as the external evaluation signal, pruning unproductive heuristic drift — a limitation the survey notes persists in modern agentic systems. ARS cites the survey as design rationale for its human-in-the-loop stance, not as empirical proof that human-in-the-loop pipelines outperform autonomous ones; the survey's actionable deltas for ARS are tracked in #539–#541 and #547–#550.
+**[Ren et al.](https://arxiv.org/abs/2607.13104)** (2026, *Self-Improvements in Modern Agentic Systems: A Survey*) supplies a third, survey-level anchor. Its scientific-discovery synthesis (§7.4) concludes that discovery agents cannot easily verify novelty, correctness, or reproducibility on their own and may exploit weak proxies instead, must manage evidence across heterogeneous tools and literature, and raise governance issues — "scientific writing can also amplify misinformation when the evidence is weak." Its generation-loop chapters (§5.1–§5.2) list human auditing and retained human anchors among the practical safeguards for self-generated evaluation loops, and its historical chapter (§2.2) records the oldest form of the same lesson: the practical success of Lenat's EURISKO depended heavily on the user serving as the external evaluation signal, pruning unproductive heuristic drift — a limitation the survey notes persists in modern agentic systems. ARS cites the survey as design rationale for its human-in-the-loop stance, not as empirical proof that human-in-the-loop pipelines outperform autonomous ones; the survey's actionable deltas for ARS are tracked in #539–#541 and #547–#550.
 
-[**Gartenberg et al.**](https://doi.org/10.1287/orsc.2026.ed.v37.n3) (2026, *Organization Science* 37(3):795-812, "More versus better") supplies a fourth anchor, and the first from the journal side. The *Organization Science* AI Task Force scored every first submission (6,957) and every text-format review (10,389) the journal received between January 2021 and February 2026 with a commercial AI-writing classifier and standard readability indices. Manuscripts scored as heavily AI-written read worse on those indices and were desk-rejected more often; reviews scored as more AI-written leaned toward theory and away from data; and the editors conclude that current AI tools, amplified by publish-or-perish incentives, "appear to be pushing the system toward an equilibrium of more rather than better research." Their §5 contrasts "cognitive surrender" (Shaw & Nave, 2026, as cited there) with human-first use and asks authors to disclose how a manuscript was produced. The evidence is observational, aggregate, and from one journal, and the classifier is a proprietary instrument. ARS cites the editorial as design rationale for recording volume as a non-goal (see `POSITIONING.md`) and for the Collaboration Depth Observer and the claim-strength ladder, not as evidence about ARS output; the actionable deltas are tracked in #829–#833.
+**[Gartenberg et al.](https://doi.org/10.1287/orsc.2026.ed.v37.n3)** (2026, *Organization Science* 37(3):795-812, "More versus better") supplies a fourth anchor, and the first from the journal side. The *Organization Science* AI Task Force scored every first submission (6,957) and every text-format review (10,389) the journal received between January 2021 and February 2026 with a commercial AI-writing classifier and standard readability indices. Manuscripts scored as heavily AI-written read worse on those indices and were desk-rejected more often; reviews scored as more AI-written leaned toward theory and away from data; and the editors conclude that current AI tools, amplified by publish-or-perish incentives, "appear to be pushing the system toward an equilibrium of more rather than better research." Their §5 contrasts "cognitive surrender" (Shaw & Nave, 2026, as cited there) with human-first use and asks authors to disclose how a manuscript was produced. The evidence is observational, aggregate, and from one journal, and the classifier is a proprietary instrument. ARS cites the editorial as design rationale for recording volume as a non-goal (see `POSITIONING.md`) and for the Collaboration Depth Observer and the claim-strength ladder, not as evidence about ARS output; the actionable deltas are tracked in #829–#833.
 
-[**Wang, Li et al.**](https://arxiv.org/abs/2609.07713) (2026-09, *The Emerging AI Paper-Review Arms Race: Adversarial Co-Evolution in Scholarly Publishing*, a survey of 230 sources) supplies a fifth anchor, and the first that treats research production and peer review as one coupled system. Its evaluative-authority ladder (§4.1) runs from author-facing feedback through reviewer assistance and official AI reviews to scoring and decision support, with the survey's point that capability at one rung does not justify use at the next; ARS's simulated panel sits on the lowest rung by design (see `POSITIONING.md`). Two of its findings shape the reviewer roadmap. First, as the survey summarizes Dycke & Gurevych (2026, §4.5), 391 edits that break a paper's scientific support relations produced no statistically significant difference in the tested automated reviewers' aspects, sentiment, or scores compared with 540 soundness-neutral controls, while presentation-only rewrites with the science held fixed moved AI-review scores (§5.2); the survey's §9.2 conclusion is that a static evaluation can overstate an AI reviewer's reliability once authors can observe and adapt to it. ARS tracks the corresponding Round-1 paired controls in #871 and the author-identity-cue controls (§7.2) in #872; both are measurements, not new mechanisms. Second, its §9.1 cites Brodeur et al. (2026, *PNAS* 123(22):e2524747123), a randomized study in which 288 researchers in 103 teams reproduced published quantitative social-science results under three conditions: human-only, AI-assisted (ChatGPT as a collaborative tool), and AI-led (ChatGPT with minimal human oversight). Human-only and AI-assisted teams reproduced 94% and 91%, AI-led teams 37%, and the AI-assisted teams detected fewer major coding errors than the human-only teams. In that study, then, AI assistance did not verify better than humans alone and AI-led verification did much worse; ARS reads this as a reason to keep verification human-led at every checkpoint, not as evidence that its own checkpoints or integrity gates are effective. The survey is a synthesis rather than an experiment, its structured search stops at 2026-07-01 and the later targeted update did not rerun every query (§10), its deployment evidence is concentrated in a small number of AI/CS conferences, OpenReview-based settings, and selected journals, and its "arms race" framing is a lens, not a finding; ARS cites it as design rationale, not as evidence about ARS output.
+**[Wang, Li et al.](https://arxiv.org/abs/2609.07713)** (2026-09, *The Emerging AI Paper-Review Arms Race: Adversarial Co-Evolution in Scholarly Publishing*, a survey of 230 sources) supplies a fifth anchor, and the first that treats research production and peer review as one coupled system. Its evaluative-authority ladder (§4.1) runs from author-facing feedback through reviewer assistance and official AI reviews to scoring and decision support, with the survey's point that capability at one rung does not justify use at the next; ARS's simulated panel sits on the lowest rung by design (see `POSITIONING.md`). Two of its findings shape the reviewer roadmap. First, as the survey summarizes Dycke & Gurevych (2026, §4.5), 391 edits that break a paper's scientific support relations produced no statistically significant difference in the tested automated reviewers' aspects, sentiment, or scores compared with 540 soundness-neutral controls, while presentation-only rewrites with the science held fixed moved AI-review scores (§5.2); the survey's §9.2 conclusion is that a static evaluation can overstate an AI reviewer's reliability once authors can observe and adapt to it. ARS tracks the corresponding Round-1 paired controls in #871 and the author-identity-cue controls (§7.2) in #872; both are measurements, not new mechanisms. Second, its §9.1 cites Brodeur et al. (2026, *PNAS* 123(22):e2524747123), a randomized study in which 288 researchers in 103 teams reproduced published quantitative social-science results under three conditions: human-only, AI-assisted (ChatGPT as a collaborative tool), and AI-led (ChatGPT with minimal human oversight). Human-only and AI-assisted teams reproduced 94% and 91%, AI-led teams 37%, and the AI-assisted teams detected fewer major coding errors than the human-only teams. In that study, then, AI assistance did not verify better than humans alone and AI-led verification did much worse; ARS reads this as a reason to keep verification human-led at every checkpoint, not as evidence that its own checkpoints or integrity gates are effective. The survey is a synthesis rather than an experiment, its structured search stops at 2026-07-01 and the later targeted update did not rerun every query (§10), its deployment evidence is concentrated in a small number of AI/CS conferences, OpenReview-based settings, and selected journals, and its "arms race" framing is a lens, not a finding; ARS cites it as design rationale, not as evidence about ARS output.
 
-v3.3 was inspired by [**PaperOrchestra**](https://arxiv.org/abs/2604.05018) (Song, Song, Pfister & Yoon, 2026, Google): Semantic Scholar API verification, anti-leakage protocol, VLM figure verification, and revision-trajectory tracking. ARS now implements that last idea through categorical, evidence-anchored criterion trajectories rather than score deltas.
+v3.3 was inspired by **[PaperOrchestra](https://arxiv.org/abs/2604.05018)** (Song, Song, Pfister & Yoon, 2026, Google): Semantic Scholar API verification, anti-leakage protocol, VLM figure verification, and revision-trajectory tracking. ARS now implements that last idea through categorical, evidence-anchored criterion trajectories rather than score deltas.
 
 ---
 
@@ -48,27 +49,30 @@ v3.3 was inspired by [**PaperOrchestra**](https://arxiv.org/abs/2604.05018) (Son
 
 The architecture doc supersedes the sprawling pipeline description that used to live here. Everything about *what runs in which stage* now lives in one place.
 
-## Quick install
+## Quick install (Codex)
 
 **Prerequisites**
 
-- [Claude Code](https://docs.claude.com/en/docs/claude-code/setup) (latest; plugin packaging requires recent versions)
-- `ANTHROPIC_API_KEY` exported, or set on first `claude` run
+- [Codex CLI](https://developers.openai.com/codex/cli) (current release)
+- Sign in to Codex with your ChatGPT account, or configure `OPENAI_API_KEY` for API-backed use
 - *Optional:* Pandoc for DOCX, tectonic + Source Han Serif TC for APA 7.0 PDF (Markdown output works without either)
 - *Optional (real Python):* needed only for the write-scope guard and a few opt-in commands; the core skills are prompt-driven. Details, including the Windows notes on Git Bash and the Microsoft Store Python stub, are in [docs/SETUP.md § Python (optional)](docs/SETUP.md#python-optional).
 
 > **Which controls are active in *your* install channel?** Availability varies by install channel. See the per-channel map: [docs/CONTROL_AVAILABILITY.md](docs/CONTROL_AVAILABILITY.md).
 
-**Plugin install (v3.7.0+, recommended):**
+**Install the skills into a project:**
 
-```text
-/plugin marketplace add Imbad0202/academic-research-skills
-/plugin install academic-research-skills
+```bash
+git clone https://github.com/Imbad0202/academic-research-skills.git
+mkdir -p .agents/skills
+for skill in deep-research academic-paper academic-paper-reviewer academic-pipeline sr-screener; do
+  ln -s "$(pwd)/academic-research-skills/$skill" ".agents/skills/$skill"
+done
 ```
 
-**Verify it works:** run `/ars-plan` and describe a paper you're working on — ARS will start a Socratic dialogue to map out chapter structure. For a single-shot test instead, try `/ars-lit-review "your topic"`.
+Start Codex in the project. Ask it to use `academic-paper` in plan mode, or `deep-research` in quick mode. The skills are discovered from `.agents/skills/`.
 
-**👉 [docs/SETUP.md](docs/SETUP.md)** — full guide: install Claude Code, set up API keys, optional Pandoc/tectonic for DOCX/PDF, cross-model verification (`ARS_CROSS_MODEL`), and six installation methods (Plugin, project skills, global skills, claude.ai Project, repo-cloned, Claude Science import).
+**👉 [docs/SETUP.md](docs/SETUP.md#codex-cli)** — Codex skill setup, prerequisites, optional Pandoc/tectonic for DOCX/PDF, and cross-model verification (`ARS_CROSS_MODEL`). Claude Code plugin setup is documented below as a supported adapter.
 
 **👉 [docs/DATA_FLOWS.md](docs/DATA_FLOWS.md)** — what leaves your machine (bibliographic resolvers, optional consent-gated cross-model calls, the plugin update check), what is cached locally, for how long, and how to turn each path off.
 
@@ -76,9 +80,9 @@ The architecture doc supersedes the sprawling pipeline description that used to 
 
 **Using Claude Science?** The five skills import directly: **Skills → Import from GitHub**, paste `https://github.com/Imbad0202/academic-research-skills`, **Preview**, then **Import** (requires v3.14.0+ of this repo — the importer reads the explicit skill paths in the marketplace manifest). Imports are point-in-time snapshots: re-import after ARS updates. Imported skills carry the ARS methodology (research / writing / review protocols); Claude Code-specific machinery — slash commands, hooks, subagent orchestration — does not transfer. See [docs/SETUP.md](docs/SETUP.md) Method 5 for details.
 
-**Using Pi?** Install the in-tree, community-maintained wrapper with `pi install git:github.com/Imbad0202/academic-research-skills`. It keeps the original ARS content authoritative and documents Pi-specific orchestration and hook limitations. See [`pi/README.md`](pi/README.md).
+**Using Pi?** Install the in-tree, community-maintained wrapper with `pi install git:github.com/Imbad0202/academic-research-skills`. It keeps the original ARS content authoritative and documents Pi-specific orchestration and hook limitations. See `[pi/README.md](pi/README.md)`.
 
-**Using Codex CLI?** Install the sibling distribution instead: [`Imbad0202/academic-research-skills-codex`](https://github.com/Imbad0202/academic-research-skills-codex) — same workflow content, Codex-native packaging as a single `$academic-research-suite` skill with `ars-*` aliases.
+**Using Claude Code?** Install the maintained plugin with `/plugin marketplace add Imbad0202/academic-research-skills` followed by `/plugin install academic-research-skills`. See [docs/SETUP.md](docs/SETUP.md#claude-code-plugin) for other Claude Code installation methods.
 
 **Third-party platforms and integrations** that wrap or host ARS are listed in [THIRD_PARTY.md](THIRD_PARTY.md) — community-submitted and not reviewed or endorsed by the maintainer.
 
@@ -86,12 +90,11 @@ The architecture doc supersedes the sprawling pipeline description that used to 
 
 ## Performance & cost
 
-**👉 [docs/PERFORMANCE.md](docs/PERFORMANCE.md)** — per-mode token budgets, full-pipeline estimate (about US$3–7 for a 15k-word paper at 2026-09 list prices, before cache discounts), and recommended Claude Code settings (Auto mode; Agent Team optional).
+**👉 [docs/PERFORMANCE.md](docs/PERFORMANCE.md)** — per-mode token estimates and historical Claude Code adapter settings. Actual Codex usage and cost depend on your selected model and account or API plan.
 
 ## Guides & articles
 
-- [Academic Writing Shouldn't Be a Solo Act](https://open.substack.com/pub/edwardwu223235/p/academic-writing-shouldnt-be-a-solo?r=4dczl&utm_medium=ios) — full pipeline walkthrough (English)
-- [學術寫作不該是一個人的事：一套開源 AI 協作工具如何改變研究者的工作流](https://open.substack.com/pub/edwardwu223235/p/ai?r=4dczl&utm_medium=ios) — 完整使用指南（繁體中文）
+- [Academic Writing Shouldn't Be a Solo Act](https://open.substack.com/pub/edwardwu223235/p/academic-writing-shouldnt-be-a-solo?r=4dczl&utm_medium=ios) — full pipeline walkthrough
 
 ---
 
@@ -102,13 +105,13 @@ The architecture doc supersedes the sprawling pipeline description that used to 
 - **Academic Paper Reviewer** — 7-agent multi-perspective peer review with criterion-bound, evidence-anchored narrative judgements (Journal-Fit Reviewer + 3 dynamic reviewers + Devil's Advocate), concession threshold protocol, attack intensity preservation, optional cross-model DA critique / calibration, R&R traceability matrix, read-only constraint. Current live reviews remain `NOT_CALIBRATED`; full calibration produces a bounded candidate profile, while live-profile application is not yet wired.
 - **Academic Pipeline** — 10-stage pipeline orchestrator with adaptive checkpoints, claim verification, Material Passport, optional `repro_lock`, optional cross-model integrity verification, mid-conversation reinforcement, and narrative criterion-by-criterion regression checks (the typed trajectory carrier is deferred).
 - **SR-Screener** — protocol-driven study screening for systematic, scoping and rapid reviews: two blinded AI reviewers plus a third-reviewer adjudicator, ordered exclusion codes, no silent defaults, resumable batch runs, QC (seed studies, near-miss rechecks, kappa and PABAK), PRISMA 2020 counts, EndNote/Zotero RIS groups, and a `literature_corpus[]` handoff to `academic-paper`. AI decisions are decision support; the review team verifies them.
-- **Data Access Level Metadata** (v3.3.2+) — every skill declares `data_access_level` (`raw` / `redacted` / `verified_only`); enforced by `scripts/check_data_access_level.py`. Pattern adapted from Anthropic's automated-w2s-researcher (2026). See [`shared/ground_truth_isolation_pattern.md`](shared/ground_truth_isolation_pattern.md).
+- **Data Access Level Metadata** (v3.3.2+) — every skill declares `data_access_level` (`raw` / `redacted` / `verified_only`); enforced by `scripts/check_data_access_level.py`. Pattern adapted from Anthropic's automated-w2s-researcher (2026). See `[shared/ground_truth_isolation_pattern.md](shared/ground_truth_isolation_pattern.md)`.
 - **Task Type Annotation** (v3.3.2+) — every skill declares `task_type` (`open-ended` or `outcome-gradable`). All current ARS skills are `open-ended`.
-- **Benchmark Report Schema** (v3.3.5+) — JSON Schema + lint for honest benchmark comparisons. See [`shared/benchmark_report_pattern.md`](shared/benchmark_report_pattern.md).
-- **Artifact Reproducibility Lockfile** (v3.3.5+) — optional `repro_lock` sub-block on Material Passport. **Configuration documentation, not replay guarantee** — LLM outputs are not byte-reproducible. See [`shared/artifact_reproducibility_pattern.md`](shared/artifact_reproducibility_pattern.md).
-- **Model Tiering** (#517, v3.16+) — optional `ARS_MODEL_TIERING` switch with two directions: `economy` (execution-type agents dispatch one tier below the session model, floor Opus-class) and `quality-boost` (judgment-type agents at integrity gates and final review step up to the frontier tier). Default unset = byte-equivalent to pre-#517 behavior. See [`shared/model_tiering.md`](shared/model_tiering.md).
-- **Canonical Cross-Model Handoff Envelope** (#527, v3.17+) — the owner→dispatcher→owner blind-checkpoint transport path (#523) now has a machine-stable `[CROSS-MODEL-HANDOFF v1]` envelope with a normative Python grammar (`scripts/cross_model_handoff.py`) instead of prose-only enforcement, pinning agreement/divergence/malformed-result routing across all three checkpoint owners. See [`shared/cross_model_verification.md`](shared/cross_model_verification.md) §"Cross-model handoff envelope".
-- **Experiment Provenance Intake** (#260) — optional `experiment_provenance[]` on the Material Passport records experiments the scholar ran **externally** (ARS never runs experiments), and manuscript claims join to them via `claim_intent_manifest.planned_experiment_ids[]`. The integrity gate (Stage 2.5/4.5) audits each experiment-backed claim against declared provenance — `ALIGNED` / `OVERSTATED` / `NOT_SUPPORTED_BY_PROVENANCE` / `PROVENANCE_INSUFFICIENT` — **without judging whether the experiment itself was correct**. A fail-closed `experiment_intake_declaration` makes "did you run experiments?" an explicit decision the scholar answers after Stage 1, or on entry when a run starts later (even literature-only runs declare `no_experiments_declared`). See [`shared/handoff_schemas.md`](shared/handoff_schemas.md) §"Experiment Provenance Intake (#260)".
+- **Benchmark Report Schema** (v3.3.5+) — JSON Schema + lint for honest benchmark comparisons. See `[shared/benchmark_report_pattern.md](shared/benchmark_report_pattern.md)`.
+- **Artifact Reproducibility Lockfile** (v3.3.5+) — optional `repro_lock` sub-block on Material Passport. **Configuration documentation, not replay guarantee** — LLM outputs are not byte-reproducible. See `[shared/artifact_reproducibility_pattern.md](shared/artifact_reproducibility_pattern.md)`.
+- **Model Tiering** (#517, v3.16+) — optional `ARS_MODEL_TIERING` switch with two directions: `economy` (execution-type agents dispatch one tier below the session model, floor Opus-class) and `quality-boost` (judgment-type agents at integrity gates and final review step up to the frontier tier). Default unset = byte-equivalent to pre-#517 behavior. See `[shared/model_tiering.md](shared/model_tiering.md)`.
+- **Canonical Cross-Model Handoff Envelope** (#527, v3.17+) — the owner→dispatcher→owner blind-checkpoint transport path (#523) now has a machine-stable `[CROSS-MODEL-HANDOFF v1]` envelope with a normative Python grammar (`scripts/cross_model_handoff.py`) instead of prose-only enforcement, pinning agreement/divergence/malformed-result routing across all three checkpoint owners. See `[shared/cross_model_verification.md](shared/cross_model_verification.md)` §"Cross-model handoff envelope".
+- **Experiment Provenance Intake** (#260) — optional `experiment_provenance[]` on the Material Passport records experiments the scholar ran **externally** (ARS never runs experiments), and manuscript claims join to them via `claim_intent_manifest.planned_experiment_ids[]`. The integrity gate (Stage 2.5/4.5) audits each experiment-backed claim against declared provenance — `ALIGNED` / `OVERSTATED` / `NOT_SUPPORTED_BY_PROVENANCE` / `PROVENANCE_INSUFFICIENT` — **without judging whether the experiment itself was correct**. A fail-closed `experiment_intake_declaration` makes "did you run experiments?" an explicit decision the scholar answers after Stage 1, or on entry when a run starts later (even literature-only runs declare `no_experiments_declared`). See `[shared/handoff_schemas.md](shared/handoff_schemas.md)` §"Experiment Provenance Intake (#260)".
 
 **Integrity and verification boundary:** ARS checks the manuscript and the reported process—including citation existence, claim–source alignment, reported methodology, declared experiment–result alignment, figure/table fidelity, and reporting/process/package conformance. Some checks are sampled or LLM-mediated. ARS does **not** establish that procedures were actually performed, raw data are authentic, or results reproduce; a consistently reported fabrication can pass these checks. See [POSITIONING.md § Integrity checks and the empirical-work boundary](POSITIONING.md#integrity-checks-and-the-empirical-work-boundary).
 
@@ -122,17 +125,19 @@ See the complete artifacts from a real pipeline run, including peer review repor
 
 **[Browse all pipeline artifacts →](examples/showcase/)**
 
-| Artifact | Description |
-|---|---|
-| [Final Paper (EN)](examples/showcase/full_paper_apa7.pdf) | APA 7.0 formatted, LaTeX-compiled |
-| [Final Paper (ZH)](examples/showcase/full_paper_zh_apa7.pdf) | Chinese version, APA 7.0 |
-| [Integrity Report — Pre-Review](examples/showcase/integrity_report_stage2.5.pdf) | Stage 2.5: flagged 15 problem references (8 with bibliographic errors, 6–8 likely fabricated) + 3 statistical errors |
-| [Integrity Report — Final](examples/showcase/integrity_report_stage4.5.pdf) | Stage 4.5: zero regressions confirmed |
-| [Peer Review Round 1](examples/showcase/stage3_review_report.pdf) | Journal-Fit Reviewer + 3 Reviewers + Devil's Advocate |
-| [Re-Review](examples/showcase/stage3prime_rereview_report.pdf) | Verification after revisions |
-| [Peer Review Round 2](examples/showcase/stage3_review_report_r2.pdf) | Follow-up review |
-| [Response to Reviewers](examples/showcase/response_to_reviewers_r2.pdf) | Point-by-point author response |
+
+| Artifact                                                                                 | Description                                                                                                                                           |
+| ---------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Final Paper (EN)](examples/showcase/full_paper_apa7.pdf)                                | APA 7.0 formatted, LaTeX-compiled                                                                                                                     |
+| [Final Paper (ZH)](examples/showcase/full_paper_zh_apa7.pdf)                             | Chinese version, APA 7.0                                                                                                                              |
+| [Integrity Report — Pre-Review](examples/showcase/integrity_report_stage2.5.pdf)         | Stage 2.5: flagged 15 problem references (8 with bibliographic errors, 6–8 likely fabricated) + 3 statistical errors                                  |
+| [Integrity Report — Final](examples/showcase/integrity_report_stage4.5.pdf)              | Stage 4.5: zero regressions confirmed                                                                                                                 |
+| [Peer Review Round 1](examples/showcase/stage3_review_report.pdf)                        | Journal-Fit Reviewer + 3 Reviewers + Devil's Advocate                                                                                                 |
+| [Re-Review](examples/showcase/stage3prime_rereview_report.pdf)                           | Verification after revisions                                                                                                                          |
+| [Peer Review Round 2](examples/showcase/stage3_review_report_r2.pdf)                     | Follow-up review                                                                                                                                      |
+| [Response to Reviewers](examples/showcase/response_to_reviewers_r2.pdf)                  | Point-by-point author response                                                                                                                        |
 | [Post-Publication Audit Report](examples/showcase/post_publication_audit_2026-03-09.pdf) | Full-reference audit run separately with Claude Code + WebSearch: 21 of the 68 final references still had problems after 3 rounds of integrity checks |
+
 
 ---
 
@@ -275,7 +280,7 @@ You: "status"
 
 ## Skill Details
 
-Per-agent responsibilities and per-stage artifacts now live in [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md). Version numbers are anchored here so release metadata stays in one place.
+Per-agent responsibilities and per-stage artifacts now live in `[docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)`. Version numbers are anchored here so release metadata stays in one place.
 
 ### Deep Research (v2.12.1)
 
@@ -295,7 +300,7 @@ Per-agent responsibilities and per-stage artifacts now live in [`docs/ARCHITECTU
 
 ### SR-Screener (v1.0.0)
 
-4-agent study screening between `deep-research` (question, protocol, search) and `academic-paper` (writing the review). Modes: protocol, quick, pilot, ta-screen, ft-screen, adjudicate, audit, report. Two blinded reviewer subagents (Read and Grep only) screen every record against the user-confirmed protocol, a third reviewer adjudicates advance-vs-exclude conflicts, and standard-library Python scripts parse RIS / PubMed .nbib / Web of Science / CSV exports, de-duplicate, batch, merge, and build the screening log, RIS groups, PRISMA 2020 counts, a methods draft with `[TO COMPLETE]` slots, and a `literature_corpus[]` file. Rules the agents follow (not runtime guarantees): no record is screened before the user confirms the protocol, no failed call becomes a default "exclude", and the review team verifies the decisions before the numbers are reported. See [`sr-screener/SKILL.md`](sr-screener/SKILL.md).
+4-agent study screening between `deep-research` (question, protocol, search) and `academic-paper` (writing the review). Modes: protocol, quick, pilot, ta-screen, ft-screen, adjudicate, audit, report. Two blinded reviewer subagents (Read and Grep only) screen every record against the user-confirmed protocol, a third reviewer adjudicates advance-vs-exclude conflicts, and standard-library Python scripts parse RIS / PubMed .nbib / Web of Science / CSV exports, de-duplicate, batch, merge, and build the screening log, RIS groups, PRISMA 2020 counts, a methods draft with `[TO COMPLETE]` slots, and a `literature_corpus[]` file. Rules the agents follow (not runtime guarantees): no record is screened before the user confirms the protocol, no failed call becomes a default "exclude", and the review team verifies the decisions before the numbers are reported. See `[sr-screener/SKILL.md](sr-screener/SKILL.md)`.
 
 ---
 
@@ -306,26 +311,27 @@ Per-agent responsibilities and per-stage artifacts now live in [`docs/ARCHITECTU
 While using ARS to write a reflection article about AI in higher education, I ran into three structural problems that no amount of prompt engineering could fix:
 
 1. **Frame-lock**: I asked the AI to run a devil's advocate debate against its own thesis. It did — four rounds, each more refined than the last. But every round stayed inside the frame I'd set. The DA attacked arguments, never premises. It never asked "are we even discussing the right question?" This is the same pattern that caused the 31% citation error rate in v2.7's stress test: the verifying AI and the generating AI share the same cognitive frame.
-
 2. **Sycophancy under pushback**: Every time I challenged the DA's attacks, it conceded too quickly. It retracted findings faster than it launched them. The model's training rewards conversational harmony — so "the user pushed back" was treated as evidence that the attack was wrong, when often it just meant the user was persistent.
-
 3. **Intent misdetection**: The Socratic Mentor kept trying to converge and produce deliverables ("Want me to write this up?") when I was still exploring. It couldn't distinguish "the user wants a deep philosophical discussion" from "the user wants an RQ brief." Both look like engagement, but they need opposite AI behaviors.
 
 ### What we changed (v3.0)
 
 **Devil's Advocate — Concession Threshold Protocol** (`deep-research` + `academic-paper-reviewer`)
+
 - DA must now score every rebuttal on a 1-5 scale before responding
 - Concession only allowed at score ≥4 (rebuttal directly addresses core attack with evidence)
 - Score ≤3: hold position and restate the original attack
 - Anti-sycophancy rules: no consecutive concessions, concession rate tracking, frame-lock detection after each checkpoint
 
 **Socratic Mentor — Intent Detection Layer** (`deep-research`)
+
 - Classifies user intent as exploratory vs. goal-oriented at dialogue start and every 3 turns
 - Exploratory mode: disables auto-convergence, raises max rounds to 60, prohibits "want me to summarize?" prompts
 - Goal-oriented mode: standard convergence behavior
 - Anti-premature-closure rules: in exploratory mode, the user decides when to stop
 
 **Socratic Mentor — Dialogue Health Indicator** (`deep-research`)
+
 - Silent self-assessment every 5 turns on three dimensions: persistent agreement, conflict avoidance, premature convergence
 - Auto-injects challenging questions when agreement pattern detected
 - Invisible to user (to prevent gaming), but log available for post-session review
@@ -343,14 +349,17 @@ The deeper lesson: AI literacy isn't about learning to use AI as a tool, followi
 This work is licensed under [CC-BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/).
 
 **You are free to:**
+
 - Share — copy and redistribute the material
 - Adapt — remix, transform, and build upon the material
 
 **Under the following terms:**
+
 - **Attribution** — You must give appropriate credit
 - **NonCommercial** — You may not use the material for commercial purposes
 
 **Attribution format:**
+
 ```
 Based on Academic Research Skills by Cheng-I Wu
 https://github.com/Imbad0202/academic-research-skills
@@ -368,17 +377,17 @@ https://github.com/Imbad0202/academic-research-skills
 
 **[cloudenochcsis](https://github.com/cloudenochcsis)** — Contributor. Extended the IS section from the *Basket of 8* to the full *Senior Scholars' Basket of 11* — adding *Decision Support Systems*, *Information & Management*, and *Information and Organization* ([Issue #7](https://github.com/Imbad0202/academic-research-skills/issues/7), [PR #8](https://github.com/Imbad0202/academic-research-skills/pull/8)). Sourced from the [AIS Senior Scholars' List of Premier Journals](https://aisnet.org/research/seniorscholarsbasket/).
 
-**[eltociear](https://github.com/eltociear)** (Ikko Eltociear Ashimine) — Contributor. Translated the Japanese README ([`README.ja-JP.md`](README.ja-JP.md)) ([PR #161](https://github.com/Imbad0202/academic-research-skills/pull/161)).
+**[eltociear](https://github.com/eltociear)** (Ikko Eltociear Ashimine) — Contributor. Translated the Japanese README (`[README.ja-JP.md](README.ja-JP.md)`) ([PR #161](https://github.com/Imbad0202/academic-research-skills/pull/161)).
 
-**[xpfo-go](https://github.com/xpfo-go)** (xpfo) — Contributor. Translated the Simplified Chinese README ([`README.zh-CN.md`](README.zh-CN.md)) ([PR #181](https://github.com/Imbad0202/academic-research-skills/pull/181)).
+**[xpfo-go](https://github.com/xpfo-go)** (xpfo) — Contributor. Translated the Simplified Chinese README (`[README.zh-CN.md](README.zh-CN.md)`) ([PR #181](https://github.com/Imbad0202/academic-research-skills/pull/181)).
 
-**[devCharlotte](https://github.com/devCharlotte)** — Contributor. Translated the Korean README ([`README.ko-KR.md`](README.ko-KR.md)) ([PR #469](https://github.com/Imbad0202/academic-research-skills/pull/469)).
+**[devCharlotte](https://github.com/devCharlotte)** — Contributor. Translated the Korean README (`[README.ko-KR.md](README.ko-KR.md)`) ([PR #469](https://github.com/Imbad0202/academic-research-skills/pull/469)).
 
 **[Yaobin29](https://github.com/Yaobin29)** — Contributor. Proposed reviewer-response tooling in [PR #433](https://github.com/Imbad0202/academic-research-skills/pull/433); the `deep-research three-way-scan` mode and the `academic-paper rebuttal-audit` mode (rescued from the PR's `audit` concept) were integrated from that contribution in v3.12.1.
 
 **[ktao732084-arch](https://github.com/ktao732084-arch)** — Contributor. Expanded the `academic-paper` disclosure system with nine medical-publishing policy targets, target-specific required-fact intake, and fail-closed standalone rendering ([Issue #596](https://github.com/Imbad0202/academic-research-skills/issues/596), [PR #599](https://github.com/Imbad0202/academic-research-skills/pull/599)); expanded the EQUATOR clinical-reporting reference with condensed CARE, STARD and TRIPOD+AI guidance plus a fail-closed study-design routing sequence ([Issue #594](https://github.com/Imbad0202/academic-research-skills/issues/594), [PR #601](https://github.com/Imbad0202/academic-research-skills/pull/601)); and designed and contributed the standalone Chinese-literature resolver, API protocol, and synthetic transport-fixture suite ([Issue #595](https://github.com/Imbad0202/academic-research-skills/issues/595), [PR #600](https://github.com/Imbad0202/academic-research-skills/pull/600)).
 
-**[didacrios](https://github.com/didacrios)** — Contributor. Translated the Spanish README ([`README.es-ES.md`](README.es-ES.md)).
+**[didacrios](https://github.com/didacrios)** — Contributor. Translated the Spanish README (`[README.es-ES.md](README.es-ES.md)`).
 
 ---
 
@@ -388,7 +397,7 @@ Only the three most recent releases are summarized here. The full release histor
 
 ### v3.23.0 (2026-10-03) — `sr-screener` as a fifth skill, repairs from a pipeline walk-through, and evidence and ledger hardening
 
-> **One new skill and behaviour repairs found by reading a full pipeline run end to end; the prompt-level changes are unmeasured, and `sr-screener` makes no screening-accuracy claim:** v3.23.0 adds `sr-screener` (#919, contributed by @erfanz97), a fifth skill that turns a review protocol into eligibility rules the user confirms and screens titles/abstracts and full texts with two blinded reviewer subagents and an adjudicator; its tests use synthetic records, and its spreadsheet exports neutralise formula text (#951). A walk-through of a default pipeline run on paper (#925-#929) changed what such a run does: the v3.6.7 Audit Artifact Gate is opt-in, the scholar is asked once whether the paper reports their own experiments, constraints set for a run are kept in the user's words and quoted to each later dispatch they apply to (at review stages they act at the checkpoints), the integrity gates follow one rule set and list paywalled sources as notes, Stages 5 and 6 produce only the files asked for, and opt-in switches surface Stage 5 refusals at Stage 4.5. The Stage 2.5 and 4.5 checkpoints replay evidence rows from a folder the orchestrator names (#933, #947, #948), a source the gate finds fabricated stays out of later revisions (#936), and the ledger readers report parse failures without quoting the file (#898, #945). Smaller changes: per-source method weaknesses in reading outputs (#916), a review-form note at a fixed point (#921), Schema 1 aligned with its producer (#938), and `/ars-citation-check` inheriting the session model (#912).
+> **One new skill and behaviour repairs found by reading a full pipeline run end to end; the prompt-level changes are unmeasured, and** `sr-screener` **makes no screening-accuracy claim:** v3.23.0 adds `sr-screener` (#919, contributed by @erfanz97), a fifth skill that turns a review protocol into eligibility rules the user confirms and screens titles/abstracts and full texts with two blinded reviewer subagents and an adjudicator; its tests use synthetic records, and its spreadsheet exports neutralise formula text (#951). A walk-through of a default pipeline run on paper (#925-#929) changed what such a run does: the v3.6.7 Audit Artifact Gate is opt-in, the scholar is asked once whether the paper reports their own experiments, constraints set for a run are kept in the user's words and quoted to each later dispatch they apply to (at review stages they act at the checkpoints), the integrity gates follow one rule set and list paywalled sources as notes, Stages 5 and 6 produce only the files asked for, and opt-in switches surface Stage 5 refusals at Stage 4.5. The Stage 2.5 and 4.5 checkpoints replay evidence rows from a folder the orchestrator names (#933, #947, #948), a source the gate finds fabricated stays out of later revisions (#936), and the ledger readers report parse failures without quoting the file (#898, #945). Smaller changes: per-source method weaknesses in reading outputs (#916), a review-form note at a fixed point (#921), Schema 1 aligned with its producer (#938), and `/ars-citation-check` inheriting the session model (#912).
 
 ### v3.22.2 (2026-09-25) — Run ledger and handoff check, acronym check, a wider instruction/data boundary, and routing and front-page repairs
 
@@ -397,3 +406,4 @@ Only the three most recent releases are summarized here. The full release histor
 ### v3.22.1 (2026-09-23) — Model currency for Claude Opus 5.5, citation-check loading and Chinese APA 7 repairs, and a Pi wrapper fix
 
 > **Model currency and repairs; the new prompt-level guard is unmeasured:** v3.22.1 names Claude Opus 5.5 beside Claude Fable 5.1 as a supported session model, after a two-reader audit of the Opus 5.5 system card that retires no guardrail (#883). The docs add effort guidance (Claude Code starts Opus 5.5 at `medium`; heavy runs should use `high` or above), one list-price re-derivation for both models, and tiering guidance that reads the ladder as the vendor's lineup order, not a capability order. Because the card reports that Opus 5.5 acts more often than earlier models on instructions inside pasted text, the revision coach now treats pasted reviewer and committee text as data, pinned by a lint; the effect of that prompt-level guard is unmeasured. The release also repairs mode loading and citation checks: the 13 plugin mode commands invoke their namespaced core skill and resolve bundled references from the plugin root, which restores citation-check loading (#857); Chinese APA 7 checks catch a missing in-text author abbreviation, keep ambiguity exceptions and complete reference-list author fields, and propose a reorder only with evidence of a stroke-order inversion (#882); citation checks now distinguish visible syntax errors from unverified resolution or source claims (#882); and new English, Traditional Chinese, and Korean trigger phrases route citation-check requests, with CI bounding each skill description at 1,024 code points (#858, #864). The Pi wrapper accepts string-array system prompts (#880). No schema, command model, or effort setting changes.
+

@@ -1,16 +1,32 @@
 # ARS Setup
 
-Prerequisites and optional setup for Academic Research Skills. If you only need Markdown output and the default Claude pipeline (the inherited session model), you can skip most of this — see "Minimum viable setup" below.
+Prerequisites and optional setup for Academic Research Skills. Codex CLI is the primary supported environment; Claude Code remains available through the maintained plugin adapter. If you only need Markdown output and the inherited session model, you can skip most of this — see "Minimum viable setup" below.
 
 ---
 
 ## Minimum viable setup
 
-1. Install Claude Code (see below).
-2. Export `ANTHROPIC_API_KEY`.
-3. `claude` in this repo (or any project that has ARS in `.claude/skills/`).
+1. Install Codex CLI and sign in, or configure `OPENAI_API_KEY` for API-backed use.
+2. Make ARS skills available under `.agents/skills/` as described below.
+3. Run `codex` in your project and ask it to use the relevant ARS skill.
 
 That is enough for Markdown output + DOCX conversion instructions. Everything else in this document is optional.
+
+## Codex CLI
+
+Codex discovers project skills from `.agents/skills/` and user-wide skills from `$CODEX_HOME/skills/` (normally `~/.codex/skills/`). Link or copy each skill directory so the `SKILL.md` file is directly inside the installed skill folder:
+
+```bash
+git clone https://github.com/Imbad0202/academic-research-skills.git ~/academic-research-skills
+mkdir -p .agents/skills
+for skill in deep-research academic-paper academic-paper-reviewer academic-pipeline sr-screener; do
+  ln -s ~/academic-research-skills/$skill .agents/skills/$skill
+done
+```
+
+To install for your user instead, replace `.agents/skills` with `${CODEX_HOME:-$HOME/.codex}/skills`. To copy rather than link, use `cp -R ~/academic-research-skills/<skill> .agents/skills/<skill>` for each skill. Restart Codex after adding skills. Ask for a skill by name and mode, such as “Use `academic-paper` in plan mode” or “Use `deep-research` in systematic-review mode.”
+
+ARS workflows are model-agnostic at the prompt layer, but dispatch behavior and available tools depend on the Codex runtime. Claude Code-specific hooks, plugin slash commands, and subagent configuration are not automatically available in Codex; see the relevant skill instructions and [control availability](CONTROL_AVAILABILITY.md).
 
 ## Python (optional)
 
@@ -298,7 +314,7 @@ The five skills (`deep-research`, `academic-paper`, `academic-paper-reviewer`, `
 **Plugin platform scope:**
 - ✅ Claude Code CLI / VS Code extension / JetBrains extension — full support
 - ❌ claude.ai web / Claude for Work / Anthropic API direct calls — plugins not supported; use Method 1 / 2 / 3 below
-- ➡️ Codex CLI — install the sibling distribution [`Imbad0202/academic-research-skills-codex`](https://github.com/Imbad0202/academic-research-skills-codex) (same workflow content, Codex-native packaging)
+- ✅ Codex CLI — install the shared skills in `.agents/skills/` (see the Codex setup above)
 
 ### Method 1: As project skills (recommended)
 
@@ -422,7 +438,7 @@ Uploaded this way, each skill runs on its own as a standalone instruction set. T
 
 ### Method 4: Use with claude.ai (web)
 
-ARS is a Claude Code-native suite. The skills are multi-agent teams (4 to 13 agents each) that depend on multi-agent orchestration, executable scripts under `scripts/`, and Material Passport file handoffs. claude.ai's web interface delivers a different runtime than Claude Code, and the two access paths it offers reach this repository in different ways:
+ARS workflows use multi-agent roles (4 to 13 per skill), executable scripts under `scripts/`, and Material Passport file handoffs. Codex loads the shared skills, but dispatch and runtime controls vary by host. claude.ai's web interface differs from both Codex and Claude Code, and the two access paths it offers reach this repository in different ways:
 
 - **Method 4b — Project + GitHub integration** (recommended for claude.ai users): brings the repository into a claude.ai Project as retrievable knowledge. Claude can read the skill bodies, references, schemas, and example outputs, and answer questions or draft against them. Not a Skill install — auto-loading and skill routing do not happen, but the content is fully available for reading and citation.
 - **Method 4a — Custom Skill upload**: claude.ai's standard Skill install path (Settings → Capabilities → Skills, one zip per skill). Not recommended for this suite — see the rationale below before using it.
@@ -468,7 +484,7 @@ Anthropic's current [Project file limits](https://support.claude.com/en/articles
 Method 4a is claude.ai's standard Custom Skill install path: zip each skill folder, upload through Settings → Capabilities → Skills, and Claude treats it as an installed Skill with auto-loading and routing. claude.ai's Custom Skills do support multi-file skill packages including `scripts/` (see Anthropic's [How to create custom Skills](https://support.claude.com/en/articles/12512198-how-to-create-custom-skills) on supporting files and code execution), so Method 4a is mechanically capable of hosting skills with executable assets. The reasons not to recommend it for this specific suite are different and compound:
 
 1. **ARS depends on Claude Code-only orchestration features**. Each ARS skill drives 12-13 specialised agents through Claude Code's Task / subagent tooling and Material Passport file handoffs that resume across sessions. The Anthropic-documented scope of claude.ai's Custom Skill runtime — a containerised code-execution environment per session, with the Skills user guide ([Use Skills in Claude](https://support.claude.com/en/articles/12512180-use-skills-in-claude)) describing skill activation but not multi-agent dispatch — does not include Claude Code's Task / subagent control surface. Method 4a is therefore expected to surface ARS as the SKILL.md body's instructions, without the multi-agent dispatch that produces the suite's actual outputs. We have not run a live upload to characterise this in detail; the recommendation is forward-looking based on the Claude Code-specific assumptions baked into the agent orchestration, not on a measured failure.
-2. **Cost to Claude Code and Cowork routing**. claude.ai limits each skill's `description` field to 200 characters per the [Custom Skills documentation](https://claude.com/docs/skills/how-to), while the [Agent Skills specification](https://agentskills.io/specification) and [Claude Code Skills documentation](https://code.claude.com/docs/en/skills) allow up to 1,024 characters. The five ARS descriptions each exceed the 200-character claude.ai cap while staying under the 1,024-character Claude Code allowance, front-loading routing keywords that Claude Code and Cowork use to discriminate between research, writing, review, and orchestration. Trimming them to fit Method 4a would weaken routing on Claude Code and Cowork — the platforms ARS was built for — in exchange for an unverified partial fit on claude.ai.
+2. **Cost to skill routing**. claude.ai limits each skill's `description` field to 200 characters per the [Custom Skills documentation](https://claude.com/docs/skills/how-to), while the [Agent Skills specification](https://agentskills.io/specification) and Claude Code skills allow up to 1,024 characters. The five ARS descriptions exceed the claude.ai cap but remain within the Agent Skills limit used by Codex and Claude Code. Trimming them would weaken routing signals in the primary Codex and Claude Code skill channels to gain an unverified partial fit on claude.ai.
 
 **Recommended paths instead:**
 

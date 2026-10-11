@@ -1,0 +1,20 @@
+{
+  "name": "academic-research-skills",
+  "version": "3.23.0",
+  "description": "Codex skills for academic research, paper writing, peer review, and human-led pipeline orchestration.",
+  "author": {
+    "name": "Cheng-I Wu",
+    "url": "https://github.com/Imbad0202"
+  },
+  "homepage": "https://github.com/Imbad0202/academic-research-skills",
+  "repository": "https://github.com/Imbad0202/academic-research-skills",
+  "license": "CC-BY-NC-4.0",
+  "keywords": [
+    "academic",
+    "research",
+    "writing",
+    "peer-review",
+    "literature-review"
+  ],
+  "skills": "./skills/"
+}

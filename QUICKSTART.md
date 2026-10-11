@@ -1,41 +1,32 @@
-# Quick Start
+# Quick Start (Codex)
 
 Get from zero to your first AI-assisted research in 3 steps.
 
-## Step 1: Install
+## Step 1: Install Codex and expose the skills
 
 ```bash
-# Install Claude Code
-curl -fsSL https://claude.ai/install.sh | bash
-
 # Clone this repo somewhere stable
 git clone https://github.com/Imbad0202/academic-research-skills.git ~/academic-research-skills
 
-# Install each of the five skills into your project's .claude/skills/
+# Link each skill into your project's Codex skill directory
 cd /path/to/your/project
-mkdir -p .claude/skills
-ln -s ~/academic-research-skills/deep-research .claude/skills/deep-research
-ln -s ~/academic-research-skills/academic-paper .claude/skills/academic-paper
-ln -s ~/academic-research-skills/academic-paper-reviewer .claude/skills/academic-paper-reviewer
-ln -s ~/academic-research-skills/academic-pipeline .claude/skills/academic-pipeline
-ln -s ~/academic-research-skills/sr-screener .claude/skills/sr-screener
-
-# sr-screener's reviewer subagent (for dual-review screening runs)
-mkdir -p .claude/agents
-cp ~/academic-research-skills/sr-screener/agents/screening_reviewer_agent.md .claude/agents/
+mkdir -p .agents/skills
+for skill in deep-research academic-paper academic-paper-reviewer academic-pipeline sr-screener; do
+  ln -s ~/academic-research-skills/$skill .agents/skills/$skill
+done
 ```
 
-Each skill must sit at `.claude/skills/<skill-name>/SKILL.md` for Claude Code to discover it. See [docs/SETUP.md](docs/SETUP.md) for the copy-based alternative, global `~/.claude/skills/` install, and the other installation methods (Claude Code plugin, Cowork via zip upload, claude.ai). Note that Cowork and claude.ai do not read `~/.claude/skills/` — they install skills through their own settings upload, not this path.
+Codex discovers project skills under `.agents/skills/<skill-name>/SKILL.md`. The screening reviewer is already part of the skill bundle and does not need a separate agent install. See [docs/SETUP.md](docs/SETUP.md#codex-cli) for the copy-based and user-wide alternatives.
 
 ## Step 2: Launch
 
 ```bash
-claude
+codex
 ```
 
 ## Step 3: Start researching
 
-Tell Claude what you want to do. It will automatically pick the right skill and mode.
+Ask Codex to use the relevant skill and mode. For example: “Use `deep-research` in Socratic mode to help me frame this idea.”
 
 ### Example: Guided research (Socratic mode)
 
@@ -44,7 +35,7 @@ You: "I have a vague idea about AI's impact on higher education quality assuranc
       but I'm not sure how to frame the research question. Can you guide me?"
 ```
 
-Claude will enter Socratic mode — asking questions to help you clarify your thinking, not giving you answers directly. After 5-15 rounds of dialogue, you'll have a focused research question and methodology direction.
+Codex will use Socratic mode — asking questions to help you clarify your thinking, not giving you answers directly. After 5-15 rounds of dialogue, you'll have a focused research question and methodology direction.
 
 ### Example: Write a paper
 
@@ -66,7 +57,7 @@ You: "I want to produce a complete research paper about how agentic AI
       is reshaping student learning outcome measurement"
 ```
 
-This triggers the full 10-stage pipeline, which stops at every stage for your confirmation. API cost is an estimated US$3–7 per run at 2026-09 list prices, before cache discounts ([docs/PERFORMANCE.md](docs/PERFORMANCE.md)). Expect the collaborative work to span hours to days, depending on how closely you review each stage.
+This triggers the full 10-stage pipeline, which stops at every stage for your confirmation. Token use and cost depend on your Codex model and account or API plan; see [docs/PERFORMANCE.md](docs/PERFORMANCE.md) for workload estimates. Expect the collaborative work to span hours to days, depending on how closely you review each stage.
 
 ## Which mode should I use?
 

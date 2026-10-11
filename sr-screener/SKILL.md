@@ -15,6 +15,8 @@ metadata:
 
 # SR-Screener v1.0.0 — Protocol-Driven Screening Decisions
 
+**Codex use:** invoke `$sr-screener` or name this skill and its mode. `/ars-*` forms below are Claude Code command aliases; in Codex, treat them as mode names, not executable slash commands. See [control availability](../docs/CONTROL_AVAILABILITY.md) for runtime-specific limits.
+
 Screening is where a systematic review quietly loses studies: criteria drift, tired reviewers,
 records that fall between two batches. This skill makes each screening decision explicit and
 traceable. The criteria are fixed before any record is read, every record gets two independent
